@@ -1,0 +1,6 @@
+Message at 2025/3/2 22:18:49: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/2 22:18:49: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/2 22:18:49: Compiling Content\Pixelation.xnb
+Message at 2025/3/2 22:18:49: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/2 22:18:49: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/2 22:18:49: Compiling Content\Zhuan.xnb

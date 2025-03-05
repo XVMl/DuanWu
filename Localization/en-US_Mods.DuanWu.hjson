@@ -1,0 +1,1616 @@
+Configs: {
+	DuanWuConfigClient: {
+		DisplayName: Duan Wu Config Client
+
+		Hardmode: {
+			Label: Hardmode
+			Tooltip: ""
+		}
+
+		LisaoQAHardmode: {
+			Label: Lisao Q A Hardmode
+			Tooltip: ""
+		}
+
+		LisaoFullTextmode: {
+			Label: Lisao Full Textmode
+			Tooltip: ""
+		}
+
+		Answerquestiontime: {
+			Label: Answerquestiontime
+			Tooltip: ""
+		}
+	}
+}
+
+Items: {
+	Asditems: {
+		DisplayName: Asditems
+		Tooltip: ""
+	}
+
+	ZongZi: {
+		DisplayName: Zong Zi
+		Tooltip: ""
+	}
+}
+
+Judging: {
+	Success: Correct Answer!
+	Fail: wrong Answer!
+}
+
+ChoiceQuestion: {
+	Excerpt: {
+		0: {
+			Question: {
+				0: A prince am I of ancestry renowned,
+				1: Illustrious name my royal sire hath found.
+			}
+		}
+
+		1: {
+			Question: {
+				0: When Sirius did in spring its light display,
+				1: A child was born, and Tiger marked the day.
+			}
+		}
+
+		2: {
+			Question: {
+				0: When first upon my face my lord's eye glanced,
+				1: For me auspicious names he straight advanced,
+			}
+		}
+
+		3: {
+			Question: {
+				0: Denoting that in me Heaven's marks divine
+				1: Should with the virtues of the earth combine.
+			}
+		}
+
+		4: {
+			Question: {
+				0: With lavished innate qualities indued,
+				1: By art and skill my talents I renewed;
+			}
+		}
+
+		5: {
+			Question: {
+				0: Angelic herbs and sweet selineas too,
+				1: And orchids late that by the water grew,
+			}
+		}
+
+		6: {
+			Question: {
+				0: I wove for ornament; till creeping time,
+				1: Like water flowing, stole away my prime.
+			}
+		}
+
+		7: {
+			Question: {
+				0: Magnolias of the glade I plucked at dawn,
+				1: At eve beside the stream took winter-thorn.
+			}
+		}
+
+		8: {
+			Question: {
+				0: Without delay the sun and moon sped fast,
+				1: In swift succession spring and autumn passed;
+			}
+		}
+
+		9: {
+			Question: {
+				0: The fallen flowers lay scattered on the ground,
+				1: The dusk might fall before my dream was found.
+			}
+		}
+
+		10: {
+			Question: {
+				0: Had I not loved my prime and spurned the vile,
+				1: Why should I not have changed my former style?
+			}
+		}
+
+		11: {
+			Question: {
+				0: My chariot drawn by steeds of race divine
+				1: I urged; to guide the king my sole design.
+			}
+		}
+
+		12: {
+			Question: {
+				0: Long did I sigh and wipe away my tears,
+				1: To see my people bowed by griefs and fears.
+			}
+		}
+
+		13: {
+			Question: {
+				0: Though I my gifts enhanced and curbed my pride,
+				1: At morn they'd mock me, would at eve deride;
+			}
+		}
+
+		14: {
+			Question: {
+				0: First cursed that I angelica shoud wear,
+				1: Then cursed me for my melilotus fair.
+			}
+		}
+
+		15: {
+			Question: {
+				0: But since my heart did love such purity,
+				1: I'd not regret a thousand deaths to die.
+			}
+		}
+
+		16: {
+			Question: {
+				0: I marvel at the folly of the king,
+				1: So heedless of his people's suffering.
+			}
+		}
+
+		17: {
+			Question: {
+				0: They envied me my mothlike eyebrows fine,
+				1: And so my name his damsels did malign.
+			}
+		}
+
+		18: {
+			Question: {
+				0: Truly to craft alone their praise they paid,
+				1: The square in measuring they disobeyed;
+			}
+		}
+
+		19: {
+			Question: {
+				0: The use of common rules they held debased;
+				1: With confidence their crooked lines they traced.
+			}
+		}
+
+		20: {
+			Question: {
+				0: In sadness plunged and sunk in deepest gloom,
+				1: Alone I drove on to my dreary doom.
+			}
+		}
+
+		21: {
+			Question: {
+				0: In exile rather would I meet my end,
+				1: Than to the baseness of their ways descend.
+			}
+		}
+
+		22: {
+			Question: {
+				0: Remote the eagle spurns the common range,
+				1: Nor deigns since time began its way to change;
+			}
+		}
+
+		23: {
+			Question: {
+				0: A circle fits not with a square design;
+				1: Their different ways could not be merged with mine.
+			}
+		}
+
+		24: {
+			Question: {
+				0: Yet still my heart I checked and curbed my pride,
+				1: Their blame endured and their reproach beside.
+			}
+		}
+
+		25: {
+			Question: {
+				0: To die for righteousness alone I sought,
+				1: For this was what the ancient sages taught
+			}
+		}
+
+		26: {
+			Question: {
+				0: I failed my former errors to discern
+				1: I tarried long, but now I would return.
+			}
+		}
+
+		27: {
+			Question: {
+				0: My steeds I wheeled back to their former way
+				1: Lest all too long down the wrong path I stray.
+			}
+		}
+
+		28: {
+			Question: {
+				0: On orchid-covered bank I loosed my steed
+				1: And let him gallop by the flow'ry mead
+			}
+		}
+
+		29: {
+			Question: {
+				0: At will. Rejected now and in disgrace
+				1: I would retire to cultivate my grace.
+			}
+		}
+
+		30: {
+			Question: {
+				0: With cress leaves green my simple gown I made
+				1: With lilies white my rustic garb did braid.
+			}
+		}
+
+		31: {
+			Question: {
+				0: Why should I grieve to go unrecognized
+				1: Since in my heart fragrance was truly prized?
+			}
+		}
+
+		32: {
+			Question: {
+				0: My headdress then high-pinnacled I raised
+				1: Lengthened my pendents, where bright jewels blazed.
+			}
+		}
+
+		33: {
+			Question: {
+				0: Others may smirch their fragrance and bright hues
+				1: My innocence is proof against abuse.
+			}
+		}
+
+		34: {
+			Question: {
+				0: Oft I looked back, gazed to the distance still
+				1: Longed in the wilderness to roam at will.
+			}
+		}
+
+		35: {
+			Question: {
+				0: Splendid my ornaments together vied
+				1: With all the fragrance of the flowers beside;
+			}
+		}
+
+		36: {
+			Question: {
+				0: All men had pleasures in their various ways
+				1: My pleasure was to cultivate my grace.
+			}
+		}
+
+		37: {
+			Question: {
+				0: I would not change, though they my body rend
+				1: How could my heart be wrested from its end?
+			}
+		}
+	}
+
+	FullText: {
+		0: {
+			Question: {
+				0: A prince am I of ancestry renowned,
+				1: Illustrious name my royal sire hath found.
+			}
+		}
+
+		1: {
+			Question: {
+				0: When Sirius did in spring its light display,
+				1: A child was born, and Tiger marked the day.
+			}
+		}
+
+		2: {
+			Question: {
+				0: When first upon my face my lord's eye glanced,
+				1: For me auspicious names he straight advanced,
+			}
+		}
+
+		3: {
+			Question: {
+				0: Denoting that in me Heaven's marks divine
+				1: Should with the virtues of the earth combine.
+			}
+		}
+
+		4: {
+			Question: {
+				0: With lavished innate qualities indued,
+				1: By art and skill my talents I renewed;
+			}
+		}
+
+		5: {
+			Question: {
+				0: Angelic herbs and sweet selineas too,
+				1: And orchids late that by the water grew,
+			}
+		}
+
+		6: {
+			Question: {
+				0: I wove for ornament; till creeping time,
+				1: Like water flowing, stole away my prime.
+			}
+		}
+
+		7: {
+			Question: {
+				0: Magnolias of the glade I plucked at dawn,
+				1: At eve beside the stream took winter-thorn.
+			}
+		}
+
+		8: {
+			Question: {
+				0: Without delay the sun and moon sped fast,
+				1: In swift succession spring and autumn passed;
+			}
+		}
+
+		9: {
+			Question: {
+				0: The fallen flowers lay scattered on the ground,
+				1: The dusk might fall before my dream was found.
+			}
+		}
+
+		10: {
+			Question: {
+				0: Had I not loved my prime and spurned the vile,
+				1: Why should I not have changed my former style?
+			}
+		}
+
+		11: {
+			Question: {
+				0: My chariot drawn by steeds of race divine
+				1: I urged; to guide the king my sole design.
+			}
+		}
+
+		12: {
+			Question: {
+				0: Three ancient kings there were so pure and true
+				1: That round them every fragrant flower grew;
+			}
+		}
+
+		13: {
+			Question: {
+				0: Cassia and pepper of the mountain-side
+				1: With melilotus white in clusters vied.
+			}
+		}
+
+		14: {
+			Question: {
+				0: Two monarchs then, who high renown received,
+				1: Followed the kingly way, their goal achieved.
+			}
+		}
+
+		15: {
+			Question: {
+				0: Two princes proud by lust their reign abused,
+				1: Sought easier path, and their own steps confused.
+			}
+		}
+
+		16: {
+			Question: {
+				0: The faction for illict pleasure longed;
+				1: Dreadful their way where hidden perils thronged.
+			}
+		}
+
+		17: {
+			Question: {
+				0: Danger against myself could not appal,
+				1: But feared I lest my sovereign's scepter fall.
+			}
+		}
+
+		18: {
+			Question: {
+				0: Forward and back I hastened in my quest,
+				1: Followed the former kings, and took no rest.
+			}
+		}
+
+		19: {
+			Question: {
+				0: The prince my true integrity defamed,
+				1: Gave ear to slander, high his anger flamed;
+			}
+		}
+
+		20: {
+			Question: {
+				0: Integrity I knew could not avail,
+				1: Yet still endured; my lord I would not fail.
+			}
+		}
+
+		21: {
+			Question: {
+				0: Celestial spheres my witness be on high,
+				1: I strove but for His Sacred Majesty.
+			}
+		}
+
+		22: {
+			Question: {
+				0: Twas first to me he gave his plighted word,
+				1: But soon repenting other counsel heard.
+			}
+		}
+
+		23: {
+			Question: {
+				0: For me departure could arouse no pain;
+				1: I grieved to see his royal purpose vain.
+			}
+		}
+
+		24: {
+			Question: {
+				0: Nine fields of orchids at one time I grew,
+				1: For melilot a hundred acres too,
+			}
+		}
+
+		25: {
+			Question: {
+				0: And fifty acres for the azalea bright,
+				1: The rumex fragrant and the lichen white.
+			}
+		}
+
+		26: {
+			Question: {
+				0: I longed to see them yielding blossoms rare,
+				1: And thought in season due the spoil to share.
+			}
+		}
+
+		27: {
+			Question: {
+				0: I did not grieve to see them die away,
+				1: But grieved because midst weeds they did decay.
+			}
+		}
+
+		28: {
+			Question: {
+				0: Insatiable in lust and greediness,
+				1: The faction strove, and tired not of excess;
+			}
+		}
+
+		29: {
+			Question: {
+				0: Themselves condoning, others they’d decry,
+				1: And steep their hearts in envious jealousy.
+			}
+		}
+
+		30: {
+			Question: {
+				0: Insatiably they seized what they desired,
+				1: It was not that to which my heart aspired.
+			}
+		}
+
+		31: {
+			Question: {
+				0: As old age unrelenting hurried near,
+				1: Lest my fair name should fail was all my fear.
+			}
+		}
+
+		32: {
+			Question: {
+				0: Dew from magnolia leaves I drank at dawn,
+				1: At eve for food were aster petals borne;
+			}
+		}
+
+		33: {
+			Question: {
+				0: And loving thus the simple and the fair,
+				1: How should I for my sallow features care?
+			}
+		}
+
+		34: {
+			Question: {
+				0: With gathered vines I strung valeria white,
+				1: And mixed with blue wistaria petals bright,
+			}
+		}
+
+		35: {
+			Question: {
+				0: And melilotus matched with cassia sweet,
+				1: With ivy green and tendrils long to meet.
+			}
+		}
+
+		36: {
+			Question: {
+				0: Life I adapted to the ancient way,
+				1: Leaving the manners of the present day;
+			}
+		}
+
+		37: {
+			Question: {
+				0: Thus unconforming to the modern age,
+				1: The path I followed of a bygone sage.
+			}
+		}
+
+		38: {
+			Question: {
+				0: Long did I sigh and wipe away my tears,
+				1: To see my people bowed by griefs and fears.
+			}
+		}
+
+		39: {
+			Question: {
+				0: Though I my gifts enhanced and curbed my pride,
+				1: At morn they'd mock me, would at eve deride;
+			}
+		}
+
+		40: {
+			Question: {
+				0: First cursed that I angelica shoud wear,
+				1: Then cursed me for my melilotus fair.
+			}
+		}
+
+		41: {
+			Question: {
+				0: But since my heart did love such purity,
+				1: I'd not regret a thousand deaths to die.
+			}
+		}
+
+		42: {
+			Question: {
+				0: I marvel at the folly of the king,
+				1: So heedless of his people's suffering.
+			}
+		}
+
+		43: {
+			Question: {
+				0: They envied me my mothlike eyebrows fine,
+				1: And so my name his damsels did malign.
+			}
+		}
+
+		44: {
+			Question: {
+				0: Truly to craft alone their praise they paid,
+				1: The square in measuring they disobeyed;
+			}
+		}
+
+		45: {
+			Question: {
+				0: The use of common rules they held debased;
+				1: With confidence their crooked lines they traced.
+			}
+		}
+
+		46: {
+			Question: {
+				0: In sadness plunged and sunk in deepest gloom,
+				1: Alone I drove on to my dreary doom.
+			}
+		}
+
+		47: {
+			Question: {
+				0: In exile rather would I meet my end,
+				1: Than to the baseness of their ways descend.
+			}
+		}
+
+		48: {
+			Question: {
+				0: Remote the eagle spurns the common range,
+				1: Nor deigns since time began its way to change;
+			}
+		}
+
+		49: {
+			Question: {
+				0: A circle fits not with a square design;
+				1: Their different ways could not be merged with mine.
+			}
+		}
+
+		50: {
+			Question: {
+				0: Yet still my heart I checked and curbed my pride,
+				1: Their blame endured and their reproach beside.
+			}
+		}
+
+		51: {
+			Question: {
+				0: To die for righteousness alone I sought,
+				1: For this was what the ancient sages taught
+			}
+		}
+
+		52: {
+			Question: {
+				0: I failed my former errors to discern
+				1: I tarried long, but now I would return.
+			}
+		}
+
+		53: {
+			Question: {
+				0: My steeds I wheeled back to their former way
+				1: Lest all too long down the wrong path I stray.
+			}
+		}
+
+		54: {
+			Question: {
+				0: On orchid-covered bank I loosed my steed
+				1: And let him gallop by the flow'ry mead
+			}
+		}
+
+		55: {
+			Question: {
+				0: At will. Rejected now and in disgrace
+				1: I would retire to cultivate my grace.
+			}
+		}
+
+		56: {
+			Question: {
+				0: With cress leaves green my simple gown I made
+				1: With lilies white my rustic garb did braid.
+			}
+		}
+
+		57: {
+			Question: {
+				0: Why should I grieve to go unrecognized
+				1: Since in my heart fragrance was truly prized?
+			}
+		}
+
+		58: {
+			Question: {
+				0: My headdress then high-pinnacled I raised
+				1: Lengthened my pendents, where bright jewels blazed.
+			}
+		}
+
+		59: {
+			Question: {
+				0: Others may smirch their fragrance and bright hues
+				1: My innocence is proof against abuse.
+			}
+		}
+
+		60: {
+			Question: {
+				0: Oft I looked back, gazed to the distance still
+				1: Longed in the wilderness to roam at will.
+			}
+		}
+
+		61: {
+			Question: {
+				0: Splendid my ornaments together vied
+				1: With all the fragrance of the flowers beside;
+			}
+		}
+
+		62: {
+			Question: {
+				0: All men had pleasures in their various ways
+				1: My pleasure was to cultivate my grace.
+			}
+		}
+
+		63: {
+			Question: {
+				0: I would not change, though they my body rend
+				1: How could my heart be wrested from its end?
+			}
+		}
+
+		64: {
+			Question: {
+				0: My handmaid fair, with countenance demure,
+				1: Entreated me allegiance to abjure:
+			}
+		}
+
+		65: {
+			Question: {
+				0: A hero perished in the plain ill-starred,
+				1: Where pigmies stayed their plumage to discard.
+			}
+		}
+
+		66: {
+			Question: {
+				0: Why lovest thou thy grace and purity,
+				1: Alone dost hold thy splendid virtue high?
+			}
+		}
+
+		67: {
+			Question: {
+				0: Lentils and weeds the prince's chamber fill:
+				1: Why holdest thou aloof with stubborn will?
+			}
+		}
+
+		68: {
+			Question: {
+				0: Thou canst not one by one the crowd persuade,
+				1: And who the purpose of our heart hath weighed?
+			}
+		}
+
+		69: {
+			Question: {
+				0: Faction and strife the world hath ever loved;
+				1: Heeding me not, why standest thou removed?"
+			}
+		}
+
+		70: {
+			Question: {
+				0: I sought th' ancestral voice to ease my woe.
+				1: Alas, how one so proud could sink so low!
+			}
+		}
+
+		71: {
+			Question: {
+				0: To barbarous south I went across the stream;
+				1: Before the ancient I began my theme:
+			}
+		}
+
+		72: {
+			Question: {
+				0: With odes divine there came a monarch's son,
+				1: Whose revels unrestrained were never done;
+			}
+		}
+
+		73: {
+			Question: {
+				0: In antics wild, to coming perils blind,
+				1: He fought his brother, and his sway declined.
+			}
+		}
+
+		74: {
+			Question: {
+				0: The royal archer, in his wanton chase
+				1: For foxes huge, his kingdom did disgrace.
+			}
+		}
+
+		75: {
+			Question: {
+				0: Such wantonness predicts no happy end;
+				1: His queen was stolen by his loyal friend.
+			}
+		}
+
+		76: {
+			Question: {
+				0: The traitor's son, clad in prodigious might,
+				1: In incest sinned and cared not what was right.
+			}
+		}
+
+		77: {
+			Question: {
+				0: He reveled all his days, forgetting all;
+				1: His head at last in treachery did fall.
+			}
+		}
+
+		78: {
+			Question: {
+				0: And then the prince, who counsels disobeyed,
+				1: Did court disaster, and his kingdom fade.
+			}
+		}
+
+		79: {
+			Question: {
+				0: A prince his sage in burning cauldrons tossed;
+				1: His glorious dynasty ere long was lost.
+			}
+		}
+
+		80: {
+			Question: {
+				0: But stern and pious was their ancient sire,
+				1: And his successor too did faith inspire;
+			}
+		}
+
+		81: {
+			Question: {
+				0: Exalted were the wise, the able used,
+				1: The rule was kept and never was abused.
+			}
+		}
+
+		82: {
+			Question: {
+				0: The august heaven, with unbiased grace,
+				1: All men discerns, and helps the virtuous race;
+			}
+		}
+
+		83: {
+			Question: {
+				0: Sagacious princes through their virtuous deed
+				1: The earth inherit, and their reigns succeed.
+			}
+		}
+
+		84: {
+			Question: {
+				0: The past I probed, the future so to scan,
+				1: And found these rules that guide the life of man:
+			}
+		}
+
+		85: {
+			Question: {
+				0: A man unjust in deed who would engage?
+				1: Whom should men take as guide except the sage?
+			}
+		}
+
+		86: {
+			Question: {
+				0: In mortal dangers death I have defied,
+				1: Yet could look back, and cast regret aside.
+			}
+		}
+
+		87: {
+			Question: {
+				0: Who strove, their tool's defects accounting nought,
+				1: Like ancient sages were to cauldrons brought"
+			}
+		}
+
+		88: {
+			Question: {
+				0: Thus I despaired, my face with sad tears marred,
+				1: Mourning with bitterness my years ill-starred;
+			}
+		}
+
+		89: {
+			Question: {
+				0: And melilotus leaves I took to stem
+				1: The tears that streamed down to my garment's hem.
+			}
+		}
+
+		90: {
+			Question: {
+				0: Soiling my gown, to plead my case I kneeled;
+				1: Th'ancestral voice the path to me revealed.
+			}
+		}
+
+		91: {
+			Question: {
+				0: Swift jade-green dragons, birds with plumage gold,
+				1: I harnessed to the whirlwind, and behold,
+			}
+		}
+
+		92: {
+			Question: {
+				0: At daybreak from the land of plane-trees grey,
+				1: I came to paradise ere close of day.
+			}
+		}
+
+		93: {
+			Question: {
+				0: I wished within the sacred grove to stay,
+				1: The sun had sunk, and darkness wrapped the way;
+			}
+		}
+
+		94: {
+			Question: {
+				0: The driver of the sun I bade to stay,
+				1: Ere with the setting rays we haste away.
+			}
+		}
+
+		95: {
+			Question: {
+				0: The way was long, and wrapped in gloom did seem,
+				1: As I urged on to seek my vanished dream.
+			}
+		}
+
+		96: {
+			Question: {
+				0: The dragons quenched their thirst beside the lake
+				1: Where bathed the sun, whilst I upon the brake
+			}
+		}
+
+		97: {
+			Question: {
+				0: Fastened my reins; a golden bough I sought
+				1: To brush the sun, and tarred there in sport.
+			}
+		}
+
+		98: {
+			Question: {
+				0: The pale moon's charioteer I then bade lead,
+				1: The master of the winds swiftly succeed;
+			}
+		}
+
+		99: {
+			Question: {
+				0: Before, the royal blue bird cleared the way;
+				1: The lord of thunder urged me to delay.
+			}
+		}
+
+		100: {
+			Question: {
+				0: I bade the phoenix scan the heaven wide;
+				1: But vainly day and night its course it tried;
+			}
+		}
+
+		101: {
+			Question: {
+				0: The gathering whirlwinds drove it from my sight,
+				1: Rushing with lowering clouds to check my flight;
+			}
+		}
+
+		102: {
+			Question: {
+				0: Sifting and merging in the firmament,
+				1: Above, below, in various hues they went.
+			}
+		}
+
+		103: {
+			Question: {
+				0: The gate-keeper of heaven I bade give place,
+				1: But leaning on his door he scanned my face;
+			}
+		}
+
+		104: {
+			Question: {
+				0: The day grew dark, and now was nearly spent;
+				1: Idly my orchids into wreaths I bent.
+			}
+		}
+
+		105: {
+			Question: {
+				0: The virtuous and the vile in darkness merged;
+				1: They veiled my virtue, by their envy urged.
+			}
+		}
+
+		106: {
+			Question: {
+				0: At dawn the waters white I left behind;
+				1: My steed stayed by the portals of the wind;
+			}
+		}
+
+		107: {
+			Question: {
+				0: Yet, gazing back, a bitter grief I felt
+				1: That in the lofty crag no damsel dwelt.
+			}
+		}
+
+		108: {
+			Question: {
+				0: I wandered eastward to the palace green,
+				1: And pendents sought where jasper boughs were seen,
+			}
+		}
+
+		109: {
+			Question: {
+				0: And vowed that they, before their splendor fade,
+				1: As gift should go to grace the loveliest maid.
+			}
+		}
+
+		110: {
+			Question: {
+				0: The lord of clouds I then bade mount the sky
+				1: To seek the steam where once the nymph did lie;
+			}
+		}
+
+		111: {
+			Question: {
+				0: As pledge I gave my belt of splendid sheen,
+				1: My councilor appointed go-between.
+			}
+		}
+
+		112: {
+			Question: {
+				0: Fleeting and wilful like capricious cloud,
+				1: Her obstinacy swift no change allowed.
+			}
+		}
+
+		113: {
+			Question: {
+				0: At dusk retired she to the crag withdrawn,
+				1: Her hair beside the stream she washed at dawn.
+			}
+		}
+
+		114: {
+			Question: {
+				0: Exulting in her beauty and her pride,
+				1: Pleasure she worshipped, and no whim denied;
+			}
+		}
+
+		115: {
+			Question: {
+				0: So fair of form, so careless of all grace,
+				1: I turned to take another in her place.
+			}
+		}
+
+		116: {
+			Question: {
+				0: To earth's extremities I sought my bride,
+				1: And urged my train through all the heaven wide.
+			}
+		}
+
+		117: {
+			Question: {
+				0: Upon a lofty crag of jasper green
+				1: The beauteous princess of the west was seen.
+			}
+		}
+
+		118: {
+			Question: {
+				0: The falcon then I bade entreat the maid,
+				1: But he, demurring, would my course dissuade;
+			}
+		}
+
+		119: {
+			Question: {
+				0: The turtle-dove cooed soft and off did fly,
+				1: But I mistrusted his frivolity.
+			}
+		}
+
+		120: {
+			Question: {
+				0: Like whelp in doubt, like timid fox in fear,
+				1: I wished to go, but wandered ever near.
+			}
+		}
+
+		121: {
+			Question: {
+				0: With nuptial gifts the phoenix swiftly went;
+				1: I feared the prince had won her ere I sent.
+			}
+		}
+
+		122: {
+			Question: {
+				0: I longed to travel far, yet with no bourn,
+				1: I could but wander aimless and forlorn.
+			}
+		}
+
+		123: {
+			Question: {
+				0: Before the young king was in marriage bound,
+				1: The royal sisters twain might still be found;
+			}
+		}
+
+		124: {
+			Question: {
+				0: My plea was weak, my mission was but frail;
+				1: I knew that my demand could not avail.
+			}
+		}
+
+		125: {
+			Question: {
+				0: The world is dark, and envious of my grace;
+				1: They veil my virtue and the evil praise.
+			}
+		}
+
+		126: {
+			Question: {
+				0: Thy chamber dark lies in recesses deep,
+				1: Sagacious prince, risest thou not from sleep?
+			}
+		}
+
+		127: {
+			Question: {
+				0: My zeal unknown the prince would not descry;
+				1: How could I bear this harsh eternity?
+			}
+		}
+
+		128: {
+			Question: {
+				0: With mistletoe and herbs of magic worth,
+				1: I urged the witch the future to show forth.
+			}
+		}
+
+		129: {
+			Question: {
+				0: If two attain perfection they must meet,
+				1: But who is there that would thy virtue greet?
+			}
+		}
+
+		130: {
+			Question: {
+				0: Far the nine continents their realm display;
+				1: Why here to seek thy bride doth thou delay?
+			}
+		}
+
+		131: {
+			Question: {
+				0: Away! she cried. Set craven doubt aside,
+				1: If beauty' s sought, there' s none hath with thee vied.
+			}
+		}
+
+		132: {
+			Question: {
+				0: What place is there where orchids flower not fair?
+				1: Why is thy native land thy single care?
+			}
+		}
+
+		133: {
+			Question: {
+				0: Now darkly lies the world in twilight' s glow,
+				1: Who doth your defects and your virtue know?
+			}
+		}
+
+		134: {
+			Question: {
+				0: Evil and good herein are reconciled;
+				1: The crowd alone hath nought but is defiled.
+			}
+		}
+
+		135: {
+			Question: {
+				0: With stinking mugwort girt upon their waist,
+				1: They curse the others for their orchids chaste;
+			}
+		}
+
+		136: {
+			Question: {
+				0: Ignorant thus in choice of fragrance rare,
+				1: Rich ornaments how could they fitly wear?
+			}
+		}
+
+		137: {
+			Question: {
+				0: With mud and filth they fill their pendent bag;
+				1: Cursing the pepper sweet, they brawl and brag."
+			}
+		}
+
+		138: {
+			Question: {
+				0: Although the witches counsel I held good,
+				1: In foxlike indecision still I stood.
+			}
+		}
+
+		139: {
+			Question: {
+				0: At night the wizard great made his descent,
+				1: And meeting him spiced rice I did present.
+			}
+		}
+
+		140: {
+			Question: {
+				0: The angels came, shading with wings the sky;
+				1: From mountains wild the deities drew nigh.
+			}
+		}
+
+		141: {
+			Question: {
+				0: With regal splendor shone the solemn sight,
+				1: And thus the wizard spake with omens bright:
+			}
+		}
+
+		142: {
+			Question: {
+				0: Take office high or low as days afford,
+				1: If one there be that could with thee accord;
+			}
+		}
+
+		143: {
+			Question: {
+				0: Like ancient kings austere who sought their mate,
+				1: Finding the one who should fulfill their fate.
+			}
+		}
+
+		144: {
+			Question: {
+				0: Now if thy heart doth cherish grace within,
+				1: What need is there to choose a go-between?
+			}
+		}
+
+		145: {
+			Question: {
+				0: A convict toiled on rocks to expiate
+				1: His crime; his sovereign gave him great estate.
+			}
+		}
+
+		146: {
+			Question: {
+				0: A butcher with his knife made roundelay;
+				1: His king chanced there and happy proved the day.
+			}
+		}
+
+		147: {
+			Question: {
+				0: A prince who heard a cowherd chanting late
+				1: Raised him to be a councilor of state.
+			}
+		}
+
+		148: {
+			Question: {
+				0: Before old age o' ertake thee on thy way,
+				1: Life still is young; to profit turn thy day.
+			}
+		}
+
+		149: {
+			Question: {
+				0: Spring is but brief, when cuckoos start to sing,
+				1: And flowers will fade that once did spread and spring."
+			}
+		}
+
+		150: {
+			Question: {
+				0: On high my jasper pendent proudly gleamed,
+				1: Hid by the crowd with leaves that thickly teemed;
+			}
+		}
+
+		151: {
+			Question: {
+				0: Untiring they relentless means employed;
+				1: I feared it would through envy be destroyed.
+			}
+		}
+
+		152: {
+			Question: {
+				0: This gaudy age so fickle proved its will,
+				1: That to what purpose did I linger still?
+			}
+		}
+
+		153: {
+			Question: {
+				0: E'en orchids changed, their fragrance quickly lost,
+				1: And midst the weeds angelicas were tossed.
+			}
+		}
+
+		154: {
+			Question: {
+				0: How could these herbs, so fair in former day,
+				1: Their hue have changed, and turned to mugworts grey?
+			}
+		}
+
+		155: {
+			Question: {
+				0: The reason for their fall, not far to seek,
+				1: Was that to tend their grace their will proved weak.
+			}
+		}
+
+		156: {
+			Question: {
+				0: I thought upon the orchids I might lean;
+				1: No flowers appeared, but long bare leaves were seen;
+			}
+		}
+
+		157: {
+			Question: {
+				0: Their grace abandoned, vulgar taste to please,
+				1: Content with lesser flowers to dwell at ease.
+			}
+		}
+
+		158: {
+			Question: {
+				0: To boasts and flattery the pepper turned;
+				1: To fill the pendent bag the dogwood yearned;
+			}
+		}
+
+		159: {
+			Question: {
+				0: Thus only upon higher stations bent,
+				1: How could they long retain their former scent?
+			}
+		}
+
+		160: {
+			Question: {
+				0: Since they pursued the fashion of the time,
+				1: Small wonder they decayed e' en in their prime.
+			}
+		}
+
+		161: {
+			Question: {
+				0: Viewing the orchids' and the peppers' plight
+				1: Why blame the rumex and selinea white?
+			}
+		}
+
+		162: {
+			Question: {
+				0: My jasper pendent rare I was beguiled
+				1: To leave, and to this depth then sank defiled.
+			}
+		}
+
+		163: {
+			Question: {
+				0: It blossomed still and never ceased to grow;
+				1: Like water did its lovely fragrance flow:
+			}
+		}
+
+		164: {
+			Question: {
+				0: Pleasure I took to wear this bough in sport,
+				1: As roaming wild the damsel fair I sought.
+			}
+		}
+
+		165: {
+			Question: {
+				0: Thus in my prime, with ornaments bedecked,
+				1: I roved the earth and heaven to inspect.
+			}
+		}
+
+		166: {
+			Question: {
+				0: With omens bright the seer revealed the way,
+				1: I then appointed an auspicious day.
+			}
+		}
+
+		167: {
+			Question: {
+				0: As victuals rare some jasper twigs I bore,
+				1: And some prepared, provision rich to store;
+			}
+		}
+
+		168: {
+			Question: {
+				0: Then winged horses to my chariot brought
+				1: My carriage bright with jade and ivory wrought.
+			}
+		}
+
+		169: {
+			Question: {
+				0: How might tow hearts at variance accord?
+				1: I roamed till peace be to my mind restored.
+			}
+		}
+
+		170: {
+			Question: {
+				0: The pillar of the earth I stayed beside;
+				1: The way was long, and winding far and wide.
+			}
+		}
+
+		171: {
+			Question: {
+				0: In twilight glowed the clouds with wondrous sheen,
+				1: And chirping flew the birds of jasper green.
+			}
+		}
+
+		172: {
+			Question: {
+				0: I went at dawn high heaven' s ford to leave;
+				1: To earth' s extremity I came at eve.
+			}
+		}
+
+		173: {
+			Question: {
+				0: On phoenix wings the dragon pennons lay;
+				1: With plumage bright they flew to lead the way.
+			}
+		}
+
+		174: {
+			Question: {
+				0: I crossed the quicksand with its treach' rous flood,
+				1: Beside the burning river, red as blood;
+			}
+		}
+
+		175: {
+			Question: {
+				0: To bridge the stream my dragons huge I bade,
+				1: Invoked the emperor of the west to aid.
+			}
+		}
+
+		176: {
+			Question: {
+				0: The way was long, precipitous in view;
+				1: I bade my train a different path pursue.
+			}
+		}
+
+		177: {
+			Question: {
+				0: There where the heaven fell we turned a space,
+				1: And marked the western sea as meeting-place.
+			}
+		}
+
+		178: {
+			Question: {
+				0: A thousand chariots gathered in my train,
+				1: With axles full abreast we drove amain;
+			}
+		}
+
+		179: {
+			Question: {
+				0: Eight horses drew the carriages behind;
+				1: The pennons shook like serpents in the wind.
+			}
+		}
+
+		180: {
+			Question: {
+				0: I lowered flags, and from my whip refrained;
+				1: My train of towering chariots I restrained.
+			}
+		}
+
+		181: {
+			Question: {
+				0: I sang the odes. I trod a sacred dance,
+				1: In revels wild my last hour to enhance.
+			}
+		}
+
+		182: {
+			Question: {
+				0: Ascending where celestial heaven blazed,
+				1: On native earth for the last time we gazed;
+			}
+		}
+
+		183: {
+			Question: {
+				0: My slaves were sad, my steeds all neighed in grief,
+				1: And, gazing back, the earth they would not leave.
+			}
+		}
+
+		184: {
+			Question: {
+				0: Since in that kingdom all my virtue spurn,
+				1: Why should I for the royal city yearn?
+			}
+		}
+
+		185: {
+			Question: {
+				0: Wide though the world, no wisdom can be found.
+				1: I'll seek the stream where once the sage was drowned.
+			}
+		}
+	}
+}
