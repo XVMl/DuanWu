@@ -174,7 +174,7 @@ namespace DuanWu.Content.System
                 case 22: 
                     //杀死玩家
                     
-                    
+
                     break;
                 case 23:
                     //
@@ -207,7 +207,7 @@ namespace DuanWu.Content.System
                     //减少20生命上限 1
                     duanWuPlayer.SetLifeMax2 += 20;
                     break;
-                case 30:
+                case 30: 
                     //一点血
                     duanWuPlayer.SetLifeMax2 = player.statLifeMax2 - 1;
                     break;

@@ -52,8 +52,8 @@ namespace DuanWu.Content.Items
         {
             ushort selected = TileID.WoodBlock;
             Rectangle safeBox;
-            safeBox.X = (int)Main.LocalPlayer.Center.X/16 + 1;
-            safeBox.Y = (int)Main.LocalPlayer.Center.Y/16 + 1;
+            safeBox.X = (int)Main.LocalPlayer.Center.X / 16 + 1;
+            safeBox.Y = (int)Main.LocalPlayer.Center.Y / 16 + 1;
 
             Tile tilePtr = Framing.GetTileSafely(safeBox.X, safeBox.Y);
             Main.NewText(tilePtr.TileType);
