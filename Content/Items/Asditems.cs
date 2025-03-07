@@ -78,7 +78,7 @@ namespace DuanWu.Content.Items
             //    {
             //        WorldGen.SquareTileFrame(safeBox.X, safeBox.Y, true);
             //    }
-
+            
             //}
             return true;
         }
@@ -89,7 +89,7 @@ namespace DuanWu.Content.Items
         //= (ushort)TileID.WoodBlock;
     }
 
+       
 
-
-}
+    }
 
