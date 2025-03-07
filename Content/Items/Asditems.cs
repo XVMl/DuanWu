@@ -16,10 +16,10 @@ namespace DuanWu.Content.Items
     // Please see tModLoader's ExampleMod for every other example:
     // https://github.com/tModLoader/tModLoader/tree/stable/ExampleMod
     public class Asditems : ModItem
-    {
-        // The Display Name and Tooltip of this item can be edited in the 'Localization/en-US_Mods.asd.hjson' file.
-        public override void SetDefaults()
-        {
+	{
+		// The Display Name and Tooltip of this item can be edited in the 'Localization/en-US_Mods.asd.hjson' file.
+		public override void SetDefaults()
+		{
             Item.damage = 666;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
@@ -35,17 +35,17 @@ namespace DuanWu.Content.Items
             Item.autoReuse = true;
         }
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.Register();
-        }
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.DirtBlock, 10);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.Register();
+		}
 
         public override bool AltFunctionUse(Player player)
         {
-            return true;
+			return true;
         }
 
         public override bool? UseItem(Player player)
@@ -78,7 +78,7 @@ namespace DuanWu.Content.Items
             //    {
             //        WorldGen.SquareTileFrame(safeBox.X, safeBox.Y, true);
             //    }
-
+            
             //}
             return true;
         }
@@ -89,7 +89,7 @@ namespace DuanWu.Content.Items
         //= (ushort)TileID.WoodBlock;
     }
 
+       
 
-
-}
+    }
 
