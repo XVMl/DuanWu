@@ -19,6 +19,9 @@ namespace DuanWu.Content.System
         [DefaultValue(false)]
         public bool LisaoFullTextmode;
 
+        [DefaultValue(false)]
+        public bool RandResults;
+
         [Increment(1)]
         [DefaultValue(15)]
         [Range(1, 30)]
@@ -30,6 +33,7 @@ namespace DuanWu.Content.System
             DuanWuPlayer.Hardmode = LisaoQAHardmode;
             DuanWuPlayer.FullText = LisaoFullTextmode;
             DuanWuPlayer.AnswerQuestionTime = Answerquestiontime;
+            DuanWuPlayer.RandResults = RandResults;
             if (LisaoQAHardmode&&Answerquestiontime<5)
             {
                 DuanWuPlayer.AnswerQuestionTime = 5;

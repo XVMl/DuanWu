@@ -21,6 +21,11 @@ Configs: {
 			Label: 限时时间
 			Tooltip: ""
 		}
+
+		RandResults: {
+			// Label: Rand Results
+			// Tooltip: ""
+		}
 	}
 }
 
@@ -53,7 +58,7 @@ Items: {
 	SuperWoodenSword: {
 		// DisplayName: Super Wooden Sword
 		// Tooltip: ""
-}
+	}
 
 	UltraWoodenSword: {
 		// DisplayName: Ultra Wooden Sword

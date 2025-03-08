@@ -42,6 +42,7 @@ namespace DuanWu
         public int ShowAnswer;
         public static bool Hardmode;
         public static bool FullText;
+        public static bool RandResults;
         public bool ScreenShakeUpDown;
         public static bool ScreenZhuan=true;
         private Vector2 screenCache;
