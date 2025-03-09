@@ -15,10 +15,9 @@ namespace DuanWu.Content.System
     {
         private int RewardLevel;
 
-
         public RewardSystem(int rewardlevel)
         {
-            this.RewardLevel = rewardlevel;
+            RewardLevel = rewardlevel;
             SetReward(RewardLevel);
         }
 

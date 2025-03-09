@@ -91,54 +91,54 @@ namespace DuanWu.Content.UI
             choice8.Width.Set(386f, 0f);
             choice8.Height.Set(32f, 0f);
             choice8.OnLeftClick += new UIElement.MouseEvent(QAoption8Click);
-            choice1Text =new UIText("",1f,false);
-            choice1Text.Width.Set(456f, 0f);
-            choice1Text.Height.Set(1f, 0f);
-            choice1Text.Top.Set(40f, 0f);
-            choice1Text.Left.Set(174f, 0f);
-            choice1Text.IgnoresMouseInteraction = true;
-            choice2Text = new UIText("", 1f, false);
-            choice2Text.Width.Set(456f, 0f);
-            choice2Text.Height.Set(1f, 0f);
-            choice2Text.Top.Set(172f, 0f);
-            choice2Text.Left.Set(174f, 0f);
-            choice2Text.IgnoresMouseInteraction = true;
-            choice3Text = new UIText("", 1f, false);
-            choice3Text.Width.Set(456f, 0f);
-            choice3Text.Height.Set(1f, 0f);
-            choice3Text.Top.Set(304f, 0f);
-            choice3Text.Left.Set(174f, 0f);
-            choice3Text.IgnoresMouseInteraction = true;
-            choice4Text = new UIText("fgn", 1f, false);
-            choice4Text.Width.Set(456f, 0f);
-            choice4Text.Height.Set(1f, 0f);
-            choice4Text.Top.Set(436f, 0f);
-            choice4Text.Left.Set(174f, 0f);
-            choice4Text.IgnoresMouseInteraction = true;
-            choice5Text = new UIText("", 1f, false);
-            choice5Text.Width.Set(456f, 0f);
-            choice5Text.Height.Set(1f, 0f);
-            choice5Text.Top.Set(40f, 0f);
-            choice5Text.Left.Set(274f, 0f);
-            choice5Text.IgnoresMouseInteraction = true;
-            choice6Text = new UIText("", 1f, false);
-            choice6Text.Width.Set(456f, 0f);
-            choice6Text.Height.Set(1f, 0f);
-            choice6Text.Top.Set(172f, 0f);
-            choice6Text.Left.Set(274f, 0f);
-            choice6Text.IgnoresMouseInteraction = true;
-            choice7Text = new UIText("", 1f, false);
-            choice7Text.Width.Set(456f, 0f);
-            choice7Text.Height.Set(1f, 0f);
-            choice7Text.Top.Set(304f, 0f);
-            choice7Text.Left.Set(274f, 0f);
-            choice7Text.IgnoresMouseInteraction = true;
-            choice8Text = new UIText("", 1f, false);
-            choice8Text.Width.Set(456f, 0f);
-            choice8Text.Height.Set(1f, 0f);
-            choice8Text.Top.Set(436f, 0f);
-            choice8Text.Left.Set(274f, 0f);
-            choice8Text.IgnoresMouseInteraction = true;
+            //choice1Text =new UIText("",1f,false);
+            //choice1Text.Width.Set(456f, 0f);
+            //choice1Text.Height.Set(1f, 0f);
+            //choice1Text.Top.Set(40f, 0f);
+            //choice1Text.Left.Set(174f, 0f);
+            //choice1Text.IgnoresMouseInteraction = true;
+            ////choice2Text = new UIText("", 1f, false);
+            //choice2Text.Width.Set(456f, 0f);
+            //choice2Text.Height.Set(1f, 0f);
+            //choice2Text.Top.Set(172f, 0f);
+            //choice2Text.Left.Set(174f, 0f);
+            //choice2Text.IgnoresMouseInteraction = true;
+            ////choice3Text = new UIText("", 1f, false);
+            //choice3Text.Width.Set(456f, 0f);
+            //choice3Text.Height.Set(1f, 0f);
+            //choice3Text.Top.Set(304f, 0f);
+            //choice3Text.Left.Set(174f, 0f);
+            //choice3Text.IgnoresMouseInteraction = true;
+            ////choice4Text = new UIText("", 1f, false);
+            //choice4Text.Width.Set(456f, 0f);
+            //choice4Text.Height.Set(1f, 0f);
+            //choice4Text.Top.Set(436f, 0f);
+            //choice4Text.Left.Set(174f, 0f);
+            //choice4Text.IgnoresMouseInteraction = true;
+            ////choice5Text = new UIText("", 1f, false);
+            //choice5Text.Width.Set(456f, 0f);
+            //choice5Text.Height.Set(1f, 0f);
+            //choice5Text.Top.Set(40f, 0f);
+            //choice5Text.Left.Set(274f, 0f);
+            //choice5Text.IgnoresMouseInteraction = true;
+            ////choice6Text = new UIText("", 1f, false);
+            //choice6Text.Width.Set(456f, 0f);
+            //choice6Text.Height.Set(1f, 0f);
+            //choice6Text.Top.Set(172f, 0f);
+            //choice6Text.Left.Set(274f, 0f);
+            //choice6Text.IgnoresMouseInteraction = true;
+            ////choice7Text = new UIText("", 1f, false);
+            //choice7Text.Width.Set(456f, 0f);
+            //choice7Text.Height.Set(1f, 0f);
+            //choice7Text.Top.Set(304f, 0f);
+            //choice7Text.Left.Set(274f, 0f);
+            //choice7Text.IgnoresMouseInteraction = true;
+            ////choice8Text = new UIText("", 1f, false);
+            //choice8Text.Width.Set(456f, 0f);
+            //choice8Text.Height.Set(1f, 0f);
+            //choice8Text.Top.Set(436f, 0f);
+            //choice8Text.Left.Set(274f, 0f);
+            //choice8Text.IgnoresMouseInteraction = true;
             imageButton = new UIImageButton(ModContent.Request<Texture2D>("DuanWu/Content/UI/Button"));
             imageButton.Left.Set(600f, 0f);
             imageButton.Top.Set(0f, 0f);
@@ -146,21 +146,21 @@ namespace DuanWu.Content.UI
             imageButton.Width.Set(80f, 0f);
             imageButton.OnLeftClick += new MouseEvent(OnMouseClike);
             area.Append(choice1);
-            area.Append(choice1Text);
             area.Append(choice2);
-            area.Append(choice2Text);
             area.Append(choice3);
-            area.Append(choice3Text);
-            area.Append(choice4Text);
             area.Append(choice4);
-            area.Append(choice5Text);
             area.Append(choice5);
-            area.Append(choice6Text);
             area.Append(choice6);
-            area.Append(choice7Text);
             area.Append(choice7);
-            area.Append(choice8Text);
             area.Append(choice8);
+            //area.Append(choice1Text);
+            //area.Append(choice2Text);
+            //area.Append(choice3Text);
+            //area.Append(choice4Text);
+            //area.Append(choice5Text);
+            //area.Append(choice6Text);
+            //area.Append(choice7Text);
+            //area.Append(choice8Text);
             //Append(area);
         }
 
@@ -278,14 +278,14 @@ namespace DuanWu.Content.UI
                 choice2.Left.Set(-244f, 0f);
                 choice3.Left.Set(-244f, 0f);
                 choice4.Left.Set(-244f, 0f);
-                choice1Text.Left.Set(-220f, 0f);
-                choice2Text.Left.Set(-220f, 0f);
-                choice3Text.Left.Set(-220f, 0f);
-                choice4Text.Left.Set(-220f, 0f);
-                choice5Text.SetText(duanWuPlayer.LisaoChoiceText5 ?? "");
-                choice6Text.SetText(duanWuPlayer.LisaoChoiceText6 ?? "");
-                choice7Text.SetText(duanWuPlayer.LisaoChoiceText7 ?? "");
-                choice8Text.SetText(duanWuPlayer.LisaoChoiceText8 ?? "");
+                //choice1Text.Left.Set(-220f, 0f);
+                //choice2Text.Left.Set(-220f, 0f);
+                //choice3Text.Left.Set(-220f, 0f);
+                //choice4Text.Left.Set(-220f, 0f);
+                //choice5Text.SetText(duanWuPlayer.LisaoChoiceText5 ?? "");
+                //choice6Text.SetText(duanWuPlayer.LisaoChoiceText6 ?? "");
+                //choice7Text.SetText(duanWuPlayer.LisaoChoiceText7 ?? "");
+                //choice8Text.SetText(duanWuPlayer.LisaoChoiceText8 ?? "");
             }
             else
             {
@@ -293,18 +293,18 @@ namespace DuanWu.Content.UI
                 choice6.Remove();
                 choice7.Remove();
                 choice8.Remove();
-                choice5Text.Remove();
-                choice6Text.Remove();
-                choice7Text.Remove();
-                choice8Text.Remove();
+                //choice5Text.Remove();
+                //choice6Text.Remove();
+                //choice7Text.Remove();
+                //choice8Text.Remove();
                 choice1.Left.Set(144f, 0f);
                 choice2.Left.Set(144f, 0f);
                 choice3.Left.Set(144f, 0f);
                 choice4.Left.Set(144f, 0f);
-                choice1Text.Left.Set(174f, 0f);
-                choice2Text.Left.Set(174f, 0f);
-                choice3Text.Left.Set(174f, 0f);
-                choice4Text.Left.Set(174f, 0f);
+                //choice1Text.Left.Set(174f, 0f);
+                //choice2Text.Left.Set(174f, 0f);
+                //choice3Text.Left.Set(174f, 0f);
+                //choice4Text.Left.Set(174f, 0f);
             }
             if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
@@ -312,19 +312,19 @@ namespace DuanWu.Content.UI
                 if (duanWuPlayer.LisaoChoiceActive)
                 {
                     area.Append(choice1);
-                    area.Append(choice1Text);
                     area.Append(choice2);
-                    area.Append(choice2Text);
                     area.Append(choice3);
-                    area.Append(choice3Text);
                     area.Append(choice4);
-                    area.Append(choice4Text);
+                    //area.Append(choice1Text);
+                    //area.Append(choice2Text);
+                    //area.Append(choice3Text);
+                    //area.Append(choice4Text);
                     imageButton.Remove();
 
-                    choice1Text.SetText(duanWuPlayer.LisaoChoiceText1 ?? "");
-                    choice2Text.SetText(duanWuPlayer.LisaoChoiceText2 ?? "");
-                    choice3Text.SetText(duanWuPlayer.LisaoChoiceText3 ?? "");
-                    choice4Text.SetText(duanWuPlayer.LisaoChoiceText4 ?? "");
+                    //choice1Text.SetText(duanWuPlayer.LisaoChoiceText1 ?? "");
+                    //choice2Text.SetText(duanWuPlayer.LisaoChoiceText2 ?? "");
+                    //choice3Text.SetText(duanWuPlayer.LisaoChoiceText3 ?? "");
+                    //choice4Text.SetText(duanWuPlayer.LisaoChoiceText4 ?? "");
 
                 }
                 else
@@ -333,9 +333,10 @@ namespace DuanWu.Content.UI
                     choice2.Remove();
                     choice3.Remove();
                     choice4.Remove();
-                    choice1Text.Remove();
-                    choice2Text.Remove();
-                    choice3Text.Remove();
+                    //choice1Text.Remove();
+                    //choice2Text.Remove();
+                    //choice3Text.Remove();
+                    //choice4Text.Remove();
                     area.Append(imageButton);
                 }
             }

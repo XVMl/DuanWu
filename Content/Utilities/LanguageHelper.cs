@@ -35,7 +35,7 @@ namespace DuanWu.Content.Utilities
             return new List<int>(result);
         }
 
-        public static void SetQuestion()
+        public static void SetQuestion(Player player)
         {
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
@@ -45,13 +45,13 @@ namespace DuanWu.Content.Utilities
             {
                 return;
             }
-            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            DuanWuPlayer duanWuPlayer = player.GetModPlayer<DuanWuPlayer>();
             List<int> nums;
             int ans;
             int conunts;
+            int t;
             duanWuPlayer.counttime = DuanWuPlayer.AnswerQuestionTime * 60;
             duanWuPlayer.ShowAnswer = duanWuPlayer.counttime;
-            int t;
             if (DuanWuPlayer.FullText)
             {
                 t = 186;

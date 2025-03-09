@@ -48,6 +48,8 @@ namespace DuanWu.Content.Items
             return true;
         }
 
+        
+
         public override bool? UseItem(Player player)
         {
             ushort selected = TileID.WoodBlock;
@@ -55,12 +57,15 @@ namespace DuanWu.Content.Items
             safeBox.X = (int)Main.LocalPlayer.Center.X / 16 + 1;
             safeBox.Y = (int)Main.LocalPlayer.Center.Y / 16 + 1;
 
-            Tile tilePtr = Framing.GetTileSafely(safeBox.X, safeBox.Y);
-            Main.NewText(tilePtr.TileType);
+            //safeBox.X = (int)Main.MouseWorld.X / 16;
+            //safeBox.Y = (int)Main.MouseWorld.Y / 16;
+
+            //Tile tilePtr = Framing.GetTileSafely(safeBox.X, safeBox.Y);
+            //Main.NewText(tilePtr.TileType);
 
             //if (Main.tileFrameImportant[selected])
             //{
-            //    TileObject.CanPlace(safeBox.X, safeBox.Y, selected, 1, 0, out TileObject to);
+            //    TileObject.CanPlace(safeBox.X, safeBox.Y, selected, 0, 0, out TileObject to);
             //    TileObject.Place(to);
             //}
             //else
@@ -70,6 +75,7 @@ namespace DuanWu.Content.Items
             //    Main.NewText(tilePtr.TileType);
             //    tilePtr.TileType = selected;
             //    tilePtr.Slope = 0;
+
             //    if (Main.netMode == 2)
             //    {
             //        NetMessage.SendTileSquare(-1, safeBox.X, safeBox.Y, 0);
@@ -78,7 +84,7 @@ namespace DuanWu.Content.Items
             //    {
             //        WorldGen.SquareTileFrame(safeBox.X, safeBox.Y, true);
             //    }
-            
+
             //}
             return true;
         }
