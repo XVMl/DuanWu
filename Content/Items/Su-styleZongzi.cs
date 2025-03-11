@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace DuanWu.Content.Items
 {
-    public class ZongZi:ModItem
+    internal class Su_styleZongzi:ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -57,11 +56,11 @@ namespace DuanWu.Content.Items
 
         public override bool? UseItem(Player player)
         {
-            if (Main.myPlayer==player.whoAmI)
+            if (Main.myPlayer == player.whoAmI)
             {
                 if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
                 {
-                LanguageHelper.SetQuestion(player);  
+                    LanguageHelper.SetQuestion(player);
                 }
             }
             return new bool?(true);

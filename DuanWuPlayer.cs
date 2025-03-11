@@ -61,6 +61,7 @@ namespace DuanWu
         public int SetMinions;
         public bool Fly;
         public bool SetMana;
+
         public override void PostUpdate()
         {
             //OtherQusetionAvtive();

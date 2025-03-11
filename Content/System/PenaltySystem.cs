@@ -18,7 +18,10 @@ namespace DuanWu.Content.System
 
         private int Penaltylevel;
 
-
+        public static int SelectNPCID;
+        public static int SelectProjectliesID;
+        public static Vector2 SelectNPCpos;
+        public static Vector2 SelectProjectliespos;
         public PenaltySystem(int penaltylevel)
         {
             this.Penaltylevel = penaltylevel;
@@ -62,8 +65,7 @@ namespace DuanWu.Content.System
                     case 1:
                         //猪鲨 1
                         Vector2 v2 = player.position + Main.rand.NextVector2Circular(10, 10) * 100;
-                        NPC.NewNPC(null, (int)v2.X, (int)v2.Y, NPCID.DukeFishron);
-
+                        QuickSpawnNPC(NPCID.DukeFishron,v2);
                         break;
                     case 2:
                         //继续答题1 1
@@ -84,17 +86,15 @@ namespace DuanWu.Content.System
                         //白天地牢守卫
                         Main.dayTime = true;
                         Main.time = 0;
-                        NPC.NewNPC(null, (int)player.Center.X, (int)player.Center.Y, NPCID.Skeleton);
-
+                        QuickSpawnNPC(35, player.Center);
                         break;
                     case 6:
                         //生成雷管 1
                         for (int i = 0; i < 10; i++)
                         {
                             Vector2 _v2 = Main.rand.NextVector2Circular(16, 16);
-                            Projectile.NewProjectile(null, player.Center + _v2 * 20, new Vector2(0, 0), 29, 1, player.whoAmI, 0, 0, 0);
+                            QuickSpawnProjectlies(29, player.Center + _v2 * 20);
                         }
-
                         break;
                     case 7:
                         //生成落石
@@ -198,12 +198,12 @@ namespace DuanWu.Content.System
                         break;
                     case 9:
                         //白天光女
-                        NPC.NewNPC(Entity.GetSource_NaturalSpawn(), (int)player.Center.X, (int)player.Center.Y, 636);
-
+                        Main.dayTime = true;
+                        Main.time = 0;
+                        QuickSpawnNPC(636, player.Center);
                         break;
                     case 10:
                         //史莱姆NPC死亡 2
-
                         foreach (NPC nPC in Main.ActiveNPCs)
                         {
                             if (nPC.type == 678 || nPC.type == 670 || nPC.type == 679 || nPC.type == 680 || nPC.type == 681 || nPC.type == 682 || nPC.type == 683 || nPC.type == 684)
@@ -434,7 +434,29 @@ namespace DuanWu.Content.System
             }
         }
 
-        public void KillTileRectangle(Rectangle safeBox,bool noItem=false)
+        public static void QuickSpawnNPC(int id , Vector2 pos)
+        {
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                NPC.NewNPC(null, (int)pos.X, (int)pos.Y, id);
+            }
+            SelectNPCID = id;
+            SelectNPCpos = pos;
+            ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
+        }
+
+        public static void QuickSpawnProjectlies(int id ,Vector2 pos)
+        {
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
+            }
+            SelectNPCID = id;
+            SelectProjectliespos = pos;
+            ModContent.GetInstance<NetProjectlies>().NetSeed(-1, -1);
+        }
+
+        public static void KillTileRectangle(Rectangle safeBox,bool noItem=false)
         {
             
             for (int i = safeBox.X; i < safeBox.X+safeBox.Width; i++)

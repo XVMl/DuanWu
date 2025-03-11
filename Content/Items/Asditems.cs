@@ -24,15 +24,15 @@ namespace DuanWu.Content.Items
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
-            Item.useTime = 1;
-            Item.useAnimation = 1;
+            Item.useTime = 100;
+            Item.useAnimation = 100;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
-            Item.shoot = ProjectileID.MagicMissile;
+            //Item.shoot = ProjectileID.MagicMissile;
             Item.value = Item.buyPrice(silver: 1);
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item1;
-            Item.autoReuse = true;
+            Item.autoReuse = false;
         }
 
         public override void AddRecipes()
@@ -48,14 +48,16 @@ namespace DuanWu.Content.Items
             return true;
         }
 
-        
+
 
         public override bool? UseItem(Player player)
         {
-            ushort selected = TileID.WoodBlock;
-            Rectangle safeBox;
-            safeBox.X = (int)Main.LocalPlayer.Center.X / 16 + 1;
-            safeBox.Y = (int)Main.LocalPlayer.Center.Y / 16 + 1;
+
+
+            //ushort selected = TileID.WoodBlock;
+            //Rectangle safeBox;
+            //safeBox.X = (int)Main.LocalPlayer.Center.X / 16 + 1;
+            //safeBox.Y = (int)Main.LocalPlayer.Center.Y / 16 + 1;
 
             //safeBox.X = (int)Main.MouseWorld.X / 16;
             //safeBox.Y = (int)Main.MouseWorld.Y / 16;
@@ -89,13 +91,8 @@ namespace DuanWu.Content.Items
             return true;
         }
 
-        //Vector2 e = Main.LocalPlayer.Center;
-        //Main.NewText("s:"+Main.tile[(int)e.X + 1, (int)e.Y + 1].TileType);
-        //Main.tile[(int)e.X + 1, (int)e.Y + 1].TileType
-        //= (ushort)TileID.WoodBlock;
     }
 
-       
 
-    }
+}
 
