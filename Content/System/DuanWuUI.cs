@@ -11,7 +11,7 @@ using Terraria.UI;
 
 namespace DuanWu.Content.System
 {
-    public class DuanWuUI:ModSystem
+    public class DuanWuUI : ModSystem
     {
         private UserInterface _lisaoQAInterface;
         internal LisaoChoice lisaoQA;
@@ -23,15 +23,18 @@ namespace DuanWu.Content.System
         internal DrawHitBox drawHitBox;
         public override void Load()
         {
-            _lisaoQAInterface=new UserInterface();
-            lisaoQA = new LisaoChoice();
-            _lisaoQAInterface.SetState(lisaoQA);
-            _lisaoQustion=new UserInterface();
-            lisaoQuestion = new LisaoQuestion();
-            _lisaoQustion.SetState(lisaoQuestion);
-            _drawHitBox = new UserInterface();
-            drawHitBox=new DrawHitBox();
-            _drawHitBox.SetState(drawHitBox);
+            if (!Main.dedServ)
+            {
+                _lisaoQAInterface = new UserInterface();
+                lisaoQA = new LisaoChoice();
+                _lisaoQAInterface.SetState(lisaoQA);
+                _lisaoQustion = new UserInterface();
+                lisaoQuestion = new LisaoQuestion();
+                _lisaoQustion.SetState(lisaoQuestion);
+                _drawHitBox = new UserInterface();
+                drawHitBox = new DrawHitBox();
+                _drawHitBox.SetState(drawHitBox);
+            }
         }
 
         public override void UpdateUI(GameTime gameTime)
@@ -40,7 +43,6 @@ namespace DuanWu.Content.System
             lisaointerface?.Update(gameTime);
             UserInterface lisaoquestion = _lisaoQustion;
             lisaoquestion?.Update(gameTime);
-
 
 
         }
@@ -70,7 +72,7 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
-                
+
             }
 
             int MouseTextIndex1 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 3"));

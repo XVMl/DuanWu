@@ -12,6 +12,12 @@ namespace DuanWu.Content.Utilities
 {
     public class LanguageHelper
     {
+        /// <summary>
+        /// 问答题目
+        /// </summary>
+        /// <param name="id">那一句</param>
+        /// <param name="n">上句还是下句</param>
+        /// <returns></returns>
         public static string GetQuestionTextValue(int id,int n)
         {
             if(DuanWuPlayer.FullText)
@@ -35,7 +41,7 @@ namespace DuanWu.Content.Utilities
             return new List<int>(result);
         }
 
-        public static void SetQuestion(Player player)
+        public static void SetQuestion()
         {
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
@@ -45,7 +51,7 @@ namespace DuanWu.Content.Utilities
             {
                 return;
             }
-            DuanWuPlayer duanWuPlayer = player.GetModPlayer<DuanWuPlayer>();
+            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
             List<int> nums;
             int ans;
             int conunts;
@@ -80,15 +86,11 @@ namespace DuanWu.Content.Utilities
             int n = duanWuPlayer.lisaoquestion == 0 ? 1 : 0;
             duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(nums[0], duanWuPlayer.lisaoquestion);
             duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(nums[0], n);
-            duanWuPlayer.LisaoChoiceText1 = LanguageHelper.GetQuestionTextValue(nums[(0 + conunts - ans) % conunts], n);
-            duanWuPlayer.LisaoChoiceText2 = LanguageHelper.GetQuestionTextValue(nums[(1 + conunts - ans) % conunts], n);
-            duanWuPlayer.LisaoChoiceText3 = LanguageHelper.GetQuestionTextValue(nums[(2 + conunts - ans) % conunts], n);
-            duanWuPlayer.LisaoChoiceText4 = LanguageHelper.GetQuestionTextValue(nums[(3 + conunts - ans) % conunts], n);
+            for (int i = 0; i < 8; i++)
+            {
+                duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(nums[(i + conunts - ans) % conunts], n);
+            }
 
-            duanWuPlayer.LisaoChoiceText5 = LanguageHelper.GetQuestionTextValue(nums[(4 + conunts - ans) % conunts], n);
-            duanWuPlayer.LisaoChoiceText6 = LanguageHelper.GetQuestionTextValue(nums[(5 + conunts - ans) % conunts], n);
-            duanWuPlayer.LisaoChoiceText7 = LanguageHelper.GetQuestionTextValue(nums[(6 + conunts - ans) % conunts], n);
-            duanWuPlayer.LisaoChoiceText8 = LanguageHelper.GetQuestionTextValue(nums[(7 + conunts - ans) % conunts], n);
         }
 
 

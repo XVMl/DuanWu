@@ -61,7 +61,7 @@ namespace DuanWu.Content.Items
             {
                 if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
                 {
-                LanguageHelper.SetQuestion(player);  
+                LanguageHelper.SetQuestion();  
                 }
             }
             return new bool?(true);

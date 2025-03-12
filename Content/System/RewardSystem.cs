@@ -21,10 +21,6 @@ namespace DuanWu.Content.System
             SetReward(RewardLevel);
         }
 
-        public RewardSystem()
-        {
-            SetReward();
-        }
 
         private void AverageChance()
         {

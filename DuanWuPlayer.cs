@@ -32,14 +32,7 @@ namespace DuanWu
         public int lisaoquestion;
         public bool? Reward;
         public string LisaoQuestionText = "";
-        public string LisaoChoiceText1 = "";
-        public string LisaoChoiceText2 = "";
-        public string LisaoChoiceText3 = "";
-        public string LisaoChoiceText4 = "";
-        public string LisaoChoiceText5 = "";
-        public string LisaoChoiceText6 = "";
-        public string LisaoChoiceText7 = "";
-        public string LisaoChoiceText8 = "";
+        public string[] LisaoChoiceText = new string[8];
         public int ShowAnswer;
         public static bool Hardmode;
         public static bool FullText;
@@ -155,28 +148,28 @@ namespace DuanWu
         }
 
         #region 受击时
-        //public override void OnHurt(Player.HurtInfo info)
-        //{
-           
-        //    if (info.Damage>=250&&info.Damage< Player.statLife)
-        //    {
-        //        LanguageHelper.SetQuestion(info.);
-        //    }
-        //    else if (info.Damage>=100)
-        //    {
-        //        if (Main.rand.Next(0, 4) == 1)
-        //        {
-        //            LanguageHelper.SetQuestion();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (Main.rand.Next(0, 16) == 1)
-        //        {
-        //            LanguageHelper.SetQuestion();
-        //        }
-        //    }
-        //}
+        public override void OnHurt(Player.HurtInfo info)
+        {
+            
+            if (info.Damage >= 250 && info.Damage < Player.statLife)
+            {
+                LanguageHelper.SetQuestion();
+            }
+            else if (info.Damage >= 100)
+            {
+                if (Main.rand.Next(0, 4) == 1)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
+            else
+            {
+                if (Main.rand.Next(0, 16) == 1)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
+        }
         #endregion
 
         #region 召唤特定NPC时

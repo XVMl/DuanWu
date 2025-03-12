@@ -113,6 +113,7 @@ namespace DuanWu.Content.System
                         break;
                     case 10:
                         //弹跳雷管
+
                         break;
                     case 11:
                         //5*100坑
@@ -148,7 +149,9 @@ namespace DuanWu.Content.System
                     case 20:
 
                         break;
+
                     default:
+
                         break;
 
                 }

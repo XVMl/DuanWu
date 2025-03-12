@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using DuanWu.Content.System;
 
 namespace DuanWu.Content.Items
 {
     internal class Su_styleZongzi:ModItem
     {
+        public override string Texture => "DuanWU/Content/Items/ZongZi";
         public override void SetStaticDefaults()
         {
 
@@ -56,13 +58,10 @@ namespace DuanWu.Content.Items
 
         public override bool? UseItem(Player player)
         {
-            if (Main.myPlayer == player.whoAmI)
-            {
-                if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
-                {
-                    LanguageHelper.SetQuestion(player);
-                }
-            }
+            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            duanWuPlayer.Reward = true;
+            RewardSystem rewardSystem = new RewardSystem(2);
+            duanWuPlayer.Reward = null;
             return new bool?(true);
         }
     }

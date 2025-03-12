@@ -64,6 +64,41 @@ Items: {
 		// DisplayName: Ultra Wooden Sword
 		// Tooltip: ""
 	}
+
+	BambooZongzi: {
+		// DisplayName: Bamboo Zongzi
+		// Tooltip: ""
+	}
+
+	CandiedDateZongzi: {
+		// DisplayName: Candied Date Zongzi
+		// Tooltip: ""
+	}
+
+	MeatZongzi: {
+		// DisplayName: Meat Zongzi
+		// Tooltip: ""
+	}
+
+	PurpleRiceZongzi: {
+		// DisplayName: Purple Rice Zongzi
+		// Tooltip: ""
+	}
+
+	RedBeanZongzi: {
+		// DisplayName: Red Bean Zongzi
+		// Tooltip: ""
+	}
+
+	Su_styleZongzi: {
+		// DisplayName: Su_style Zongzi
+		// Tooltip: ""
+	}
+
+	TaiWaneseZongzi: {
+		// DisplayName: Tai Wanese Zongzi
+		// Tooltip: ""
+	}
 }
 
 Judging: {
