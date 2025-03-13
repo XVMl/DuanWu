@@ -10,6 +10,7 @@ using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
 using System.Runtime.CompilerServices;
 using System;
+using DuanWu.Content.Buffs;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -49,11 +50,14 @@ namespace DuanWu.Content.Items
         }
 
 
-
+           
         public override bool? UseItem(Player player)
         {
 
-
+            if (Main.myPlayer == player.whoAmI)
+            {
+            }
+            
             //ushort selected = TileID.WoodBlock;
             //Rectangle safeBox;
             //safeBox.X = (int)Main.LocalPlayer.Center.X / 16 + 1;

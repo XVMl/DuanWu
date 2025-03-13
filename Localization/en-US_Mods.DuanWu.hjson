@@ -1684,3 +1684,10 @@ Projectiles: {
 	AnglerBobber.DisplayName: Angler Bobber
 	SuperCopperShortsword.DisplayName: Super Copper Shortsword
 }
+
+Buffs: {
+	Sun: {
+		DisplayName: Sun
+		Description: Mods.DuanWu.Buffs.Sun.Description
+	}
+}

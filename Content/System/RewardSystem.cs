@@ -1,4 +1,5 @@
-﻿using DuanWu.Content.Items;
+﻿using DuanWu.Content.Buffs;
+using DuanWu.Content.Items;
 using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
@@ -325,7 +326,7 @@ namespace DuanWu.Content.System
 
                         break;
                     case 15:
-
+                        //磁力
                         break;
                     case 16:
 
@@ -508,10 +509,12 @@ namespace DuanWu.Content.System
                         duanWuPlayer.Fly = true;
                         break;
                     case 6:
+                        //亮度提升
 
                         break;
                     case 7:
-
+                        //太阳
+                        player.AddBuff(ModContent.BuffType<Sun>(), 30000);
                         break;
 
                     case 8:

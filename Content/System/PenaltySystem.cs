@@ -240,7 +240,7 @@ namespace DuanWu.Content.System
                         }
                         break;
                     case 15:
-
+                        //机械三王
                         break;
                     case 16:
 
@@ -276,7 +276,6 @@ namespace DuanWu.Content.System
                             }
                         }
                         Main.NewText("chuanshong");
-
                         break;
                     case 1:
                         //硬核 3 破坏性
@@ -287,7 +286,7 @@ namespace DuanWu.Content.System
                     case 2:
                         //镜头颠倒 2
                         duanWuPlayer.ScreenShakeUpDown = true;
-
+                        
                         break;
                     case 3:
                         //一直转
@@ -354,21 +353,7 @@ namespace DuanWu.Content.System
                         break;
                     case 15:
 
-                        break;
-                    case 16:
-
-                        break;
-                    case 17:
-
-                        break;
-                    case 18:
-
-                        break;
-                    case 19:
-
-                        break;
-                    case 20:
-
+                        
                         break;
                     default:
                         break;
@@ -395,22 +380,24 @@ namespace DuanWu.Content.System
 
                         break;
                     case 3:
-
+                        //一直答题
                         break;
                     case 4:
-
+                        //全BOSS
                         break;
                     case 5:
-
+                        //清空物品
                         break;
                     case 6:
-
+                        //摄像头模式
+                        duanWuPlayer.Screenpos = Main.LocalPlayer.Center-new Vector2(Main.screenWidth/2,Main.screenHeight/2);
+                        duanWuPlayer.StartScreenpos = true;
                         break;
                     case 7:
-
+                        //时间加速
                         break;
                     case 8:
-
+                        //刷怪提升
                         break;
                     case 9:
 

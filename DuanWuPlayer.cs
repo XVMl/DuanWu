@@ -9,9 +9,10 @@ using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
+using DuanWu.Content.Buffs;
 namespace DuanWu
 {
-    public class DuanWuPlayer:ModPlayer
+    public class DuanWuPlayer : ModPlayer
     {
 
         public int Answer;
@@ -38,7 +39,7 @@ namespace DuanWu
         public static bool FullText;
         public static bool RandResults;
         public bool ScreenShakeUpDown;
-        public static bool ScreenZhuan=true;
+        public static bool ScreenZhuan = true;
         private Vector2 screenCache;
 
         public bool ShowPlayHitBox;
@@ -54,21 +55,32 @@ namespace DuanWu
         public int SetMinions;
         public bool Fly;
         public bool SetMana;
+        public Vector2 Screenpos;
+        public bool StartScreenpos;
 
         public override void PostUpdate()
         {
             //OtherQusetionAvtive();
             if (LisaoActive)
             {
-                if (counttime==0)
+                if (counttime == 0)
                 {
-                    LanguageHelper.CheckAnswer();   
+                    LanguageHelper.CheckAnswer();
                 }
                 counttime--;
                 ShowAnswer--;
-                if (ShowAnswer==-1)
+                if (ShowAnswer == -1)
                 {
                     LanguageHelper.EndQnestion();
+                }
+            }
+
+
+            foreach (Player player in Main.ActivePlayers)
+            {
+                if (player.HasBuff(ModContent.BuffType<Sun>()))
+                {
+                    Lighting.AddLight(player.Center, new Vector3(100, 100, 100));
                 }
             }
 
@@ -77,6 +89,16 @@ namespace DuanWu
             //    LanguageHelper.SetQuestion();
             //}
 
+        }
+
+
+        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
+        {
+            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<Sun>()))
+            {
+                return false;
+            }
+            return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genDust, ref damageSource);
         }
 
         public override void UpdateDead()
@@ -128,29 +150,61 @@ namespace DuanWu
             {
                 Player.statMana = Player.statManaMax2;
             }
-            
+
+        }
+
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (Player.HasBuff(ModContent.BuffType<Sun>()))
+            {
+                modifiers.FinalDamage *= 1.5f;
+            }
+        }
+
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+        {
+            if (Player.HasBuff(ModContent.BuffType<Sun>()))
+            {
+                modifiers.FinalDamage *= 0.5f;
+            }
         }
 
         public override void ModifyScreenPosition()
         {
             if (ScreenShakeUpDown)
             {
-                Vector2 centerScreen;
-            centerScreen=new Vector2((Main.screenWidth / 2), (Main.screenHeight / 2));
-            screenCache = Vector2.Lerp(screenCache, new Vector2(Main.LocalPlayer.Center.X, Main.LocalPlayer.Center.Y + 200f) - centerScreen, 0.1f);
-            //Main.screenPosition = this.screenCache;
-            float _ =Math.Min(100, Player.statLifeMax2 / Player.statLife+1);
-                
-            Main.screenPosition = new Vector2(Main.LocalPlayer.Center.X-Main.screenWidth/2, (float)(Main.LocalPlayer.Center.Y-Main.screenHeight/2 +_*5f*Math.Sin(0.31415*Main.time)));
+                float _ = Math.Min(100, Player.statLifeMax2 / Player.statLife + 1);
+                Main.screenPosition = new Vector2(Main.LocalPlayer.Center.X - Main.screenWidth / 2, (float)(Main.LocalPlayer.Center.Y - Main.screenHeight / 2 + _ * 5f * Math.Sin(0.31415 * Main.time)));
             }
-            
 
+            if (StartScreenpos)
+            {
+
+                if (Main.LocalPlayer.Center.X - Screenpos.X < Main.screenWidth)
+                {
+                    Screenpos.X -= Main.screenWidth;
+                }
+                if (Main.LocalPlayer.Center.Y - Screenpos.Y < Main.screenHeight)
+                {
+                    Screenpos.Y -= Main.screenHeight;
+                }
+                if (Main.LocalPlayer.Center.X - Screenpos.X > Main.screenWidth)
+                {
+                    Screenpos.X += Main.screenWidth;
+                }
+                if (Main.LocalPlayer.Center.Y - Screenpos.Y > Main.screenHeight)
+                {
+                    Screenpos.Y += Main.screenHeight;
+                }
+                screenCache = Vector2.Lerp(screenCache, Screenpos, 0.1f);
+                Main.screenPosition = screenCache;
+            }
         }
 
         #region 受击时
         public override void OnHurt(Player.HurtInfo info)
         {
-            
+
             if (info.Damage >= 250 && info.Damage < Player.statLife)
             {
                 LanguageHelper.SetQuestion();
@@ -175,7 +229,7 @@ namespace DuanWu
         #region 召唤特定NPC时
         private void NPCQuestionActive()
         {
-            
+
         }
         #endregion
 
