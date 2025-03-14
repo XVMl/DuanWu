@@ -1687,7 +1687,7 @@ Projectiles: {
 
 Buffs: {
 	Sun: {
-		 DisplayName: 太阳
-		 Description: 你的光芒比太阳还要亮；获得50%的增伤，50%的减伤，显示宝藏，陷阱等(只对你有效)。
+		DisplayName: 太阳
+		Description: 你的光芒比太阳还要亮；获得50%的增伤，50%的减伤，显示宝藏，陷阱等(只对你有效)。
 	}
 }

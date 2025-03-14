@@ -72,7 +72,6 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
-
             }
 
             int MouseTextIndex1 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 3"));

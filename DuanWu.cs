@@ -29,6 +29,10 @@ namespace DuanWu
             {
                 NetProjectlies.HandlePacket(reader, whoAmI);
             }
+            else if(type=="NetTime")
+            {
+                NetTime.HandlePacket(reader, whoAmI);
+            }
            
 
         }

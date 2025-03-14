@@ -93,7 +93,6 @@ namespace DuanWu.Content.Utilities
 
         }
 
-
         public static void CheckAnswer()
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();

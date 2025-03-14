@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 
 namespace DuanWu.Content.System
 {
@@ -12,6 +14,8 @@ namespace DuanWu.Content.System
 
         public OtherResults() { }
 
+        public static double SetTime;
+        public static bool Setday;
 
         public static void SetCamera(float intensity)
         {
@@ -46,6 +50,13 @@ namespace DuanWu.Content.System
         public static void GiganticTransFormation()
         {
 
+        }
+
+        public static void QuickSetTime(double time, bool daytime)
+        {
+            SetTime = time;
+            Setday = daytime;
+            ModContent.GetInstance<NetTime>().NetSeed(-1, -1);
         }
     }
 }

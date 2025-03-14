@@ -57,7 +57,6 @@ namespace DuanWu
         public bool SetMana;
         public Vector2 Screenpos;
         public bool StartScreenpos;
-
         public override void PostUpdate()
         {
             //OtherQusetionAvtive();
@@ -81,6 +80,9 @@ namespace DuanWu
                 if (player.HasBuff(ModContent.BuffType<Sun>()))
                 {
                     Lighting.AddLight(player.Center, new Vector3(100, 100, 100));
+                    player.detectCreature = true;
+                    player.dangerSense = true;
+                    player.findTreasure = true;
                 }
             }
 

@@ -360,7 +360,6 @@ namespace DuanWu.Content.System
             else if (RewardLevel == 3)
             {
 
-
                 //3级
                 int level3 = Main.rand.Next(0, 10);
                 switch (level3)
@@ -459,15 +458,12 @@ namespace DuanWu.Content.System
                     default:
 
                         break;
-
                 }
 
             }
 
             else if (RewardLevel == 4)
             {
-
-
 
                 //4级
                 int level4 = Main.rand.Next(0, 10);
@@ -534,6 +530,7 @@ namespace DuanWu.Content.System
             }
 
         }
+        
 
         public void QuickSpawnItemList(List<short> x, Player player, int num = 99)
         {
@@ -543,7 +540,13 @@ namespace DuanWu.Content.System
             }
         }
 
-
+        /// <summary>
+        /// 快速生成物品
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="player"></param>
+        /// <param name="count">品种类数</param>
+        /// <param name="num">物品数量</param>
         public void QuickSpawnItemList(List<short> x, Player player, int count = 1, int num = 99)
         {
             for (int i = 0; i < count; i++)

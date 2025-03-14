@@ -411,7 +411,10 @@ namespace DuanWu.Content.System
             }
 
         }
-
+        /// <summary>
+        /// 以玩家为中心破坏矩形范围内的方块
+        /// </summary>
+        /// <param name="safeBox"></param>
         public void KillTileRectangle(Rectangle safeBox)
         {
 
@@ -423,7 +426,11 @@ namespace DuanWu.Content.System
                 }
             }
         }
-
+        /// <summary>
+        /// 生成NPC并同步
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pos"></param>
         public static void QuickSpawnNPC(int id , Vector2 pos)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
@@ -434,7 +441,11 @@ namespace DuanWu.Content.System
             SelectNPCpos = pos;
             ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
         }
-
+        /// <summary>
+        /// 生成射弹并同步
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pos"></param>
         public static void QuickSpawnProjectlies(int id ,Vector2 pos)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
@@ -445,7 +456,7 @@ namespace DuanWu.Content.System
             SelectProjectliespos = pos;
             ModContent.GetInstance<NetProjectlies>().NetSeed(-1, -1);
         }
-
+        
         public static void KillTileRectangle(Rectangle safeBox,bool noItem=false)
         {
             
@@ -458,6 +469,6 @@ namespace DuanWu.Content.System
             }
         }
 
-
+        
     }
 }
