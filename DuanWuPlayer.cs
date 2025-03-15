@@ -50,13 +50,22 @@ namespace DuanWu
         public bool ForverShowNPCHitBox;
         public int SetLifeMax2;
         public int SetLifemana2;
-        public int Setmovespeed;
+        public float Setmovespeed;
+        public float Setmovespeed1=1;
+        /// <summary>
+        /// 减伤
+        /// </summary>
         public int Setendurance;
+        /// <summary>
+        /// 召唤物上限
+        /// </summary>
         public int SetMinions;
+        public int SetDefense;
         public bool Fly;
         public bool SetMana;
         public Vector2 Screenpos;
         public bool StartScreenpos;
+        public static bool SetSpwanRate;
         public override void PostUpdate()
         {
             //OtherQusetionAvtive();
@@ -141,9 +150,11 @@ namespace DuanWu
         {
             Player.statLifeMax2 += SetLifeMax2;
             Player.statManaMax2 += SetLifemana2;
+            Player.statDefense += SetDefense;
             Player.maxMinions += SetMinions;
             Player.endurance += Setendurance;
             Player.moveSpeed += Setmovespeed;
+            Player.moveSpeed *= Setmovespeed1;
             if (Fly)
             {
                 Player.wingTime = Player.wingTimeMax;

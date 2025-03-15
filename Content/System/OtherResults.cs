@@ -58,5 +58,11 @@ namespace DuanWu.Content.System
             Setday = daytime;
             ModContent.GetInstance<NetTime>().NetSeed(-1, -1);
         }
+
+        public static void QuickSetSpwanRate(bool rate)
+        {
+            DuanWuPlayer.SetSpwanRate= rate;
+            ModContent.GetInstance<NetSpawnRate>().NetSeed(-1, -1);
+        }
     }
 }

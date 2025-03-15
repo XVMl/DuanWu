@@ -326,16 +326,18 @@ namespace DuanWu.Content.System
 
                         break;
                     case 15:
-                        //磁力
+                        //磁力上升 2
+
                         break;
                     case 16:
-
+                        //防御力10 2
+                        player.statDefense += 10;
                         break;
                     case 17:
-
+                        //松鼠钩 3
                         break;
                     case 18:
-
+                        //传送钩 3
                         break;
                     case 19:
 
@@ -426,10 +428,11 @@ namespace DuanWu.Content.System
 
                         break;
                     case 11:
+                        //额外召唤栏1 3
 
                         break;
                     case 12:
-
+                        //减伤10 3
                         break;
                     case 13:
 
@@ -514,6 +517,8 @@ namespace DuanWu.Content.System
                         break;
 
                     case 8:
+                        //额外饰品栏
+
                         break;
 
                     case 9:
