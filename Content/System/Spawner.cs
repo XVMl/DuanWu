@@ -26,6 +26,7 @@ namespace DuanWu.Content.System
             packet.Write(Name);
             SendPacket(packet);
             packet.Send(toClient, ignoreClient);
+            
         }
 
     }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace DuanWu.Content.Utilities
 {
@@ -43,15 +44,15 @@ namespace DuanWu.Content.Utilities
 
         public static void SetQuestion()
         {
-            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            if (!duanWuPlayer.LisaoActive)
             {
-                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive = true;
+                duanWuPlayer.LisaoActive = true;
             }
             else
             {
                 return;
             }
-            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
             List<int> nums;
             int ans;
             int conunts;
@@ -102,6 +103,7 @@ namespace DuanWu.Content.Utilities
                 Main.NewText(s,Color.Green);
                 duanWuPlayer.Reward = true;
                 RewardSystem reward = new(1);
+                DuanWuPlayer.PlayerQuestionEnd = true;
             }
             else
             {
@@ -113,6 +115,7 @@ namespace DuanWu.Content.Utilities
             duanWuPlayer.ShowAnswer = 180;
         }
 
+
         public static void EndQnestion()
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -120,6 +123,7 @@ namespace DuanWu.Content.Utilities
             duanWuPlayer.Answer = 0;
             duanWuPlayer.ChoiceAnswer = -1;
             duanWuPlayer.Reward = null;
+            DuanWuPlayer.PlayerQuestionEnd = false;
         }
 
     }

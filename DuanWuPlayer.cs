@@ -10,6 +10,7 @@ using Terraria.Graphics.Effects;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using DuanWu.Content.Buffs;
+using DuanWu.Content.System;
 namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
@@ -42,6 +43,7 @@ namespace DuanWu
         public static bool ScreenZhuan = true;
         private Vector2 screenCache;
 
+        public static bool Quickresponse;
         public bool ShowPlayHitBox;
         public bool ShowNPCHitBox;
         public bool ShowProjectileBox;
@@ -66,11 +68,18 @@ namespace DuanWu
         public Vector2 Screenpos;
         public bool StartScreenpos;
         public static bool SetSpwanRate;
+        public static bool PlayerQuestionEnd;
         public override void PostUpdate()
         {
+
             //OtherQusetionAvtive();
             if (LisaoActive)
             {
+                if (Quickresponse&&PlayerQuestionEnd)
+                {
+                    ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
+                    Main.NewText("!");
+                }
                 if (counttime == 0)
                 {
                     LanguageHelper.CheckAnswer();
@@ -82,7 +91,6 @@ namespace DuanWu
                     LanguageHelper.EndQnestion();
                 }
             }
-
 
             foreach (Player player in Main.ActivePlayers)
             {
@@ -213,6 +221,8 @@ namespace DuanWu
                 Main.screenPosition = screenCache;
             }
         }
+
+
 
         #region 受击时
         public override void OnHurt(Player.HurtInfo info)

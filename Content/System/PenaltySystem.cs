@@ -19,7 +19,7 @@ namespace DuanWu.Content.System
 
         private int Penaltylevel;
 
-        public static int SelectNPCID;
+        public static int SelectNPCID=1;
         public static int SelectProjectliesID;
         public static Vector2 SelectNPCpos;
         public static Vector2 SelectProjectliespos;
@@ -196,7 +196,7 @@ namespace DuanWu.Content.System
                         List<short> blood = [618, 619, 620, 621];
                         break;
                     case 30:
-                        //
+                        
 
                         break;
                     case 31:
@@ -358,7 +358,7 @@ namespace DuanWu.Content.System
                         //笨猪鲨
                             break;
                         case 23:
-                        //
+                        //物品混乱
                             break;
                         case 24:
                         break; case 25:

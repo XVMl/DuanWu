@@ -21,11 +21,12 @@ namespace DuanWu
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
             string type = reader.ReadString();
+            Main.NewText(type);
             if (type== "NetNPC")
             {
                 NetNPC.HandlePacket(reader, whoAmI);
             }
-            else if (type== "NetProjectlies")
+            else if (type=="NetProjectlies")
             {
                 NetProjectlies.HandlePacket(reader, whoAmI);
             }
@@ -33,7 +34,11 @@ namespace DuanWu
             {
                 NetTime.HandlePacket(reader, whoAmI);
             }
-           
+            else if (type== "Netsponse")
+            {
+                Netsponse.HandlePacket(reader, whoAmI);
+            }
+            
 
         }
     }

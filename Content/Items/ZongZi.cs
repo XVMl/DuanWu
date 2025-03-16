@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace DuanWu.Content.Items
 {
-    public class ZongZi:ModItem
+    public class ZongZi : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -53,17 +53,17 @@ namespace DuanWu.Content.Items
 
         public override void AddRecipes()
         {
+
         }
 
         public override bool? UseItem(Player player)
         {
-            if (Main.myPlayer==player.whoAmI)
+
+            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
-                if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
-                {
-                LanguageHelper.SetQuestion();  
-                }
+                LanguageHelper.SetQuestion();
             }
+
             return new bool?(true);
         }
     }

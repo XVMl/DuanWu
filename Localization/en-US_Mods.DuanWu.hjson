@@ -27,6 +27,20 @@ Configs: {
 			Tooltip: ""
 		}
 	}
+
+	DuanWUServerConfig: {
+		DisplayName: Duan W U Server Config
+
+		Quickresponse: {
+			Label: Quickresponse
+			Tooltip: ""
+		}
+
+		scoreboard: {
+			Label: scoreboard
+			Tooltip: ""
+		}
+	}
 }
 
 Items: {
