@@ -17,7 +17,6 @@ namespace DuanWu.Content.System
             int type = reader.ReadInt32();
             Vector2 pos = reader.ReadVector2();
             NPC.NewNPC(null, (int)pos.X, (int)pos.Y, type);
-            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
                 Main.mouseX = (int)pos.X;

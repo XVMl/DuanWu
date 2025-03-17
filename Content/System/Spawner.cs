@@ -21,8 +21,18 @@ namespace DuanWu.Content.System
             {
                 return;
             }
-            
-            ModPacket packet = Mod.GetPacket();
+            if (Main.netMode == NetmodeID.Server)
+            {
+                ModContent.GetInstance<DuanWu>().Logger.Info($"Sending packet for tool ({Name}) from server");
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                ModContent.GetInstance<DuanWu>().Logger.Info($"Sending packet for tool ({Name}) from {Main.LocalPlayer.whoAmI}");
+            }
+
+            //ModPacket packet = Mod.GetPacket();
+            ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
             packet.Write(Name);
             SendPacket(packet);
             packet.Send(toClient, ignoreClient);

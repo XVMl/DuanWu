@@ -21,6 +21,9 @@ namespace DuanWu.Content.System
 
         private UserInterface _drawHitBox;
         internal DrawHitBox drawHitBox;
+
+        private UserInterface _lisao;
+        internal Lisao lisao;
         public override void Load()
         {
             if (!Main.dedServ)
@@ -34,6 +37,9 @@ namespace DuanWu.Content.System
                 _drawHitBox = new UserInterface();
                 drawHitBox = new DrawHitBox();
                 _drawHitBox.SetState(drawHitBox);
+                _lisao=new UserInterface();
+                lisao = new Lisao();
+                _lisao.SetState(lisao);
             }
         }
 
@@ -43,7 +49,8 @@ namespace DuanWu.Content.System
             lisaointerface?.Update(gameTime);
             UserInterface lisaoquestion = _lisaoQustion;
             lisaoquestion?.Update(gameTime);
-
+            UserInterface lisao = _lisao;
+            lisao?.Update(gameTime);
 
         }
 
@@ -72,6 +79,15 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                   "DuanWu:Lisao",
+                   delegate
+                   {
+                       _lisao.Draw(Main.spriteBatch, new GameTime());
+                       return true;
+                   },
+                   InterfaceScaleType.UI)
+               );
             }
 
             int MouseTextIndex1 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 3"));

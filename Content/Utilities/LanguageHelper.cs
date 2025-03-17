@@ -58,7 +58,6 @@ namespace DuanWu.Content.Utilities
             int conunts;
             int t;
             duanWuPlayer.counttime = DuanWuPlayer.AnswerQuestionTime * 60;
-            duanWuPlayer.ShowAnswer = duanWuPlayer.counttime;
             if (DuanWuPlayer.FullText)
             {
                 t = 186;
@@ -104,6 +103,7 @@ namespace DuanWu.Content.Utilities
                 duanWuPlayer.Reward = true;
                 RewardSystem reward = new(1);
                 DuanWuPlayer.PlayerQuestionEnd = true;
+                ModContent.GetInstance<Netsponse>().NetSeed(-1, -1);
             }
             else
             {

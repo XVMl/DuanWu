@@ -27,8 +27,8 @@ namespace DuanWu
         /// <summary>  
         /// 上文还是下文  
         /// </summary>  
-        public int counttime;
         public int QuestionCount;
+        public int counttime;
         public string QuestionAnswer = "";
         public bool KeepQuestionActive;
         public int lisaoquestion;
@@ -73,13 +73,9 @@ namespace DuanWu
         {
 
             //OtherQusetionAvtive();
+            
             if (LisaoActive)
             {
-                if (Quickresponse&&PlayerQuestionEnd)
-                {
-                    ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
-                    Main.NewText("!");
-                }
                 if (counttime == 0)
                 {
                     LanguageHelper.CheckAnswer();
@@ -265,5 +261,22 @@ namespace DuanWu
         //    }
         //}
         #endregion
+
+
+        public void ServeQuickresponse()
+        {
+            if (!Quickresponse||LisaoActive)
+            {
+                return;
+            }
+            if (!LisaoActive)
+            {
+                LisaoActive = true;
+            }
+            Main.NewText("server");
+
+
+        }
+
     }
 }

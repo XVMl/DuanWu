@@ -164,6 +164,11 @@ namespace DuanWu.Content.UI
             Append(area);
         }
 
+        private void QAoptionClick(UIMouseEvent evt, UIElement listeningElement)
+        {
+
+        }
+
 
         private void QAoption1Click(UIMouseEvent evt, UIElement listeningElement)
         {

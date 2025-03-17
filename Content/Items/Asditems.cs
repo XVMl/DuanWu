@@ -48,14 +48,13 @@ namespace DuanWu.Content.Items
         {
             return true;
         }
-
-
-           
+  
         public override bool? UseItem(Player player)
         {
+            //NetNPC netNPC = new();
+            //netNPC.NetSeed(-1,- 1);
             ModContent.GetInstance<Netsponse>().NetSeed(-1, -1);
 
-            
             //ushort selected = TileID.WoodBlock;
             //Rectangle safeBox;
             //safeBox.X = (int)Main.LocalPlayer.Center.X / 16 + 1;
