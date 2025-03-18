@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,64 +15,70 @@ using Terraria.UI;
 
 namespace DuanWu.Content.UI
 {
-    internal class MyButton:UIElement
+    public class MyButton:UIImageButton
     {
-        private UIImageButton UIButton;
-
         private int Number;
 
-        public MyButton(int num) 
+        public UIText uiText;
+        private string messsage="23r34";
+        public MyButton(string text,int x,Asset<Texture2D> texture) : base(texture)
         {
-            Number=num;
-            Main.NewText("!!");
-            Width.Set(300, 0);
-            Height.Set(50, 0);
-            UIButton = new UIImageButton(ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton"));
-            UIButton.Width.Set(386f, 0);
-            UIButton.Height.Set(32f, 0);
-            UIButton.Top.Set(3f, 0f);
-            UIButton.OnLeftClick += new MouseEvent(QAoptionClick);
+            this.Number = x;
+            Height.Set(32, 0);
+            Width.Set(550, 0);
+            uiText = new UIText(text);
+            uiText.HAlign =uiText.VAlign = 0.5f;
+            Append(uiText);
         }
 
-        private void QAoptionClick(UIMouseEvent evt, UIElement listeningElement)
+        public override void LeftClick(UIMouseEvent evt)
         {
-            DuanWuPlayer.AnswerQuestionTime = Number;
             Main.NewText(Number);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            Rectangle hitbox = base.GetInnerDimensions().ToRectangle();
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/WhiteScreen"), hitbox, Color.White * 1f);
+            base.LeftClick(evt);
         }
 
     }
+
+    //public class PlayButton:UIElement
+    //{
+    //    Color Color = new Color(50, 225, 153);
+    //    public override void Draw(SpriteBatch spriteBatch)
+    //    {
+    //        spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton"), new Vector2(Main.screenWidth+20,Main.screenHeight-20)/2, Color.White * 1f);
+    //    }
+
+    //}
     public class Lisao : UIState
     {
         public UIGrid LisaochoiceLisst;
-
+        //public PlayButton playButton;
         private float Height;
 
         public override void OnInitialize()
         {
-            LisaochoiceLisst = new UIGrid();   
-            LisaochoiceLisst.Add(new MyButton(1));
-            LisaochoiceLisst.Width.Set(1000f, 0);
+            LisaochoiceLisst = new UIGrid();
+            AddEditor();
+            LisaochoiceLisst.Width.Set(1250f, 0);
             LisaochoiceLisst.Height.Set(500f, 0);
-            LisaochoiceLisst.Top.Set(00f, 0);
+            LisaochoiceLisst.VAlign = 0.7f;
+            LisaochoiceLisst.HAlign = 0.5f;
+            LisaochoiceLisst.ListPadding=100f;
             Append(LisaochoiceLisst);
         }
 
-        public override void Update(GameTime gameTime)
+        private void AddEditor()
         {
-            LisaochoiceLisst.Add(new MyButton(1));
+            for (int i = 0; i < 8; i++)
+            {
+                LisaochoiceLisst.Add(new MyButton(i.ToString(),i, ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton")));
+            }
         }
 
 
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            Rectangle hitbox = LisaochoiceLisst.GetInnerDimensions().ToRectangle();
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Question"), hitbox, Color.White * 0.5f);
-        }
+        ////public override void Draw(SpriteBatch spriteBatch)
+        ////{
+        ////    Rectangle hitbox = LisaochoiceLisst.GetInnerDimensions().ToRectangle();
+        ////    spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/WhiteScreen"), hitbox, Color.White * 0.5f);
+        ////}
     }
 }

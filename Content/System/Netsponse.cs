@@ -18,7 +18,6 @@ namespace DuanWu.Content.System
             
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
-                
                 base.NetSeed(-1, sender);
             }
         }
