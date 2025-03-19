@@ -24,6 +24,9 @@ namespace DuanWu.Content.System
 
         private UserInterface _lisao;
         internal Lisao lisao;
+
+        private UserInterface _scoreboard;
+        internal Scoreboard scoreboard;
         public override void Load()
         {
             if (!Main.dedServ)
@@ -40,6 +43,10 @@ namespace DuanWu.Content.System
                 _lisao=new UserInterface();
                 lisao = new Lisao();
                 _lisao.SetState(lisao);
+                _scoreboard = new UserInterface();
+                scoreboard = new Scoreboard();
+                _scoreboard.SetState(scoreboard);
+
             }
         }
 
@@ -51,6 +58,8 @@ namespace DuanWu.Content.System
             lisaoquestion?.Update(gameTime);
             UserInterface lisao = _lisao;
             lisao?.Update(gameTime);
+            UserInterface score=_scoreboard;
+            score?.Update(gameTime);
 
         }
 
@@ -59,31 +68,41 @@ namespace DuanWu.Content.System
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
             if (MouseTextIndex != -1)
             {
-                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                   "DuanWu:LisaoQA",
-                   delegate
-                   {
-                       _lisaoQAInterface.Draw(Main.spriteBatch, new GameTime());
-                       return true;
-                   },
-                   InterfaceScaleType.UI)
-               );
+               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+               //    "DuanWu:LisaoQA",
+               //    delegate
+               //    {
+               //        _lisaoQAInterface.Draw(Main.spriteBatch, new GameTime());
+               //        return true;
+               //    },
+               //    InterfaceScaleType.UI)
+               //);
 
-                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                   "DuanWu:LisaoQuestion",
-                   delegate
-                   {
-                       _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
-                       return true;
-                   },
-                   InterfaceScaleType.UI)
-               );
+               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+               //    "DuanWu:LisaoQuestion",
+               //    delegate
+               //    {
+               //        _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
+               //        return true;
+               //    },
+               //    InterfaceScaleType.UI)
+               //);
 
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                    "DuanWu:Lisao",
                    delegate
                    {
                        _lisao.Draw(Main.spriteBatch, new GameTime());
+                       return true;
+                   },
+                   InterfaceScaleType.UI)
+               );
+
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                   "DuanWu:Scoreboard",
+                   delegate
+                   {
+                       _scoreboard.Draw(Main.spriteBatch, new GameTime());
                        return true;
                    },
                    InterfaceScaleType.UI)

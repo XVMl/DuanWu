@@ -52,6 +52,8 @@ namespace DuanWu.Content.Items
         public override bool? UseItem(Player player)
         {
             Main.NewText(Main.LocalPlayer.name);
+            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount++;
+            Main.NewText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
             //ModContent.GetInstance<Netsponse>().NetSeed(-1, -1);
 
             //ushort selected = TileID.WoodBlock;

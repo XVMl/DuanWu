@@ -69,6 +69,8 @@ namespace DuanWu
         public bool StartScreenpos;
         public static bool SetSpwanRate;
         public static bool PlayerQuestionEnd;
+
+        public int PlayerQuestioncount;
         public override void PostUpdate()
         {
 
