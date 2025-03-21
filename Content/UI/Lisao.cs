@@ -49,10 +49,12 @@ namespace DuanWu.Content.UI
                 LisaochoiceLisst.Remove();
                 return;
             }
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime == DuanWuPlayer.AnswerQuestionTime * 60)
+            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime+1 == DuanWuPlayer.AnswerQuestionTime*60)
             {
                 AddEditor();
             }
+            
+            
         }
 
     }

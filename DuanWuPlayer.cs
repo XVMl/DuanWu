@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using DuanWu.Content.Buffs;
 using DuanWu.Content.System;
+using DuanWu.Content.UI;
 namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
@@ -69,8 +70,23 @@ namespace DuanWu
         public bool StartScreenpos;
         public static bool SetSpwanRate;
         public static bool PlayerQuestionEnd;
-
+        /// <summary>
+        /// 总答题数
+        /// </summary>
         public int PlayerQuestioncount;
+        /// <summary>
+        /// 回答正确数
+        /// </summary>
+        public int PlayerAccuracy;
+        public override void OnEnterWorld()
+        {
+            //Scoreboard.Refresh();
+            //ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
+            NetScoreboard.SubmitPacket();
+            Main.NewText("hellow");
+            base.OnEnterWorld();
+        }
+
         public override void PostUpdate()
         {
 

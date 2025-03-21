@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using System.IO;
 using Microsoft.Xna.Framework;
 using DuanWu.Content.System;
+using Terraria.ID;
 
 namespace DuanWu
 {
@@ -22,21 +23,31 @@ namespace DuanWu
         {
             string type = reader.ReadString();
             Main.NewText(type);
-            if (type== "NetNPC")
+            if (type == "NetNPC")
             {
                 NetNPC.HandlePacket(reader, whoAmI);
             }
-            else if (type=="NetProjectlies")
+            else if (type == "NetProjectlies")
             {
                 NetProjectlies.HandlePacket(reader, whoAmI);
             }
-            else if(type=="NetTime")
+            else if (type == "NetTime")
             {
                 NetTime.HandlePacket(reader, whoAmI);
             }
-            else if (type== "Netsponse")
+            else if (type == "Netsponse")
             {
+                
                 Netsponse.HandlePacket(reader, whoAmI);
+            }
+            else if (type == "NetScoreboardRefresh")
+            {
+                NetScoreboardRefresh.HandlePacket(reader, whoAmI);
+            }
+            else if (type == "NetScoreboard")
+            {
+                
+                NetScoreboard.HandlePacket(reader, whoAmI);
             }
             
 

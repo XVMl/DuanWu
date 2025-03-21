@@ -12,8 +12,8 @@ namespace DuanWu.Content.System
 {
     public abstract class Spawner :ModSystem
     {
-        public abstract void RecievePacket(BinaryReader reader, int sender);
-        public abstract void SendPacket(BinaryWriter writer);
+        public virtual void RecievePacket(BinaryReader reader, int sender) { }
+        public virtual void SendPacket(BinaryWriter writer) { }
 
         public void NetSeed(int toClient = -1, int ignoreClient = -1)
         {
@@ -27,11 +27,10 @@ namespace DuanWu.Content.System
             }
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
-                {
+            {
                 ModContent.GetInstance<DuanWu>().Logger.Info($"Sending packet for tool ({Name}) from {Main.LocalPlayer.whoAmI}");
             }
 
-            //ModPacket packet = Mod.GetPacket();
             ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
             packet.Write(Name);
             SendPacket(packet);

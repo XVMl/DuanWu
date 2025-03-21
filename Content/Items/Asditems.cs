@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using System.Runtime.CompilerServices;
 using System;
 using DuanWu.Content.Buffs;
+using System.Net.Sockets;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -51,10 +52,16 @@ namespace DuanWu.Content.Items
   
         public override bool? UseItem(Player player)
         {
-            Main.NewText(Main.LocalPlayer.name);
-            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount++;
-            Main.NewText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
-            //ModContent.GetInstance<Netsponse>().NetSeed(-1, -1);
+            if (Main.myPlayer==player.whoAmI)
+            {
+                //ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
+                //packet.Write(Main.LocalPlayer.name);       
+                //packet.Send(-1, -1);
+                //ModContent.GetInstance<NetProjectlies>().NetSeed(-1, -1);
+                PenaltySystem.QuickSpawnProjectlies(9, Main.MouseWorld);
+            }
+
+
 
             //ushort selected = TileID.WoodBlock;
             //Rectangle safeBox;

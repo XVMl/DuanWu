@@ -583,10 +583,7 @@ namespace DuanWu.Content.System
         /// <param name="pos"></param>
         public static void QuickSpawnNPC(int id, Vector2 pos)
         {
-            if (Main.netMode == NetmodeID.SinglePlayer)
-            {
-                NPC.NewNPC(null, (int)pos.X, (int)pos.Y, id);
-            }
+            NPC.NewNPC(null, (int)pos.X, (int)pos.Y, id);
             SelectNPCID = id;
             SelectNPCpos = pos;
             ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
@@ -598,10 +595,8 @@ namespace DuanWu.Content.System
         /// <param name="pos"></param>
         public static void QuickSpawnProjectlies(int id, Vector2 pos)
         {
-            if (Main.netMode == NetmodeID.SinglePlayer)
-            {
-                Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
-            }
+            
+            Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
             SelectNPCID = id;
             SelectProjectliespos = pos;
             ModContent.GetInstance<NetProjectlies>().NetSeed(-1, -1);

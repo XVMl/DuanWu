@@ -68,25 +68,25 @@ namespace DuanWu.Content.System
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
             if (MouseTextIndex != -1)
             {
-               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-               //    "DuanWu:LisaoQA",
-               //    delegate
-               //    {
-               //        _lisaoQAInterface.Draw(Main.spriteBatch, new GameTime());
-               //        return true;
-               //    },
-               //    InterfaceScaleType.UI)
-               //);
+                // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                //    "DuanWu:LisaoQA",
+                //    delegate
+                //    {
+                //        _lisaoQAInterface.Draw(Main.spriteBatch, new GameTime());
+                //        return true;
+                //    },
+                //    InterfaceScaleType.UI)
+                //);
 
-               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-               //    "DuanWu:LisaoQuestion",
-               //    delegate
-               //    {
-               //        _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
-               //        return true;
-               //    },
-               //    InterfaceScaleType.UI)
-               //);
+                // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                //    "DuanWu:LisaoQuestion",
+                //    delegate
+                //    {
+                //        _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
+                //        return true;
+                //    },
+                //    InterfaceScaleType.UI)
+                //);
 
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                    "DuanWu:Lisao",
@@ -98,15 +98,15 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
-                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                   "DuanWu:Scoreboard",
-                   delegate
-                   {
-                       _scoreboard.Draw(Main.spriteBatch, new GameTime());
-                       return true;
-                   },
-                   InterfaceScaleType.UI)
-               );
+               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+               //    "DuanWu:Scoreboard",
+               //    delegate
+               //    {
+               //        _scoreboard.Draw(Main.spriteBatch, new GameTime());
+               //        return true;
+               //    },
+               //    InterfaceScaleType.UI)
+               //);
             }
 
             int MouseTextIndex1 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 3"));

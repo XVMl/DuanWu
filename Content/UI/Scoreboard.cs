@@ -17,8 +17,9 @@ namespace DuanWu.Content.UI
 {
     public class Scoreboard : UIState
     {
-        private UIGrid UIGrid;
-        private Dictionary <Player,bool> Player = [];
+        private static UIGrid UIGrid;
+        public static Dictionary <string,bool> Player = [];
+        public static Dictionary <string, int> counts = [];
         public override void OnInitialize()
         {
             UIGrid = new UIGrid();
@@ -31,25 +32,29 @@ namespace DuanWu.Content.UI
 
         public override void Update(GameTime gameTime)
         {
+            int n = 0;
             foreach (Player play in Main.ActivePlayers)
             {
-                Player.TryAdd(play, false);
-                if (!Player[play])
+                Player.TryAdd(play.name, false);
+                counts.TryAdd(play.name, Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
+                n++;
+                if (!Player[play.name])
                 {
-                    UIGrid.Add(new ScoreboardElement(play));
-                    Player[play] = true;
+                    UIGrid.Add(new ScoreboardElement(play.name,1));
+                    Player[play.name] = true;
                 }
-
             }
             foreach(UIElement uI in  UIGrid._items)
             {
                 uI.Update(gameTime);
             }
-             
         }
 
-        
-
+        public static void Refresh()
+        {
+            UIGrid?.Clear();
+            Player?.Clear();
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -65,12 +70,12 @@ namespace DuanWu.Content.UI
     {
         private UIText name;
         private UIText count;
-        private Player player;
-        public ScoreboardElement(Player player)
+        private string savename;
+        public ScoreboardElement(string playername,int playercount)
         {
-            name = new UIText(player.name);
-            count = new UIText(player.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount.ToString());
-            this.player = player;
+            name = new UIText(playername);
+            count = new UIText(playercount.ToString());
+            savename=playername;
             Height.Set(50, 0);
             Width.Set(100, 0);
             count.Top.Set(25, 0);
@@ -80,7 +85,7 @@ namespace DuanWu.Content.UI
 
         public override void Update(GameTime gameTime)
         {
-            count.SetText(player.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount.ToString());
+            count.SetText(Scoreboard.counts[savename]==0 ? Scoreboard.counts[savename].ToString(): "");
         }
     }
 
