@@ -28,11 +28,11 @@ namespace DuanWu
         /// <summary>  
         /// 上文还是下文  
         /// </summary>  
+        public int lisaoquestion;
         public int QuestionCount;
         public int counttime;
         public string QuestionAnswer = "";
         public bool KeepQuestionActive;
-        public int lisaoquestion;
         public bool? Reward;
         public string LisaoQuestionText = "";
         public string[] LisaoChoiceText = new string[8];
@@ -80,10 +80,7 @@ namespace DuanWu
         public int PlayerAccuracy;
         public override void OnEnterWorld()
         {
-            //Scoreboard.Refresh();
-            //ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
-            NetScoreboard.SubmitPacket();
-            Main.NewText("hellow");
+            NetScoreboard.SubmitPacket();   
             base.OnEnterWorld();
         }
 
@@ -94,13 +91,13 @@ namespace DuanWu
             
             if (LisaoActive)
             {
-                if (counttime == 0)
+                counttime--;
+                ShowAnswer--;
+                if (counttime == -1)
                 {
                     LanguageHelper.CheckAnswer();
                 }
-                counttime--;
-                ShowAnswer--;
-                if (ShowAnswer == -1)
+                if (ShowAnswer == 0)
                 {
                     LanguageHelper.EndQnestion();
                 }
@@ -108,13 +105,14 @@ namespace DuanWu
 
             foreach (Player player in Main.ActivePlayers)
             {
-                if (player.HasBuff(ModContent.BuffType<Sun>()))
+                if (!player.HasBuff(ModContent.BuffType<Sun>()))
                 {
-                    Lighting.AddLight(player.Center, new Vector3(100, 100, 100));
-                    player.detectCreature = true;
-                    player.dangerSense = true;
-                    player.findTreasure = true;
+                    break;
                 }
+                Lighting.AddLight(player.Center, new Vector3(100, 100, 100));
+                player.detectCreature = true;
+                player.dangerSense = true;
+                player.findTreasure = true;
             }
 
             //if (KeepQuestionActive)
@@ -215,22 +213,23 @@ namespace DuanWu
             if (StartScreenpos)
             {
 
-                if (Main.LocalPlayer.Center.X - Screenpos.X < Main.screenWidth)
+                if (Main.LocalPlayer.Center.X - Screenpos.X <= Main.screenWidth)
                 {
                     Screenpos.X -= Main.screenWidth;
                 }
-                if (Main.LocalPlayer.Center.Y - Screenpos.Y < Main.screenHeight)
-                {
-                    Screenpos.Y -= Main.screenHeight;
-                }
-                if (Main.LocalPlayer.Center.X - Screenpos.X > Main.screenWidth)
+                else
                 {
                     Screenpos.X += Main.screenWidth;
                 }
-                if (Main.LocalPlayer.Center.Y - Screenpos.Y > Main.screenHeight)
+                if (Main.LocalPlayer.Center.Y - Screenpos.Y <= Main.screenHeight)
+                {
+                    Screenpos.Y -= Main.screenHeight;
+                }
+                else
                 {
                     Screenpos.Y += Main.screenHeight;
                 }
+                
                 screenCache = Vector2.Lerp(screenCache, Screenpos, 0.1f);
                 Main.screenPosition = screenCache;
             }

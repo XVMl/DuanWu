@@ -54,11 +54,8 @@ namespace DuanWu.Content.Items
         {
             if (Main.myPlayer==player.whoAmI)
             {
-                //ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
-                //packet.Write(Main.LocalPlayer.name);       
-                //packet.Send(-1, -1);
-                //ModContent.GetInstance<NetProjectlies>().NetSeed(-1, -1);
-                PenaltySystem.QuickSpawnProjectlies(9, Main.MouseWorld);
+                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
+                ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }
 
 

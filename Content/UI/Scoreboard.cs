@@ -17,7 +17,7 @@ namespace DuanWu.Content.UI
 {
     public class Scoreboard : UIState
     {
-        private static UIGrid UIGrid;
+        public static UIGrid UIGrid;
         public static Dictionary <string,bool> Player = [];
         public static Dictionary <string, int> counts = [];
         public override void OnInitialize()
@@ -30,31 +30,6 @@ namespace DuanWu.Content.UI
             Append(UIGrid);
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            int n = 0;
-            foreach (Player play in Main.ActivePlayers)
-            {
-                Player.TryAdd(play.name, false);
-                counts.TryAdd(play.name, Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
-                n++;
-                if (!Player[play.name])
-                {
-                    UIGrid.Add(new ScoreboardElement(play.name,1));
-                    Player[play.name] = true;
-                }
-            }
-            foreach(UIElement uI in  UIGrid._items)
-            {
-                uI.Update(gameTime);
-            }
-        }
-
-        public static void Refresh()
-        {
-            UIGrid?.Clear();
-            Player?.Clear();
-        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -65,28 +40,27 @@ namespace DuanWu.Content.UI
         {
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/text"), UIGrid.GetDimensions().ToRectangle(), Color.White);
         }
+
     }
     internal class ScoreboardElement : UIElement
     {
         private UIText name;
         private UIText count;
-        private string savename;
-        public ScoreboardElement(string playername,int playercount)
+        private UIText accuracy;
+        public ScoreboardElement(string name,float corrects,int numberofquestions)
         {
-            name = new UIText(playername);
-            count = new UIText(playercount.ToString());
-            savename=playername;
+            this.name = new UIText(name);
+            accuracy = new UIText(corrects.ToString());
+            count = new UIText(numberofquestions.ToString());
             Height.Set(50, 0);
             Width.Set(100, 0);
             count.Top.Set(25, 0);
-            Append(name);
+            accuracy.Top.Set(40, 0);
+            Append(this.name);
+            Append(accuracy);
             Append(count);
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            count.SetText(Scoreboard.counts[savename]==0 ? Scoreboard.counts[savename].ToString(): "");
-        }
     }
 
 }

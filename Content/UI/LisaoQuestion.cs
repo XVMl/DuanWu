@@ -20,6 +20,7 @@ namespace DuanWu.Content.UI
         private UIText questionText1;
         private UIText conunttime;
         private UIText answer;
+        private float visibility = 0.5f;
         public override void OnInitialize()
         {
             area = new UIElement();
@@ -56,7 +57,6 @@ namespace DuanWu.Content.UI
             area.Append(questionText1);
             area.Append(conunttime);
             area.Append(answer);
-            Append(questionText);
         }
 
         public override void Update(GameTime gameTime)
@@ -64,9 +64,11 @@ namespace DuanWu.Content.UI
             if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 Append(area);
+                visibility = 0.5f;
             }
             else
             {
+                visibility = 0;
                 area.Remove();
                 return;
             }
@@ -104,7 +106,7 @@ namespace DuanWu.Content.UI
         {
             base.DrawSelf(spriteBatch);
             Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Question"), hitbox, Color.White*0.5f );
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Question"), hitbox, Color.White*visibility);
         }
     }
 }

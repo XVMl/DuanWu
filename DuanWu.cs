@@ -23,33 +23,57 @@ namespace DuanWu
         {
             string type = reader.ReadString();
             Main.NewText(type);
-            if (type == "NetNPC")
+            switch (type)
             {
-                NetNPC.HandlePacket(reader, whoAmI);
+                case "NetNPC":
+                    NetNPC.HandlePacket(reader, whoAmI);
+                    break;
+                case "NetProjectlies":
+                    NetProjectlies.HandlePacket(reader, whoAmI);
+                    break;
+                case "NetTime":
+                    NetTime.HandlePacket(reader, whoAmI);
+                    break;
+                case "Netsponse":
+                    Netsponse.HandlePacket(reader, whoAmI);
+                    break;
+                case "NetScoreboard":
+                    NetScoreboard.HandlePacket(reader, whoAmI);
+                    break;
+                case "ServeSetQustion":
+                    ServeSetQustion.HandlePacket(reader, whoAmI);
+                    break;
+                default:
+                    break;
             }
-            else if (type == "NetProjectlies")
-            {
-                NetProjectlies.HandlePacket(reader, whoAmI);
-            }
-            else if (type == "NetTime")
-            {
-                NetTime.HandlePacket(reader, whoAmI);
-            }
-            else if (type == "Netsponse")
-            {
-                
-                Netsponse.HandlePacket(reader, whoAmI);
-            }
-            else if (type == "NetScoreboardRefresh")
-            {
-                NetScoreboardRefresh.HandlePacket(reader, whoAmI);
-            }
-            else if (type == "NetScoreboard")
-            {
-                
-                NetScoreboard.HandlePacket(reader, whoAmI);
-            }
-            
+            //if (type == "NetNPC")
+            //{
+            //    NetNPC.HandlePacket(reader, whoAmI);
+            //}
+            //else if (type == "NetProjectlies")
+            //{
+            //    NetProjectlies.HandlePacket(reader, whoAmI);
+            //}
+            //else if (type == "NetTime")
+            //{
+            //    NetTime.HandlePacket(reader, whoAmI);
+            //}
+            //else if (type == "Netsponse")
+            //{
+
+            //    Netsponse.HandlePacket(reader, whoAmI);
+            //}
+            //else if (type == "NetScoreboard")
+            //{
+
+            //    NetScoreboard.HandlePacket(reader, whoAmI);
+            //}
+            //else if (type == "ServeSetQustion")
+            //{
+
+            //    NetScoreboard.HandlePacket(reader, whoAmI);
+            //}
+
 
         }
     }

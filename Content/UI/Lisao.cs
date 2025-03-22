@@ -76,7 +76,9 @@ namespace DuanWu.Content.UI
 
         public override void LeftClick(UIMouseEvent evt)
         {
-            Main.NewText(Number);
+            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().ChoiceAnswer = this.Number;
+            duanWuPlayer.counttime = 0;
             base.LeftClick(evt);
         }
 

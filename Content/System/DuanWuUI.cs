@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -13,9 +14,6 @@ namespace DuanWu.Content.System
 {
     public class DuanWuUI : ModSystem
     {
-        private UserInterface _lisaoQAInterface;
-        internal LisaoChoice lisaoQA;
-
         private UserInterface _lisaoQustion;
         internal LisaoQuestion lisaoQuestion;
 
@@ -31,9 +29,6 @@ namespace DuanWu.Content.System
         {
             if (!Main.dedServ)
             {
-                _lisaoQAInterface = new UserInterface();
-                lisaoQA = new LisaoChoice();
-                _lisaoQAInterface.SetState(lisaoQA);
                 _lisaoQustion = new UserInterface();
                 lisaoQuestion = new LisaoQuestion();
                 _lisaoQustion.SetState(lisaoQuestion);
@@ -52,8 +47,7 @@ namespace DuanWu.Content.System
 
         public override void UpdateUI(GameTime gameTime)
         {
-            UserInterface lisaointerface = _lisaoQAInterface;
-            lisaointerface?.Update(gameTime);
+           
             UserInterface lisaoquestion = _lisaoQustion;
             lisaoquestion?.Update(gameTime);
             UserInterface lisao = _lisao;
@@ -68,25 +62,16 @@ namespace DuanWu.Content.System
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
             if (MouseTextIndex != -1)
             {
-                // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                //    "DuanWu:LisaoQA",
-                //    delegate
-                //    {
-                //        _lisaoQAInterface.Draw(Main.spriteBatch, new GameTime());
-                //        return true;
-                //    },
-                //    InterfaceScaleType.UI)
-                //);
 
-                // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-                //    "DuanWu:LisaoQuestion",
-                //    delegate
-                //    {
-                //        _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
-                //        return true;
-                //    },
-                //    InterfaceScaleType.UI)
-                //);
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                   "DuanWu:LisaoQuestion",
+                   delegate
+                   {
+                       _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
+                       return true;
+                   },
+                   InterfaceScaleType.UI)
+               );
 
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                    "DuanWu:Lisao",
@@ -98,15 +83,18 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
-               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-               //    "DuanWu:Scoreboard",
-               //    delegate
-               //    {
-               //        _scoreboard.Draw(Main.spriteBatch, new GameTime());
-               //        return true;
-               //    },
-               //    InterfaceScaleType.UI)
-               //);
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                       "DuanWu:Scoreboard",
+                       delegate
+                       {
+                           _scoreboard.Draw(Main.spriteBatch, new GameTime());
+                           return true;
+                       },
+                       InterfaceScaleType.UI)
+                   );
+                }
             }
 
             int MouseTextIndex1 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 3"));

@@ -62,9 +62,10 @@ namespace DuanWu.Content.Items
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 LanguageHelper.SetQuestion();
+
             }
 
-            return new bool?(true);
+            return true;
         }
     }
 }

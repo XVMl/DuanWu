@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -24,18 +25,14 @@ namespace DuanWu.Content.Utilities
         {
             if(DuanWuPlayer.FullText)
             {
-            return Language.GetTextValue("Mods.DuanWu.ChoiceQuestion.FullText."+id.ToString()+".Question."+n.ToString());
+                return Language.GetTextValue("Mods.DuanWu.ChoiceQuestion.FullText."+id.ToString()+".Question."+n.ToString());
             }
-            else
-            {
-                return Language.GetTextValue("Mods.DuanWu.ChoiceQuestion.Excerpt."+id.ToString()+".Question."+n.ToString());
-            }
+            return Language.GetTextValue("Mods.DuanWu.ChoiceQuestion.Excerpt."+id.ToString()+".Question."+n.ToString());
         }
-
 
         public static List<int> GetUniqueRandomNumbers(int count, int min, int max)
         {
-            HashSet<int> result = new HashSet<int>();
+            HashSet<int> result = [];
             while (result.Count < count)
             {
                 result.Add(Main.rand.Next(min, max + 1));
@@ -46,52 +43,48 @@ namespace DuanWu.Content.Utilities
         public static void SetQuestion()
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-            if (!duanWuPlayer.LisaoActive)
-            {
-                duanWuPlayer.LisaoActive = true;
-            }
-            else
+            if (duanWuPlayer.LisaoActive)
             {
                 return;
             }
-            List<int> nums;
-            int ans;
-            int conunts;
-            int t;
-            duanWuPlayer.counttime = DuanWuPlayer.AnswerQuestionTime * 60;
-            if (DuanWuPlayer.FullText)
+            if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                t = 186;
-            }
-            else
-            {
-                t = 37;
-            }
-
-            if (DuanWuPlayer.Hardmode)
-            {
-                nums = LanguageHelper.GetUniqueRandomNumbers(8, 0, t);
-                ans = Main.rand.Next(0, 8);
-                duanWuPlayer.Answer = ans;
-                conunts = 8;
-            }
-            else
-            {
-                nums = LanguageHelper.GetUniqueRandomNumbers(4, 0, t);
-                ans = Main.rand.Next(0, 4);
-                duanWuPlayer.Answer = ans;
-                conunts = 4;
+                Main.NewText("@#E");
+                return;
             }
             duanWuPlayer.ChoiceAnswer = -1;
+            duanWuPlayer.counttime = DuanWuPlayer.AnswerQuestionTime * 60;
+            duanWuPlayer.LisaoActive = true;
+            List<int> nums;
+            int ans;
+            int numberofchoise;
+            int text;
+            text = DuanWuPlayer.FullText ? 186 : 37;
+            numberofchoise = DuanWuPlayer.Hardmode ? 8 : 4;
+            nums = GetUniqueRandomNumbers(numberofchoise, 0, text);
+            ans = Main.rand.Next(0, numberofchoise);
             duanWuPlayer.lisaoquestion = Main.rand.Next(2);
-            int n = duanWuPlayer.lisaoquestion == 0 ? 1 : 0;
-            duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(nums[0], duanWuPlayer.lisaoquestion);
-            duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(nums[0], n);
-            for (int i = 0; i < 8; i++)
+            if (Main.netMode == NetmodeID.Server)
             {
-                duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(nums[(i + conunts - ans) % conunts], n);
+                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                writer.Write("ServeSetQustion");
+                //writer.Write(text);
+                //writer.Write(numberofchoise);
+                writer.Write(ans);
+                writer.Write(duanWuPlayer.lisaoquestion);
+                for (int i = 0; i < 8; i++)
+                {
+                    writer.Write(nums[i]);
+                }
+                writer.Send(-1, -1);
             }
-
+            duanWuPlayer.Answer = ans;
+            duanWuPlayer.LisaoQuestionText = GetQuestionTextValue(nums[0], duanWuPlayer.lisaoquestion);
+            duanWuPlayer.QuestionAnswer = GetQuestionTextValue(nums[0], (duanWuPlayer.lisaoquestion+1)%2);
+            for (int i = 0; i < numberofchoise; i++)
+            {
+                duanWuPlayer.LisaoChoiceText[i] = GetQuestionTextValue(nums[(i + numberofchoise - ans) % numberofchoise], (duanWuPlayer.lisaoquestion + 1) % 2);
+            }
         }
 
         public static void CheckAnswer()
@@ -99,8 +92,7 @@ namespace DuanWu.Content.Utilities
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
             if (duanWuPlayer.Answer==duanWuPlayer.ChoiceAnswer)
             {
-                string s = Language.GetTextValue("Mods.DuanWu.Judging.Success");
-                Main.NewText(s,Color.Green);
+                Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Success"), Color.Green);
                 duanWuPlayer.Reward = true;
                 RewardSystem reward = new(1);
                 DuanWuPlayer.PlayerQuestionEnd = true;
@@ -108,8 +100,7 @@ namespace DuanWu.Content.Utilities
             }
             else
             {
-                string s = Language.GetTextValue("Mods.DuanWu.Judging.Fail");
-                Main.NewText(s,Color.Red);
+                Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
                 duanWuPlayer.Reward = false;
                 PenaltySystem penaltySystem = new(1);
             }
