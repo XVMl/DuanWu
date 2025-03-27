@@ -4,3 +4,420 @@ Message at 2025/3/2 22:18:49: Compiling Content\Pixelation.xnb
 Message at 2025/3/2 22:18:49: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
 Message at 2025/3/2 22:18:49: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
 Message at 2025/3/2 22:18:49: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 18:20:13: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 18:20:13: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 18:20:13: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 18:20:13: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 18:20:13: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 18:20:13: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 18:20:13: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 18:20:13: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 18:20:13: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 19:41:48: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 19:41:48: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 19:41:48: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 19:41:48: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 19:41:48: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 19:41:48: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 19:41:48: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 19:41:48: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 19:41:48: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 22:05:14: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:05:14: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:05:15: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 22:05:15: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:05:15: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:05:15: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 22:05:15: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:05:15: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:05:15: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 22:29:30: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:29:30: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:29:30: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 22:29:30: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:29:30: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:29:30: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 22:29:30: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:29:30: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:29:30: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 22:45:19: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:45:19: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:45:19: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 22:45:19: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:45:19: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:45:19: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 22:45:19: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:45:19: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:45:19: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 22:49:50: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:49:50: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:49:50: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 22:49:50: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:49:50: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:49:50: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 22:49:50: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:49:50: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:49:50: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 22:52:38: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:52:38: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:52:38: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 22:52:38: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:52:38: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:52:38: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 22:52:38: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:52:38: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:52:38: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 22:57:47: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:57:47: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Error at 2025/3/25 22:57:48: Errors compiling C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx:
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx(54,5): error X5608: Compiled shader code uses too many arithmetic instruction slots (68). Max. allowed by the target (ps_2_0) is 64.
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx(72,23): ID3DXEffectCompiler::CompileEffect: There was an error compiling expression
+ID3DXEffectCompiler: Compilation failed
+Message at 2025/3/25 22:58:43: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:58:43: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Error at 2025/3/25 22:58:43: Errors compiling C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx:
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx(54,5): error X5608: Compiled shader code uses too many arithmetic instruction slots (68). Max. allowed by the target (ps_2_0) is 64.
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx(69,23): ID3DXEffectCompiler::CompileEffect: There was an error compiling expression
+ID3DXEffectCompiler: Compilation failed
+Message at 2025/3/25 22:59:39: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:59:40: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:59:40: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 22:59:40: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:59:40: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:59:40: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 22:59:40: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 22:59:40: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 22:59:40: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 23:15:44: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:15:44: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:15:44: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 23:15:44: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:15:44: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:15:44: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 23:15:44: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:15:44: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:15:44: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 23:22:12: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:22:12: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:22:12: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 23:22:12: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:22:12: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:22:12: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 23:22:12: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:22:12: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:22:12: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 23:24:37: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:24:37: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:24:37: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 23:24:37: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:24:37: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:24:37: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 23:24:37: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:24:37: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:24:37: Compiling Content\Zhuan.xnb
+Message at 2025/3/25 23:25:51: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:25:51: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:25:51: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/25 23:25:51: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:25:51: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:25:51: Compiling Content\Pixelation.xnb
+Message at 2025/3/25 23:25:51: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/25 23:25:51: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/25 23:25:51: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:05:15: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:05:15: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Error at 2025/3/26 9:05:15: Errors compiling C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx:
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\ArmorBasic.fx(28,106): error X3004: undeclared identifier 'luminosity'
+Message at 2025/3/26 9:05:49: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:05:49: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:05:49: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:05:49: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:05:49: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:05:49: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:05:49: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:05:49: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:05:49: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:31:38: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:31:38: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:31:38: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:31:38: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:31:38: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:31:38: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:31:38: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:31:38: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:31:38: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:32:52: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:32:53: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:32:53: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:32:53: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:32:53: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:32:53: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:32:53: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:32:53: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:32:53: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:34:41: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:34:42: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:34:42: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:34:42: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:34:42: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:34:42: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:34:42: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:34:42: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:34:42: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:36:53: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:36:53: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:36:53: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:36:53: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:36:53: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:36:53: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:36:53: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:36:53: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:36:53: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:37:54: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:37:54: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:37:54: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:37:54: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:37:54: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:37:54: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:37:54: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:37:54: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:37:54: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:42:54: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:42:54: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:42:54: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:42:54: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:42:54: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:42:54: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:42:54: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:42:54: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:42:54: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:45:07: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:45:07: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:45:07: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:45:07: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:45:07: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:45:07: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:45:07: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:45:07: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:45:07: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 9:50:36: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:50:36: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:50:36: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 9:50:36: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:50:36: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:50:36: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 9:50:36: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 9:50:36: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 9:50:36: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 13:34:44: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:34:45: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 13:34:45: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 13:34:45: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:34:45: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 13:34:45: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 13:34:45: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:34:45: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Error at 2025/3/26 13:34:45: Errors compiling C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\Shockwave.fx:
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\Shockwave.fx(48,23): error X3004: undeclared identifier 'FilterMyShader'
+Message at 2025/3/26 13:35:43: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:35:43: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 13:35:43: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 13:35:43: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:35:43: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 13:35:43: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 13:35:43: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:35:43: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 13:35:43: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 13:35:43: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 13:35:43: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 13:35:43: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 15:25:51: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 15:25:51: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 15:25:51: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 15:25:51: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 15:25:51: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 15:25:51: Compiling Content\magnifier.xnb
+Message at 2025/3/26 15:25:51: Importing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 15:25:51: Processing Pixelation.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 15:25:51: Compiling Content\Pixelation.xnb
+Message at 2025/3/26 15:25:51: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 15:25:51: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 15:25:51: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 15:25:51: Importing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 15:25:51: Processing Zhuan.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 15:25:51: Compiling Content\Zhuan.xnb
+Message at 2025/3/26 18:21:59: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:21:59: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:21:59: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:21:59: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:21:59: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Error at 2025/3/26 18:21:59: Errors compiling C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\magnifier.fx:
+C:\Users\QO\Documents\My Games\Terraria\tModLoader\ModSources\DuanWu\Content\Effects\magnifier.fx(32,18): error X3019: if statement conditional expressions must evaluate to a scalar
+Message at 2025/3/26 18:23:32: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:23:33: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:23:33: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:23:33: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:23:33: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:23:33: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:23:33: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:23:33: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:23:33: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:26:00: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:26:00: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:26:00: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:26:00: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:26:00: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:26:00: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:26:00: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:26:00: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:26:00: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:28:57: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:28:57: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:28:57: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:28:57: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:28:57: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:28:57: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:28:57: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:28:57: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:28:57: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:30:29: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:30:29: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:30:29: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:30:29: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:30:29: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:30:29: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:30:29: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:30:29: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:30:29: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:32:28: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:32:28: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:32:28: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:32:29: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:32:29: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:32:29: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:32:29: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:32:29: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:32:29: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:34:20: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:34:20: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:34:20: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:34:20: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:34:20: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:34:20: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:34:20: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:34:20: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:34:20: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:36:43: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:36:44: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:36:44: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:36:44: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:36:44: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:36:44: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:36:44: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:36:44: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:36:44: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:39:12: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:39:12: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:39:13: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:39:13: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:39:13: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:39:13: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:39:13: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:39:13: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:39:13: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:40:41: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:40:41: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:40:41: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:40:41: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:40:41: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:40:41: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:40:41: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:40:41: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:40:41: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:41:49: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:41:50: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:41:50: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:41:50: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:41:50: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:41:50: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:41:50: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:41:50: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:41:50: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:43:48: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:43:48: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:43:48: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:43:48: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:43:48: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:43:48: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:43:48: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:43:48: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:43:48: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:45:25: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:45:26: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:45:26: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:45:26: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:45:26: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:45:26: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:45:26: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:45:26: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:45:26: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 18:48:12: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:48:12: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:48:12: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 18:48:12: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:48:12: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:48:12: Compiling Content\magnifier.xnb
+Message at 2025/3/26 18:48:12: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 18:48:12: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 18:48:12: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 19:04:57: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:04:57: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:04:57: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 19:04:57: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:04:57: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:04:57: Compiling Content\magnifier.xnb
+Message at 2025/3/26 19:04:57: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:04:57: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:04:57: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 19:07:17: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:07:18: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:07:18: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 19:07:18: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:07:18: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:07:18: Compiling Content\magnifier.xnb
+Message at 2025/3/26 19:07:18: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:07:18: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:07:18: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 19:18:32: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:18:32: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:18:32: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 19:18:32: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:18:32: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:18:32: Compiling Content\magnifier.xnb
+Message at 2025/3/26 19:18:32: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:18:32: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:18:32: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 19:21:54: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:21:54: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:21:55: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/26 19:21:55: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:21:55: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:21:55: Compiling Content\magnifier.xnb
+Message at 2025/3/26 19:21:55: Importing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 19:21:55: Processing Shockwave.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 19:21:55: Compiling Content\Shockwave.xnb
+Message at 2025/3/26 22:42:28: Importing magnifiter.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 22:42:28: Processing magnifiter.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 22:42:28: Compiling Content\magnifiter.xnb
+Message at 2025/3/26 22:46:53: Importing magnifiter.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 22:46:53: Processing magnifiter.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 22:46:53: Compiling Content\magnifiter.xnb
+Message at 2025/3/26 22:49:44: Importing magnifiter.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 22:49:44: Processing magnifiter.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 22:49:44: Compiling Content\magnifiter.xnb
+Message at 2025/3/26 22:51:50: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 22:51:51: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 22:51:51: Compiling Content\magnifier.xnb
+Message at 2025/3/26 22:53:30: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/26 22:53:30: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/26 22:53:30: Compiling Content\magnifier.xnb

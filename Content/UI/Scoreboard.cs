@@ -23,13 +23,12 @@ namespace DuanWu.Content.UI
         public override void OnInitialize()
         {
             UIGrid = new UIGrid();
-            UIGrid.Width.Set(100, 0);
-            UIGrid.Height.Set(200, 0);
+            UIGrid.Width.Set(200, 0);
             UIGrid.HAlign = 1f;
             UIGrid.VAlign = 0.5f;
+            CalcBox();
             Append(UIGrid);
         }
-
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -41,6 +40,12 @@ namespace DuanWu.Content.UI
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/text"), UIGrid.GetDimensions().ToRectangle(), Color.White);
         }
 
+        public static void CalcBox()
+        {
+            UIGrid.Height.Set(5+ UIGrid._items.Count * 45, 0);
+            UIGrid.Width.Set(200, 0);
+        }
+
     }
     internal class ScoreboardElement : UIElement
     {
@@ -50,12 +55,14 @@ namespace DuanWu.Content.UI
         public ScoreboardElement(string name,float corrects,int numberofquestions)
         {
             this.name = new UIText(name);
+            this.name.Left.Set(50, 0);
             accuracy = new UIText(corrects.ToString());
             count = new UIText(numberofquestions.ToString());
-            Height.Set(50, 0);
+            Height.Set(40, 0);
             Width.Set(100, 0);
-            count.Top.Set(25, 0);
-            accuracy.Top.Set(40, 0);
+            count.Top.Set(20, 0);
+            accuracy.Top.Set(20, 0);
+            accuracy.Left.Set(20, 0);
             Append(this.name);
             Append(accuracy);
             Append(count);

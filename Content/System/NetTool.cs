@@ -15,6 +15,14 @@ namespace DuanWu.Content.System
 {
     public abstract class NetTool : ModSystem
     {
+        public static readonly Dictionary<string, Type> PacketHandlers = new();
+        
+        public abstract string TypeName { get; }
+        public override void Load()
+        {
+            PacketHandlers[TypeName] = GetType();
+            base.Load();
+        }
         public virtual void RecievePacket(BinaryReader reader, int sender) { }
         public virtual void SendPacket(BinaryWriter writer) { }
 
@@ -38,11 +46,14 @@ namespace DuanWu.Content.System
             packet.Write(Name);
             SendPacket(packet);
             packet.Send(toClient, ignoreClient);
-
+            
         }
+
     }
     public class NetTime : NetTool
     {
+        public override string TypeName => Name;
+
         public override void RecievePacket(BinaryReader reader, int sender)
         {
             Main.dayTime = reader.ReadBoolean();
@@ -66,9 +77,29 @@ namespace DuanWu.Content.System
             netTime.RecievePacket(reader, sender);
         }
     }
+    internal class Netsponse : NetTool
+    {
+        public override string TypeName => Name;
+        public override void RecievePacket(BinaryReader reader, int sender)
+        {
+            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
+            if (Main.netMode == NetmodeID.Server && sender >= 0)
+            {
+                base.NetSeed(-1, sender);
+            }
+        }
+
+        public static void HandlePacket(BinaryReader reader, int sender)
+        {
+            Netsponse netQuickresponse = new Netsponse();
+            netQuickresponse.RecievePacket(reader, sender);
+        }
+    }
 
     internal class NetScoreboard : NetTool
     {
+        public override string TypeName => Name;
+
         public static Dictionary<string, int> correct = [];
         public static Dictionary<string, int> numberofquestion = [];
 
@@ -116,6 +147,7 @@ namespace DuanWu.Content.System
                 {
                     Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
                 }
+                Scoreboard.CalcBox();
             }
 
         }
@@ -148,26 +180,9 @@ namespace DuanWu.Content.System
         }
     }
 
-    internal class Netsponse : NetTool
-    {
-        public override void RecievePacket(BinaryReader reader, int sender)
-        {
-            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
-            if (Main.netMode == NetmodeID.Server && sender >= 0)
-            {
-                base.NetSeed(-1, sender);
-            }
-        }
-
-        public static void HandlePacket(BinaryReader reader, int sender)
-        {
-            Netsponse netQuickresponse = new Netsponse();
-            netQuickresponse.RecievePacket(reader, sender);
-        }
-    }
-
     internal class NetSpawnRate : NetTool
     {
+        public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
             DuanWuPlayer.SetSpwanRate = reader.ReadBoolean();
@@ -185,6 +200,7 @@ namespace DuanWu.Content.System
 
     internal class NetProjectlies : NetTool
     {
+        public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
             int type = reader.ReadInt32();
@@ -214,6 +230,7 @@ namespace DuanWu.Content.System
 
     internal class NetNPC : NetTool
     {
+        public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
 
@@ -243,8 +260,30 @@ namespace DuanWu.Content.System
 
     internal class ServeSetQustion : NetTool
     {
+        public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
+            if (Main.netMode == NetmodeID.Server && DuanWuPlayer.Quickresponse)
+            {
+                //writer.Write(text);
+                //writer.Write(numberofchoise);
+                List<int> nums = [];
+                int ans = reader.ReadInt32();
+                int lisaoquestion = reader.ReadInt32();
+                for (int i = 0; i < 8; i++)
+                {
+                    nums.Add(reader.ReadInt32());
+                }
+                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                writer.Write("ServeSetQustion");
+                writer.Write(ans);
+                writer.Write(lisaoquestion);
+                for (int i = 0; i < 8; i++)
+                {
+                    writer.Write(nums[i]);
+                }
+                writer.Send(-1, sender);
+            }
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
                 int ans = reader.ReadInt32();
@@ -258,13 +297,14 @@ namespace DuanWu.Content.System
                 }
                 for (int i = 0; i < 8; i++)
                 {
-                    duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(nums[(i + 8 - ans) % 8], (lisaoquestion + 1) % 2);
+                    duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(nums[(i + 8 - ans) % 8], (lisaoquestion ^ 1));
                 }
+                duanWuPlayer.lisaoquestion = lisaoquestion;
                 duanWuPlayer.LisaoActive = true;
                 duanWuPlayer.ChoiceAnswer = -1;
-                duanWuPlayer.counttime = DuanWuPlayer.AnswerQuestionTime * 60;
+                duanWuPlayer.counttime =  600;
                 duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(nums[0], lisaoquestion);
-                duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(nums[0], (lisaoquestion + 1) % 2);
+                duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(nums[0], (lisaoquestion ^ 1) );
             }
         }
 

@@ -11,7 +11,6 @@ namespace DuanWu.Content.System
 {
     public class OtherResults
     {
-
         public OtherResults() { }
 
         public static double SetTime;

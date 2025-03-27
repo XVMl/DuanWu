@@ -18,7 +18,6 @@ namespace DuanWu.Content.UI
     public class Lisao : UIState
     {
         public UIGrid LisaochoiceLisst;
-        private float Height;
         public override void OnInitialize()
         {
             LisaochoiceLisst = new UIGrid();
@@ -53,7 +52,6 @@ namespace DuanWu.Content.UI
             {
                 AddEditor();
             }
-            
             
         }
 

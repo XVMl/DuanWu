@@ -113,6 +113,11 @@ Items: {
 		// DisplayName: Tai Wanese Zongzi
 		// Tooltip: ""
 	}
+
+	InfiniteUniverseBar: {
+		// DisplayName: Infinite Universe Bar
+		// Tooltip: ""
+	}
 }
 
 Judging: {
@@ -1697,6 +1702,7 @@ ChoiceQuestion: {
 Projectiles: {
 	// AnglerBobber.DisplayName: Angler Bobber
 	// SuperCopperShortsword.DisplayName: Super Copper Shortsword
+	// ShockWave.DisplayName: Shock Wave
 }
 
 Buffs: {

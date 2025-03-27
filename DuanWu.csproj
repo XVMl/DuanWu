@@ -12,6 +12,9 @@
 	  <AdditionalFiles Remove="Content\Projectiles\AnglerBobber.png" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="content\effects\ArmorBasic.fx" />
+	  <None Remove="content\effects\content\Shockwave.fx" />
+	  <None Remove="Content\Effects\magnifier.fx" />
 	  <None Remove="content\effects\Pixelation.fx" />
 	  <None Remove="Content\Items\ZongZi.png" />
 	</ItemGroup>

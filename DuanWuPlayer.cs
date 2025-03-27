@@ -16,7 +16,9 @@ namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
     {
-
+        /// <summary>
+        /// 设置答案选项
+        /// </summary>
         public int Answer;
         /// <summary>  
         /// 只在SetQuestion()时乘以帧数60  
@@ -31,10 +33,19 @@ namespace DuanWu
         public int lisaoquestion;
         public int QuestionCount;
         public int counttime;
+        /// <summary>
+        /// 展示的答案
+        /// </summary>
         public string QuestionAnswer = "";
         public bool KeepQuestionActive;
         public bool? Reward;
+        /// <summary>
+        /// 设置题目文本
+        /// </summary>
         public string LisaoQuestionText = "";
+        /// <summary>
+        /// 设置选项文本
+        /// </summary>
         public string[] LisaoChoiceText = new string[8];
         public int ShowAnswer;
         public static bool Hardmode;
@@ -78,6 +89,7 @@ namespace DuanWu
         /// 回答正确数
         /// </summary>
         public int PlayerAccuracy;
+        public static bool QustionActive;
         public override void OnEnterWorld()
         {
             NetScoreboard.SubmitPacket();   
@@ -86,9 +98,18 @@ namespace DuanWu
 
         public override void PostUpdate()
         {
+            if (!Filters.Scene["DuanWuShader:magnifiter"].IsActive())
+            {
+                Filters.Scene.Activate("DuanWuShader:magnifiter");
+            }
 
+            if (Filters.Scene["DuanWuShader:magnifiter"].IsActive())
+            {
+                Vector2 mouse = (Main.MouseWorld - Main.screenPosition);
+                Vector2 pos = new Vector2(mouse.X / Main.screenWidth, mouse.Y / Main.screenHeight);
+                Filters.Scene["DuanWuShader:magnifiter"].GetShader().UseColor(122,122,122).UseTargetPosition(pos + new Vector2(Main.offScreenRange, Main.offScreenRange));
+            }
             //OtherQusetionAvtive();
-            
             if (LisaoActive)
             {
                 counttime--;
@@ -115,13 +136,18 @@ namespace DuanWu
                 player.findTreasure = true;
             }
 
+            if (QustionActive)
+            {
+                LanguageHelper.SetQuestion();
+                QustionActive = false;
+            }
+
             //if (KeepQuestionActive)
             //{
             //    LanguageHelper.SetQuestion();
             //}
 
         }
-
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
         {
@@ -134,6 +160,7 @@ namespace DuanWu
 
         public override void UpdateDead()
         {
+
             if (Filters.Scene["DuanWuShader:Zhuan"].IsActive())
             {
                 Filters.Scene["DuanWuShader:Zhuan"].Deactivate();
@@ -240,25 +267,28 @@ namespace DuanWu
         #region 受击时
         public override void OnHurt(Player.HurtInfo info)
         {
-
-            if (info.Damage >= 250 && info.Damage < Player.statLife)
+            if (!Main.dedServ)
             {
-                LanguageHelper.SetQuestion();
+                QustionActive=true;
             }
-            else if (info.Damage >= 100)
-            {
-                if (Main.rand.Next(0, 4) == 1)
-                {
-                    LanguageHelper.SetQuestion();
-                }
-            }
-            else
-            {
-                if (Main.rand.Next(0, 16) == 1)
-                {
-                    LanguageHelper.SetQuestion();
-                }
-            }
+            //if (info.Damage >= 250 && info.Damage < Player.statLife)
+            //{
+            //    LanguageHelper.SetQuestion();
+            //}
+            //else if (info.Damage >= 100)
+            //{
+            //    if (Main.rand.Next(0, 4) == 1)
+            //    {
+            //        LanguageHelper.SetQuestion();
+            //    }
+            //}
+            //else
+            //{
+            //    if (Main.rand.Next(0, 16) == 1)
+            //    {
+            //        LanguageHelper.SetQuestion();
+            //    }
+            //}
         }
         #endregion
 
