@@ -54,8 +54,10 @@ namespace DuanWu.Content.Items
         {
             if (Main.myPlayer==player.whoAmI)
             {
-                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
-                ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
+                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().Screenpos = Main.LocalPlayer.Center - new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().FreeScreen= !Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().FreeScreen;
+                //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
+                //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }
 
 

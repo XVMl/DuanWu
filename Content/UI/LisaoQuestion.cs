@@ -23,30 +23,28 @@ namespace DuanWu.Content.UI
         public override void OnInitialize()
         {
             area = new UIElement();
-            area.Left.Set(0f, 0f);
-            area.Top.Set(-250f, 0f);
             area.Width.Set(800f, 0f);
             area.Height.Set(100f, 0f);
-            area.HAlign = area.VAlign = 0.5f;
+            area.HAlign = 0.5f; area.VAlign = 0.1f;
             questionText = new UIText("", 0.7f, true);
+            conunttime = new UIText("", 0.7f, true);
+            questionText1 = new UIText("", 0.7f, true);
+            answer = new UIText("", 0.7f, true);
             questionText.Height.Set(1f, 0f);
             questionText.Width.Set(600f, 0f);
             questionText.Left.Set(0f, 0f);
             questionText.Top.Set(75f, 0f);
             questionText.IgnoresMouseInteraction = true;
-            conunttime = new UIText("", 0.7f, true);
             conunttime.Height.Set(1f, 0f);
             conunttime.Width.Set(600f, 0f);
             conunttime.Left.Set(300f, 0f);
             conunttime.Top.Set(25f, 0f);
             conunttime.IgnoresMouseInteraction = true;
-            questionText1 = new UIText("", 0.7f, true);
             questionText1.Height.Set(1f, 0f);
             questionText1.Width.Set(600f, 0f);
             questionText1.Left.Set(0f, 0f);
             questionText1.Top.Set(25f, 0f);
             questionText1.IgnoresMouseInteraction = true;
-            answer = new UIText("", 0.7f, true);
             answer.Height.Set(1f, 0f);
             answer.Width.Set(600f, 0f);
             answer.Left.Set(0f, 0f);
@@ -60,17 +58,16 @@ namespace DuanWu.Content.UI
 
         public override void Update(GameTime gameTime)
         {
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
-            {
-                Append(area);
-                visibility = 0.5f;
-            }
-            else
+            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 visibility = 0;
                 area.Remove();
                 return;
             }
+
+            Append(area);
+            visibility = 0.5f;
+            
             if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime > 0)
             {
                 conunttime.SetText((Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime / 60 + 1).ToString());

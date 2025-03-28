@@ -45,10 +45,12 @@ namespace DuanWu.Content.Items
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
+            Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Items/InfiniteUniverseBar").Value;
+            spriteBatch.Draw(texture, position, null, Color.White, 0f, texture.Size() / 2, 0.8f, SpriteEffects.None, 0);
+
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
             GameShaders.Misc["ArmorBasic"].Apply();
-            Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Items/InfiniteUniverseBar").Value;
             spriteBatch.Draw(texture, position, null, Color.White, 0f, texture.Size() / 2, 0.8f, SpriteEffects.None, 0);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);

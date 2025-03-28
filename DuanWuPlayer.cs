@@ -79,6 +79,8 @@ namespace DuanWu
         public bool SetMana;
         public Vector2 Screenpos;
         public bool StartScreenpos;
+        public bool FreeScreen;
+
         public static bool SetSpwanRate;
         public static bool PlayerQuestionEnd;
         /// <summary>
@@ -98,17 +100,26 @@ namespace DuanWu
 
         public override void PostUpdate()
         {
-            if (!Filters.Scene["DuanWuShader:magnifiter"].IsActive())
-            {
-                Filters.Scene.Activate("DuanWuShader:magnifiter");
-            }
 
-            if (Filters.Scene["DuanWuShader:magnifiter"].IsActive())
-            {
-                Vector2 mouse = (Main.MouseWorld - Main.screenPosition);
-                Vector2 pos = new Vector2(mouse.X / Main.screenWidth, mouse.Y / Main.screenHeight);
-                Filters.Scene["DuanWuShader:magnifiter"].GetShader().UseColor(122,122,122).UseTargetPosition(pos + new Vector2(Main.offScreenRange, Main.offScreenRange));
-            }
+
+            //if (!Filters.Scene["DuanWuShader:contraction"].IsActive())
+            //{
+            //    Filters.Scene.Activate("DuanWuShader:contraction");
+            //}
+
+            //if (!Filters.Scene["DuanWuShader:magnifiter"].IsActive())
+            //{
+            //    Filters.Scene.Activate("DuanWuShader:magnifiter");
+            //}
+
+            //if (Filters.Scene["DuanWuShader:magnifiter"].IsActive())
+            //{
+            //    Vector2 mouse = (Main.MouseWorld - Main.screenPosition);
+            //    Vector2 pos = new Vector2(mouse.X / Main.screenWidth, mouse.Y / Main.screenHeight);
+            //    Filters.Scene["DuanWuShader:magnifiter"].GetShader().UseColor(122,122,122).UseTargetPosition(pos + new Vector2(Main.offScreenRange, Main.offScreenRange));
+            //}
+
+
             //OtherQusetionAvtive();
             if (LisaoActive)
             {
@@ -236,23 +247,45 @@ namespace DuanWu
                 float _ = Math.Min(100, Player.statLifeMax2 / Player.statLife + 1);
                 Main.screenPosition = new Vector2(Main.LocalPlayer.Center.X - Main.screenWidth / 2, (float)(Main.LocalPlayer.Center.Y - Main.screenHeight / 2 + _ * 5f * Math.Sin(0.31415 * Main.time)));
             }
+            if (FreeScreen)
+            {
+                if (Main.MouseWorld.X - Main.screenPosition.X < 5)
+                {
+                    Screenpos.X -= 20;    
+                }
+                if (Main.MouseWorld.X - Main.screenPosition.X > Main.screenWidth-5)
+                {
+                    Screenpos.X += 20;
+                }
+                if (Main.MouseWorld.Y - Main.screenPosition.Y < 5)
+                {
+                    Screenpos.Y -= 20;
+                }
+                if (Main.MouseWorld.Y - Main.screenPosition.Y > Main.screenHeight-5)
+                {
+                    Screenpos.Y += 20;
+                }
+                screenCache = Vector2.Lerp(screenCache, Screenpos, 0.1f);
+                Main.screenPosition = screenCache;
+            }
+
 
             if (StartScreenpos)
             {
 
-                if (Main.LocalPlayer.Center.X - Screenpos.X <= Main.screenWidth)
+                if (Main.LocalPlayer.Center.X - Screenpos.X < Main.screenWidth)
                 {
                     Screenpos.X -= Main.screenWidth;
                 }
-                else
+                if (Main.LocalPlayer.Center.X - Screenpos.X > Main.screenWidth)
                 {
                     Screenpos.X += Main.screenWidth;
                 }
-                if (Main.LocalPlayer.Center.Y - Screenpos.Y <= Main.screenHeight)
+                if (Main.LocalPlayer.Center.Y - Screenpos.Y < Main.screenHeight)
                 {
                     Screenpos.Y -= Main.screenHeight;
                 }
-                else
+                if (Main.LocalPlayer.Center.Y - Screenpos.Y > Main.screenHeight)
                 {
                     Screenpos.Y += Main.screenHeight;
                 }

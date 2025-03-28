@@ -421,3 +421,93 @@ Message at 2025/3/26 22:51:51: Compiling Content\magnifier.xnb
 Message at 2025/3/26 22:53:30: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
 Message at 2025/3/26 22:53:30: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
 Message at 2025/3/26 22:53:30: Compiling Content\magnifier.xnb
+Message at 2025/3/28 13:33:22: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 13:33:22: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 13:33:22: Compiling Content\contraction.xnb
+Message at 2025/3/28 13:33:22: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 13:33:22: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 13:33:22: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:36:13: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:36:14: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:36:14: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:36:14: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:36:14: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:36:14: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:37:31: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:37:31: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:37:31: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:37:31: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:37:31: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:37:31: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:39:28: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:39:28: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:39:28: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:39:28: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:39:28: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:39:28: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:40:16: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:40:16: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:40:16: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:40:16: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:40:16: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:40:16: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:41:50: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:41:50: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:41:50: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:41:50: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:41:50: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:41:50: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:43:27: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:43:28: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:43:28: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:43:28: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:43:28: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:43:28: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:44:37: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:44:37: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:44:37: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:44:37: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:44:37: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:44:37: Compiling Content\magnifier.xnb
+Message at 2025/3/28 18:48:26: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:48:26: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:48:26: Compiling Content\contraction.xnb
+Message at 2025/3/28 18:48:26: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 18:48:26: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 18:48:26: Compiling Content\magnifier.xnb
+Message at 2025/3/28 23:07:04: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:07:05: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:07:05: Compiling Content\contraction.xnb
+Message at 2025/3/28 23:07:05: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:07:05: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:07:05: Compiling Content\magnifier.xnb
+Message at 2025/3/28 23:10:11: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:10:11: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:10:11: Compiling Content\contraction.xnb
+Message at 2025/3/28 23:10:11: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:10:11: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:10:11: Compiling Content\magnifier.xnb
+Message at 2025/3/28 23:11:13: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:11:13: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:11:13: Compiling Content\contraction.xnb
+Message at 2025/3/28 23:11:13: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:11:13: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:11:13: Compiling Content\magnifier.xnb
+Message at 2025/3/28 23:12:04: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:12:05: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:12:05: Compiling Content\contraction.xnb
+Message at 2025/3/28 23:12:05: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:12:05: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:12:05: Compiling Content\magnifier.xnb
+Message at 2025/3/28 23:12:53: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:12:53: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:12:53: Compiling Content\contraction.xnb
+Message at 2025/3/28 23:12:53: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:12:53: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:12:53: Compiling Content\magnifier.xnb
+Message at 2025/3/28 23:13:38: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:13:38: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:13:38: Compiling Content\contraction.xnb
+Message at 2025/3/28 23:13:38: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/28 23:13:38: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/28 23:13:38: Compiling Content\magnifier.xnb

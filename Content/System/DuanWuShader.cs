@@ -25,6 +25,9 @@ namespace DuanWu.Content.System
             Filters.Scene["DuanWuShader:magnifiter"] = new Filter(new ESScreenShaderData(new Ref<Effect>(ModContent.Request<Effect>("DuanWu/Content/Effects/Content/magnifier", AssetRequestMode.ImmediateLoad).Value), "test"), (EffectPriority)2);
             Filters.Scene["DuanWuShader:magnifiter"].Load();
 
+            Filters.Scene["DuanWuShader:contraction"] = new Filter(new ESScreenShaderData(new Ref<Effect>(ModContent.Request<Effect>("DuanWu/Content/Effects/Content/contraction", AssetRequestMode.ImmediateLoad).Value), "test"), (EffectPriority)2);
+            Filters.Scene["DuanWuShader:contraction"].Load();
+
             Ref<Effect> MiscEffect1 = new Ref<Effect>(ModContent.Request<Effect>("DuanWu/Content/Effects/Content/ArmorBasic",AssetRequestMode.ImmediateLoad ).Value);
             GameShaders.Misc["ArmorBasic"] = new MiscShaderData(MiscEffect1, "ArmorBasic");
         }

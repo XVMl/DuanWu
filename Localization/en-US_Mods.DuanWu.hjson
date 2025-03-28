@@ -118,6 +118,21 @@ Items: {
 		DisplayName: Infinite Universe Bar
 		Tooltip: ""
 	}
+
+	BubbleDukeFishron: {
+		Tooltip: ""
+		DisplayName: Bubble Duke Fishron
+	}
+
+	Trees: {
+		DisplayName: Trees
+		Tooltip: ""
+	}
+
+	Logo: {
+		DisplayName: Logo
+		Tooltip: ""
+	}
 }
 
 Judging: {
