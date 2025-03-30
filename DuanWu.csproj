@@ -19,6 +19,11 @@
 	  <None Remove="content\effects\Pixelation.fx" />
 	  <None Remove="Content\Items\ZongZi.png" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="Luminance">
+	    <HintPath>libs\Luminance.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
 
 	<!-- References -->
 
