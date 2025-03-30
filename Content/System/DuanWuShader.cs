@@ -30,6 +30,9 @@ namespace DuanWu.Content.System
 
             Ref<Effect> MiscEffect1 = new Ref<Effect>(ModContent.Request<Effect>("DuanWu/Content/Effects/Content/ArmorBasic",AssetRequestMode.ImmediateLoad ).Value);
             GameShaders.Misc["ArmorBasic"] = new MiscShaderData(MiscEffect1, "ArmorBasic");
+
+            Ref<Effect> MiscEffect2 = new Ref<Effect>(ModContent.Request<Effect>("DuanWu/Content/Effects/Content/SliverBlade", AssetRequestMode.ImmediateLoad).Value);
+            GameShaders.Misc["SliverBlade"] = new MiscShaderData(MiscEffect2, "ArmorBasic");
         }
     }
 }

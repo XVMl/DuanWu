@@ -23,13 +23,10 @@ float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLO
     {
         return color;
     }
-        float4 noise = tex2D(uImage1, float2(coords.x, coords.y + 0.5f * uTime));
+    float4 noise = tex2D(uImage1, float2(coords.x, coords.y + 0.5f * uTime));
     noise.rgb -= (1 - frac(coords.y))*0.7f;
     clip(noise.r);
-    //float luminosity = (color.r + color.g + color.b) / 3;
-    //color.rgb *= ((coords.x * float3(0.65, 0.34, 0.56)) + ((1 - coords.x) * float3(0.35, 0.84, 0.26))) * luminosity;
-    //color.rgb =color.rgb*wave;
-    return noise +color;
+    return noise + color;
 }
     
 technique Technique1

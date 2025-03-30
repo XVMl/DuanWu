@@ -1,4 +1,4 @@
-﻿using DuanWu.Content.Utilities;
+﻿using DuanWu.Content.MyUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

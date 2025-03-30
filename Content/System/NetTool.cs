@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using DuanWu.Content.Utilities;
+using DuanWu.Content.MyUtilities;
 
 namespace DuanWu.Content.System
 {

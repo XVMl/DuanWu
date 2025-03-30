@@ -12,7 +12,9 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using System.Collections.ObjectModel;
-
+using System.Diagnostics.Metrics;
+using Luminance;
+using Luminance.Core.Graphics;
 namespace DuanWu.Content.Items
 {
     public class SuperWoodenSword:ModItem
@@ -35,12 +37,17 @@ namespace DuanWu.Content.Items
 
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Main.spriteBatch.End();            
+            Main.spriteBatch.End();  
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
-            GameShaders.Misc["ArmorBasic"].UseImage1(ModContent.Request<Texture2D>("DuanWu/Content/Images/FireNoiseA"));
-            GameShaders.Misc["ArmorBasic"].Apply();
+            //GameShaders.Misc["SliverBlade"].UseImage1(ModContent.Request<Texture2D>("DuanWu/Content/Images/FireNoiseA"));
+            //GameShaders.Misc["SliverBlade"].UseImage2(ModContent.Request<Texture2D>("DuanWu/Content/Images/univers"));
+            //GameShaders.Misc["SliverBlade"].Apply();
+            ManagedShader managed = ShaderManager.GetShader("DuanWu.ExamplePrimShader");
+            //managed.TrySetParameter("pixelationFactor", Vector2.One * 0.5f);
+            //managed.SetTexture(FireNoiseB, 1, SamplerState.LinearWrap);
+            managed.Apply();
             Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Items/Asditems").Value;
-            spriteBatch.Draw(texture, position, null, Color.White, 0f, texture.Size() / 2, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, position, null, Color.White, 0f, texture.Size() / 2, 0.7f, SpriteEffects.None, 0);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);
         }
@@ -53,7 +60,7 @@ namespace DuanWu.Content.Items
             GameShaders.Misc["ArmorBasic"].UseImage1(ModContent.Request<Texture2D>("DuanWu/Content/Images/FireNoiseA"));
             GameShaders.Misc["ArmorBasic"].Apply();
             Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Items/Asditems").Value;
-            spriteBatch.Draw(texture, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, texture.Size() / 2, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, texture.Size() / 2, 0.5f, SpriteEffects.None, 0);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
             return false;

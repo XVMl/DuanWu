@@ -511,3 +511,180 @@ Message at 2025/3/28 23:13:38: Compiling Content\contraction.xnb
 Message at 2025/3/28 23:13:38: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
 Message at 2025/3/28 23:13:38: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
 Message at 2025/3/28 23:13:38: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:00:13: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:00:13: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:00:13: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 11:00:13: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:00:13: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:00:13: Compiling Content\contraction.xnb
+Message at 2025/3/29 11:00:13: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:00:13: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:00:13: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:00:13: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:00:13: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:00:13: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 11:14:43: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:14:43: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:14:43: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 11:14:43: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:14:43: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:14:43: Compiling Content\contraction.xnb
+Message at 2025/3/29 11:14:43: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:14:43: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:14:43: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:14:43: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:14:43: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:14:43: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 11:17:59: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:17:59: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:17:59: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 11:17:59: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:17:59: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:17:59: Compiling Content\contraction.xnb
+Message at 2025/3/29 11:17:59: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:17:59: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:17:59: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:17:59: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:17:59: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:17:59: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 11:19:35: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:19:35: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:19:35: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 11:19:35: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:19:35: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:19:35: Compiling Content\contraction.xnb
+Message at 2025/3/29 11:19:35: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:19:35: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:19:35: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:19:35: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:19:35: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:19:35: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 11:20:41: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:20:41: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:20:41: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 11:20:41: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:20:41: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:20:41: Compiling Content\contraction.xnb
+Message at 2025/3/29 11:20:41: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:20:41: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:20:41: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:20:41: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:20:41: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:20:41: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 11:25:52: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:25:52: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:25:52: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 11:25:52: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:25:52: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:25:52: Compiling Content\contraction.xnb
+Message at 2025/3/29 11:25:52: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:25:52: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:25:52: Compiling Content\magnifier.xnb
+Message at 2025/3/29 11:25:52: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 11:25:52: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 11:25:52: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 12:52:58: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:52:58: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:52:58: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 12:52:58: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:52:58: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:52:59: Compiling Content\contraction.xnb
+Message at 2025/3/29 12:52:59: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:52:59: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:52:59: Compiling Content\magnifier.xnb
+Message at 2025/3/29 12:52:59: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:52:59: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:52:59: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 12:54:09: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:54:09: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:54:09: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 12:54:09: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:54:09: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:54:09: Compiling Content\contraction.xnb
+Message at 2025/3/29 12:54:09: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:54:09: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:54:09: Compiling Content\magnifier.xnb
+Message at 2025/3/29 12:54:09: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:54:09: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:54:09: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 12:56:12: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:56:12: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:56:12: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 12:56:12: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:56:12: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:56:12: Compiling Content\contraction.xnb
+Message at 2025/3/29 12:56:12: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:56:12: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:56:12: Compiling Content\magnifier.xnb
+Message at 2025/3/29 12:56:12: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 12:56:12: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 12:56:12: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 13:02:36: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:02:36: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:02:36: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 13:02:36: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:02:36: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:02:36: Compiling Content\contraction.xnb
+Message at 2025/3/29 13:02:36: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:02:36: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:02:36: Compiling Content\magnifier.xnb
+Message at 2025/3/29 13:02:36: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:02:36: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:02:36: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 13:04:25: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:04:25: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:04:25: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 13:04:25: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:04:25: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:04:25: Compiling Content\contraction.xnb
+Message at 2025/3/29 13:04:25: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:04:25: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:04:25: Compiling Content\magnifier.xnb
+Message at 2025/3/29 13:04:25: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:04:25: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:04:25: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 13:07:54: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:07:54: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:07:54: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 13:07:54: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:07:54: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:07:54: Compiling Content\contraction.xnb
+Message at 2025/3/29 13:07:54: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:07:54: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:07:54: Compiling Content\magnifier.xnb
+Message at 2025/3/29 13:07:54: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:07:54: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:07:54: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 13:09:19: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:09:19: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:09:19: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 13:09:20: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:09:20: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:09:20: Compiling Content\contraction.xnb
+Message at 2025/3/29 13:09:20: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:09:20: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:09:20: Compiling Content\magnifier.xnb
+Message at 2025/3/29 13:09:20: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 13:09:20: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 13:09:20: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 14:00:07: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:07: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 14:00:07: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 14:00:07: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:07: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 14:00:07: Compiling Content\contraction.xnb
+Message at 2025/3/29 14:00:07: Importing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:07: Processing magnifier.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 14:00:07: Compiling Content\magnifier.xnb
+Message at 2025/3/29 14:00:07: Importing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:07: Processing SliverBlade.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 14:00:07: Compiling Content\SliverBlade.xnb
+Message at 2025/3/29 14:00:51: Importing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:51: Processing ArmorBasic.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 14:00:51: Compiling Content\ArmorBasic.xnb
+Message at 2025/3/29 14:00:51: Importing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:51: Processing contraction.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Message at 2025/3/29 14:00:51: Compiling Content\contraction.xnb
+Message at 2025/3/29 14:00:51: Importing Energy.fx with Microsoft.Xna.Framework.Content.Pipeline.EffectImporter
+Message at 2025/3/29 14:00:51: Processing Energy.fx with Microsoft.Xna.Framework.Content.Pipeline.Processors.EffectProcessor
+Error at 2025/3/29 14:00:51: XNA Framework Reach profile does not support vertex shader model 3.0.

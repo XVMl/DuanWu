@@ -1,4 +1,4 @@
-﻿using DuanWu.Content.Utilities;
+﻿using DuanWu.Content.MyUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,7 @@ using Terraria.DataStructures;
 using DuanWu.Content.Buffs;
 using DuanWu.Content.System;
 using DuanWu.Content.UI;
+using Luminance.Core.Graphics;
 namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
@@ -101,7 +102,12 @@ namespace DuanWu
         public override void PostUpdate()
         {
 
-
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Starry");
+            if (!distortion.IsActive)
+            {
+                distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
+                distortion.Activate();
+            }
             //if (!Filters.Scene["DuanWuShader:contraction"].IsActive())
             //{
             //    Filters.Scene.Activate("DuanWuShader:contraction");

@@ -1,5 +1,5 @@
 using DuanWu.Content.System;
-using DuanWu.Content.Utilities;
+using DuanWu.Content.MyUtilities;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -12,6 +12,8 @@ using System.Runtime.CompilerServices;
 using System;
 using DuanWu.Content.Buffs;
 using System.Net.Sockets;
+using Luminance;
+using DuanWu.Content.Projectiles;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -26,8 +28,8 @@ namespace DuanWu.Content.Items
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
-            Item.useTime = 100;
-            Item.useAnimation = 100;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6;
             //Item.shoot = ProjectileID.MagicMissile;
@@ -54,8 +56,8 @@ namespace DuanWu.Content.Items
         {
             if (Main.myPlayer==player.whoAmI)
             {
-                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().Screenpos = Main.LocalPlayer.Center - new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().FreeScreen= !Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().FreeScreen;
+
+                Luminance.Common.Utilities.Utilities.NewProjectileBetter(new EntitySource_WorldEvent(), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<Testenergy>(), 0, 0);  
                 //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
                 //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }

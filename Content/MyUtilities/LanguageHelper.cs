@@ -12,7 +12,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace DuanWu.Content.Utilities
+namespace DuanWu.Content.MyUtilities
 {
     public class LanguageHelper
     {

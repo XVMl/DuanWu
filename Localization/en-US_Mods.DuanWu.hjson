@@ -1718,6 +1718,8 @@ Projectiles: {
 	AnglerBobber.DisplayName: Angler Bobber
 	SuperCopperShortsword.DisplayName: Super Copper Shortsword
 	ShockWave.DisplayName: Shock Wave
+	Testenergy.DisplayName: Testenergy
+	Starry.DisplayName: Starry
 }
 
 Buffs: {
