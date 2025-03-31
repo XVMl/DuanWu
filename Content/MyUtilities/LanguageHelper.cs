@@ -90,6 +90,7 @@ namespace DuanWu.Content.MyUtilities
                 RewardSystem reward = new(1);
                 DuanWuPlayer.PlayerQuestionEnd = true;
                 ModContent.GetInstance<Netsponse>().NetSeed(-1, -1);
+                return;
             }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
             duanWuPlayer.Reward = false;

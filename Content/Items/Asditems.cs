@@ -14,6 +14,9 @@ using DuanWu.Content.Buffs;
 using System.Net.Sockets;
 using Luminance;
 using DuanWu.Content.Projectiles;
+using Luminance.Core.Graphics;
+using Luminance;
+using Luminance.Common.Utilities;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -56,8 +59,8 @@ namespace DuanWu.Content.Items
         {
             if (Main.myPlayer==player.whoAmI)
             {
-
-                Luminance.Common.Utilities.Utilities.NewProjectileBetter(new EntitySource_WorldEvent(), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<Testenergy>(), 0, 0);  
+                CameraPanSystem.ZoomOut(0.5f);
+                
                 //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
                 //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }

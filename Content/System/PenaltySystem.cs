@@ -196,7 +196,7 @@ namespace DuanWu.Content.System
                         List<short> blood = [618, 619, 620, 621];
                         break;
                     case 30:
-                        
+                        //心跳
 
                         break;
                     case 31:

@@ -85,7 +85,7 @@ namespace DuanWu
         public static bool SetSpwanRate;
         public static bool PlayerQuestionEnd;
         /// <summary>
-        /// 总答题数
+        /// 总回答题数
         /// </summary>
         public int PlayerQuestioncount;
         /// <summary>
@@ -102,12 +102,16 @@ namespace DuanWu
         public override void PostUpdate()
         {
 
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Starry");
+            //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Starry");
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.magnifier");
+
             if (!distortion.IsActive)
             {
                 distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
                 distortion.Activate();
             }
+
+
             //if (!Filters.Scene["DuanWuShader:contraction"].IsActive())
             //{
             //    Filters.Scene.Activate("DuanWuShader:contraction");
@@ -177,7 +181,6 @@ namespace DuanWu
 
         public override void UpdateDead()
         {
-
             if (Filters.Scene["DuanWuShader:Zhuan"].IsActive())
             {
                 Filters.Scene["DuanWuShader:Zhuan"].Deactivate();

@@ -17,7 +17,7 @@ namespace DuanWu.Content.UI
 {
     public class Lisao : UIState
     {
-        public UIGrid LisaochoiceLisst;
+        public static UIGrid LisaochoiceLisst;
         public override void OnInitialize()
         {
             LisaochoiceLisst = new UIGrid();
@@ -28,31 +28,32 @@ namespace DuanWu.Content.UI
             LisaochoiceLisst.ListPadding = 80f;
         }
 
-        public void AddEditor()
+        private void TryAddEdutor()
         {
-            for (int i = 0; i < 8; i++)
+            int numberofchoise = DuanWuPlayer.Hardmode ? 8 : 4;
+            if (LisaochoiceLisst._items.Count!=numberofchoise)
             {
-                LisaochoiceLisst.Add(new MyButton(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoChoiceText[i], i, ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton")));
+                LisaochoiceLisst.Clear();
+                for (int i = 0; i < numberofchoise; i++)
+                {
+                    LisaochoiceLisst.Add(new MyButton(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoChoiceText[i], i, ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton")));
+                }
             }
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
-                Append(LisaochoiceLisst);
-            }
-            else
-            {
-                LisaochoiceLisst.Clear();
                 LisaochoiceLisst.Remove();
                 return;
-            }
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime+1 == DuanWuPlayer.AnswerQuestionTime*60)
+            } 
+            TryAddEdutor();
+            foreach (var item in LisaochoiceLisst._items)
             {
-                AddEditor();
+                item.Update(gameTime);
             }
-            
+            Append(LisaochoiceLisst);
         }
 
     }
@@ -62,9 +63,9 @@ namespace DuanWu.Content.UI
         private int Number;
 
         public UIText uiText;
-        public MyButton(string text,int x,Asset<Texture2D> texture) : base(texture)
+        public MyButton(string text,int num,Asset<Texture2D> texture) : base(texture)
         {
-            this.Number = x;
+            this.Number = num;
             Height.Set(32, 0);
             Width.Set(550, 0);
             uiText = new UIText(text);
@@ -78,6 +79,12 @@ namespace DuanWu.Content.UI
             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().ChoiceAnswer = this.Number;
             duanWuPlayer.counttime = 0;
             base.LeftClick(evt);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            uiText.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoChoiceText[this.Number]);
+            base.Update(gameTime);
         }
 
     }

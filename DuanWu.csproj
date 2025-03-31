@@ -13,6 +13,14 @@
 	  <AdditionalFiles Remove="Content\Projectiles\AnglerBobber.png" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="Assets\AutoloadedEffects\Filters\contraction.fx" />
+	  <None Remove="Assets\AutoloadedEffects\Filters\magnifier.fx" />
+	  <None Remove="assets\autoloadedeffects\filters\MatrixFilter.fx" />
+	  <None Remove="Assets\AutoloadedEffects\Filters\Pixelation.fx" />
+	  <None Remove="Assets\AutoloadedEffects\Filters\Shockwave.fx" />
+	  <None Remove="Assets\AutoloadedEffects\Filters\Zhuan.fx" />
+	  <None Remove="Assets\AutoloadedEffects\Shaders\ArmorBasic.fx" />
+	  <None Remove="Assets\AutoloadedEffects\Shaders\SliverBlade.fx" />
 	  <None Remove="assets\autoloadedeffects\shaders\Starry.fx" />
 	  <None Remove="Assets\AutoloadedEffects\Shaders\TestEnergyShader.fx" />
 	  <None Remove="content\effects\ArmorBasic.fx" />
