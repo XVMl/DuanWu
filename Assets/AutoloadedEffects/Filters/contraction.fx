@@ -4,9 +4,9 @@ float2 screenscalerevise;
 float2 _Center = float2(0.5, 0.5); // 假设中心点是纹理的中心
 float _Radius = 0.3; // 扭曲的半径
 float _Turns = 5.0; // 一圈半径内扭曲的圈数
-float _Angle = 18.3;
+float _Angle = 6.28;
 float4 PixelShaderFunction( float4 pos :SV_Position,float2 coords : TEXCOORD0) : COLOR0
-{
+{ 
     //float4 color = tex2D(baseTexture, coords);
     //if (!any(color))
     //    return color;
@@ -36,8 +36,8 @@ float4 PixelShaderFunction( float4 pos :SV_Position,float2 coords : TEXCOORD0) :
 }
 technique Technique1
 {
-    pass test
+    pass AutoloadPass
     {
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

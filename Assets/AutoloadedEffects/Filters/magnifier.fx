@@ -3,11 +3,11 @@ sampler baseTexture : register(s0);
 float2 screenscalerevise;
 float2 targetposition;
 float4 PixelShaderFunction(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-{
+{ 
     float4 color = tex2D(baseTexture, coords);
     if (!any(color))
         return color;
-    float2 pos = float2(0.5, 0.5);
+    float2 pos = targetposition;
     // offset 是中心到当前点的向量
     float2 offset = (coords - pos);
     // 因为长宽比不同进行修正

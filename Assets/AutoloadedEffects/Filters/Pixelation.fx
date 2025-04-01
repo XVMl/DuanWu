@@ -1,11 +1,11 @@
 sampler baseTexture : register(s0);
 
 float2 screenscalerevise;
-
+float intensity;
 float4 PixelShaderFunction(float2 coords : TEXCOORD0) : COLOR0
 {
     // 设置像素块大小
-    const float PIXEL_SIZE = 10.0;
+    const float PIXEL_SIZE = intensity;
     
     // 坐标量化 
     float2 quantizedCoords = floor(coords * screenscalerevise / PIXEL_SIZE);
@@ -17,7 +17,7 @@ float4 PixelShaderFunction(float2 coords : TEXCOORD0) : COLOR0
 technique Technique1
 {
     pass AutoloadPass
-    {
+    { 
         PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

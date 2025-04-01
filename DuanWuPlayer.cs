@@ -13,6 +13,7 @@ using DuanWu.Content.Buffs;
 using DuanWu.Content.System;
 using DuanWu.Content.UI;
 using Luminance.Core.Graphics;
+using Luminance.Common.Utilities;
 namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
@@ -103,14 +104,15 @@ namespace DuanWu
         {
 
             //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Starry");
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.magnifier");
+            //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Zhuan");
 
-            if (!distortion.IsActive)
-            {
-                distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
-                distortion.Activate();
-            }
-
+            //if (!distortion.IsActive)
+            //{
+            //    //distortion.TrySetParameter("targetposition", Utilities.WorldSpaceToScreenUV(Main.MouseWorld));
+            //    distortion.TrySetParameter("intensity", 1f);
+            //    //distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
+            //    distortion.Activate();
+            //}
 
             //if (!Filters.Scene["DuanWuShader:contraction"].IsActive())
             //{

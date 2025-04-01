@@ -60,7 +60,6 @@ namespace DuanWu.Content.Items
             if (Main.myPlayer==player.whoAmI)
             {
                 CameraPanSystem.ZoomOut(0.5f);
-                
                 //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
                 //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }

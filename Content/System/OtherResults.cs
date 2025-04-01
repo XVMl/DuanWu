@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Luminance.Core.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,11 @@ namespace DuanWu.Content.System
             0, 0, 0, 1);
         public static void SetCamera(float intensity)
         {
-            if (!Filters.Scene["DuanWuShader:Zhuan"].IsActive())
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Zhuan");
+            if (!distortion.IsActive)
             {
-                Filters.Scene.Activate("DuanWuShader:Zhuan");        
-            }
-            if (Filters.Scene["DuanWuShader:Zhuan"].IsActive())
-            {
-                Filters.Scene["DuanWuShader:Zhuan"].GetShader().Shader.Parameters["Reve"].SetValue(intensity);        
+                distortion.TrySetParameter("intensity", intensity);
+                distortion.Activate();
             }
         }
         
@@ -59,10 +58,11 @@ namespace DuanWu.Content.System
 
         public static void SetPixelation(float intensity)
         {
-            if (!Filters.Scene["DuanWuShader:Pixelation"].IsActive())
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Pixelation");
+            if (!distortion.IsActive)
             {
-                Filters.Scene.Activate("DuanWuShader:Pixelation");
-                Filters.Scene["DuanWuShader:Pixelation"].GetShader().Shader.Parameters["intensity"].SetValue(intensity);
+                distortion.TrySetParameter("intensity", intensity);
+                distortion.Activate();
             }
         }
 
