@@ -35,6 +35,9 @@
 	    <HintPath>libs\Luminance.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Assets\Sound\" />
+	</ItemGroup>
 
 	<!-- References -->
 

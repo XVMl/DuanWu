@@ -30,29 +30,7 @@ namespace DuanWu
                 NetTool handler = (NetTool)Activator.CreateInstance(handlerType);
                 handler.RecievePacket(reader,whoAmI);
             }
-            //switch (type)
-            //{
-            //    case "NetNPC":
-            //        NetNPC.HandlePacket(reader, whoAmI);
-            //        break;
-            //    case "NetProjectlies":
-            //        NetProjectlies.HandlePacket(reader, whoAmI);
-            //        break;
-            //    case "NetTime":
-            //        NetTime.HandlePacket(reader, whoAmI);
-            //        break;
-            //    case "Netsponse":
-            //        Netsponse.HandlePacket(reader, whoAmI);
-            //        break;
-            //    case "NetScoreboard":
-            //        NetScoreboard.HandlePacket(reader, whoAmI);
-            //        break;
-            //    case "ServeSetQustion":
-            //        ServeSetQustion.HandlePacket(reader, whoAmI);
-            //        break;
-            //    default:
-            //        break;
-            //}
+
         }
     }
 
