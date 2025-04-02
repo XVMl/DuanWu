@@ -1,235 +1,329 @@
-﻿// Copyright (c) 2020-2025 Mirsario & Contributors.
-// Released under the GNU General Public License 3.0.
-// See LICENSE.md for details.
+﻿//// Copyright (c) 2020-2025 Mirsario & Contributors.
+//// Released under the GNU General Public License 3.0.
+//// See LICENSE.md for details.
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Media;
-using ReLogic.Content;
-using ReLogic.Content.Readers;
-using ReLogic.Utilities;
-using Terraria;
-using Terraria.ModLoader;
-//using TerrariaOverhaul.Utilities.Terraria;
-using static Theorafile;
+//using System;
+//using System.Collections.Generic;
+//using System.IO;
+//using System.Linq;
+//using System.Reflection;
+//using System.Runtime.InteropServices;
+//using System.Runtime.Serialization;
+//using System.Threading.Tasks;
+//using Microsoft.Xna.Framework;
+//using Microsoft.Xna.Framework.Graphics;
+//using Microsoft.Xna.Framework.Media;
+//using ReLogic.Content;
+//using ReLogic.Content.Readers;
+//using ReLogic.Utilities;
+//using Terraria;
+//using Terraria.ModLoader;
+//using Terraria.UI;
 
-namespace DuanWu.Content.System
-{
-#pragma warning disable SYSLIB0050 // Type or member is obsolete
+////using TerrariaOverhaul.Utilities.Terraria;
+//using static Theorafile;
 
-    [Autoload(false)]
-    public sealed class OgvReader : IAssetReader, ILoadable
-    {
-        private const BindingFlags ReflectionFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+//namespace DuanWu.Content.System
+//{
+//#pragma warning disable SYSLIB0050 // Type or member is obsolete
 
-        public static readonly string Extension = ".ogv";
+//    [Autoload(false)]
+//    public sealed class OgvReader : IAssetReader, ILoadable
+//    {
+//        private const BindingFlags ReflectionFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
 
-        private static readonly Dictionary<IntPtr, UnmanagedMemoryStream> memoryStreams = new();
-        // Stores delegates in heap so that they don't get eaten by the GC.
-        private static readonly tf_callbacks callbacks = new()
-        {
-            read_func = ReadFunction,
-            seek_func = SeekFunction,
-            close_func = CloseFunction,
-        };
-        // Reflection
-        private static readonly Type videoType = typeof(Video);
-        private static readonly FieldInfo videoTheora = videoType.GetField("theora", ReflectionFlags)!;
-        private static readonly FieldInfo videoYWidth = videoType.GetField("yWidth", ReflectionFlags)!;
-        private static readonly FieldInfo videoYHeight = videoType.GetField("yHeight", ReflectionFlags)!;
-        private static readonly FieldInfo videoUvWidth = videoType.GetField("uvWidth", ReflectionFlags)!;
-        private static readonly FieldInfo videoUvHeight = videoType.GetField("uvHeight", ReflectionFlags)!;
-        private static readonly FieldInfo videoFps = videoType.GetField("fps", ReflectionFlags)!;
-        private static readonly FieldInfo videoNeedsDurationHack = videoType.GetField("needsDurationHack", ReflectionFlags)!;
-        private static readonly PropertyInfo videoDuration = videoType.GetProperty(nameof(Video.Duration), ReflectionFlags)!;
-        private static readonly PropertyInfo videoGraphicsDevice = videoType.GetProperty("GraphicsDevice", ReflectionFlags)!;
+//        public static readonly string Extension = ".ogv";
 
-        public async ValueTask<T> FromStream<T>(Stream stream, MainThreadCreationContext mainThreadCtx) where T : class
-        {
-            if (typeof(T) != videoType)
-            {
-                throw AssetLoadException.FromInvalidReader<OgvReader, T>();
-            }
+//        private static readonly Dictionary<IntPtr, UnmanagedMemoryStream> memoryStreams = new();
+//        // Stores delegates in heap so that they don't get eaten by the GC.
+//        private static readonly tf_callbacks callbacks = new()
+//        {
+//            read_func = ReadFunction,
+//            seek_func = SeekFunction,
+//            close_func = CloseFunction,
+//        };
+//        // Reflection
+//        private static readonly Type videoType = typeof(Video);
+//        private static readonly FieldInfo videoTheora = videoType.GetField("theora", ReflectionFlags)!;
+//        private static readonly FieldInfo videoYWidth = videoType.GetField("yWidth", ReflectionFlags)!;
+//        private static readonly FieldInfo videoYHeight = videoType.GetField("yHeight", ReflectionFlags)!;
+//        private static readonly FieldInfo videoUvWidth = videoType.GetField("uvWidth", ReflectionFlags)!;
+//        private static readonly FieldInfo videoUvHeight = videoType.GetField("uvHeight", ReflectionFlags)!;
+//        private static readonly FieldInfo videoFps = videoType.GetField("fps", ReflectionFlags)!;
+//        private static readonly FieldInfo videoNeedsDurationHack = videoType.GetField("needsDurationHack", ReflectionFlags)!;
+//        private static readonly PropertyInfo videoDuration = videoType.GetProperty(nameof(Video.Duration), ReflectionFlags)!;
+//        private static readonly PropertyInfo videoGraphicsDevice = videoType.GetProperty("GraphicsDevice", ReflectionFlags)!;
 
-            await mainThreadCtx;
+//        public async ValueTask<T> FromStream<T>(Stream stream, MainThreadCreationContext mainThreadCtx) where T : class
+//        {
+//            if (typeof(T) != videoType)
+//            {
+//                throw AssetLoadException.FromInvalidReader<OgvReader, T>();
+//            }
 
-            var result = CreateVideo(stream);
+//            await mainThreadCtx;
 
-            return (result as T)!;
-        }
+//            var result = CreateVideo(stream);
 
-        private unsafe Video CreateVideo(Stream stream)
-        {
-            // This is created only to get a length without accessing stream.Length,
-            // because 'stream' may be 'DeflateStream', and that doesn't implement it.
-            // Could be avoided.
-            using var memoryStream = new MemoryStream();
+//            return (result as T)!;
+//        }
 
-            stream.CopyTo(memoryStream);
+//        private unsafe Video CreateVideo(Stream stream)
+//        {
+//            // This is created only to get a length without accessing stream.Length,
+//            // because 'stream' may be 'DeflateStream', and that doesn't implement it.
+//            // Could be avoided.
+//            using var memoryStream = new MemoryStream();
 
-            int numBytes = (int)memoryStream.Position;
-            nint dataPtr = Marshal.AllocHGlobal(numBytes);
-            var unmanagedStream = new UnmanagedMemoryStream((byte*)dataPtr, numBytes, numBytes, FileAccess.ReadWrite);
+//            stream.CopyTo(memoryStream);
 
-            memoryStream.Seek(0, SeekOrigin.Begin);
-            memoryStream.CopyTo(unmanagedStream, numBytes);
-            unmanagedStream.Seek(0L, SeekOrigin.Begin);
+//            int numBytes = (int)memoryStream.Position;
+//            nint dataPtr = Marshal.AllocHGlobal(numBytes);
+//            var unmanagedStream = new UnmanagedMemoryStream((byte*)dataPtr, numBytes, numBytes, FileAccess.ReadWrite);
 
-            // Keep track of streams and the data pointers.
-            memoryStreams[dataPtr] = unmanagedStream;
+//            memoryStream.Seek(0, SeekOrigin.Begin);
+//            memoryStream.CopyTo(unmanagedStream, numBytes);
+//            unmanagedStream.Seek(0L, SeekOrigin.Begin);
 
-            // Video's constructors are useless - they're internal, and take an OS file path rather than a data pointer.
-            // Here we assemble the Video instance completely by ourselves.
-            // Good thing that we no longer have to account for different frameworks being used.
-            // - Mirsario.
-            var result = (Video)FormatterServices.GetUninitializedObject(videoType);
+//            // Keep track of streams and the data pointers.
+//            memoryStreams[dataPtr] = unmanagedStream;
 
-            int openResult = tf_open_callbacks(dataPtr, out nint theoraPtr, callbacks);
+//            // Video's constructors are useless - they're internal, and take an OS file path rather than a data pointer.
+//            // Here we assemble the Video instance completely by ourselves.
+//            // Good thing that we no longer have to account for different frameworks being used.
+//            // - Mirsario.
+//            var result = (Video)FormatterServices.GetUninitializedObject(videoType);
 
-            if (openResult != 0)
-            {
-                throw new InvalidOperationException($"Theorafile returned code '{openResult}' when trying to load data.");
-            }
+//            int openResult = tf_open_callbacks(dataPtr, out nint theoraPtr, callbacks);
 
-            tf_videoinfo(theoraPtr, out int yWidth, out int yHeight, out double fps, out var fmt);
+//            if (openResult != 0)
+//            {
+//                throw new InvalidOperationException($"Theorafile returned code '{openResult}' when trying to load data.");
+//            }
 
-            int uvWidth;
-            int uvHeight;
+//            tf_videoinfo(theoraPtr, out int yWidth, out int yHeight, out double fps, out var fmt);
 
-            if (fmt == th_pixel_fmt.TH_PF_420)
-            {
-                uvWidth = yWidth / 2;
-                uvHeight = yHeight / 2;
-            }
-            else if (fmt == th_pixel_fmt.TH_PF_422)
-            {
-                uvWidth = yWidth / 2;
-                uvHeight = yHeight;
-            }
-            else if (fmt == th_pixel_fmt.TH_PF_444)
-            {
-                uvWidth = yWidth;
-                uvHeight = yHeight;
-            }
-            else
-            {
-                throw new NotSupportedException("Unrecognized YUV format!");
-            }
+//            int uvWidth;
+//            int uvHeight;
 
-            videoGraphicsDevice.SetValue(result, Main.graphics.GraphicsDevice);
-            videoTheora.SetValue(result, theoraPtr);
-            videoYWidth.SetValue(result, yWidth);
-            videoYHeight.SetValue(result, yHeight);
-            videoUvWidth.SetValue(result, uvWidth);
-            videoUvHeight.SetValue(result, uvHeight);
-            videoFps.SetValue(result, fps);
+//            if (fmt == th_pixel_fmt.TH_PF_420)
+//            {
+//                uvWidth = yWidth / 2;
+//                uvHeight = yHeight / 2;
+//            }
+//            else if (fmt == th_pixel_fmt.TH_PF_422)
+//            {
+//                uvWidth = yWidth / 2;
+//                uvHeight = yHeight;
+//            }
+//            else if (fmt == th_pixel_fmt.TH_PF_444)
+//            {
+//                uvWidth = yWidth;
+//                uvHeight = yHeight;
+//            }
+//            else
+//            {
+//                throw new NotSupportedException("Unrecognized YUV format!");
+//            }
 
-            videoDuration.SetValue(result, TimeSpan.MaxValue);
-            videoNeedsDurationHack.SetValue(result, true);
+//            videoGraphicsDevice.SetValue(result, Main.graphics.GraphicsDevice);
+//            videoTheora.SetValue(result, theoraPtr);
+//            videoYWidth.SetValue(result, yWidth);
+//            videoYHeight.SetValue(result, yHeight);
+//            videoUvWidth.SetValue(result, uvWidth);
+//            videoUvHeight.SetValue(result, uvHeight);
+//            videoFps.SetValue(result, fps);
 
-            return result;
-        }
+//            videoDuration.SetValue(result, TimeSpan.MaxValue);
+//            videoNeedsDurationHack.SetValue(result, true);
 
-        void ILoadable.Load(Mod mod)
-        {
-            var assetReaderCollection = Main.instance.Services.Get<AssetReaderCollection>();
+//            return result;
+//        }
 
-            if (!assetReaderCollection.TryGetReader(Extension, out var reader) || reader != this)
-            {
-                assetReaderCollection.RegisterReader(this, Extension);
-            }
-        }
+//        void ILoadable.Load(Mod mod)
+//        {
+//            var assetReaderCollection = Main.instance.Services.Get<AssetReaderCollection>();
 
-        void ILoadable.Unload()
-        {
-            var assetReaderCollection = Main.instance.Services.Get<AssetReaderCollection>();
+//            if (!assetReaderCollection.TryGetReader(Extension, out var reader) || reader != this)
+//            {
+//                assetReaderCollection.RegisterReader(this, Extension);
+//            }
+//        }
 
-            if (assetReaderCollection.TryGetReader(Extension, out var reader) && reader == this)
-            {
-                assetReaderCollection.RemoveExtension(Extension);
-            }
-        }
+//        void ILoadable.Unload()
+//        {
+//            var assetReaderCollection = Main.instance.Services.Get<AssetReaderCollection>();
 
-        private static unsafe IntPtr ReadFunction(IntPtr ptr, IntPtr size, IntPtr nmemb, IntPtr dataSource)
-        {
-            if (!memoryStreams.TryGetValue(dataSource, out var stream))
-            {
-                return IntPtr.Zero;
-            }
+//            if (assetReaderCollection.TryGetReader(Extension, out var reader) && reader == this)
+//            {
+//                assetReaderCollection.RemoveExtension(Extension);
+//            }
+//        }
 
-            int numBytes = (int)((nint)nmemb * (nint)size);
-            var span = new Span<byte>((void*)ptr, numBytes);
-            int numRead = stream.Read(span);
+//        private static unsafe IntPtr ReadFunction(IntPtr ptr, IntPtr size, IntPtr nmemb, IntPtr dataSource)
+//        {
+//            if (!memoryStreams.TryGetValue(dataSource, out var stream))
+//            {
+//                return IntPtr.Zero;
+//            }
 
-            return (IntPtr)numRead;
-        }
+//            int numBytes = (int)((nint)nmemb * (nint)size);
+//            var span = new Span<byte>((void*)ptr, numBytes);
+//            int numRead = stream.Read(span);
 
-        private static int SeekFunction(IntPtr dataSource, long offset, SeekWhence whence)
-        {
-            if (!memoryStreams.TryGetValue(dataSource, out var stream))
-            {
-                return 0;
-            }
+//            return (IntPtr)numRead;
+//        }
 
-            var seekOrigin = whence switch
-            {
-                SeekWhence.TF_SEEK_SET => SeekOrigin.Begin,
-                SeekWhence.TF_SEEK_CUR => SeekOrigin.Current,
-                SeekWhence.TF_SEEK_END => SeekOrigin.End,
-                _ => throw new InvalidDataException($"{nameof(SeekWhence)} value made no sense"),
-            };
-            long newPosition = stream.Seek(offset, seekOrigin);
+//        private static int SeekFunction(IntPtr dataSource, long offset, SeekWhence whence)
+//        {
+//            if (!memoryStreams.TryGetValue(dataSource, out var stream))
+//            {
+//                return 0;
+//            }
 
-            return (int)newPosition;
-        }
+//            var seekOrigin = whence switch
+//            {
+//                SeekWhence.TF_SEEK_SET => SeekOrigin.Begin,
+//                SeekWhence.TF_SEEK_CUR => SeekOrigin.Current,
+//                SeekWhence.TF_SEEK_END => SeekOrigin.End,
+//                _ => throw new InvalidDataException($"{nameof(SeekWhence)} value made no sense"),
+//            };
+//            long newPosition = stream.Seek(offset, seekOrigin);
 
-        private static int CloseFunction(IntPtr dataSource)
-        {
-            if (!memoryStreams.Remove(dataSource, out var stream))
-            {
-                return 0;
-            }
+//            return (int)newPosition;
+//        }
 
-            stream.Dispose();
-            Marshal.FreeHGlobal(dataSource);
+//        private static int CloseFunction(IntPtr dataSource)
+//        {
+//            if (!memoryStreams.Remove(dataSource, out var stream))
+//            {
+//                return 0;
+//            }
 
-            return 1;
-        }
+//            stream.Dispose();
+//            Marshal.FreeHGlobal(dataSource);
 
-    }
+//            return 1;
+//        }
 
-    internal static class AssetUtils
-    {
-        public static Asset<T> EnsureLoaded<T>(this Asset<T> asset) where T : class
-        {
-            asset.Wait?.Invoke();
+//    }
 
-            return asset;
-        }
+//    internal static class AssetUtils
+//    {
+//        public static Asset<T> EnsureLoaded<T>(this Asset<T> asset) where T : class
+//        {
+//            asset.Wait?.Invoke();
 
-        private static readonly FieldInfo? readersByExtensionField = typeof(AssetReaderCollection)
-            .GetField("_readersByExtension", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+//            return asset;
+//        }
 
-        private static readonly FieldInfo? extensionsField = typeof(AssetReaderCollection)
-            .GetField("_extensions", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+//        private static readonly FieldInfo? readersByExtensionField = typeof(AssetReaderCollection)
+//            .GetField("_readersByExtension", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
 
-        public static void RemoveExtension(this AssetReaderCollection collection, string extension)
-        {
-            if (readersByExtensionField?.GetValue(collection) is not Dictionary<string, IAssetReader> dictionary
-            || extensionsField?.GetValue(collection) is not string[])
-            {
-                 return;
-            }
+//        private static readonly FieldInfo? extensionsField = typeof(AssetReaderCollection)
+//            .GetField("_extensions", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
 
-            // And then we hope that nothing explodes.
-            dictionary.Remove(extension);
-            extensionsField.SetValue(collection, dictionary.Keys.ToArray());
-        }
-    }
-}
+//        public static void RemoveExtension(this AssetReaderCollection collection, string extension)
+//        {
+//            if (readersByExtensionField?.GetValue(collection) is not Dictionary<string, IAssetReader> dictionary
+//            || extensionsField?.GetValue(collection) is not string[])
+//            {
+//                 return;
+//            }
+
+//            // And then we hope that nothing explodes.
+//            dictionary.Remove(extension);
+//            extensionsField.SetValue(collection, dictionary.Keys.ToArray());
+//        }
+//    }
+
+//    public class UIVideo : UIElement
+//    {
+//        private Asset<Video>? video;
+//        private VideoPlayer? videoPlayer;
+//        private bool pendingResize;
+//        public bool StartVideo { get; set; }
+//        public bool FinishVideos { get; set; }
+//        public bool ScaleToFit { get; set; }
+//        public bool AllowResizingDimensions { get; set; } = true;
+//        public bool RemoveFloatingPointsFromDrawPosition { get; set; }
+//        public float ImageScale { get; set; } = 1f;
+//        public float Rotation { get; set; }
+//        public Color Color { get; set; } = Color.White;
+//        public Vector2 NormalizedOrigin { get; set; }
+
+//        public VideoPlayer? VideoPlayer => videoPlayer;
+
+//        public UIVideo(Asset<Video> video)
+//        {
+//            SetVideo(video);
+//        }
+
+//        protected override void DrawSelf(SpriteBatch spriteBatch)
+//        {
+//            CalculatedStyle dimensions = GetDimensions();
+
+//            if (this.video?.Value is not Video video)
+//            {
+//                return;
+//            }
+
+//            EnsureInitialized();
+
+//            if (videoPlayer!.State != MediaState.Playing)
+//            {
+//                videoPlayer.IsLooped = true;
+
+//                videoPlayer.Play(video);
+//            }
+
+//            // Perhaps this should be done in Update() instead.
+//            if (pendingResize && AllowResizingDimensions)
+//            {
+//                Width.Set(video.Width, 0f);
+//                Height.Set(video.Height, 0f);
+
+//                pendingResize = false;
+//            }
+
+//            var frameTexture = videoPlayer.GetTexture();
+
+//            if (ScaleToFit)
+//            {
+//                spriteBatch.Draw(frameTexture, dimensions.ToRectangle(), Color);
+//                return;
+//            }
+
+//            Vector2 size = frameTexture.Size();
+//            Vector2 position = dimensions.Position() + size * (1f - ImageScale) / 2f + size * NormalizedOrigin;
+
+//            if (RemoveFloatingPointsFromDrawPosition)
+//            {
+//                position = position.Floor();
+//            }
+
+//            spriteBatch.Draw(frameTexture, position, null, Color, Rotation, size * NormalizedOrigin, ImageScale, SpriteEffects.None, 0f);
+//        }
+
+//        public override void OnActivate()
+//            => EnsureInitialized();
+
+//        public override void OnDeactivate()
+//        {
+//            videoPlayer?.Dispose();
+//            videoPlayer = null;
+//        }
+
+//        public void SetVideo(Asset<Video> video)
+//        {
+//            this.video = video;
+//            pendingResize = AllowResizingDimensions;
+//        }
+
+//        private void EnsureInitialized()
+//        {
+//            videoPlayer ??= new VideoPlayer();
+//        }
+//    }
+
+//}

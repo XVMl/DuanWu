@@ -17,6 +17,7 @@ using DuanWu.Content.Projectiles;
 using Luminance.Core.Graphics;
 using Luminance;
 using Luminance.Common.Utilities;
+using Luminance.Core.Cutscenes;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -58,8 +59,7 @@ namespace DuanWu.Content.Items
         public override bool? UseItem(Player player)
         {
             if (Main.myPlayer==player.whoAmI)
-            {
-                CameraPanSystem.ZoomOut(0.5f);
+            { 
                 //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
                 //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }

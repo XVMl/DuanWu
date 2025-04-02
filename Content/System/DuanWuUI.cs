@@ -25,6 +25,9 @@ namespace DuanWu.Content.System
 
         private UserInterface _scoreboard;
         internal Scoreboard scoreboard;
+
+        //private UserInterface _playvideo;
+        //internal PlayVideo playvideo;
         public override void Load()
         {
             if (!Main.dedServ)
@@ -41,7 +44,9 @@ namespace DuanWu.Content.System
                 _scoreboard = new UserInterface();
                 scoreboard = new Scoreboard();
                 _scoreboard.SetState(scoreboard);
-
+                //_playvideo = new UserInterface();
+                //playvideo= new PlayVideo();
+                //_playvideo.SetState(playvideo);
             }
         }
 
@@ -54,7 +59,8 @@ namespace DuanWu.Content.System
             lisao?.Update(gameTime);
             UserInterface score=_scoreboard;
             score?.Update(gameTime);
-
+            //UserInterface playvideo=_playvideo;
+            //playvideo?.Update(gameTime);
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -82,6 +88,16 @@ namespace DuanWu.Content.System
                    },
                    InterfaceScaleType.UI)
                );
+
+               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+               //    "DuanWu:PlayVideo",
+               //    delegate
+               //    {
+               //        _playvideo.Draw(Main.spriteBatch, new GameTime());
+               //        return true;
+               //    },
+               //    InterfaceScaleType.UI)
+               //);
 
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {

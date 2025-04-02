@@ -15,6 +15,7 @@ using DuanWu.Content.System;
 using Terraria.ID;
 using System.Reflection;
 using MonoMod.Utils;
+using ReLogic.Content.Sources;
 
 namespace DuanWu
 {
@@ -32,6 +33,13 @@ namespace DuanWu
             }
 
         }
+
+        //public override IContentSource CreateDefaultContentSource()
+        //{
+        //    AddContent(new OgvReader());
+        //    return base.CreateDefaultContentSource();
+        //}
+
     }
 
 }

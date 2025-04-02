@@ -94,6 +94,8 @@ namespace DuanWu
         /// </summary>
         public int PlayerAccuracy;
         public static bool QustionActive;
+
+        public int Cutscene;
         public override void OnEnterWorld()
         {
             NetScoreboard.SubmitPacket();   

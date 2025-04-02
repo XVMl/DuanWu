@@ -9,6 +9,12 @@
 	  <PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Assets\Sound\**" />
+	  <Compile Remove="Assets\Sound\**" />
+	  <EmbeddedResource Remove="Assets\Sound\**" />
+	  <None Remove="Assets\Sound\**" />
+	</ItemGroup>
+	<ItemGroup>
 	  <AdditionalFiles Remove="Content\Items\AnglerRod.png" />
 	  <AdditionalFiles Remove="Content\Projectiles\AnglerBobber.png" />
 	</ItemGroup>
@@ -36,7 +42,8 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Assets\Sound\" />
+	  <Folder Include="Assets\Sounds\" />
+	  <Folder Include="Assets\Videos\" />
 	</ItemGroup>
 
 	<!-- References -->
