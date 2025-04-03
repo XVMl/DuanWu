@@ -10,13 +10,16 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using DuanWu.Content.MyUtilities;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DuanWu.Content.System
 {
     public abstract class NetTool : ModSystem
     {
+        protected static int Time;
+
         public static readonly Dictionary<string, Type> PacketHandlers = new();
-        
+
         public abstract string TypeName { get; }
         public override void Load()
         {
@@ -46,7 +49,7 @@ namespace DuanWu.Content.System
             packet.Write(Name);
             SendPacket(packet);
             packet.Send(toClient, ignoreClient);
-            
+
         }
 
     }
@@ -67,14 +70,8 @@ namespace DuanWu.Content.System
         public override void SendPacket(BinaryWriter writer)
         {
             writer.Write(Name);
-            writer.Write(OtherResults.Setday);
-            writer.Write(OtherResults.SetTime);
-        }
-
-        public static void HandlePacket(BinaryReader reader, int sender)
-        {
-            NetTime netTime = new NetTime();
-            netTime.RecievePacket(reader, sender);
+            writer.Write(Main.dayTime);
+            writer.Write(Main.time);
         }
     }
     internal class Netsponse : NetTool
@@ -85,15 +82,12 @@ namespace DuanWu.Content.System
             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
+                Time = 0;
+                //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive = false;
                 base.NetSeed(-1, sender);
             }
         }
 
-        public static void HandlePacket(BinaryReader reader, int sender)
-        {
-            Netsponse netQuickresponse = new Netsponse();
-            netQuickresponse.RecievePacket(reader, sender);
-        }
     }
 
     internal class NetScoreboard : NetTool
@@ -221,16 +215,12 @@ namespace DuanWu.Content.System
             writer.WriteVector2(Main.MouseWorld);
         }
 
-        public static void HandlePacket(BinaryReader reader, int sender)
-        {
-            NetProjectlies packet = new NetProjectlies();
-            packet.RecievePacket(reader, sender);
-        }
     }
 
     internal class NetNPC : NetTool
     {
         public override string TypeName => Name;
+
         public override void RecievePacket(BinaryReader reader, int sender)
         {
 
@@ -250,12 +240,6 @@ namespace DuanWu.Content.System
             writer.WriteVector2(Main.MouseWorld);
         }
 
-        public static void HandlePacket(BinaryReader reader, int sender)
-        {
-            NetNPC npc = new NetNPC();
-            npc.RecievePacket(reader, sender);
-        }
-
     }
 
     internal class ServeSetQustion : NetTool
@@ -267,52 +251,66 @@ namespace DuanWu.Content.System
             {
                 //writer.Write(text);
                 //writer.Write(numberofchoise);
-                List<int> nums = [];
-                int ans = reader.ReadInt32();
-                int lisaoquestion = reader.ReadInt32();
-                for (int i = 0; i < 8; i++)
+                string type = reader.ReadString();
+                if (type == "SetQustion")
                 {
-                    nums.Add(reader.ReadInt32());
+                    DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+                    if (duanWuPlayer.LisaoActive)
+                    {
+                        return;
+                    }
+                    List<int> nums = LanguageHelper.GetUniqueRandomNumbers(8, 0, 37);
+                    ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                    writer.Write("ServeSetQustion");
+                    writer.Write(Main.rand.Next(0, 8));
+                    writer.Write(Main.rand.Next(2));
+                    for (int i = 0; i < 8; i++)
+                    {
+                        writer.Write(nums[i]);
+                    }
+                    writer.Send(-1, -1);
+                    duanWuPlayer.LisaoActive = true;
+                    Time = 600;
                 }
-                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                writer.Write("ServeSetQustion");
-                writer.Write(ans);
-                writer.Write(lisaoquestion);
-                for (int i = 0; i < 8; i++)
-                {
-                    writer.Write(nums[i]);
-                }
-                writer.Send(-1, sender);
             }
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                int ans = reader.ReadInt32();
-                int lisaoquestion = reader.ReadInt32();
-                List<int> nums = [];
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-                duanWuPlayer.Answer = ans;
+                duanWuPlayer.Answer = reader.ReadInt32();
+                int lisaoquestion = reader.ReadInt32();
+                int ans_text=0;
                 for (int i = 0; i < 8; i++)
                 {
-                    nums.Add(reader.ReadInt32());
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(nums[(i + 8 - ans) % 8], (lisaoquestion ^ 1));
+                    int index = reader.ReadInt32();
+                    if (i== duanWuPlayer.Answer)
+                        ans_text = index;
+                    duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(index, lisaoquestion);
                 }
                 duanWuPlayer.lisaoquestion = lisaoquestion;
-                duanWuPlayer.LisaoActive = true;
                 duanWuPlayer.ChoiceAnswer = -1;
-                duanWuPlayer.counttime =  600;
-                duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(nums[0], lisaoquestion);
-                duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(nums[0], (lisaoquestion ^ 1) );
+                duanWuPlayer.counttime = 600;
+                duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(ans_text, lisaoquestion^1);
+                duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(ans_text, lisaoquestion);
+                duanWuPlayer.LisaoActive = true;
             }
         }
 
-        public static void HandlePacket(BinaryReader reader, int sender)
+        public override void PostUpdateTime()
         {
-            ServeSetQustion serveSetQustion = new ServeSetQustion();
-            serveSetQustion.RecievePacket(reader, sender);
+            if (Main.netMode == NetmodeID.Server && DuanWuPlayer.Quickresponse)
+            {
+                DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+                if (duanWuPlayer.LisaoActive)
+                {
+                    Time--;
+                }
+                if (Time == -180)
+                {
+                    duanWuPlayer.LisaoActive = false;
+                }
+            }
         }
+
     }
 
     #region 记分储存

@@ -18,6 +18,8 @@ using Luminance.Core.Graphics;
 using Luminance;
 using Luminance.Common.Utilities;
 using Luminance.Core.Cutscenes;
+using Luminance.Core.Sounds;
+using Terraria.Audio;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -59,7 +61,9 @@ namespace DuanWu.Content.Items
         public override bool? UseItem(Player player)
         {
             if (Main.myPlayer==player.whoAmI)
-            { 
+            {
+                Vector2 v2 = player.position + Main.rand.NextVector2Circular(10, 10) * 100;
+                PenaltySystem.QuickSpawnNPC(NPCID.DukeFishron, v2);
                 //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
                 //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
             }

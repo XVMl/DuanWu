@@ -87,6 +87,7 @@ namespace DuanWu.Content.System
                         //白天地牢守卫
                         Main.dayTime = true;
                         Main.time = 0;
+                        ModContent.GetInstance<NetTime>().NetSeed(-1, -1);
                         QuickSpawnNPC(35, player.Center);
                         break;
                     case 6:

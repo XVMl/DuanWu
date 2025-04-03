@@ -44,10 +44,10 @@ namespace DuanWu.Content.Items
 
         public override bool CanUseItem(Player player)
         {
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
-            {
-                return false;
-            }
+            //if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            //{
+            //    return false;
+            //}
             return true;
         }
 
@@ -58,12 +58,12 @@ namespace DuanWu.Content.Items
 
         public override bool? UseItem(Player player)
         {
-            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
-            {
                 if (Main.myPlayer == player.whoAmI)
                 {
                     LanguageHelper.SetQuestion();
                 }
+            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            {
 
             }
 

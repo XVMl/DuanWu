@@ -81,15 +81,15 @@ namespace DuanWu.Content.UI
 
             if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().lisaoquestion == 0)
             {
-                questionText.SetText("__________");
-                questionText1.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
-                answer.Top.Set(75f, 0f);
-            }
-            else
-            {
                 questionText1.SetText("__________");
                 questionText.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
                 answer.Top.Set(25f, 0f);
+            }
+            else
+            {
+                questionText.SetText("__________");
+                questionText1.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
+                answer.Top.Set(75f, 0f);
             }
         }
 

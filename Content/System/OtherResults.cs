@@ -50,10 +50,10 @@ namespace DuanWu.Content.System
         
         public static void SetBlur()
         {
-            if (!Filters.Scene["DuanWuShader:Blur"].IsActive())
-            {
-                Filters.Scene.Activate("DuanWuShader:Blur");
-            }
+            //if (!Filters.Scene["DuanWuShader:Blur"].IsActive())
+            //{
+            //    Filters.Scene.Activate("DuanWuShader:Blur");
+            //}
         }
 
         public static void SetPixelation(float intensity)

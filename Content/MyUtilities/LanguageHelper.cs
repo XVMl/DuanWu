@@ -48,6 +48,22 @@ namespace DuanWu.Content.MyUtilities
             {
                 return;
             }
+            if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
+            {
+                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                writer.Write("ServeSetQustion");
+                //writer.Write(text);
+                //writer.Write(numberofchoise);
+                //writer.Write(ans);
+                //writer.Write(duanWuPlayer.lisaoquestion);
+                //for (int i = 0; i < 8; i++)
+                //{
+                //    writer.Write(nums[i]);
+                //}
+                writer.Write("SetQustion");
+                writer.Send(-1, -1);
+                return;
+            }
             duanWuPlayer.ChoiceAnswer = -1;
             duanWuPlayer.counttime = DuanWuPlayer.AnswerQuestionTime * 60;
             duanWuPlayer.LisaoActive = true;
@@ -57,25 +73,11 @@ namespace DuanWu.Content.MyUtilities
             int ans = Main.rand.Next(0, numberofchoise);
             duanWuPlayer.lisaoquestion = Main.rand.Next(2);
             duanWuPlayer.Answer = ans;
-            duanWuPlayer.LisaoQuestionText = GetQuestionTextValue(nums[0], duanWuPlayer.lisaoquestion);
-            duanWuPlayer.QuestionAnswer = GetQuestionTextValue(nums[0], duanWuPlayer.lisaoquestion ^ 1);
+            duanWuPlayer.LisaoQuestionText = GetQuestionTextValue(nums[ans], duanWuPlayer.lisaoquestion^1);
+            duanWuPlayer.QuestionAnswer = GetQuestionTextValue(nums[ans], duanWuPlayer.lisaoquestion);
             for (int i = 0; i < numberofchoise; i++)
             {
-                duanWuPlayer.LisaoChoiceText[i] = GetQuestionTextValue(nums[(i + numberofchoise - ans) % numberofchoise],duanWuPlayer.lisaoquestion ^ 1 );
-            }
-            if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
-            {
-                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                writer.Write("ServeSetQustion");
-                //writer.Write(text);
-                //writer.Write(numberofchoise);
-                writer.Write(ans);
-                writer.Write(duanWuPlayer.lisaoquestion);
-                for (int i = 0; i < 8; i++)
-                {
-                    writer.Write(nums[i]);
-                }
-                writer.Send(-1, -1);
+                duanWuPlayer.LisaoChoiceText[i] = GetQuestionTextValue(nums[i],duanWuPlayer.lisaoquestion);
             }
         }
 
