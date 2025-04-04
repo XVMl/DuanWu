@@ -87,7 +87,7 @@ namespace DuanWu.Content.System
                         //白天地牢守卫
                         Main.dayTime = true;
                         Main.time = 0;
-                        ModContent.GetInstance<NetTime>().NetSeed(-1, -1);
+                        ModContent.GetInstance<NetTime>().SendPacket(-1, -1);
                         QuickSpawnNPC(35, player.Center);
                         break;
                     case 6:
@@ -464,7 +464,7 @@ namespace DuanWu.Content.System
                         duanWuPlayer.Setmovespeed -= 1;
                         break;
                     case 12:
-
+                        //答题成绩减半
                         break;
                     case 13:
 
@@ -529,7 +529,7 @@ namespace DuanWu.Content.System
                         duanWuPlayer.StartScreenpos = true;
                         break;
                     case 7:
-                        //时间加速
+                        //答题记录清除
 
                         break;
                     case 8:
@@ -587,7 +587,7 @@ namespace DuanWu.Content.System
             NPC.NewNPC(null, (int)pos.X, (int)pos.Y, id);
             SelectNPCID = id;
             SelectNPCpos = pos;
-            ModContent.GetInstance<NetNPC>().NetSeed(-1, -1);
+            ModContent.GetInstance<NetNPC>().SendPacket(-1, -1);
         }
         /// <summary>
         /// 生成射弹并同步
@@ -600,7 +600,7 @@ namespace DuanWu.Content.System
             Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
             SelectNPCID = id;
             SelectProjectliespos = pos;
-            ModContent.GetInstance<NetProjectlies>().NetSeed(-1, -1);
+            ModContent.GetInstance<NetProjectlies>().SendPacket(-1, -1);
         }
 
         public static void KillTileRectangle(Rectangle safeBox, bool noItem = false)

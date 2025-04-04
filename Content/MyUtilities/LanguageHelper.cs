@@ -52,14 +52,6 @@ namespace DuanWu.Content.MyUtilities
             {
                 ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
                 writer.Write("ServeSetQustion");
-                //writer.Write(text);
-                //writer.Write(numberofchoise);
-                //writer.Write(ans);
-                //writer.Write(duanWuPlayer.lisaoquestion);
-                //for (int i = 0; i < 8; i++)
-                //{
-                //    writer.Write(nums[i]);
-                //}
                 writer.Write("SetQustion");
                 writer.Send(-1, -1);
                 return;
@@ -91,7 +83,7 @@ namespace DuanWu.Content.MyUtilities
                 duanWuPlayer.Reward = true;
                 RewardSystem reward = new(1);
                 DuanWuPlayer.PlayerQuestionEnd = true;
-                ModContent.GetInstance<Netsponse>().NetSeed(-1, -1);
+                ModContent.GetInstance<Netsponse>().SendPacket(-1, -1);
                 return;
             }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);

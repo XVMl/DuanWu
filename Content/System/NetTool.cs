@@ -11,45 +11,34 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using DuanWu.Content.MyUtilities;
 using static System.Net.Mime.MediaTypeNames;
+using Luminance.Common.Utilities;
 
 namespace DuanWu.Content.System
 {
     public abstract class NetTool : ModSystem
     {
         protected static int Time;
+        
+        public abstract string TypeName { get; }
 
         public static readonly Dictionary<string, Type> PacketHandlers = new();
-
-        public abstract string TypeName { get; }
         public override void Load()
         {
             PacketHandlers[TypeName] = GetType();
             base.Load();
         }
         public virtual void RecievePacket(BinaryReader reader, int sender) { }
-        public virtual void SendPacket(BinaryWriter writer) { }
-
-        public void NetSeed(int toClient = -1, int ignoreClient = -1)
+        public virtual void WriterPacket(BinaryWriter writer) { }
+        public void SendPacket(int toClient = -1, int ignoreClient = -1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
             {
                 return;
             }
-            if (Main.netMode == NetmodeID.Server)
-            {
-                ModContent.GetInstance<DuanWu>().Logger.Info($"Sending packet for tool ({Name}) from server");
-            }
-
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-            {
-                ModContent.GetInstance<DuanWu>().Logger.Info($"Sending packet for tool ({Name}) from {Main.LocalPlayer.whoAmI}");
-            }
-
             ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
-            packet.Write(Name);
-            SendPacket(packet);
+            packet.Write(TypeName);
+            WriterPacket(packet);
             packet.Send(toClient, ignoreClient);
-
         }
 
     }
@@ -63,17 +52,18 @@ namespace DuanWu.Content.System
             Main.time = reader.ReadDouble();
             if (Main.netMode == NetmodeID.Server)
             {
-                base.NetSeed(-1, sender);
+                base.SendPacket(-1, sender);
             }
         }
 
-        public override void SendPacket(BinaryWriter writer)
+        public override void WriterPacket(BinaryWriter writer)
         {
             writer.Write(Name);
             writer.Write(Main.dayTime);
             writer.Write(Main.time);
         }
     }
+
     internal class Netsponse : NetTool
     {
         public override string TypeName => Name;
@@ -83,8 +73,7 @@ namespace DuanWu.Content.System
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
                 Time = 0;
-                //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive = false;
-                base.NetSeed(-1, sender);
+                base.SendPacket(-1, sender);
             }
         }
 
@@ -146,17 +135,11 @@ namespace DuanWu.Content.System
 
         }
 
-        public override void SendPacket(BinaryWriter writer)
+        public override void WriterPacket(BinaryWriter writer)
         {
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
             writer.Write(Main.LocalPlayer.name);
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy);
-        }
-
-        public static void HandlePacket(BinaryReader reader, int sender)
-        {
-            NetScoreboard netScoreboard = new NetScoreboard();
-            netScoreboard.RecievePacket(reader, sender);
         }
 
         public static void SubmitPacket()
@@ -182,14 +165,10 @@ namespace DuanWu.Content.System
             DuanWuPlayer.SetSpwanRate = reader.ReadBoolean();
             if (Main.netMode == 2)
             {
-                NetSeed(-1, sender);
+                SendPacket(-1, sender);
             }
         }
 
-        public override void SendPacket(BinaryWriter writer)
-        {
-            writer.Write(true);
-        }
     }
 
     internal class NetProjectlies : NetTool
@@ -199,17 +178,16 @@ namespace DuanWu.Content.System
         {
             int type = reader.ReadInt32();
             Vector2 pos = reader.ReadVector2();
-
-            Projectile.NewProjectile(null, pos, Vector2.Zero, type, 99, 1);
+            Utilities.NewProjectileBetter(null, pos, Vector2.Zero, type, 66,0);
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
                 Main.mouseX = (int)pos.X;
                 Main.mouseY = (int)pos.Y;
-                base.NetSeed(-1, sender);
+                SendPacket(-1, sender);
             }
         }
 
-        public override void SendPacket(BinaryWriter writer)
+        public override void WriterPacket(BinaryWriter writer)
         {
             writer.Write(PenaltySystem.SelectProjectliesID);
             writer.WriteVector2(Main.MouseWorld);
@@ -230,11 +208,11 @@ namespace DuanWu.Content.System
             Main.NewText(sender);
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
-                base.NetSeed(-1, sender);
+                base.SendPacket(-1, sender);
             }
         }
 
-        public override void SendPacket(BinaryWriter writer)
+        public override void WriterPacket(BinaryWriter writer)
         {
             writer.Write(PenaltySystem.SelectNPCID);
             writer.WriteVector2(Main.MouseWorld);
@@ -317,7 +295,6 @@ namespace DuanWu.Content.System
 
     internal class Record : IComparable<Record>
     {
-
         public string Name { get; }
         public float Accuracy { get; }
         public int CorrectCount { get; }

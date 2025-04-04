@@ -76,13 +76,13 @@ namespace DuanWu.Content.System
         {
             SetTime = time;
             Setday = daytime;
-            ModContent.GetInstance<NetTime>().NetSeed(-1, -1);
+            ModContent.GetInstance<NetTime>().SendPacket(-1, -1);
         }
 
         public static void QuickSetSpwanRate(bool rate)
         {
             DuanWuPlayer.SetSpwanRate= rate;
-            ModContent.GetInstance<NetSpawnRate>().NetSeed(-1, -1);
+            ModContent.GetInstance<NetSpawnRate>().SendPacket(-1, -1);
         }
     }
 }

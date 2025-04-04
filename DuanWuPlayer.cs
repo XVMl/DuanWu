@@ -308,33 +308,31 @@ namespace DuanWu
             }
         }
 
-
-
         #region 受击时
         public override void OnHurt(Player.HurtInfo info)
         {
-            if (!Main.dedServ)
+            if (Main.dedServ|| Main.myPlayer != Player.whoAmI)
             {
-                QustionActive=true;
+                return;
             }
-            //if (info.Damage >= 250 && info.Damage < Player.statLife)
-            //{
-            //    LanguageHelper.SetQuestion();
-            //}
-            //else if (info.Damage >= 100)
-            //{
-            //    if (Main.rand.Next(0, 4) == 1)
-            //    {
-            //        LanguageHelper.SetQuestion();
-            //    }
-            //}
-            //else
-            //{
-            //    if (Main.rand.Next(0, 16) == 1)
-            //    {
-            //        LanguageHelper.SetQuestion();
-            //    }
-            //}
+            if (info.Damage >= 250 && info.Damage < Player.statLife)
+            {
+                LanguageHelper.SetQuestion();
+            }
+            else if (info.Damage >= 100)
+            {
+                if (Main.rand.Next(0, 4) == 1)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
+            else
+            {
+                if (Main.rand.Next(0, 16) == 1)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
         }
         #endregion
 

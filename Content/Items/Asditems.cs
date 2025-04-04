@@ -65,7 +65,7 @@ namespace DuanWu.Content.Items
                 Vector2 v2 = player.position + Main.rand.NextVector2Circular(10, 10) * 100;
                 PenaltySystem.QuickSpawnNPC(NPCID.DukeFishron, v2);
                 //Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
-                //ModContent.GetInstance<NetScoreboard>().NetSeed(-1, -1);
+                //ModContent.GetInstance<NetScoreboard>().SendPacket(-1, -1);
             }
 
 

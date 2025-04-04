@@ -52,7 +52,6 @@ namespace DuanWu.Content.System
 
         public override void UpdateUI(GameTime gameTime)
         {
-           
             UserInterface lisaoquestion = _lisaoQustion;
             lisaoquestion?.Update(gameTime);
             UserInterface lisao = _lisao;
@@ -68,7 +67,6 @@ namespace DuanWu.Content.System
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
             if (MouseTextIndex != -1)
             {
-
                 layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                    "DuanWu:LisaoQuestion",
                    delegate
