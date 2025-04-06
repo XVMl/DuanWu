@@ -36,6 +36,7 @@ namespace DuanWu.Content.System
 
         private void AverageChance()
         {
+
             if (DuanWuPlayer.RandResults)
             {
                 this.Penaltylevel = Main.rand.Next(0, 10);
@@ -51,9 +52,7 @@ namespace DuanWu.Content.System
             }
 
             Player player = Main.LocalPlayer;
-
             AverageChance();
-
             if (penaltylevel == 1)
             {
                 int level1 = Main.rand.Next(0, 10);
@@ -80,14 +79,12 @@ namespace DuanWu.Content.System
                         break;
                     case 4:
                         //高斯模糊 1
-                        OtherResults.SetBlur();
+                        duanWuPlayer.GaussBlurActive = true;
 
                         break;
                     case 5:
                         //白天地牢守卫
-                        Main.dayTime = true;
-                        Main.time = 0;
-                        ModContent.GetInstance<NetTime>().SendPacket(-1, -1);
+                        OtherResults.QuickSetTime(0, true);
                         QuickSpawnNPC(35, player.Center);
                         break;
                     case 6:
@@ -254,13 +251,13 @@ namespace DuanWu.Content.System
                         break;
                     case 1:
                         //右转90°
-                        OtherResults.SetCamera(-0.5f);
-
+                        duanWuPlayer.CameraActive = true;
+                        duanWuPlayer.Cameraintensity = -0.5f;
                         break;
                     case 2:
                         //左转90°
-                        OtherResults.SetCamera(0.5f);
-
+                        duanWuPlayer.CameraActive = true;
+                        duanWuPlayer.Cameraintensity = 0.5f;
                         break;
                     case 3:
                         //玩家爆炸
@@ -311,8 +308,8 @@ namespace DuanWu.Content.System
                         break;
                     case 13:
                         //马赛克8 2
-                        OtherResults.SetPixelation(8);
-
+                        duanWuPlayer.PixelationActive = true;
+                        duanWuPlayer.Pixelationintensity = 8;
                         break;
                     case 14:
                         //宠物猫狗兔死亡 2 
@@ -410,8 +407,8 @@ namespace DuanWu.Content.System
                         break;
                     case 3:
                         //一直转
-                        OtherResults.SetCamera(0);
-
+                        duanWuPlayer.CameraActive = true;
+                        duanWuPlayer.Cameraintensity = 0;
                         break;
                     case 4:
                         //一点血 3
@@ -433,8 +430,9 @@ namespace DuanWu.Content.System
                         break;
                     case 7:
                         //马赛克16 3
-                        OtherResults.SetPixelation(16);
 
+                        duanWuPlayer.PixelationActive = true;
+                        duanWuPlayer.Pixelationintensity = 16;
                         break;
                     case 8:
                         //NPC全死 3
@@ -497,8 +495,9 @@ namespace DuanWu.Content.System
                         break;
                     case 2:
                         //马赛克64 4
-                        OtherResults.SetPixelation(64);
 
+                        duanWuPlayer.PixelationActive = true;
+                        duanWuPlayer.Pixelationintensity = 64;
                         break;
                     case 3:
                         //一直答题

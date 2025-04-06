@@ -15,6 +15,7 @@
 	  <None Remove="Assets\Sound\**" />
 	</ItemGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Assets\AutoloadedEffects\Filters\GaussBlur.fx" />
 	  <AdditionalFiles Remove="Content\Items\AnglerRod.png" />
 	  <AdditionalFiles Remove="Content\Projectiles\AnglerBobber.png" />
 	</ItemGroup>

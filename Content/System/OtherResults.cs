@@ -38,39 +38,6 @@ namespace DuanWu.Content.System
             0, -1, 0, 1,
             0, 0, -1, 1,
             0, 0, 0, 1);
-        public static void SetCamera(float intensity)
-        {
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Zhuan");
-            if (!distortion.IsActive)
-            {
-                distortion.TrySetParameter("intensity", intensity);
-                distortion.Activate();
-            }
-        }
-        
-        public static void SetBlur()
-        {
-            //if (!Filters.Scene["DuanWuShader:Blur"].IsActive())
-            //{
-            //    Filters.Scene.Activate("DuanWuShader:Blur");
-            //}
-        }
-
-        public static void SetPixelation(float intensity)
-        {
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Pixelation");
-            if (!distortion.IsActive)
-            {
-                distortion.TrySetParameter("intensity", intensity);
-                distortion.Activate();
-            }
-        }
-
-
-        public static void GiganticTransFormation()
-        {
-
-        }
 
         public static void QuickSetTime(double time, bool daytime)
         {

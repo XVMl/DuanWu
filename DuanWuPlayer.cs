@@ -96,6 +96,12 @@ namespace DuanWu
         public static bool QustionActive;
 
         public int Cutscene;
+
+        public bool GaussBlurActive;
+        public bool CameraActive;
+        public bool PixelationActive;
+        public float Pixelationintensity;
+        public float Cameraintensity;
         public override void OnEnterWorld()
         {
             NetScoreboard.SubmitPacket();   
@@ -104,6 +110,10 @@ namespace DuanWu
 
         public override void PostUpdate()
         {
+
+            SetBlur();
+            SetPixelation();
+            SetCamera();
 
             //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Starry");
             //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Zhuan");
@@ -115,24 +125,6 @@ namespace DuanWu
             //    //distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
             //    distortion.Activate();
             //}
-
-            //if (!Filters.Scene["DuanWuShader:contraction"].IsActive())
-            //{
-            //    Filters.Scene.Activate("DuanWuShader:contraction");
-            //}
-
-            //if (!Filters.Scene["DuanWuShader:magnifiter"].IsActive())
-            //{
-            //    Filters.Scene.Activate("DuanWuShader:magnifiter");
-            //}
-
-            //if (Filters.Scene["DuanWuShader:magnifiter"].IsActive())
-            //{
-            //    Vector2 mouse = (Main.MouseWorld - Main.screenPosition);
-            //    Vector2 pos = new Vector2(mouse.X / Main.screenWidth, mouse.Y / Main.screenHeight);
-            //    Filters.Scene["DuanWuShader:magnifiter"].GetShader().UseColor(122,122,122).UseTargetPosition(pos + new Vector2(Main.offScreenRange, Main.offScreenRange));
-            //}
-
 
             //OtherQusetionAvtive();
             if (LisaoActive)
@@ -185,18 +177,8 @@ namespace DuanWu
 
         public override void UpdateDead()
         {
-            if (Filters.Scene["DuanWuShader:Zhuan"].IsActive())
-            {
-                Filters.Scene["DuanWuShader:Zhuan"].Deactivate();
-            }
-            if (Filters.Scene["DuanWuShader:Zhuan"].IsActive())
-            {
-                Filters.Scene["DuanWuShader:Zhuan"].Deactivate();
-            }
-            if (Filters.Scene["DuanWuShader:Pixelation"].IsActive())
-            {
-                Filters.Scene["DuanWuShader:Pixelation"].Deactivate();
-            }
+
+            
             if (!ForverShowProjectileBox)
             {
                 ShowProjectileBox = false;
@@ -210,6 +192,11 @@ namespace DuanWu
                 ShowNPCHitBox = false;
             }
             KeepQuestionActive = false;
+            CameraActive= false;
+            PixelationActive= false;
+            GaussBlurActive= false;
+            Cameraintensity = 0;
+            Pixelationintensity= 0;
         }
 
         public override bool ConsumableDodge(Player.HurtInfo info)
@@ -368,6 +355,41 @@ namespace DuanWu
 
 
         }
+
+
+        public void SetCamera()
+        {
+            if (!CameraActive) return;
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Zhuan");
+            if (!distortion.IsActive)
+            {
+                distortion.TrySetParameter("intensity", Cameraintensity);
+                distortion.Activate();
+            }
+        }
+
+        public void SetBlur()
+        {
+            if (!GaussBlurActive) return;
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.GaussBlur");
+            if (!distortion.IsActive)
+            {
+                distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
+                distortion.Activate();
+            }
+        }
+
+        public void SetPixelation()
+        {
+            if (!PixelationActive) return;
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Pixelation");
+            if (!distortion.IsActive)
+            {
+                distortion.TrySetParameter("intensity", Pixelationintensity);
+                distortion.Activate();
+            }
+        }
+
 
     }
 }

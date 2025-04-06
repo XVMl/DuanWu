@@ -52,8 +52,6 @@ namespace DuanWu.Content.Projectiles
                 distortion.Activate();
             }
 
-
-
             Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Projectiles/InvisiblePixel").Value;
             Main.spriteBatch.Draw(texture,Projectile.Center-Main.screenPosition,null, Color.Transparent, 0f, texture.Size() * 0.5f, 400f, 0, 0f);
             return true;

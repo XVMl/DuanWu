@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -30,24 +31,26 @@ namespace DuanWu.Content.System
         //internal PlayVideo playvideo;
         public override void Load()
         {
-            if (!Main.dedServ)
+            if (Main.dedServ)
             {
-                _lisaoQustion = new UserInterface();
-                lisaoQuestion = new LisaoQuestion();
-                _lisaoQustion.SetState(lisaoQuestion);
-                _drawHitBox = new UserInterface();
-                drawHitBox = new DrawHitBox();
-                _drawHitBox.SetState(drawHitBox);
-                _lisao=new UserInterface();
-                lisao = new Lisao();
-                _lisao.SetState(lisao);
-                _scoreboard = new UserInterface();
-                scoreboard = new Scoreboard();
-                _scoreboard.SetState(scoreboard);
-                //_playvideo = new UserInterface();
-                //playvideo= new PlayVideo();
-                //_playvideo.SetState(playvideo);
+                return;
             }
+            _lisaoQustion = new UserInterface();
+            lisaoQuestion = new LisaoQuestion();
+            _lisaoQustion.SetState(lisaoQuestion);
+            _drawHitBox = new UserInterface();
+            drawHitBox = new DrawHitBox();
+            _drawHitBox.SetState(drawHitBox);
+            _lisao = new UserInterface();
+            lisao = new Lisao();
+            _lisao.SetState(lisao);
+            _scoreboard = new UserInterface();
+            scoreboard = new Scoreboard();
+            _scoreboard.SetState(scoreboard);
+            //_playvideo = new UserInterface();
+            //playvideo= new PlayVideo();
+            //_playvideo.SetState(playvideo);
+
         }
 
         public override void UpdateUI(GameTime gameTime)
@@ -56,7 +59,7 @@ namespace DuanWu.Content.System
             lisaoquestion?.Update(gameTime);
             UserInterface lisao = _lisao;
             lisao?.Update(gameTime);
-            UserInterface score=_scoreboard;
+            UserInterface score = _scoreboard;
             score?.Update(gameTime);
             //UserInterface playvideo=_playvideo;
             //playvideo?.Update(gameTime);
@@ -87,15 +90,15 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
-               // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
-               //    "DuanWu:PlayVideo",
-               //    delegate
-               //    {
-               //        _playvideo.Draw(Main.spriteBatch, new GameTime());
-               //        return true;
-               //    },
-               //    InterfaceScaleType.UI)
-               //);
+                // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                //    "DuanWu:PlayVideo",
+                //    delegate
+                //    {
+                //        _playvideo.Draw(Main.spriteBatch, new GameTime());
+                //        return true;
+                //    },
+                //    InterfaceScaleType.UI)
+                //);
 
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
@@ -126,6 +129,6 @@ namespace DuanWu.Content.System
             }
 
         }
-
     }
+
 }

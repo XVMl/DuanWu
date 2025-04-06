@@ -81,6 +81,7 @@ namespace DuanWu.Content.MyUtilities
             {
                 Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Success"), Color.Green);
                 duanWuPlayer.Reward = true;
+                duanWuPlayer.PlayerAccuracy++;
                 RewardSystem reward = new(1);
                 DuanWuPlayer.PlayerQuestionEnd = true;
                 ModContent.GetInstance<Netsponse>().SendPacket(-1, -1);
@@ -89,7 +90,7 @@ namespace DuanWu.Content.MyUtilities
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
             duanWuPlayer.Reward = false;
             PenaltySystem penaltySystem = new(1);
-            
+            duanWuPlayer.PlayerQuestioncount++;
         }
 
         public static void EndQnestion()
