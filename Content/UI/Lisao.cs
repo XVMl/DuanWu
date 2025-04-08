@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Luminance.Common.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Chat.Commands;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ModLoader;
 using Terraria.ModLoader.UI;
@@ -36,7 +38,7 @@ namespace DuanWu.Content.UI
                 LisaochoiceLisst.Clear();
                 for (int i = 0; i < numberofchoise; i++)
                 {
-                    LisaochoiceLisst.Add(new MyButton(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoChoiceText[i], i, ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton")));
+                    LisaochoiceLisst.Add(new MyButton(i,Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoChoiceText[i], i, ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButton")));
                 }
             }
         }
@@ -63,14 +65,37 @@ namespace DuanWu.Content.UI
         private int Number;
 
         public UIText uiText;
-        public MyButton(string text,int num,Asset<Texture2D> texture) : base(texture)
+
+        private int Choise;
+
+        private Asset<Texture2D> _texture;
+        public MyButton(int choise,string text,int num,Asset<Texture2D> texture) : base(texture)
         {
-            this.Number = num;
+            Number = num;
             Height.Set(32, 0);
             Width.Set(550, 0);
+            Choise = choise;
             uiText = new UIText(text);
+            _texture=texture;
             uiText.HAlign =uiText.VAlign = 0.5f;
             Append(uiText);
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            CalculatedStyle dimensions = GetDimensions();
+            var player = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            if (Choise==player.ChoiceAnswer &&player.ShowAnswer > 0)
+            {
+                spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.Red * Utilities.InverseLerp(0.4f, 1, 120 /player.ShowAnswer));
+                return;
+            }else if(Choise == player.Answer && player.ShowAnswer > 0)
+            {
+                spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.Green * Utilities.InverseLerp(0.4f, 1, 120 / player.ShowAnswer));
+                return;
+            }
+            spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.White * (base.IsMouseHovering ? 1 : 0.4f));
+
         }
 
         public override void LeftClick(UIMouseEvent evt)

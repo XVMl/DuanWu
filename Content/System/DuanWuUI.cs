@@ -27,6 +27,9 @@ namespace DuanWu.Content.System
         private UserInterface _scoreboard;
         internal Scoreboard scoreboard;
 
+        private UserInterface _testui;
+        internal TestUI testUI;
+
         //private UserInterface _playvideo;
         //internal PlayVideo playvideo;
         public override void Load()
@@ -47,6 +50,9 @@ namespace DuanWu.Content.System
             _scoreboard = new UserInterface();
             scoreboard = new Scoreboard();
             _scoreboard.SetState(scoreboard);
+            _testui=new UserInterface();
+            testUI=new TestUI();
+            _testui.SetState(testUI);
             //_playvideo = new UserInterface();
             //playvideo= new PlayVideo();
             //_playvideo.SetState(playvideo);
@@ -61,6 +67,8 @@ namespace DuanWu.Content.System
             lisao?.Update(gameTime);
             UserInterface score = _scoreboard;
             score?.Update(gameTime);
+            UserInterface testui = _testui;
+            testui?.Update(gameTime);
             //UserInterface playvideo=_playvideo;
             //playvideo?.Update(gameTime);
         }
@@ -85,6 +93,16 @@ namespace DuanWu.Content.System
                    delegate
                    {
                        _lisao.Draw(Main.spriteBatch, new GameTime());
+                       return true;
+                   },
+                   InterfaceScaleType.UI)
+               );
+
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                   "DuanWu:TestUI",
+                   delegate
+                   {
+                       _testui.Draw(Main.spriteBatch, new GameTime());
                        return true;
                    },
                    InterfaceScaleType.UI)

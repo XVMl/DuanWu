@@ -20,6 +20,7 @@ using Luminance.Common.Utilities;
 using Luminance.Core.Cutscenes;
 using Luminance.Core.Sounds;
 using Terraria.Audio;
+using DuanWu.Content.UI;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -63,9 +64,13 @@ namespace DuanWu.Content.Items
             if (Main.myPlayer==player.whoAmI)
             {
                 Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
-                NetScoreboard.SubmitPacket();
+                if (player.altFunctionUse == 2)
+                {
+                    TestUI.Adjust();
+                }
+                else TestUI.AddElement();
+                //NetScoreboard.SubmitPacket();
             }
-
 
 
             //ushort selected = TileID.WoodBlock;

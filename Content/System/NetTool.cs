@@ -117,18 +117,21 @@ namespace DuanWu.Content.System
             {
                 int num = reader.ReadInt32();
                 //Main.NewText(num);
-                var manager = new RecordManager();
-                Scoreboard.UIGrid.Clear();
+                //Scoreboard.UIGrid.Clear();
+                Scoreboard.CaleElement(num);
+                RecordManager recordManager = new RecordManager();
                 for (int i = 0; i < num; i++)
                 {
                     string name = reader.ReadString();
                     int numberofquestions = reader.ReadInt32();
                     int corrects = reader.ReadInt32();
-                    manager.AddOrUpdate(name, corrects, numberofquestions);
+                    recordManager.AddOrUpdate(name, corrects, numberofquestions);
                 }
-                foreach (var record in manager.GetSortedRecords())
+                int count = 0;
+                foreach (var record in recordManager.GetSortedRecords())
                 {
-                    Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
+                    Scoreboard.TryUpdata(record.Name, record.Accuracy, record.CorrectCount, count++);
+                    //Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
                 }
                 Scoreboard.CalcBox();
             }
@@ -293,7 +296,7 @@ namespace DuanWu.Content.System
 
     #region 记分储存
 
-    internal class Record : IComparable<Record>
+    public class Record : IComparable<Record>
     {
         public string Name { get; }
         public float Accuracy { get; }
@@ -313,9 +316,9 @@ namespace DuanWu.Content.System
         }
     }
 
-    internal class RecordManager
+    public class RecordManager
     {
-        private readonly Dictionary<string, Record> _records = new();
+        public readonly Dictionary<string, Record> _records = new();
 
         // 添加或更新记录
         public void AddOrUpdate(string name, float accuracy, int correctCount)
@@ -326,8 +329,32 @@ namespace DuanWu.Content.System
         // 获取按正确率降序排列的记录
         public IEnumerable<Record> GetSortedRecords()
         {
-            return _records.Values.OrderByDescending(x => x.Accuracy);
+            return _records.Values.OrderByDescending(r => r.Accuracy);
         }
+        //public static IEnumerable<(int Rank,Record Record)> GetSortedRecords()
+        //{
+        //    var sorted = _records.Values
+        //        .OrderByDescending(r=>r.Accuracy)
+        //        .ToList();
+        //    if (sorted.Count == 0)
+        //    {
+        //        yield break;
+        //    }
+        //    int currentRank = 1;
+        //    float lastAccuracy = sorted[0].Accuracy;
+        //    for (int i = 0; i < sorted.Count; i++)
+        //    {
+        //        // 当准确率变化时更新当前排名
+        //        if (sorted[i].Accuracy != lastAccuracy)
+        //        {
+        //            currentRank = i + 1;
+        //            lastAccuracy = sorted[i].Accuracy;
+        //        }
+
+        //        yield return (currentRank, sorted[i]);
+        //    }
+
+        //}
 
     }
     #endregion
