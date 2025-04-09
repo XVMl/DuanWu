@@ -15,8 +15,8 @@ namespace DuanWu.Content.UI
     public class LisaoQuestion:UIState
     {
         private UIElement area;
-        private UIText questionText;
-        private UIText questionText1;
+        private UIText FirstSentence;
+        private UIText DownSentence;
         private UIText conunttime;
         private UIText answer;
         private float visibility = 0.5f;
@@ -26,32 +26,32 @@ namespace DuanWu.Content.UI
             area.Width.Set(800f, 0f);
             area.Height.Set(100f, 0f);
             area.HAlign = 0.5f; area.VAlign = 0.1f;
-            questionText = new UIText("", 0.7f, true);
+            FirstSentence = new UIText("", 0.7f, true);
             conunttime = new UIText("", 0.7f, true);
-            questionText1 = new UIText("", 0.7f, true);
+            DownSentence = new UIText("", 0.7f, true);
             answer = new UIText("", 0.7f, true);
-            questionText.Height.Set(1f, 0f);
-            questionText.Width.Set(600f, 0f);
-            questionText.Left.Set(0f, 0f);
-            questionText.Top.Set(75f, 0f);
-            questionText.IgnoresMouseInteraction = true;
+            FirstSentence.Height.Set(1f, 0f);
+            FirstSentence.Width.Set(600f, 0f);
+            FirstSentence.Left.Set(0f, 0f);
+            FirstSentence.Top.Set(75f, 0f);
+            FirstSentence.IgnoresMouseInteraction = true;
             conunttime.Height.Set(1f, 0f);
             conunttime.Width.Set(600f, 0f);
             conunttime.Left.Set(300f, 0f);
             conunttime.Top.Set(25f, 0f);
             conunttime.IgnoresMouseInteraction = true;
-            questionText1.Height.Set(1f, 0f);
-            questionText1.Width.Set(600f, 0f);
-            questionText1.Left.Set(0f, 0f);
-            questionText1.Top.Set(25f, 0f);
-            questionText1.IgnoresMouseInteraction = true;
+            DownSentence.Height.Set(1f, 0f);
+            DownSentence.Width.Set(600f, 0f);
+            DownSentence.Left.Set(0f, 0f);
+            DownSentence.Top.Set(25f, 0f);
+            DownSentence.IgnoresMouseInteraction = true;
             answer.Height.Set(1f, 0f);
             answer.Width.Set(600f, 0f);
             answer.Left.Set(0f, 0f);
             answer.Top.Set(25f, 0f);
             answer.IgnoresMouseInteraction = true;
-            area.Append(questionText);
-            area.Append(questionText1);
+            area.Append(FirstSentence);
+            area.Append(DownSentence);
             area.Append(conunttime);
             area.Append(answer);
         }
@@ -81,14 +81,14 @@ namespace DuanWu.Content.UI
 
             if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().lisaoquestion == 0)
             {
-                questionText1.SetText("__________");
-                questionText.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
+                DownSentence.SetText("__________");
+                FirstSentence.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
                 answer.Top.Set(25f, 0f);
             }
             else
             {
-                questionText.SetText("__________");
-                questionText1.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
+                FirstSentence.SetText("__________");
+                DownSentence.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoQuestionText ?? "");
                 answer.Top.Set(75f, 0f);
             }
         }

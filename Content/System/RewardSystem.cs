@@ -181,42 +181,6 @@ namespace DuanWu.Content.System
                     case 23:
 
                         break;
-                    case 24:
-
-                        break;
-                    case 25:
-
-                        break;
-                    case 26:
-
-                        break;
-                    case 27:
-
-                        break;
-                    case 28:
-
-                        break;
-                    case 29:
-
-                        break;
-                    case 30:
-
-                        break;
-                    case 31:
-
-                        break;
-                    case 32:
-
-                        break;
-                    case 33:
-
-                        break;
-                    case 34:
-
-                        break;
-                    case 35:
-
-                        break;
 
                     default:
                         Main.NewText("未知奖励");
@@ -339,18 +303,7 @@ namespace DuanWu.Content.System
                     case 18:
                         //传送钩 3
                         break;
-                    case 19:
 
-                        break;
-                    case 20:
-
-                        break;
-                    case 21:
-
-                        break;
-                    case 22:
-
-                        break;
                     default:
 
                         break;
@@ -420,7 +373,6 @@ namespace DuanWu.Content.System
                         //SuperWoodSword 3
                         player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<SuperWoodenSword>(), 99);
 
-
                         break;
                     case 10:
                         //UlraWoodSword 3
@@ -433,29 +385,16 @@ namespace DuanWu.Content.System
                         break;
                     case 12:
                         //减伤10 3
+
                         break;
                     case 13:
                         //自由视角
+                        duanWuPlayer.FreeScreen = true;
                         break;
                     case 14:
-
+                        //标题
                         break;
                     case 15:
-
-                        break;
-                    case 16:
-
-                        break;
-                    case 17:
-
-                        break;
-                    case 18:
-
-                        break;
-                    case 19:
-
-                        break;
-                    case 20:
 
                         break;
                     default:
@@ -467,7 +406,6 @@ namespace DuanWu.Content.System
 
             else if (RewardLevel == 4)
             {
-
                 //4级
                 int level4 = Main.rand.Next(0, 10);
                 switch (level4)
@@ -521,12 +459,6 @@ namespace DuanWu.Content.System
 
                         break;
 
-                    case 9:
-
-                        break;
-                    case 10:
-
-                        break;
                     default:
 
                         break;

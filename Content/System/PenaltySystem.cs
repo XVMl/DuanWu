@@ -121,13 +121,10 @@ namespace DuanWu.Content.System
 
                         break;
                     case 12:
-                        //水牢
                         break;
                     case 13:
-                        //火牢
                         break;
                     case 14:
-                        //落石牢
                         break;
                     case 15:
                         //UFO
@@ -197,40 +194,6 @@ namespace DuanWu.Content.System
                         //心跳
 
                         break;
-                    case 31:
-                        break;
-                    case 32:
-                        break;
-
-                    case 33:
-                        break;
-                    case 34:
-                        break;
-                    case 35:
-                        break;
-                    case 36:
-                        break;
-                    case 37:
-                        break;
-                    case 38:
-                        break;
-                    case 39:
-                        break;
-                    case 40:
-                        break;
-                    case 41:
-                        break;
-                    case 42:
-                        break;
-                    case 43:
-                        break;
-                    case 44:
-                        break;
-                    case 45:
-                        break;
-                    case 46:
-
-                        break;
 
                     default:
 
@@ -244,9 +207,7 @@ namespace DuanWu.Content.System
                 switch (level2)
                 {
                     case 0:
-                        //继续答题5 2
-                        duanWuPlayer.QuestionCount = 5;
-                        Main.NewText("da5");
+                        //粽子5 2
 
                         break;
                     case 1:
@@ -276,10 +237,8 @@ namespace DuanWu.Content.System
 
                         break;
                     case 7:
-                        //失去钱
                         break;
                     case 8:
-                        //存款-50% 2
                         break;
                     case 9:
                         //白天光女
@@ -413,7 +372,6 @@ namespace DuanWu.Content.System
                     case 4:
                         //一点血 3
                         duanWuPlayer.SetLifeMax2 = player.statLifeMax2 - 1;
-
                         break;
                     case 5:
                         //敌方回满血
@@ -427,6 +385,10 @@ namespace DuanWu.Content.System
                         break;
                     case 6:
                         //存款-100% 3
+                        for (int i = 50; i < 53; i++)
+                        {
+                            player.inventory[i] = null;
+                        }
                         break;
                     case 7:
                         //马赛克16 3
@@ -463,6 +425,7 @@ namespace DuanWu.Content.System
                         break;
                     case 12:
                         //答题成绩减半
+                        duanWuPlayer.PlayerAccuracy /= 2;
                         break;
                     case 13:
 
@@ -529,7 +492,8 @@ namespace DuanWu.Content.System
                         break;
                     case 7:
                         //答题记录清除
-
+                        duanWuPlayer.PlayerAccuracy = 0;
+                        duanWuPlayer.PlayerQuestioncount = 0;
                         break;
                     case 8:
                         //刷怪提升
@@ -538,11 +502,7 @@ namespace DuanWu.Content.System
                     case 9:
                         //饰品栏减少 4
                         break;
-                    case 10:
-
-                        break;
                     default:
-
 
                         break;
                 }

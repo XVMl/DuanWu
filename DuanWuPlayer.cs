@@ -14,6 +14,7 @@ using DuanWu.Content.System;
 using DuanWu.Content.UI;
 using Luminance.Core.Graphics;
 using Luminance.Common.Utilities;
+using Terraria.ModLoader.IO;
 namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
@@ -106,6 +107,18 @@ namespace DuanWu
         {
             NetScoreboard.SubmitPacket();   
             base.OnEnterWorld();
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            tag["PlayerQuestioncount"] = PlayerQuestioncount;
+            tag["PlayerAccuracy"]= PlayerAccuracy;
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            PlayerAccuracy = tag.GetInt("PlayerAccuracy");
+            PlayerQuestioncount = tag.GetInt("PlayerQuestioncount");
         }
 
         public override void PostUpdate()

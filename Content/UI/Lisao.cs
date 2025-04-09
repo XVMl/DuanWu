@@ -113,7 +113,6 @@ namespace DuanWu.Content.UI
         public override void Update(GameTime gameTime)
         {
             uiText.SetText(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoChoiceText[this.Number]);
-            base.Update(gameTime);
         }
 
     }
