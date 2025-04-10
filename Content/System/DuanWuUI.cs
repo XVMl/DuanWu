@@ -1,9 +1,11 @@
 ﻿using DuanWu.Content.UI;
+using Luminance.Common.StateMachines;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -15,6 +17,9 @@ namespace DuanWu.Content.System
 {
     public class DuanWuUI : ModSystem
     {
+
+
+
         private UserInterface _lisaoQustion;
         internal LisaoQuestion lisaoQuestion;
 
@@ -28,14 +33,32 @@ namespace DuanWu.Content.System
         internal Scoreboard scoreboard;
 
 
+        private UserInterface _testui;
+        internal TestUI testUI;
+
+        public Type[] _UIstate = [];
+
+        public List<UserInterface> _UserInterface = new();
         //private UserInterface _playvideo;
         //internal PlayVideo playvideo;
+
         public override void Load()
         {
             if (Main.dedServ)
             {
                 return;
             }
+            _UIstate = Mod.Code.GetTypes()
+                .Where(x=>x.BaseType==typeof(BaseUIState))
+                .ToArray ();
+
+            foreach (var type in _UIstate)
+            {
+                var _state =(BaseUIState)Activator.CreateInstance(type);
+                UserInterface _userInterface = new();
+                _userInterface.SetState(_state);
+                _UserInterface.Add(_userInterface);
+            }  
             _lisaoQustion = new UserInterface();
             lisaoQuestion = new LisaoQuestion();
             _lisaoQustion.SetState(lisaoQuestion);
@@ -48,6 +71,9 @@ namespace DuanWu.Content.System
             _scoreboard = new UserInterface();
             scoreboard = new Scoreboard();
             _scoreboard.SetState(scoreboard);
+            _testui = new UserInterface();
+            testUI = new TestUI();
+            _testui.SetState(testUI);
 
             //_playvideo = new UserInterface();
             //playvideo= new PlayVideo();
@@ -55,21 +81,47 @@ namespace DuanWu.Content.System
 
         }
 
+        
+
         public override void UpdateUI(GameTime gameTime)
         {
+            foreach (UserInterface type in _UserInterface)
+            {
+                UserInterface userInterface = type;
+                userInterface?.Update(gameTime);
+            }
+            
+
             UserInterface lisaoquestion = _lisaoQustion;
             lisaoquestion?.Update(gameTime);
             UserInterface lisao = _lisao;
             lisao?.Update(gameTime);
             UserInterface score = _scoreboard;
             score?.Update(gameTime);
+            UserInterface testui = _testui;
+            testui?.Update(gameTime);
 
             //UserInterface playvideo=_playvideo;
             //playvideo?.Update(gameTime);
         }
 
+
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
+            foreach (var item in _UIstate)
+            {
+                int Index1 = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
+                layers.Insert(Index1, new LegacyGameInterfaceLayer(
+                   "DuanWu:LisaoQuestion",
+                   delegate
+                   {
+                       _lisaoQustion.Draw(Main.spriteBatch, new GameTime());
+                       return true;
+                   },
+                   InterfaceScaleType.UI)
+               );
+            }
+
             int MouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Interface Logic 2"));
             if (MouseTextIndex != -1)
             {
@@ -93,7 +145,15 @@ namespace DuanWu.Content.System
                    InterfaceScaleType.UI)
                );
 
-
+                layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
+                   "DuanWu:TestUI",
+                   delegate
+                   {
+                       _testui.Draw(Main.spriteBatch, new GameTime());
+                       return true;
+                   },
+                   InterfaceScaleType.UI)
+               );
 
                 // layers.Insert(MouseTextIndex, new LegacyGameInterfaceLayer(
                 //    "DuanWu:PlayVideo",
@@ -135,5 +195,16 @@ namespace DuanWu.Content.System
 
         }
     }
+    public abstract class BaseUIState : UIState
+    {
+        public virtual string TypeName { get; }
 
+        public static readonly Dictionary<string, Type> AutoUIState = new();
+
+        
+    }
+    internal class GameState : BaseUIState
+    {
+        public override string TypeName => "_Game";
+    }
 }

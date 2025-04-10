@@ -107,6 +107,10 @@ namespace DuanWu
         {
             NetScoreboard.SubmitPacket();   
             base.OnEnterWorld();
+            foreach (var item in BaseUIState.AutoUIState)
+            {
+                Main.NewText(item.Key);
+            }
         }
 
         public override void SaveData(TagCompound tag)

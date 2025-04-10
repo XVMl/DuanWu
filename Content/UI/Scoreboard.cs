@@ -12,17 +12,19 @@ using Microsoft.Xna.Framework;
 using Terraria.GameContent.UI.Elements;
 using System.Collections;
 using Terraria.Graphics.Effects;
+using DuanWu.Content.System;
+using Terraria.GameInput;
 
 namespace DuanWu.Content.UI
 {
     public class Scoreboard : UIState
     {
-        public static UIGrid UIGrid;
+        public static MyGrid UIGrid;
         public static Dictionary<string, bool> Player = [];
         public static Dictionary<string, int> counts = [];
         public override void OnInitialize()
         {
-            UIGrid = new UIGrid();
+            UIGrid = new MyGrid();
             UIGrid.Width.Set(200, 0);
             UIGrid.HAlign = 1f;
             UIGrid.VAlign = 0.5f;
@@ -35,16 +37,28 @@ namespace DuanWu.Content.UI
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/text"), UIGrid.GetDimensions().ToRectangle(), Color.White);
         }
 
-        public static void CaleElement(int count)
+        public static void CaleElement(int count,Dictionary<string, Record> _records)
         {
             if (UIGrid.Count == count) return;
             UIGrid.Clear();
-            for (int i = 0; i < count; i++) { UIGrid.Add(new ScoreboardElement("", 0, 0)); }
+            foreach(var item in _records)
+            {
+                UIGrid.Add(new ScoreboardElement(item.Key, 0, 0));
+            }
+            //for (int i = 0; i < count; i++) { UIGrid.Add(new ScoreboardElement("", 0, 0)); }
         }
 
         public static void TryUpdata(string playname, float corrects, int numberofquestions, int index)
         {
-            (UIGrid._items[index] as ScoreboardElement).TryUpdata(playname, corrects, numberofquestions);
+            foreach (ScoreboardElement item in UIGrid._items)
+            {
+                if (item.name.Text==playname)
+                {
+                    item.TryUpdata(playname, corrects, numberofquestions);
+                    break;
+                }
+            }
+            //(UIGrid._items[index] as ScoreboardElement).TryUpdata(playname, corrects, numberofquestions);
         }
 
         public static void CalcBox()
@@ -54,12 +68,13 @@ namespace DuanWu.Content.UI
         }
 
     }
+
     internal class ScoreboardElement : UIElement
     {
-        private UIText name;
+        public UIText name;
+        public UIText accuracy;
         private UIText count;
-        private UIText accuracy;
-        private int Rank = 1;
+        private int Rank = 0;
         public ScoreboardElement(string playname, float corrects, int numberofquestions)
         {
             name = new UIText(playname);
@@ -83,7 +98,117 @@ namespace DuanWu.Content.UI
             count.SetText(numberofquestions.ToString());
         }
 
+    }
 
+    public class MyGrid : UIElement
+    {
+        public delegate bool ElementSearchMethod(UIElement element);
+
+        private class UIInnerList : UIElement
+        {
+            public override bool ContainsPoint(Vector2 point)
+            {
+                return true;
+            }
+
+            protected override void DrawChildren(SpriteBatch spriteBatch)
+            {
+                Vector2 position = this.Parent.GetDimensions().Position();
+                Vector2 dimensions = new Vector2(this.Parent.GetDimensions().Width, this.Parent.GetDimensions().Height);
+                foreach (UIElement current in this.Elements)
+                {
+                    Vector2 position2 = current.GetDimensions().Position();
+                    Vector2 dimensions2 = new Vector2(current.GetDimensions().Width, current.GetDimensions().Height);
+                    if (Collision.CheckAABBvAABBCollision(position, dimensions, position2, dimensions2))
+                    {
+                        current.Draw(spriteBatch);
+                    }
+                }
+            }
+        }
+
+        public List<UIElement> _items = new List<UIElement>();
+        protected UIScrollbar _scrollbar;
+        internal UIElement _innerList = new UIInnerList();
+        private float _innerListHeight;
+        public float ListPadding = 5f;
+
+        public int Count
+        {
+            get
+            {
+                return this._items.Count;
+            }
+        }
+
+        // todo, vertical/horizontal orientation, left to right, etc?
+        public MyGrid()
+        {
+            this._innerList.OverflowHidden = false;
+            this._innerList.Width.Set(0f, 1f);
+            this._innerList.Height.Set(0f, 1f);
+            this.OverflowHidden = true;
+            base.Append(this._innerList);
+        }
+
+        public float GetTotalHeight()
+        {
+            return this._innerListHeight;
+        }
+
+        public virtual void Add(UIElement item)
+        {
+            this._items.Add(item);
+            this._innerList.Append(item);
+            this.UpdateOrder();
+            this._innerList.Recalculate();
+        }
+
+        public void UpdateOrder()
+        {
+            this._items.Sort(new Comparison<UIElement>(SortMethod));
+        }
+
+        public int SortMethod(UIElement item1, UIElement item2)
+        {
+            return (item1 as ScoreboardElement).accuracy.CompareTo((item2 as ScoreboardElement).accuracy);
+        }
+        public override void RecalculateChildren()
+        {
+            float availableWidth = GetInnerDimensions().Width;
+            base.RecalculateChildren();
+            float top = 0f;
+            float left = 0f;
+            float maxRowHeight = 0f;
+            for (int i = 0; i < this._items.Count; i++)
+            {
+                var item = this._items[i];
+                var outerDimensions = item.GetOuterDimensions();
+                if (left + outerDimensions.Width > availableWidth && left > 0)
+                {
+                    top += maxRowHeight + this.ListPadding;
+                    left = 0;
+                    maxRowHeight = 0;
+                }
+                maxRowHeight = Math.Max(maxRowHeight, outerDimensions.Height);
+                item.Left.Set(left, 0f);
+                left += outerDimensions.Width + this.ListPadding;
+                item.Top.Set((float)Utils.Lerp(item.Top.Pixels, top, 0.3f), 0f);
+            }
+            this._innerListHeight = top + maxRowHeight;
+        }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            if (IsMouseHovering)
+                PlayerInput.LockVanillaMouseScroll("ModLoader/UIList");
+        }
+
+        public virtual void Clear()
+        {
+            this._innerList.RemoveAllChildren();
+            this._items.Clear();
+        }
 
     }
 

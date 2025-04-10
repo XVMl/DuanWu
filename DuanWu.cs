@@ -34,6 +34,11 @@ namespace DuanWu
 
         }
 
+        public override void Load()
+        {
+            
+        }
+
         //public override IContentSource CreateDefaultContentSource()
         //{
         //    AddContent(new OgvReader());

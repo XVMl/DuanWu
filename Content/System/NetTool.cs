@@ -118,7 +118,6 @@ namespace DuanWu.Content.System
                 int num = reader.ReadInt32();
                 //Main.NewText(num);
                 //Scoreboard.UIGrid.Clear();
-                Scoreboard.CaleElement(num);
                 RecordManager recordManager = new RecordManager();
                 for (int i = 0; i < num; i++)
                 {
@@ -127,6 +126,8 @@ namespace DuanWu.Content.System
                     int corrects = reader.ReadInt32();
                     recordManager.AddOrUpdate(name, corrects, numberofquestions);
                 }
+                
+                Scoreboard.CaleElement(num,recordManager._records);
                 int count = 0;
                 foreach (var record in recordManager.GetSortedRecords())
                 {
