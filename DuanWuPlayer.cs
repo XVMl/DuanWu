@@ -105,12 +105,16 @@ namespace DuanWu
         public float Cameraintensity;
         public override void OnEnterWorld()
         {
-            NetScoreboard.SubmitPacket();   
+            NetScoreboard.SubmitPacket();
             base.OnEnterWorld();
-            foreach (var item in BaseUIState.AutoUIState)
-            {
-                Main.NewText(item.Key);
-            }
+            //foreach (var item in DuanWuUI._UIstate)
+            //{
+            //    Main.NewText(item.Name);
+            //}
+            //foreach (var item in DuanWuUI.keyValuePairs)
+            //{
+            //    Main.NewText(item.Key.ToString());
+            //}
         }
 
         public override void SaveData(TagCompound tag)

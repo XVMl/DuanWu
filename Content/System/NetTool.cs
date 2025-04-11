@@ -91,9 +91,9 @@ namespace DuanWu.Content.System
 
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
-                int count = reader.ReadInt32();
                 string name = reader.ReadString();
                 int corrects = reader.ReadInt32();
+                int count = reader.ReadInt32();
                 if (!correct.TryAdd(name, corrects))
                 {
                     correct[name] = corrects;
@@ -107,9 +107,9 @@ namespace DuanWu.Content.System
                 packet.Write(correct.Keys.Count);
                 for (int i = 0; i < correct.Keys.Count; i++)
                 {
-                    packet.Write(numberofquestion.Keys.ElementAt(i));
-                    packet.Write(numberofquestion[numberofquestion.Keys.ElementAt(i)]);
+                    packet.Write(correct.Keys.ElementAt(i));
                     packet.Write(correct[correct.Keys.ElementAt(i)]);
+                    packet.Write(numberofquestion[numberofquestion.Keys.ElementAt(i)]);
                 }
                 packet.Send(-1, -1);
             }
@@ -122,8 +122,8 @@ namespace DuanWu.Content.System
                 for (int i = 0; i < num; i++)
                 {
                     string name = reader.ReadString();
+                    float corrects = reader.ReadInt32();
                     int numberofquestions = reader.ReadInt32();
-                    int corrects = reader.ReadInt32();
                     recordManager.AddOrUpdate(name, corrects, numberofquestions);
                 }
                 
@@ -154,9 +154,9 @@ namespace DuanWu.Content.System
             }
             ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
             writer.Write("NetScoreboard");
-            writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
             writer.Write(Main.LocalPlayer.name);
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy);
+            writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
             writer.Send(-1, -1);
         }
     }

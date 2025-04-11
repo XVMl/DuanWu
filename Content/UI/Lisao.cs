@@ -1,4 +1,5 @@
-﻿using Luminance.Common.Utilities;
+﻿using DuanWu.Content.System;
+using Luminance.Common.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -17,9 +18,12 @@ using Terraria.UI;
 
 namespace DuanWu.Content.UI
 {
-    public class Lisao : UIState
+    public class Lisao : BaseUIState
     {
         public static UIGrid LisaochoiceLisst;
+
+        public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
+
         public override void OnInitialize()
         {
             LisaochoiceLisst = new UIGrid();

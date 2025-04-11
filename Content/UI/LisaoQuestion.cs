@@ -9,10 +9,11 @@ using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
 using Terraria;
+using DuanWu.Content.System;
 
 namespace DuanWu.Content.UI
 {
-    public class LisaoQuestion:UIState
+    public class LisaoQuestion:BaseUIState
     {
         private UIElement area;
         private UIText FirstSentence;
@@ -20,6 +21,9 @@ namespace DuanWu.Content.UI
         private UIText conunttime;
         private UIText answer;
         private float visibility = 0.5f;
+
+        public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
+
         public override void OnInitialize()
         {
             area = new UIElement();

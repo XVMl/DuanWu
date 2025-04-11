@@ -63,13 +63,14 @@ namespace DuanWu.Content.Items
         {
             if (Main.myPlayer==player.whoAmI)
             {
-                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy--;
-                TestUI.AddElement();
+                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
                 if (player.altFunctionUse == 2)
                 {
-
+                    Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount++;
                 }
-                //NetScoreboard.SubmitPacket();
+                TestUI.AddElement();
+
+                NetScoreboard.SubmitPacket();
             }
 
 

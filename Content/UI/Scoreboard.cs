@@ -14,14 +14,20 @@ using System.Collections;
 using Terraria.Graphics.Effects;
 using DuanWu.Content.System;
 using Terraria.GameInput;
+using Terraria.ID;
 
 namespace DuanWu.Content.UI
 {
-    public class Scoreboard : UIState
+    public class Scoreboard : BaseUIState
     {
         public static MyGrid UIGrid;
         public static Dictionary<string, bool> Player = [];
         public static Dictionary<string, int> counts = [];
+
+        public override bool IsLoaded() => Main.netMode == NetmodeID.MultiplayerClient;
+        
+        public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
+
         public override void OnInitialize()
         {
             UIGrid = new MyGrid();
@@ -45,7 +51,6 @@ namespace DuanWu.Content.UI
             {
                 UIGrid.Add(new ScoreboardElement(item.Key, 0, 0));
             }
-            //for (int i = 0; i < count; i++) { UIGrid.Add(new ScoreboardElement("", 0, 0)); }
         }
 
         public static void TryUpdata(string playname, float corrects, int numberofquestions, int index)
@@ -72,18 +77,20 @@ namespace DuanWu.Content.UI
     internal class ScoreboardElement : UIElement
     {
         public UIText name;
-        public UIText accuracy;
+        private UIText accuracy;
         private UIText count;
-        private int Rank = 0;
+        public float AC = 0;
         public ScoreboardElement(string playname, float corrects, int numberofquestions)
         {
             name = new UIText(playname);
-            accuracy = new UIText(corrects.ToString());
-            count = new UIText(numberofquestions.ToString());
+            accuracy = new UIText("AC"+corrects.ToString());
+            count = new UIText("CN" + numberofquestions.ToString());
+            AC = corrects;
             name.Left.Set(50, 0);
             Height.Set(40, 0);
             Width.Set(100, 0);
             count.Top.Set(20, 0);
+            count.Left.Set(100, 0);
             accuracy.Top.Set(20, 0);
             accuracy.Left.Set(20, 0);
             Append(name);
@@ -94,8 +101,9 @@ namespace DuanWu.Content.UI
         public void TryUpdata(string playname, float corrects, int numberofquestions)
         {
             name.SetText(playname);
-            accuracy.SetText(corrects.ToString());
-            count.SetText(numberofquestions.ToString());
+            accuracy.SetText("AC"+ corrects.ToString());
+            count.SetText("CN"+numberofquestions.ToString());
+            AC= corrects;
         }
 
     }
@@ -158,24 +166,25 @@ namespace DuanWu.Content.UI
 
         public virtual void Add(UIElement item)
         {
-            this._items.Add(item);
-            this._innerList.Append(item);
-            this.UpdateOrder();
-            this._innerList.Recalculate();
+            _items.Add(item);
+            _innerList.Append(item);
+            UpdateOrder();
+            _innerList.Recalculate();
         }
 
         public void UpdateOrder()
         {
-            this._items.Sort(new Comparison<UIElement>(SortMethod));
+            _items.Sort(new Comparison<UIElement>(SortMethod));
         }
 
         public int SortMethod(UIElement item1, UIElement item2)
         {
-            return (item1 as ScoreboardElement).accuracy.CompareTo((item2 as ScoreboardElement).accuracy);
+            return ((item2 as ScoreboardElement).AC).CompareTo((item1 as ScoreboardElement).AC);
         }
         public override void RecalculateChildren()
         {
             float availableWidth = GetInnerDimensions().Width;
+            UpdateOrder();
             base.RecalculateChildren();
             float top = 0f;
             float left = 0f;

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using DuanWu.Content.System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,10 @@ using Terraria.UI;
 
 namespace DuanWu.Content.UI
 {
-    internal class DrawHitBox : UIState
+    internal class DrawHitBox : BaseUIState
     {
+        public override string Layers_FindIndex => "Vanilla: Interface Logic 3";
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
