@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.RGB;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
@@ -19,7 +20,7 @@ namespace DuanWu.Content.System
 
         private int Penaltylevel;
 
-        public static int SelectNPCID=1;
+        public static int SelectNPCID = 1;
         public static int SelectProjectliesID;
         public static Vector2 SelectNPCpos;
         public static Vector2 SelectProjectliespos;
@@ -69,7 +70,6 @@ namespace DuanWu.Content.System
                         break;
                     case 2:
                         //继续答题1 1
-                        duanWuPlayer.QuestionCount = 1;
                         Main.NewText("da1");
 
                         break;
@@ -80,7 +80,6 @@ namespace DuanWu.Content.System
                     case 4:
                         //高斯模糊 1
                         duanWuPlayer.GaussBlurActive = true;
-
                         break;
                     case 5:
                         //白天地牢守卫
@@ -96,8 +95,6 @@ namespace DuanWu.Content.System
                         }
                         break;
                     case 7:
-                        //生成落石
-
 
                         break;
                     case 8:
@@ -112,7 +109,11 @@ namespace DuanWu.Content.System
                         break;
                     case 10:
                         //弹跳雷管
-
+                        for (int i = 0; i < 10; i++)
+                        {
+                            Vector2 _v2 = Main.rand.NextVector2Circular(16, 16);
+                            QuickSpawnProjectlies(637, player.Center + _v2 * 20);
+                        }
                         break;
                     case 11:
                         //5*100坑
@@ -131,12 +132,15 @@ namespace DuanWu.Content.System
                         List<short> UFO = [392, 392, 395, 395];
                         break;
                     case 16:
-                        //飞船
 
                         break;
                     case 17:
                         //蜂巢
-
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Vector2 _v2 = Main.rand.NextVector2Circular(16, 16);
+                            QuickSpawnProjectlies(655, player.Center + _v2 * 20);
+                        }
                         break;
                     case 18:
                         //骷髅
@@ -148,13 +152,13 @@ namespace DuanWu.Content.System
                         break;
                     case 20:
                         //眼球
-                        List<short> list = [-42,-41,-40,-39,-38,4,5,133];
-                        
+                        List<short> list = [-42, -41, -40, -39, -38, 4, 5, 133];
+
                         break;
 
                     case 21:
                         //史莱姆
-                        List<short> slime = [138,121,122,71,59,16,1,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-25,50];
+                        List<short> slime = [138, 121, 122, 71, 59, 16, 1, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -25, 50];
                         break;
                     case 22:
                         //恶魔
@@ -166,7 +170,7 @@ namespace DuanWu.Content.System
                         break;
                     case 24:
                         //水晶
-                        List<short> god = [657,660,659,658];
+                        List<short> god = [657, 660, 659, 658];
                         break;
                     case 25:
                         //骷髅2
@@ -230,6 +234,12 @@ namespace DuanWu.Content.System
                         break;
                     case 5:
                         //添加DEBUFF
+                        List<short> debuff = [20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 35, 36, 37, 38, 39, 44, 46, 47, 67, 68, 69, 70, 72, 80, 86, 88, 94, 103, 119, 120, 137, 144, 145, 148, 149, 153, 156, 160, 163, 164, 169, 183, 186, 189, 192, 194, 195, 196, 197, 199, 203, 204, 307, 309, 310, 313, 315, 316, 319, 320, 321, 323, 324, 326, 332, 333, 334, 337, 344, 350, 353];
+                        for (int i = 0; i < Main.rand.Next(0,9); i++)
+                        {
+                            player.AddBuff(debuff[Main.rand.Next(0, debuff.Count)], 18000);
+                        }
+
                         break;
                     case 6:
                         //减少20生命上限 1
@@ -258,8 +268,8 @@ namespace DuanWu.Content.System
                         }
                         break;
                     case 11:
-                        //不能跳
-
+                        //易碎10 3
+                        duanWuPlayer.hitdamage += 0.1f;
                         break;
                     case 12:
                         //不能飞
@@ -291,7 +301,8 @@ namespace DuanWu.Content.System
                         duanWuPlayer.Setmovespeed1 *= -1;
                         break;
                     case 17:
-                        //磁力下将 2
+                        //扭曲
+
                         break;
                     case 18:
                         //防御力下降10 2
@@ -304,6 +315,8 @@ namespace DuanWu.Content.System
                         break;
                     case 20:
                         //四柱
+
+
                         break;
 
                     case 21:
@@ -311,27 +324,15 @@ namespace DuanWu.Content.System
                         List<short> Golem = [243, 245, 531, 482];
                         break;
 
-                        case 22:
-                        //笨猪鲨
-                            break;
-                        case 23:
-                        //物品混乱
-                            break;
-                        case 24:
-                        break; case 25:
-                            break;
-                        case 26:break;
-                        case 27:break;
-                        case 28:break;
-                        case 29:
-                            break;
-                        case 30:
-                            break;
-                        case 31:
+                    case 22:
+                        //放大镜
 
-                            break;
-                        case 32:
-                            break;
+                        break;
+                    case 23:
+                        //物品混乱
+                        duanWuPlayer.confusion = true;
+
+                        break;
 
                     default:
                         break;
@@ -354,7 +355,7 @@ namespace DuanWu.Content.System
                         Main.NewText("chuanshong");
                         break;
                     case 1:
-                        //硬核 3 破坏性
+                        //硬核 3 
                         player.difficulty = 2;
                         Main.NewText("硬核");
 
@@ -417,7 +418,8 @@ namespace DuanWu.Content.System
                         }
                         break;
                     case 10:
-                        //易碎10 3
+                        //丢物品
+                        player.DropItems();
                         break;
                     case 11:
                         //召唤物 3
@@ -428,15 +430,11 @@ namespace DuanWu.Content.System
                         duanWuPlayer.PlayerAccuracy /= 2;
                         break;
                     case 13:
+                        //死亡 3
+                        player.KillMe(new PlayerDeathReason(), 1, 1);
 
                         break;
-                    case 14:
 
-                        break;
-                    case 15:
-
-
-                        break;
                     default:
                         break;
                 }
@@ -448,8 +446,8 @@ namespace DuanWu.Content.System
                 {
                     case 0:
                         //删档 4
-                        player.KillMeForGood();
-
+                        player.difficulty = 2;
+                        player.KillMe(new PlayerDeathReason(), 1, 1);
                         break;
                     case 1:
                         //一点血 4
@@ -463,7 +461,8 @@ namespace DuanWu.Content.System
                         duanWuPlayer.Pixelationintensity = 64;
                         break;
                     case 3:
-                        //一直答题
+                        //游戏崩溃
+
                         break;
                     case 4:
                         //全BOSS
@@ -555,7 +554,7 @@ namespace DuanWu.Content.System
         /// <param name="pos"></param>
         public static void QuickSpawnProjectlies(int id, Vector2 pos)
         {
-            
+
             Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
             SelectNPCID = id;
             SelectProjectliespos = pos;
@@ -573,7 +572,5 @@ namespace DuanWu.Content.System
                 }
             }
         }
-
-
     }
 }

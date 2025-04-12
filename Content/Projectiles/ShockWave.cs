@@ -123,10 +123,7 @@ namespace DuanWu.Content.Projectiles
 
         public override void OnKill(int timeLeft)
         {
-            //if (distortion.IsActive)
-            //{
-            //    distortion.Deactivate();
-            //}
+
         }
 
 

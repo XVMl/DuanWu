@@ -12,7 +12,6 @@ namespace DuanWu.Content.Items
 {
     internal class TaiWaneseZongzi:ModItem
     {
-        public override string Texture => "DuanWU/Content/Items/ZongZi";
 
         public override void SetStaticDefaults()
         {

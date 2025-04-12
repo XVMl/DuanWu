@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
 using Microsoft.Xna.Framework;
+using Luminance.Core.Graphics;
 
 namespace DuanWu.Content.Items
 {
@@ -50,7 +51,8 @@ namespace DuanWu.Content.Items
 
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, null, Main.UIScaleMatrix);
-            GameShaders.Misc["ArmorBasic"].Apply();
+            //ManagedShader managedShader = ShaderManager.GetShader("DuanWu.ArmorBasic");
+            //managedShader.Apply();
             spriteBatch.Draw(texture, position, null, Color.White, 0f, texture.Size() / 2, 0.8f, SpriteEffects.None, 0);
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Main.UIScaleMatrix);

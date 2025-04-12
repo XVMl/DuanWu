@@ -1,5 +1,6 @@
 ﻿using DuanWu.Content.Buffs;
 using DuanWu.Content.Items;
+using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
@@ -172,16 +173,6 @@ namespace DuanWu.Content.System
                         //家具 1
                         Main.NewText("家具");
                         break;
-                    case 21:
-
-                        break;
-                    case 22:
-
-                        break;
-                    case 23:
-
-                        break;
-
                     default:
                         Main.NewText("未知奖励");
                         break;
@@ -290,20 +281,19 @@ namespace DuanWu.Content.System
 
                         break;
                     case 15:
-                        //磁力上升 2
-
+                        //磁力1000 2
+                        foreach (var item in Main.ActiveItems)
+                        {
+                            if (Vector2.Distance(item.Center, player.Center) < 1000)
+                            {
+                                item.Center = player.Center;
+                            }
+                        }
                         break;
                     case 16:
                         //防御力10 2
                         player.statDefense += 10;
                         break;
-                    case 17:
-                        //松鼠钩 3
-                        break;
-                    case 18:
-                        //传送钩 3
-                        break;
-
                     default:
 
                         break;
@@ -314,7 +304,6 @@ namespace DuanWu.Content.System
 
             else if (RewardLevel == 3)
             {
-
                 //3级
                 int level3 = Main.rand.Next(0, 10);
                 switch (level3)
@@ -381,11 +370,11 @@ namespace DuanWu.Content.System
                         break;
                     case 11:
                         //额外召唤栏1 3
-
+                        duanWuPlayer.SetMinions += 1;
                         break;
                     case 12:
                         //减伤10 3
-
+                        duanWuPlayer.hitdamage -= 0.1f;
                         break;
                     case 13:
                         //自由视角
@@ -393,8 +382,7 @@ namespace DuanWu.Content.System
                         break;
                     case 14:
                         //标题
-                        break;
-                    case 15:
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<Logo>(), 1);
 
                         break;
                     default:
@@ -446,7 +434,7 @@ namespace DuanWu.Content.System
                         duanWuPlayer.Fly = true;
                         break;
                     case 6:
-                        //亮度提升
+                        //获取分数
 
                         break;
                     case 7:
@@ -491,6 +479,13 @@ namespace DuanWu.Content.System
                 player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(null), x[Main.rand.Next(0, x.Count)], num);
             }
         }
+
+    }
+
+    internal class ExtraAccessory:ModAccessorySlot
+    {
+        public override bool IsEnabled() => ModAccessorySlot.Player.active;
+
 
     }
 }

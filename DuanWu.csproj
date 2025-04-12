@@ -21,6 +21,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Assets\AutoloadedEffects\Filters\contraction.fx" />
+	  <None Remove="assets\autoloadedeffects\filters\Error.fx" />
 	  <None Remove="Assets\AutoloadedEffects\Filters\magnifier.fx" />
 	  <None Remove="assets\autoloadedeffects\filters\MatrixFilter.fx" />
 	  <None Remove="Assets\AutoloadedEffects\Filters\Pixelation.fx" />

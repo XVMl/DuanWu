@@ -9,6 +9,5 @@ namespace DuanWu.Content.Items
 {
     internal class PurpleRiceZongzi:ModItem
     {
-        public override string Texture => "DuanWU/Content/Items/ZongZi";
     }
 }

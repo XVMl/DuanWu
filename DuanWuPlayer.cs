@@ -34,7 +34,6 @@ namespace DuanWu
         /// 上文还是下文  
         /// </summary>  
         public int lisaoquestion;
-        public int QuestionCount;
         public int counttime;
         /// <summary>
         /// 展示的答案
@@ -103,18 +102,11 @@ namespace DuanWu
         public bool PixelationActive;
         public float Pixelationintensity;
         public float Cameraintensity;
+        public bool confusion;
+        public float hitdamage;
         public override void OnEnterWorld()
         {
             NetScoreboard.SubmitPacket();
-            base.OnEnterWorld();
-            //foreach (var item in DuanWuUI._UIstate)
-            //{
-            //    Main.NewText(item.Name);
-            //}
-            //foreach (var item in DuanWuUI.keyValuePairs)
-            //{
-            //    Main.NewText(item.Key.ToString());
-            //}
         }
 
         public override void SaveData(TagCompound tag)
@@ -123,6 +115,16 @@ namespace DuanWu
             tag["PlayerAccuracy"]= PlayerAccuracy;
         }
 
+        public override void PostUpdateMiscEffects()
+        {
+            if (confusion&&Main.myPlayer == Player.whoAmI)
+            {
+                int x = Main.rand.Next(0, 49);
+                int y = Main.rand.Next(0, 49);
+                (Player.inventory[y], Player.inventory[x]) = (Player.inventory[x], Player.inventory[y]);
+            }
+
+        }
         public override void LoadData(TagCompound tag)
         {
             PlayerAccuracy = tag.GetInt("PlayerAccuracy");
@@ -131,21 +133,9 @@ namespace DuanWu
 
         public override void PostUpdate()
         {
-
             SetBlur();
             SetPixelation();
             SetCamera();
-
-            //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Starry");
-            //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Zhuan");
-
-            //if (!distortion.IsActive)
-            //{
-            //    //distortion.TrySetParameter("targetposition", Utilities.WorldSpaceToScreenUV(Main.MouseWorld));
-            //    distortion.TrySetParameter("intensity", 1f);
-            //    //distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
-            //    distortion.Activate();
-            //}
 
             //OtherQusetionAvtive();
             if (LisaoActive)
@@ -179,11 +169,6 @@ namespace DuanWu
                 LanguageHelper.SetQuestion();
                 QustionActive = false;
             }
-
-            //if (KeepQuestionActive)
-            //{
-            //    LanguageHelper.SetQuestion();
-            //}
 
         }
 
@@ -251,14 +236,27 @@ namespace DuanWu
             {
                 modifiers.FinalDamage *= 1.5f;
             }
+
         }
 
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
+            float finaldamafe= hitdamage;
             if (Player.HasBuff(ModContent.BuffType<Sun>()))
             {
-                modifiers.FinalDamage *= 0.5f;
+                finaldamafe += 0.5f;   
             }
+            modifiers.FinalDamage *= (1 + finaldamafe );
+        }
+
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
+        {
+            float finaldamafe = hitdamage;
+            if (Player.HasBuff(ModContent.BuffType<Sun>()))
+            {
+                finaldamafe += 0.5f;
+            }
+            modifiers.FinalDamage *= (1 + finaldamafe);
         }
 
         public override void ModifyScreenPosition()
@@ -406,6 +404,7 @@ namespace DuanWu
             ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Pixelation");
             if (!distortion.IsActive)
             {
+                distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
                 distortion.TrySetParameter("intensity", Pixelationintensity);
                 distortion.Activate();
             }

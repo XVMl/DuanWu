@@ -11,9 +11,8 @@ using DuanWu.Content.System;
 
 namespace DuanWu.Content.Items
 {
-    internal class Su_styleZongzi:ModItem
+    internal class SuStyleZongzi:ModItem
     {
-        public override string Texture => "DuanWU/Content/Items/ZongZi";
         public override void SetStaticDefaults()
         {
 
@@ -21,8 +20,8 @@ namespace DuanWu.Content.Items
 
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 44;
+            Item.height = 34;
             Item.maxStack = 9999;
             Item.rare = 0;
             Item.useAnimation = 45;

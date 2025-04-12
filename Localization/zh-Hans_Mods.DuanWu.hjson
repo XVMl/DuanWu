@@ -133,6 +133,21 @@ Items: {
 		// DisplayName: Logo
 		// Tooltip: ""
 	}
+
+	RealgarWine: {
+		// DisplayName: Realgar Wine
+		// Tooltip: ""
+	}
+
+	SaltedDuckEgg: {
+		// DisplayName: Salted Duck Egg
+		// Tooltip: ""
+	}
+
+	SuStyleZongzi: {
+		// DisplayName: Su Style Zongzi
+		// Tooltip: ""
+	}
 }
 
 Judging: {
@@ -1720,6 +1735,7 @@ Projectiles: {
 	// ShockWave.DisplayName: Shock Wave
 	// Testenergy.DisplayName: Testenergy
 	// Starry.DisplayName: Starry
+	// Error.DisplayName: Error
 }
 
 Buffs: {

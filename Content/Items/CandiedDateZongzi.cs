@@ -10,6 +10,5 @@ namespace DuanWu.Content.Items
     internal class CandiedDateZongzi:ModItem
     {
 
-        public override string Texture => "DuanWU/Content/Items/ZongZi";
     }
 }

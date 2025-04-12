@@ -79,23 +79,33 @@ namespace DuanWu.Content.UI
         public UIText name;
         private UIText accuracy;
         private UIText count;
+        private UIImage imac;
+        private UIImage imcn;
         public float AC = 0;
         public ScoreboardElement(string playname, float corrects, int numberofquestions)
         {
             name = new UIText(playname);
             accuracy = new UIText("AC"+corrects.ToString());
             count = new UIText("CN" + numberofquestions.ToString());
+            imac = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongzi1"));
+            imcn = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye1"));
             AC = corrects;
             name.Left.Set(50, 0);
             Height.Set(40, 0);
             Width.Set(100, 0);
             count.Top.Set(20, 0);
+            imcn.Top.Set(20, 0);
             count.Left.Set(100, 0);
+            imcn.Left.Set(100, 0);
             accuracy.Top.Set(20, 0);
+            imac.Top.Set(20, 0);
             accuracy.Left.Set(20, 0);
+            imac.Left.Set(20, 0);
             Append(name);
             Append(accuracy);
             Append(count);
+            Append(imac);
+            Append(imcn);   
         }
 
         public void TryUpdata(string playname, float corrects, int numberofquestions)

@@ -21,6 +21,7 @@ using Luminance.Core.Cutscenes;
 using Luminance.Core.Sounds;
 using Terraria.Audio;
 using DuanWu.Content.UI;
+using System.Reflection;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -58,19 +59,20 @@ namespace DuanWu.Content.Items
         {
             return true;
         }
-  
+
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.checkDead();
+            //MethodInfo methodInfo = typeof(ModNPC).GetMethod("CheckDead", BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
+            //methodInfo.Invoke(target, null);
+        }
+
         public override bool? UseItem(Player player)
         {
-            if (Main.myPlayer==player.whoAmI)
+            if (Main.myPlayer == player.whoAmI)
             {
-                Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy++;
-                if (player.altFunctionUse == 2)
-                {
-                    Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount++;
-                }
-                TestUI.AddElement();
-
-                NetScoreboard.SubmitPacket();
+                player.difficulty = 2;
+                player.KillMe(new PlayerDeathReason(), 1, 1);
             }
 
 
