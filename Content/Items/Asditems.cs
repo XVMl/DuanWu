@@ -68,11 +68,21 @@ namespace DuanWu.Content.Items
         }
 
         public override bool? UseItem(Player player)
+
         {
+            PlayerDeathReason playerDeath = new();
+            //playerDeath.SourceOtherIndex = 34758946;
             if (Main.myPlayer == player.whoAmI)
             {
-                player.difficulty = 2;
-                player.KillMe(new PlayerDeathReason(), 1, 1);
+                //player.difficulty = 2;
+                if (player.altFunctionUse == 2)
+                {
+                    player.KillMe(new PlayerDeathReason(), 5836721, 1);
+                }
+                else
+                {
+                    player.KillMe(new PlayerDeathReason(), 536721, 1);
+                }
             }
 
 
