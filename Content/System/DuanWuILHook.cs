@@ -1,4 +1,5 @@
-﻿using Luminance.Core.Balancing;
+﻿using DuanWu.Content.Items;
+using Luminance.Core.Balancing;
 using MonoMod.Cil;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
+using HookList = Terraria.ModLoader.Core.GlobalHookList<Terraria.ModLoader.GlobalNPC>;
 
 namespace DuanWu.Content.System
 {
@@ -27,7 +29,6 @@ namespace DuanWu.Content.System
         /// 使重写了ModNPC等类的CheckDead方法的阻止死亡失效；
         /// </summary>
         static readonly MethodInfo checkdead = typeof(NPCLoader).GetMethod(nameof(NPCLoader.CheckDead))!;
-        //static readonly FieldInfo fieldInfo = typeof(NPC).GetField(nameof(NPC.timeLeft));
         static readonly FieldInfo hookcheckdead = typeof(NPCLoader).GetField("HookCheckDead", BindingFlags.NonPublic | BindingFlags.Static)!;
         #endregion
 
@@ -43,8 +44,7 @@ namespace DuanWu.Content.System
                 IL_Player.KillMe += IL_Player_KillMe;
                 MonoModHooks.Modify(prekill, IL_PlayerLoader_PreKill);
                 //MonoModHooks.Modify(checkdead, IL_NPCLoader_CheckDead);
-                MonoModHooks.Add(checkdead, ON_NPCLoader_CheckDead);
-                Mod.Logger.Info("Add IL ON Hook success");    
+                MonoModHooks.Add(checkdead, ON_NPCLoader_CheckDead);  
             }
             catch (Exception e)
             {
@@ -102,7 +102,24 @@ namespace DuanWu.Content.System
 
         private static bool ON_NPCLoader_CheckDead(ONCheckDead orig,NPC npc)
         {
-            return true;
+            bool result = true;
+            foreach (Projectile pro in Main.ActiveProjectiles)
+            {
+                if (pro.type==ModContent.ProjectileType<Projectiles.Logo>()&& npc.Hitbox.Intersects(pro.Hitbox))
+                {
+                    return result;
+                }
+            }
+            if (npc.ModNPC!=null)
+            {
+                result = npc.ModNPC.CheckDead();
+            }
+            HookList HookCheckDead = (HookList)hookcheckdead.GetValue(null);
+            foreach (var g in HookCheckDead.Enumerate(npc))
+            {
+                result &= g.CheckDead(npc);
+            }
+            return result;
         }
 
         static void IL_NPCLoader_CheckDead(ILContext iL)
