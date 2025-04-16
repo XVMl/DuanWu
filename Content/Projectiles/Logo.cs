@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 namespace DuanWu.Content.Projectiles
 {
     public class Logo:ModProjectile
@@ -41,7 +43,23 @@ namespace DuanWu.Content.Projectiles
                     item.KillMe(new PlayerDeathReason(), 5836721, 1);
                 }
             }
+            foreach (var item in Main.ActiveProjectiles)
+            {
+                if (item.whoAmI!=Projectile.whoAmI&&item.Hitbox.Intersects(Projectile.Hitbox))
+                {
+                    item.active = false;
+                }
+            }
+
         }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, null, Color.White, 0f, texture.Size() / 2, 1f, SpriteEffects.None, 0);
+            return false;
+        }
+
 
     }
 }

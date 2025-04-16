@@ -170,6 +170,14 @@ namespace DuanWu
                 QustionActive = false;
             }
 
+            if (Player.breath==0)
+            {
+                if (Main.rand.Next(0,3)==1)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
+
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
@@ -247,6 +255,17 @@ namespace DuanWu
                 finaldamafe += 0.5f;   
             }
             modifiers.FinalDamage *= (1 + finaldamafe );
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (target.life<damageDone)
+            {
+                if (Main.rand.Next(0,16)==1 && Main.myPlayer == Player.whoAmI)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
         }
 
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
@@ -345,7 +364,10 @@ namespace DuanWu
         #region 召唤特定NPC时
         private void NPCQuestionActive()
         {
+            if(NPC.AnyNPCs(4))
+            {
 
+            }
         }
         #endregion
 
@@ -359,21 +381,6 @@ namespace DuanWu
         //}
         #endregion
 
-
-        public void ServeQuickresponse()
-        {
-            if (!Quickresponse||LisaoActive)
-            {
-                return;
-            }
-            if (!LisaoActive)
-            {
-                LisaoActive = true;
-            }
-            Main.NewText("server");
-
-
-        }
 
 
         public void SetCamera()
