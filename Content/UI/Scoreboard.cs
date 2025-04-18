@@ -40,7 +40,7 @@ namespace DuanWu.Content.UI
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/text"), UIGrid.GetDimensions().ToRectangle(), Color.White);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/Scoreboard"), UIGrid.GetDimensions().ToRectangle(), Color.White);
         }
 
         public static void CaleElement(int count,Dictionary<string, Record> _records)

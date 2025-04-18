@@ -106,7 +106,7 @@ namespace DuanWu.Content.UI
         {
             base.DrawSelf(spriteBatch);
             Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Question"), hitbox, Color.White*visibility);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/LisaoQuestion"), hitbox, Color.White*visibility);
         }
     }
 }
