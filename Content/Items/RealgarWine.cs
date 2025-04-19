@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace DuanWu.Content.Items
 {
@@ -49,7 +51,12 @@ namespace DuanWu.Content.Items
         {
 
         }
-
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/Items/RealgarWine").Value;
+            spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.3f, SpriteEffects.None, 0);
+            return false;
+        }
         public override bool? UseItem(Player player)
         {
             return new bool?(true);

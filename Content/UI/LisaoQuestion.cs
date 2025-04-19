@@ -27,8 +27,8 @@ namespace DuanWu.Content.UI
         public override void OnInitialize()
         {
             area = new UIElement();
-            area.Width.Set(800f, 0f);
-            area.Height.Set(100f, 0f);
+            area.Width.Set(700f, 0f);
+            area.Height.Set(150f, 0f);
             area.HAlign = 0.5f; area.VAlign = 0.1f;
             FirstSentence = new UIText("", 0.7f, true);
             conunttime = new UIText("", 0.7f, true);
@@ -36,22 +36,25 @@ namespace DuanWu.Content.UI
             answer = new UIText("", 0.7f, true);
             FirstSentence.Height.Set(1f, 0f);
             FirstSentence.Width.Set(600f, 0f);
-            FirstSentence.Left.Set(0f, 0f);
+            FirstSentence.HAlign = 0.5f;
+            //FirstSentence.Left.Set(0f, 0f);
             FirstSentence.Top.Set(75f, 0f);
             FirstSentence.IgnoresMouseInteraction = true;
             conunttime.Height.Set(1f, 0f);
             conunttime.Width.Set(600f, 0f);
             conunttime.Left.Set(300f, 0f);
+            //conunttime.HAlign = 0.5f;
             conunttime.Top.Set(25f, 0f);
             conunttime.IgnoresMouseInteraction = true;
             DownSentence.Height.Set(1f, 0f);
             DownSentence.Width.Set(600f, 0f);
-            DownSentence.Left.Set(0f, 0f);
+            //DownSentence.Left.Set(0f, 0f);
+            DownSentence.HAlign = 0.5f;
             DownSentence.Top.Set(25f, 0f);
             DownSentence.IgnoresMouseInteraction = true;
             answer.Height.Set(1f, 0f);
             answer.Width.Set(600f, 0f);
-            answer.Left.Set(0f, 0f);
+            answer.HAlign = 0.5f;
             answer.Top.Set(25f, 0f);
             answer.IgnoresMouseInteraction = true;
             area.Append(FirstSentence);
@@ -105,8 +108,10 @@ namespace DuanWu.Content.UI
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             base.DrawSelf(spriteBatch);
+            Texture2D time = ModContent.Request<Texture2D>("DuanWu/Content/UI/Time").Value;
             Rectangle hitbox = area.GetInnerDimensions().ToRectangle();
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/LisaoQuestion"), hitbox, Color.White*visibility);
+            spriteBatch.Draw(time, new Rectangle(hitbox.X+100,hitbox.Y+120,time.Width,time.Height), Color.White * visibility);
         }
     }
 }

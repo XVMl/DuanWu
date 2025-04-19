@@ -108,7 +108,7 @@ namespace DuanWu.Content.UI
             else
                 spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.White * 0.7f);
             if (Choise == player.ChoiceAnswer && player.ShowAnswer > 0)
-                spriteBatch.Draw(f, dimensions.Position(), Color.White  * Utilities.InverseLerp(0f, 180, 270-player.ShowAnswer));
+                spriteBatch.Draw(f, dimensions.Position(), Color.White  * Utilities.InverseLerp(0f, 180,270 - player.ShowAnswer));
             if (Choise == player.Answer && player.ShowAnswer > 0)
                 spriteBatch.Draw(t, dimensions.Position(), Color.White * Utilities.InverseLerp(0f, 180, 270 - player.ShowAnswer));
         }
