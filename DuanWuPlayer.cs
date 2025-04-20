@@ -94,6 +94,8 @@ namespace DuanWu
         /// </summary>
         public int PlayerAccuracy;
         public static bool QustionActive;
+        public static bool Scoreboard;
+        public static string ScoreboardText;
 
         public int Cutscene;
 
@@ -104,6 +106,7 @@ namespace DuanWu
         public float Cameraintensity;
         public bool confusion;
         public float hitdamage;
+
         public override void OnEnterWorld()
         {
             NetScoreboard.SubmitPacket();

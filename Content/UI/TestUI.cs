@@ -21,35 +21,11 @@ using Terraria.UI.Chat;
 
 namespace DuanWu.Content.UI
 {
-    //internal class GameState : BaseUIState
-    //{
-    //    private static MyGrid iGrid = new();
-    //    public override void OnInitialize()
-    //    {
-    //        iGrid = new MyGrid();
-    //        iGrid.Width.Set(300f, 0);
-    //        iGrid.Height.Set(300f, 0);
-    //        iGrid.HAlign = iGrid.VAlign = 0.5f;
-    //        Append(iGrid);
-    //    }
-    //    public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
-
-    //    public override void Update(GameTime gameTime)
-    //    {
-    //        base.Update(gameTime);
-    //    }
-
-    //    protected override void DrawSelf(SpriteBatch spriteBatch)
-    //    {
-    //        //Utils.DrawBorderString(spriteBatch, message, Utils.TopLeft(iGrid.GetDimensions().ToRectangle()) + Vector2.One * 0.4f, Color.White);
-    //        spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/text"), iGrid.GetDimensions().ToRectangle(), Color.White);
-    //    }
-
-    //}
 
     public class TestUI : BaseUIState
     {
         private static MyGrid iGrid = new();
+        
         public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
 
         public override bool IsLoaded() =>true;
@@ -57,8 +33,8 @@ namespace DuanWu.Content.UI
         {
             iGrid = new MyGrid();
             iGrid.Width.Set(200f, 0);
-            iGrid.Height.Set(300f, 0);
-            iGrid.HAlign = 0.5f;
+            iGrid.Height.Set(350f, 0);
+            iGrid.HAlign = 1f;
             iGrid.VAlign = 0.5f;
             Append(iGrid);
         }
@@ -66,21 +42,18 @@ namespace DuanWu.Content.UI
         public static void AddElement()
         {
             float x = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy;
-            Main.NewText(x);
-            iGrid.Add(new ScoreboardElement(x.ToString(), x, Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount));
+            iGrid.Add(new ScoreboardElement(Main.LocalPlayer.name, x, Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount));
         }
 
-        public static void Adjust()
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            iGrid._items[1].Top.Set(200f, 0);
+            Rectangle rectangle2 = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y, (int)iGrid.GetDimensions().Width, (int)iGrid.GetDimensions().Height - 31);
+            Rectangle rectangle = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y-31, (int)iGrid.GetDimensions().Width, 31);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
+            Utils.DrawBorderString(spriteBatch,  DuanWuPlayer.ScoreboardText, iGrid.GetDimensions().ToRectangle().TopLeft()+new Vector2(70,-25), Color.White);
         }
-
-        //protected override void DrawSelf(SpriteBatch spriteBatch)
-        //{
-        //    //Utils.DrawBorderString(spriteBatch, message, Utils.TopLeft(iGrid.GetDimensions().ToRectangle()) + Vector2.One * 0.4f, Color.White);
-        //    spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/text"), iGrid.GetDimensions().ToRectangle(), Color.White);
-        //}
-
     }
 
 }

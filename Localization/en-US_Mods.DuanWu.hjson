@@ -40,6 +40,16 @@ Configs: {
 			Label: scoreboard
 			Tooltip: ""
 		}
+
+		ScoredboardText: {
+			Label: Scoredboard Text
+			Tooltip: ""
+		}
+
+		ScoreboardText: {
+			Label: Scoreboard Text
+			Tooltip: ""
+		}
 	}
 }
 

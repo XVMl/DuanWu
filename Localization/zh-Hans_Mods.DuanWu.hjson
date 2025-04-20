@@ -40,6 +40,16 @@ Configs: {
 			Label: 计分板
 			Tooltip: 开启后，展示所有玩家的答题情况。(仅在多人模式下有效)
 		}
+
+		ScoredboardText: {
+			// Label: Scoredboard Text
+			// Tooltip: ""
+		}
+
+		ScoreboardText: {
+			// Label: Scoreboard Text
+			// Tooltip: ""
+		}
 	}
 }
 

@@ -15,6 +15,11 @@ using Terraria.Graphics.Effects;
 using DuanWu.Content.System;
 using Terraria.GameInput;
 using Terraria.ID;
+using ReLogic.Graphics;
+using Terraria.GameContent;
+using Terraria.Localization;
+using Terraria.UI.Chat;
+using Luminance.Common.Utilities;
 
 namespace DuanWu.Content.UI
 {
@@ -40,7 +45,15 @@ namespace DuanWu.Content.UI
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/CutsceneUI/Scoreboard"), UIGrid.GetDimensions().ToRectangle(), Color.White);
+            if (!DuanWuPlayer.Scoreboard)
+            {
+                return;
+            }
+            Rectangle rectangle = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y - 31, (int)UIGrid.GetDimensions().Width,31);
+            Rectangle rectangle2 = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y+31, (int)UIGrid.GetDimensions().Width, (int)UIGrid.GetDimensions().Height - 31);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
+            Utils.DrawBorderString(spriteBatch, "积分榜", UIGrid.GetDimensions().ToRectangle().TopLeft() + new Vector2(70, -25), Color.White);
         }
 
         public static void CaleElement(int count,Dictionary<string, Record> _records)
@@ -82,42 +95,53 @@ namespace DuanWu.Content.UI
         private UIImage imac;
         private UIImage imcn;
         public float AC = 0;
+
         public ScoreboardElement(string playname, float corrects, int numberofquestions)
         {
             name = new UIText(playname);
-            accuracy = new UIText("AC"+corrects.ToString());
-            count = new UIText("CN" + numberofquestions.ToString());
-            imac = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongzi1"));
-            imcn = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye1"));
+            accuracy = new UIText(corrects.ToString());
+            count = new UIText(numberofquestions.ToString());
+            imac = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongzi"));
+            imac.ImageScale = 0.15f;
+            imcn = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye"));
+            imcn.ImageScale = 0.2f;
             AC = corrects;
-            name.Left.Set(50, 0);
+            UIText StringAC = new("粽子", 1);
             Height.Set(40, 0);
-            Width.Set(100, 0);
-            count.Top.Set(20, 0);
-            imcn.Top.Set(20, 0);
-            count.Left.Set(100, 0);
+            Width.Set(150, 0);
+            count.Top.Set(120, 0);
+            imcn.Top.Set(-25, 0);
+            name.Top.Set(15f, 0);
+            imac.Top.Set(-50, 0);
+            accuracy.Top.Set(15, 0);
+            StringAC.Top.Set(15f, 0);
+            name.Left.Set(25, 0);
             imcn.Left.Set(100, 0);
-            accuracy.Top.Set(20, 0);
-            imac.Top.Set(20, 0);
-            accuracy.Left.Set(20, 0);
-            imac.Left.Set(20, 0);
+            count.Left.Set(100, 0);
+            accuracy.Left.Set(140, 0);
+            StringAC.Left.Set(110f,0);
+            imac.Left.Set(55, 0);
+            name.TextColor = new Color(187,172,148);
+            accuracy.TextColor = new Color(187, 172, 148);
+            StringAC.TextColor = new Color(187, 172, 148);
             Append(name);
             Append(accuracy);
-            Append(count);
             Append(imac);
-            Append(imcn);   
+            //Append(StringAC);
+            //Append(count);
+            //Append(imcn);
         }
 
         public void TryUpdata(string playname, float corrects, int numberofquestions)
         {
             name.SetText(playname);
-            accuracy.SetText("AC"+ corrects.ToString());
-            count.SetText("CN"+numberofquestions.ToString());
+            accuracy.SetText( corrects.ToString());
+            count.SetText(numberofquestions.ToString());
             AC= corrects;
         }
 
     }
-
+    
     public class MyGrid : UIElement
     {
         public delegate bool ElementSearchMethod(UIElement element);

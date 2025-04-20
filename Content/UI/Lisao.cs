@@ -89,16 +89,6 @@ namespace DuanWu.Content.UI
         {
             CalculatedStyle dimensions = GetDimensions();
             var player = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-            //if (Choise == player.ChoiceAnswer && player.ShowAnswer > 0)
-            //{
-            //    spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.Red * Utilities.InverseLerp(0.4f, 1, 120 / player.ShowAnswer));
-            //    return;
-            //}
-            //else if (Choise == player.Answer && player.ShowAnswer > 0)
-            //{
-            //    spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.Green * Utilities.InverseLerp(0.4f, 1, 120 / player.ShowAnswer));
-            //    return;
-            //}
             Texture2D active = ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButtonActive").Value;
             Texture2D t = ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButtonTrue").Value;
             Texture2D f = ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButtonFalse").Value;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuanWu.Content.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -18,9 +19,14 @@ namespace DuanWu.Content.System
         [DefaultValue(false)]
         public bool scoreboard;
 
+        [DefaultValue("计分板")]
+        public string ScoreboardText;
+
         public override void OnChanged()
         {
             DuanWuPlayer.Quickresponse = Quickresponse;
+            DuanWuPlayer.Scoreboard = scoreboard;
+            DuanWuPlayer.ScoreboardText = ScoreboardText;
         }
 
         
