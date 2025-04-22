@@ -100,24 +100,17 @@ namespace DuanWu.Content.UI
         {
             name = new UIText(playname);
             accuracy = new UIText(corrects.ToString());
-            count = new UIText(numberofquestions.ToString());
             imac = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongzi"));
             imac.ImageScale = 0.15f;
-            imcn = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye"));
-            imcn.ImageScale = 0.2f;
             AC = corrects;
             UIText StringAC = new("粽子", 1);
             Height.Set(40, 0);
             Width.Set(150, 0);
-            count.Top.Set(120, 0);
-            imcn.Top.Set(-25, 0);
             name.Top.Set(15f, 0);
             imac.Top.Set(-50, 0);
             accuracy.Top.Set(15, 0);
             StringAC.Top.Set(15f, 0);
             name.Left.Set(25, 0);
-            imcn.Left.Set(100, 0);
-            count.Left.Set(100, 0);
             accuracy.Left.Set(140, 0);
             StringAC.Left.Set(110f,0);
             imac.Left.Set(55, 0);
@@ -127,6 +120,13 @@ namespace DuanWu.Content.UI
             Append(name);
             Append(accuracy);
             Append(imac);
+            //count = new UIText(numberofquestions.ToString());
+            //imcn = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye"));
+            //imcn.ImageScale = 0.2f;
+            //count.Top.Set(120, 0);
+            //imcn.Top.Set(-25, 0);
+            //imcn.Left.Set(100, 0);
+            //count.Left.Set(100, 0);
             //Append(StringAC);
             //Append(count);
             //Append(imcn);

@@ -39,6 +39,7 @@ namespace DuanWu.Content.Items
             return true;
         }
 
+
         public override bool CanPickup(Player player)
         {
             return true;
@@ -60,10 +61,10 @@ namespace DuanWu.Content.Items
 
         public override bool? UseItem(Player player)
         {
-                if (Main.myPlayer == player.whoAmI)
-                {
-                    LanguageHelper.SetQuestion();
-                }
+            if (Main.myPlayer == player.whoAmI)
+            {
+                LanguageHelper.SetQuestion();
+            }
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
 

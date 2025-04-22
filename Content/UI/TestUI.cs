@@ -45,7 +45,6 @@ namespace DuanWu.Content.UI
             iGrid.Add(new ScoreboardElement(Main.LocalPlayer.name, x, Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount));
         }
 
-
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             Rectangle rectangle2 = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y, (int)iGrid.GetDimensions().Width, (int)iGrid.GetDimensions().Height - 31);
