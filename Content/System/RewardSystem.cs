@@ -343,7 +343,6 @@ namespace DuanWu.Content.System
                         //四柱武器 3
                         List<short> sizhu = [3469, 3475, 3476, 3542, 3531, 3474, 3473, 3543];
                         QuickSpawnItemList(sizhu, player, 1, 1);
-
                         break;
                     case 7:
                         //四柱工具 3 
@@ -366,7 +365,6 @@ namespace DuanWu.Content.System
                     case 10:
                         //UlraWoodSword 3
                         player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<UltraWoodenSword>(), 99);
-
                         break;
                     case 11:
                         //额外召唤栏1 3
@@ -374,7 +372,25 @@ namespace DuanWu.Content.System
                         break;
                     case 12:
                         //减伤10 3
-                        duanWuPlayer.hitdamage -= 0.1f;
+                        //duanWuPlayer.hitdamage -= 0.1f;
+                        List<string> name = new();
+                        foreach (var palyer in Main.player)
+                        {
+                            name.Add(player.name);
+                        }
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            return;
+                        }
+                        ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                        writer.Write("NetScoreboard");
+                        writer.Write("Adjust");
+                        writer.Write(name.Count);
+                        foreach (var item in name)
+                        {
+                            writer.Write(item.ToString());
+                        }
+                        writer.Send(-1, -1);
                         break;
                     case 13:
                         //自由视角
@@ -435,7 +451,7 @@ namespace DuanWu.Content.System
                         break;
                     case 6:
                         //获取分数
-
+                        
                         break;
                     case 7:
                         //太阳

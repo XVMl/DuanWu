@@ -102,7 +102,7 @@ namespace DuanWu.Content.UI
             }
             foreach (Rectangle x in enmyprojectile)
             {
-                Main.spriteBatch.Draw(tex, new Rectangle(x.X - (int)Main.screenPosition.X, x.Y - (int)Main.screenPosition.Y, x.Width, x.Height), null, Color.Yellow * 0.4f, 0, Vector2.Zero, SpriteEffects.None, 0);
+                Main.spriteBatch.Draw(tex, new Rectangle(x.X - (int)Main.screenPosition.X, x.Y - (int)Main.screenPosition.Y, x.Width, x.Height), null, Color.Blue * 0.4f, 0, Vector2.Zero, SpriteEffects.None, 0);
             }
 
         }

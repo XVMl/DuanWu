@@ -18,7 +18,7 @@ namespace DuanWu.Content.System
     public abstract class NetTool : ModSystem
     {
         protected static int Time;
-        
+
         public abstract string TypeName { get; }
 
         public static readonly Dictionary<string, Type> PacketHandlers = new();
@@ -88,33 +88,61 @@ namespace DuanWu.Content.System
 
         public override void RecievePacket(BinaryReader reader, int sender)
         {
-
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
-                string name = reader.ReadString();
-                int corrects = reader.ReadInt32();
-                int count = reader.ReadInt32();
-                if (!correct.TryAdd(name, corrects))
-                {
-                    correct[name] = corrects;
-                }
-                if (!numberofquestion.TryAdd(name, count))
-                {
-                    numberofquestion[name] = count;
-                }
                 ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
-                packet.Write(Name);
-                packet.Write(correct.Keys.Count);
-                for (int i = 0; i < correct.Keys.Count; i++)
+                if (reader.ReadString() == "Adjust")
                 {
-                    packet.Write(correct.Keys.ElementAt(i));
-                    packet.Write(correct[correct.Keys.ElementAt(i)]);
-                    packet.Write(numberofquestion[numberofquestion.Keys.ElementAt(i)]);
+                    int num = reader.ReadInt32();
+                    packet.Write(num);
+                    for (int i = 0;i<num;i++)
+                    {
+                        string player=reader.ReadString();
+                        packet.Write(correct[player]);
+                    }
+                    packet.Send(sender);
                 }
-                packet.Send(-1, -1);
+                else if (reader.ReadString() == "Normal")
+                {
+                    string name = reader.ReadString();
+                    int corrects = reader.ReadInt32();
+                    int count = reader.ReadInt32();
+                    if (!correct.TryAdd(name, corrects))
+                    {
+                        correct[name] = corrects;
+                    }
+                    if (!numberofquestion.TryAdd(name, count))
+                    {
+                        numberofquestion[name] = count;
+                    }
+                    packet.Write(Name);
+                    packet.Write(correct.Keys.Count);
+                    for (int i = 0; i < correct.Keys.Count; i++)
+                    {
+                        packet.Write(correct.Keys.ElementAt(i));
+                        packet.Write(correct[correct.Keys.ElementAt(i)]);
+                        packet.Write(numberofquestion[numberofquestion.Keys.ElementAt(i)]);
+                    }
+                    packet.Send(-1, -1);
+                }
             }
             else
             {
+                if (reader.ReadString() == "Adjust")
+                {
+                    int num = reader.ReadInt32();
+                    for (int i = 0; i < num; i++)
+                    {
+                        Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy+= reader.ReadInt32();
+                    }
+                }
+                else if (reader.ReadString() == "Reduce")
+                {
+
+                }
+                else if(reader.ReadString() =="Normal")
+                {
+
                 int num = reader.ReadInt32();
                 //Main.NewText(num);
                 //Scoreboard.UIGrid.Clear();
@@ -126,8 +154,8 @@ namespace DuanWu.Content.System
                     int numberofquestions = reader.ReadInt32();
                     recordManager.AddOrUpdate(name, corrects, numberofquestions);
                 }
-                
-                Scoreboard.CaleElement(num,recordManager._records);
+
+                Scoreboard.CaleElement(num, recordManager._records);
                 int count = 0;
                 foreach (var record in recordManager.GetSortedRecords())
                 {
@@ -135,6 +163,7 @@ namespace DuanWu.Content.System
                     //Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
                 }
                 Scoreboard.CalcBox();
+                }
             }
 
         }
@@ -154,6 +183,7 @@ namespace DuanWu.Content.System
             }
             ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
             writer.Write("NetScoreboard");
+            writer.Write("Normal");
             writer.Write(Main.LocalPlayer.name);
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy);
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
@@ -182,7 +212,7 @@ namespace DuanWu.Content.System
         {
             int type = reader.ReadInt32();
             Vector2 pos = reader.ReadVector2();
-            Utilities.NewProjectileBetter(null, pos, Vector2.Zero, type, 66,0);
+            Utilities.NewProjectileBetter(null, pos, Vector2.Zero, type, 66, 0);
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
                 Main.mouseX = (int)pos.X;
@@ -209,10 +239,9 @@ namespace DuanWu.Content.System
             int type = reader.ReadInt32();
             Vector2 pos = reader.ReadVector2();
             NPC.NewNPC(null, (int)pos.X, (int)pos.Y, type);
-            Main.NewText(sender);
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
-                base.SendPacket(-1, sender);
+                SendPacket(-1, sender);
             }
         }
 
@@ -260,18 +289,18 @@ namespace DuanWu.Content.System
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
                 duanWuPlayer.Answer = reader.ReadInt32();
                 int lisaoquestion = reader.ReadInt32();
-                int ans_text=0;
+                int ans_text = 0;
                 for (int i = 0; i < 8; i++)
                 {
                     int index = reader.ReadInt32();
-                    if (i== duanWuPlayer.Answer)
+                    if (i == duanWuPlayer.Answer)
                         ans_text = index;
                     duanWuPlayer.LisaoChoiceText[i] = LanguageHelper.GetQuestionTextValue(index, lisaoquestion);
                 }
                 duanWuPlayer.lisaoquestion = lisaoquestion;
                 duanWuPlayer.ChoiceAnswer = -1;
                 duanWuPlayer.counttime = 600;
-                duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(ans_text, lisaoquestion^1);
+                duanWuPlayer.LisaoQuestionText = LanguageHelper.GetQuestionTextValue(ans_text, lisaoquestion ^ 1);
                 duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(ans_text, lisaoquestion);
                 duanWuPlayer.LisaoActive = true;
             }
