@@ -15,6 +15,7 @@ using DuanWu.Content.UI;
 using Luminance.Core.Graphics;
 using Luminance.Common.Utilities;
 using Terraria.ModLoader.IO;
+
 namespace DuanWu
 {
     public class DuanWuPlayer : ModPlayer
@@ -102,6 +103,9 @@ namespace DuanWu
         public bool GaussBlurActive;
         public bool CameraActive;
         public bool PixelationActive;
+        public bool MagnifierActive;
+        public bool MatrixActive;
+        public Matrix Matrixfilter;
         public float Pixelationintensity;
         public float Cameraintensity;
         public bool confusion;
@@ -420,6 +424,29 @@ namespace DuanWu
             }
         }
 
+        public void SetMagnifier()
+        {
+            if (!MagnifierActive) return;
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.magnifier");
+            if (!distortion.IsActive)
+            {
+                distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
+                distortion.TrySetParameter("targetposition", new Vector2(0.5f,0.5f));
+                distortion.Activate();
+            }
+        }
+
+        public void SetMatrix()
+        {
+            if (!MatrixActive) return;
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.magnifier");
+            if (!distortion.IsActive)
+            {
+                distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
+                distortion.TrySetParameter("transmartix", );
+                distortion.Activate();
+            }
+        }
 
     }
 }

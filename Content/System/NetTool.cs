@@ -94,10 +94,11 @@ namespace DuanWu.Content.System
                 if (reader.ReadString() == "Adjust")
                 {
                     int num = reader.ReadInt32();
+                    packet.Write("Increase");
                     packet.Write(num);
-                    for (int i = 0;i<num;i++)
+                    for (int i = 0; i < num; i++)
                     {
-                        string player=reader.ReadString();
+                        string player = reader.ReadString();
                         packet.Write(correct[player]);
                     }
                     packet.Send(sender);
@@ -133,36 +134,43 @@ namespace DuanWu.Content.System
                     int num = reader.ReadInt32();
                     for (int i = 0; i < num; i++)
                     {
-                        Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy+= reader.ReadInt32();
+                        if (Main.LocalPlayer.name.Equals(reader.ReadString()))
+                        { 
+                            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy = 0;
+                            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount = 0;
+                        }
                     }
                 }
-                else if (reader.ReadString() == "Reduce")
+                else if (reader.ReadString() == "Increase")
                 {
-
+                    int num = reader.ReadInt32();
+                    for (int i = 0; i < num; i++)
+                    {
+                        Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy +=reader.ReadInt32();
+                    }
                 }
-                else if(reader.ReadString() =="Normal")
+                else if (reader.ReadString() == "Normal")
                 {
+                    int num = reader.ReadInt32();
+                    //Main.NewText(num);
+                    //Scoreboard.UIGrid.Clear();
+                    RecordManager recordManager = new RecordManager();
+                    for (int i = 0; i < num; i++)
+                    {
+                        string name = reader.ReadString();
+                        float corrects = reader.ReadInt32();
+                        int numberofquestions = reader.ReadInt32();
+                        recordManager.AddOrUpdate(name, corrects, numberofquestions);
+                    }
 
-                int num = reader.ReadInt32();
-                //Main.NewText(num);
-                //Scoreboard.UIGrid.Clear();
-                RecordManager recordManager = new RecordManager();
-                for (int i = 0; i < num; i++)
-                {
-                    string name = reader.ReadString();
-                    float corrects = reader.ReadInt32();
-                    int numberofquestions = reader.ReadInt32();
-                    recordManager.AddOrUpdate(name, corrects, numberofquestions);
-                }
-
-                Scoreboard.CaleElement(num, recordManager._records);
-                int count = 0;
-                foreach (var record in recordManager.GetSortedRecords())
-                {
-                    Scoreboard.TryUpdata(record.Name, record.Accuracy, record.CorrectCount, count++);
-                    //Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
-                }
-                Scoreboard.CalcBox();
+                    Scoreboard.CaleElement(num, recordManager._records);
+                    int count = 0;
+                    foreach (var record in recordManager.GetSortedRecords())
+                    {
+                        Scoreboard.TryUpdata(record.Name, record.Accuracy, record.CorrectCount, count++);
+                        //Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
+                    }
+                    Scoreboard.CalcBox();
                 }
             }
 

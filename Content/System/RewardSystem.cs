@@ -374,9 +374,9 @@ namespace DuanWu.Content.System
                         //减伤10 3
                         //duanWuPlayer.hitdamage -= 0.1f;
                         List<string> name = new();
-                        foreach (var palyer in Main.player)
+                        foreach (var players in Main.player)
                         {
-                            name.Add(player.name);
+                            if (Main.rand.NextBool()) name.Add(players.name);
                         }
                         if (Main.netMode == NetmodeID.SinglePlayer)
                         {
@@ -451,7 +451,24 @@ namespace DuanWu.Content.System
                         break;
                     case 6:
                         //获取分数
-                        
+                        List<string> name = new();
+                        foreach (var players in Main.player)
+                        {
+                            name.Add(players.name);
+                        }
+                        if (Main.netMode == NetmodeID.SinglePlayer)
+                        {
+                            return;
+                        }
+                        ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                        writer.Write("NetScoreboard");
+                        writer.Write("Adjust");
+                        writer.Write(name.Count);
+                        foreach (var item in name)
+                        {
+                            writer.Write(item.ToString());
+                        }
+                        writer.Send(-1, -1);
                         break;
                     case 7:
                         //太阳

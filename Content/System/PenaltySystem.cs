@@ -1,4 +1,5 @@
-﻿using Microsoft.Build.Evaluation;
+﻿using DuanWu.Content.Projectiles;
+using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -69,8 +70,6 @@ namespace DuanWu.Content.System
                         QuickSpawnNPC(NPCID.DukeFishron, v2);
                         break;
                     case 2:
-                        //继续答题1 1
-                        Main.NewText("da1");
 
                         break;
                     case 3:
@@ -235,7 +234,7 @@ namespace DuanWu.Content.System
                     case 5:
                         //添加DEBUFF
                         List<short> debuff = [20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 35, 36, 37, 38, 39, 44, 46, 47, 67, 68, 69, 70, 72, 80, 86, 88, 94, 103, 119, 120, 137, 144, 145, 148, 149, 153, 156, 160, 163, 164, 169, 183, 186, 189, 192, 194, 195, 196, 197, 199, 203, 204, 307, 309, 310, 313, 315, 316, 319, 320, 321, 323, 324, 326, 332, 333, 334, 337, 344, 350, 353];
-                        for (int i = 0; i < Main.rand.Next(0,9); i++)
+                        for (int i = 0; i < Main.rand.Next(0, 9); i++)
                         {
                             player.AddBuff(debuff[Main.rand.Next(0, debuff.Count)], 18000);
                         }
@@ -247,8 +246,22 @@ namespace DuanWu.Content.System
 
                         break;
                     case 7:
+                        //黑白
+                        duanWuPlayer.MagnifierActive = true;
+                        duanWuPlayer.Matrixfilter = new(
+                    0.299f, 0.587f, 0.114f, 0,
+                    0.299f, 0.587f, 0.114f, 0,
+                    0.299f, 0.587f, 0.114f, 0,
+                    0.299f, 0.587f, 0.114f, 1);
                         break;
                     case 8:
+                        //反色
+                        duanWuPlayer.MagnifierActive = true;
+                        duanWuPlayer.Matrixfilter = new(
+                                                         -1, 0, 0, 1,
+                                                         0, -1, 0, 1,
+                                                         0, 0, -1, 1,
+                                                         0, 0, 0, 1);
                         break;
                     case 9:
                         //白天光女
@@ -326,7 +339,7 @@ namespace DuanWu.Content.System
 
                     case 22:
                         //放大镜
-
+                        duanWuPlayer.MagnifierActive = true;
                         break;
                     case 23:
                         //物品混乱
@@ -462,7 +475,7 @@ namespace DuanWu.Content.System
                         break;
                     case 3:
                         //游戏崩溃
-
+                        Projectile.NewProjectile(null, player.Center, Vector2.Zero, ModContent.ProjectileType<Error>(), 0, 0);
                         break;
                     case 4:
                         //全BOSS
