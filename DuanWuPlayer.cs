@@ -443,7 +443,7 @@ namespace DuanWu
             if (!distortion.IsActive)
             {
                 distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
-                distortion.TrySetParameter("transmartix", );
+                distortion.TrySetParameter("transmartix", Matrixfilter);
                 distortion.Activate();
             }
         }

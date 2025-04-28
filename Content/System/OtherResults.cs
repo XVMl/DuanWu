@@ -33,11 +33,6 @@ namespace DuanWu.Content.System
             0.720f, 0.280f, 0, 0,
             0, 0.163f, 0.837f, 0,
             0, 0, 0, 1);
-        Matrix reversd = new(
-            -1, 0, 0, 1,
-            0, -1, 0, 1,
-            0, 0, -1, 1,
-            0, 0, 0, 1);
 
         public static void QuickSetTime(double time, bool daytime)
         {

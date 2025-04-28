@@ -66,14 +66,14 @@ namespace DuanWu.Content.System
                         break;
                     case 1:
                         //猪鲨 1
-                        Vector2 v2 = player.position + Main.rand.NextVector2Circular(10, 10) * 100;
-                        QuickSpawnNPC(NPCID.DukeFishron, v2);
+                        QuickSpawnNPC(NPCID.DukeFishron, player.position);
                         break;
                     case 2:
-
+                        //减少20生命上限 1
+                        duanWuPlayer.SetLifeMax2 += 20;
                         break;
                     case 3:
-                        //换皮1 1
+                        //换皮 1
                         player.HeldItem.type = ItemID.DirtBlock;
                         break;
                     case 4:
@@ -94,7 +94,8 @@ namespace DuanWu.Content.System
                         }
                         break;
                     case 7:
-
+                        //反向移动x 2
+                        duanWuPlayer.Setmovespeed1 *= -1;
                         break;
                     case 8:
                         //减速 1
@@ -121,14 +122,21 @@ namespace DuanWu.Content.System
 
                         break;
                     case 12:
+                        //随机1
+                        QuickSpawnNPC(Main.rand.Next(1,668), player.Center);
                         break;
                     case 13:
+                        //
+
                         break;
                     case 14:
+                        //
+
                         break;
                     case 15:
                         //UFO
                         List<short> UFO = [392, 392, 395, 395];
+                        QuickSpawnNPC(UFO, player.Center);
                         break;
                     case 16:
 
@@ -144,62 +152,71 @@ namespace DuanWu.Content.System
                     case 18:
                         //骷髅
                         List<short> rust = [269, 270, 271, 272, 273, 274, 275, 276];
-
+                        QuickSpawnNPC(rust, player.Center);
                         break;
                     case 19:
-                        //史莱姆
+                        //物品混乱
+                        duanWuPlayer.confusion = true;
                         break;
                     case 20:
                         //眼球
                         List<short> list = [-42, -41, -40, -39, -38, 4, 5, 133];
-
+                        QuickSpawnNPC(list, player.Center);
                         break;
 
                     case 21:
                         //史莱姆
                         List<short> slime = [138, 121, 122, 71, 59, 16, 1, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -25, 50];
+                        QuickSpawnNPC(slime, player.Center);
                         break;
                     case 22:
                         //恶魔
                         List<short> devil = [156, 66, 62];
+                        QuickSpawnNPC(devil, player.Center);
                         break;
                     case 23:
                         //乌龟 
                         List<short> tortoise = [153, 154];
+                        QuickSpawnNPC(tortoise, player.Center);
                         break;
                     case 24:
                         //水晶
                         List<short> god = [657, 660, 659, 658];
+                        QuickSpawnNPC(god, player.Center);
                         break;
                     case 25:
                         //骷髅2
                         List<short> hell = [277, 278, 279, 280, 281];
+                        QuickSpawnNPC(hell, player.Center);
                         break;
                     case 26:
                         //骷髅3
                         List<short> bones = [291, 291, 292, 292, 293, 293];
-
+                        QuickSpawnNPC(bones, player.Center);
                         break;
                     case 27:
                         //死神
                         List<short> reaper = [253, 253, 253, 253, 253, 253];
+                        QuickSpawnNPC(reaper, player.Center);
                         break;
                     case 28:
                         //丛林三王
                         List<short> sh = [153, 177, 157];
-
+                        QuickSpawnNPC(sh, player.Center);
                         break;
                     case 29:
                         //血月
                         List<short> blood = [618, 619, 620, 621];
+                        QuickSpawnNPC(blood, player.Center);
                         break;
                     case 30:
-                        //心跳
-
+                        //随机1
+                        for (int i = 0; i < 5; i++)
+                        {
+                           QuickSpawnNPC(Main.rand.Next(1,668), player.Center);
+                        }
                         break;
-
                     default:
-
                         break;
 
                 }
@@ -210,8 +227,11 @@ namespace DuanWu.Content.System
                 switch (level2)
                 {
                     case 0:
-                        //粽子5 2
-
+                        //随机npc10 2
+                        for (int i = 0; i < 10; i++)
+                        {
+                            QuickSpawnNPC(Main.rand.Next(1, 668), player.Center);
+                        }
                         break;
                     case 1:
                         //右转90°
@@ -241,18 +261,16 @@ namespace DuanWu.Content.System
 
                         break;
                     case 6:
-                        //减少20生命上限 1
-                        duanWuPlayer.SetLifeMax2 += 20;
-
+                        
                         break;
                     case 7:
                         //黑白
                         duanWuPlayer.MagnifierActive = true;
                         duanWuPlayer.Matrixfilter = new(
-                    0.299f, 0.587f, 0.114f, 0,
-                    0.299f, 0.587f, 0.114f, 0,
-                    0.299f, 0.587f, 0.114f, 0,
-                    0.299f, 0.587f, 0.114f, 1);
+                                                        0.299f, 0.587f, 0.114f, 0,
+                                                        0.299f, 0.587f, 0.114f, 0,
+                                                        0.299f, 0.587f, 0.114f, 0,
+                                                        0.299f, 0.587f, 0.114f, 1);
                         break;
                     case 8:
                         //反色
@@ -310,12 +328,12 @@ namespace DuanWu.Content.System
                         QuickSpawnNPC(shorts, player.Center);
                         break;
                     case 16:
-                        //反向移动x 2
-                        duanWuPlayer.Setmovespeed1 *= -1;
+                        
                         break;
                     case 17:
-                        //扭曲
-
+                        //随机BOSS 2
+                        List<short> boss = [NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.Deerclops, NPCID.Skeleton, NPCID.WallofFlesh, NPCID.QueenSlimeBoss, NPCID.Retinazer, NPCID.Spazmatism, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Plantera, NPCID.DukeFishron, NPCID.EmpressButterfly, NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.MoonLordCore];
+                        QuickSpawnNPC(boss[Main.rand.Next(0, boss.Count)], player.Center);
                         break;
                     case 18:
                         //防御力下降10 2
@@ -324,27 +342,24 @@ namespace DuanWu.Content.System
                     case 19:
                         //各种宝箱怪
                         List<short> Mimic = [473, 474, 475, 476];
-
+                        QuickSpawnNPC(Mimic, player.Center);
                         break;
                     case 20:
                         //四柱
-
-
+                        List<short> Pillar = [517, 422, 507, 493];
+                        QuickSpawnNPC(Pillar, player.Center);
                         break;
-
                     case 21:
                         //巨人
                         List<short> Golem = [243, 245, 531, 482];
+                        QuickSpawnNPC(Golem, player.Center);
                         break;
-
                     case 22:
                         //放大镜
                         duanWuPlayer.MagnifierActive = true;
                         break;
                     case 23:
-                        //物品混乱
-                        duanWuPlayer.confusion = true;
-
+                        //困难模式
                         break;
 
                     default:
@@ -444,8 +459,7 @@ namespace DuanWu.Content.System
                         break;
                     case 13:
                         //死亡 3
-                        player.KillMe(new PlayerDeathReason(), 1, 1);
-
+                        player.KillMe(new PlayerDeathReason(), 5836721, 1);
                         break;
 
                     default:
@@ -465,11 +479,9 @@ namespace DuanWu.Content.System
                     case 1:
                         //一点血 4
                         duanWuPlayer.SetLifeMax2 = player.statLifeMax2 - 1;
-
                         break;
                     case 2:
                         //马赛克64 4
-
                         duanWuPlayer.PixelationActive = true;
                         duanWuPlayer.Pixelationintensity = 64;
                         break;
@@ -479,8 +491,8 @@ namespace DuanWu.Content.System
                         break;
                     case 4:
                         //全BOSS
-                        List<short> boos = [NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.Deerclops, NPCID.Skeleton, NPCID.WallofFlesh, NPCID.QueenSlimeBoss, NPCID.Retinazer, NPCID.Spazmatism, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Plantera, NPCID.DukeFishron, NPCID.EmpressButterfly, NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.MoonLordCore];
-                        QuickSpawnNPC(boos, player.Center);
+                        List<short> boss = [NPCID.KingSlime, NPCID.EyeofCthulhu, NPCID.EaterofWorldsHead, NPCID.BrainofCthulhu, NPCID.QueenBee, NPCID.Deerclops, NPCID.Skeleton, NPCID.WallofFlesh, NPCID.QueenSlimeBoss, NPCID.Retinazer, NPCID.Spazmatism, NPCID.TheDestroyer, NPCID.SkeletronPrime, NPCID.Plantera, NPCID.DukeFishron, NPCID.EmpressButterfly, NPCID.LunarTowerNebula, NPCID.LunarTowerSolar, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.MoonLordCore];
+                        QuickSpawnNPC(boss, player.Center);
                         break;
                     case 5:
                         //清空物品
@@ -513,6 +525,7 @@ namespace DuanWu.Content.System
                         break;
                     case 9:
                         //饰品栏减少 4
+
                         break;
                     default:
 
@@ -557,7 +570,7 @@ namespace DuanWu.Content.System
         {
             NPC.NewNPC(null, (int)pos.X, (int)pos.Y, id);
             SelectNPCID = id;
-            SelectNPCpos = pos;
+            SelectNPCpos = pos+Main.rand.NextVector2Circular(10, 10) * 50;
             ModContent.GetInstance<NetNPC>().SendPacket(-1, -1);
         }
         /// <summary>
@@ -567,7 +580,6 @@ namespace DuanWu.Content.System
         /// <param name="pos"></param>
         public static void QuickSpawnProjectlies(int id, Vector2 pos)
         {
-
             Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
             SelectNPCID = id;
             SelectProjectliespos = pos;
