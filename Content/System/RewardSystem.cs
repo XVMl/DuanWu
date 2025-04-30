@@ -1,5 +1,6 @@
 ﻿using DuanWu.Content.Buffs;
 using DuanWu.Content.Items;
+using log4net.Core;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using System;
@@ -47,6 +48,7 @@ namespace DuanWu.Content.System
             {
                 //1级
                 int level1 = Main.rand.Next(0, 20);
+                Main.NewText(level1);
                 switch (level1)
                 {
                     case 0:
@@ -170,8 +172,7 @@ namespace DuanWu.Content.System
 
                         break;
                     case 20:
-                        //家具 1
-                        Main.NewText("家具");
+                        
                         break;
                     default:
                         Main.NewText("未知奖励");
@@ -183,10 +184,9 @@ namespace DuanWu.Content.System
 
             else if (RewardLevel == 2)
             {
-
                 //2级
-
-                int level2 = Main.rand.Next(0, 10);
+                int level2 = Main.rand.Next(0, 17);
+                Main.NewText(level2);
                 switch (level2)
                 {
                     case 0:
@@ -213,9 +213,8 @@ namespace DuanWu.Content.System
 
                         break;
                     case 4:
-                        //BUFF 2
-
-                        Main.NewText("BUFF2");
+                        //粽子
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<ZongZi>(), 10);
                         break;
                     case 5:
                         //运气 2
@@ -247,17 +246,13 @@ namespace DuanWu.Content.System
                         //旗帜
                         List<short> flag = [1615, 1616, 1617, 1618, 1619, 1620, 1621, 1622, 1623, 1624, 1625, 1626, 1627, 1628, 1629, 1630, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 1638, 1639, 1640, 1641, 1642, 1643, 1644, 1645, 1646, 1647, 1648, 1649, 1650, 1651, 1652, 1653, 1654, 1655, 1656, 1657, 1658, 1659, 1660, 1661, 1662, 1663, 1664, 1665, 1666, 1667, 1668, 1669, 1670, 1671, 1672, 1673, 1674, 1675, 1676, 1677, 1678, 1679, 1680, 1681, 1682, 1683, 1684, 1685, 1686, 1687, 1688, 1689, 1690, 1691, 1692, 1693, 1694, 1695, 1696, 1697, 1698, 1699, 1700, 1701, 2897, 2898, 2899, 2900, 2901, 2902, 2903, 2904, 2905, 2906, 2907, 2908, 2909, 2910, 2911, 2912, 2913, 2914, 2915, 2916, 2917, 2918, 2919, 2920, 2921, 2922, 2923, 2924, 2925, 2926, 2927, 2928, 2929, 2930, 2931, 2932, 2933, 2934, 2935, 2936, 2937, 2938, 2939, 2940, 2941, 2942, 2943, 2944, 2945, 2946, 2947, 2948, 2949, 2950, 2951, 2952, 2953, 2954, 2955, 2956, 2957, 2958, 2959, 2960, 2961, 2962, 2963, 2964, 2965, 2966, 2967, 2968, 2969, 2970, 2971, 2972, 2973, 2974, 2975, 2976, 2977, 2978, 2979, 2980, 2981, 2982, 2983, 2984, 2985, 2986, 2987, 2988, 2989, 2990, 2991, 2992, 2993, 2994];
                         QuickSpawnItemList(flag, player, 20, 1);
-
                         break;
                     case 10:
                         //环境
                         List<short> environment = [780, 5392, 5393, 5394, 781, 782, 783, 784];
                         QuickSpawnItemList(environment, player, 999);
                         player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 779, 1);
-
                         break;
-
-
                     case 11:
 
                         //稀有鱼饵 2
@@ -305,7 +300,8 @@ namespace DuanWu.Content.System
             else if (RewardLevel == 3)
             {
                 //3级
-                int level3 = Main.rand.Next(0, 10);
+                int level3 = Main.rand.Next(0, 15);
+                Main.NewText(level3);
                 switch (level3)
                 {
                     case 0:
@@ -348,9 +344,7 @@ namespace DuanWu.Content.System
                         //四柱工具 3 
                         List<short> xingxu = [2772, 2773, 2774, 2775, 2776, 3524, 3526, 3527, 3528, 3525, 3462, 3453, 3464, 3465];
                         QuickSpawnItemList(xingxu, player, 3, 1);
-
                         break;
-
                     case 8:
 
                         //额外召唤栏5 2
@@ -399,10 +393,8 @@ namespace DuanWu.Content.System
                     case 14:
                         //标题
                         player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<Logo>(), 1);
-
                         break;
                     default:
-
                         break;
                 }
 
@@ -411,13 +403,13 @@ namespace DuanWu.Content.System
             else if (RewardLevel == 4)
             {
                 //4级
-                int level4 = Main.rand.Next(0, 10);
+                int level4 = Main.rand.Next(0, 9);
+                Main.NewText(level4);
                 switch (level4)
                 {
                     case 0:
                         //天顶剑 4
                         player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ItemID.Zenith, 1);
-                        Main.NewText("天顶剑 4");
                         break;
                     case 1:
                         //永久NPC框 4
@@ -436,7 +428,6 @@ namespace DuanWu.Content.System
                             if (!nPC.friendly)
                             {
                                 nPC.life = 0;
-
                                 nPC.checkDead();
                             }
                         }

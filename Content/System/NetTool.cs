@@ -29,6 +29,7 @@ namespace DuanWu.Content.System
         }
         public virtual void RecievePacket(BinaryReader reader, int sender) { }
         public virtual void WriterPacket(BinaryWriter writer) { }
+
         public void SendPacket(int toClient = -1, int ignoreClient = -1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
@@ -220,7 +221,8 @@ namespace DuanWu.Content.System
         {
             int type = reader.ReadInt32();
             Vector2 pos = reader.ReadVector2();
-            Utilities.NewProjectileBetter(null, pos, Vector2.Zero, type, 66, 0);
+            int damage = reader.ReadInt32();
+            Utilities.NewProjectileBetter(null, pos, Vector2.Zero, type, damage, 0);
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
                 Main.mouseX = (int)pos.X;
@@ -233,6 +235,7 @@ namespace DuanWu.Content.System
         {
             writer.Write(PenaltySystem.SelectProjectliesID);
             writer.WriteVector2(Main.MouseWorld);
+            writer.Write(PenaltySystem.SelectProjectilesDamage);
         }
 
     }

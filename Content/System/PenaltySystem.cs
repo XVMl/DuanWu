@@ -1,4 +1,5 @@
 ﻿using DuanWu.Content.Projectiles;
+using log4net.Core;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using System;
@@ -23,6 +24,7 @@ namespace DuanWu.Content.System
 
         public static int SelectNPCID = 1;
         public static int SelectProjectliesID;
+        public static int SelectProjectilesDamage;
         public static Vector2 SelectNPCpos;
         public static Vector2 SelectProjectliespos;
         public PenaltySystem(int penaltylevel)
@@ -41,12 +43,13 @@ namespace DuanWu.Content.System
 
             if (DuanWuPlayer.RandResults)
             {
-                this.Penaltylevel = Main.rand.Next(0, 10);
+                this.Penaltylevel = Main.rand.Next(1, 5);
             }
         }
 
         public void SetPenalty(int penaltylevel = 1)
         {
+            
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
             if (duanWuPlayer.Reward != false)
             {
@@ -55,9 +58,11 @@ namespace DuanWu.Content.System
 
             Player player = Main.LocalPlayer;
             AverageChance();
+            Main.NewText(penaltylevel);
             if (penaltylevel == 1)
             {
-                int level1 = Main.rand.Next(0, 10);
+                int level1 = Main.rand.Next(0, 31);
+                Main.NewText(level1);
                 switch (level1)
                 {
                     case 0:
@@ -90,7 +95,7 @@ namespace DuanWu.Content.System
                         for (int i = 0; i < 10; i++)
                         {
                             Vector2 _v2 = Main.rand.NextVector2Circular(16, 16);
-                            QuickSpawnProjectlies(29, player.Center + _v2 * 20);
+                            QuickSpawnProjectlies(29, player.Center + _v2 * 20,1);
                         }
                         break;
                     case 7:
@@ -112,7 +117,7 @@ namespace DuanWu.Content.System
                         for (int i = 0; i < 10; i++)
                         {
                             Vector2 _v2 = Main.rand.NextVector2Circular(16, 16);
-                            QuickSpawnProjectlies(637, player.Center + _v2 * 20);
+                            QuickSpawnProjectlies(637, player.Center + _v2 * 20,1);
                         }
                         break;
                     case 11:
@@ -126,12 +131,12 @@ namespace DuanWu.Content.System
                         QuickSpawnNPC(Main.rand.Next(1,668), player.Center);
                         break;
                     case 13:
-                        //
-
+                        //-100
+                        player.statLife -= 100;
                         break;
                     case 14:
-                        //
-
+                        //随机传送
+                        player.TeleportationPotion();
                         break;
                     case 15:
                         //UFO
@@ -139,14 +144,15 @@ namespace DuanWu.Content.System
                         QuickSpawnNPC(UFO, player.Center);
                         break;
                     case 16:
-
+                        //传送(0,0)
+                        player.Teleport(Vector2.Zero);
                         break;
                     case 17:
                         //蜂巢
                         for (int i = 0; i < 5; i++)
                         {
                             Vector2 _v2 = Main.rand.NextVector2Circular(16, 16);
-                            QuickSpawnProjectlies(655, player.Center + _v2 * 20);
+                            QuickSpawnProjectlies(655, player.Center + _v2 * 20,1);
                         }
                         break;
                     case 18:
@@ -218,12 +224,12 @@ namespace DuanWu.Content.System
                         break;
                     default:
                         break;
-
                 }
             }
             else if (penaltylevel == 2)
             {
-                int level2 = Main.rand.Next(0, 10);
+                int level2 = Main.rand.Next(0, 23); 
+                Main.NewText(level2);
                 switch (level2)
                 {
                     case 0:
@@ -245,11 +251,11 @@ namespace DuanWu.Content.System
                         break;
                     case 3:
                         //玩家爆炸
-
-
+                        QuickSpawnProjectlies(1002, player.Center,99999);
                         break;
                     case 4:
-                        //事件
+                        //随机前缀
+                        player.HeldItem.prefix = Main.rand.Next(0, PrefixID.Count);
                         break;
                     case 5:
                         //添加DEBUFF
@@ -261,7 +267,8 @@ namespace DuanWu.Content.System
 
                         break;
                     case 6:
-                        
+                        //传送 2
+                        player.Teleport(new Vector2(Main.tile.Width,Main.tile.Height));
                         break;
                     case 7:
                         //黑白
@@ -328,7 +335,9 @@ namespace DuanWu.Content.System
                         QuickSpawnNPC(shorts, player.Center);
                         break;
                     case 16:
-                        
+                        //随机前缀
+                        List<int> prefix = [8, 13, 23, 24, 39, 40, 41];
+                        player.HeldItem.prefix=(prefix[Main.rand.Next(0,7)]);
                         break;
                     case 17:
                         //随机BOSS 2
@@ -359,7 +368,9 @@ namespace DuanWu.Content.System
                         duanWuPlayer.MagnifierActive = true;
                         break;
                     case 23:
-                        //困难模式
+                        //镜头颠倒 2 
+                        duanWuPlayer.CameraActive = true;
+                        duanWuPlayer.Cameraintensity = 1;
                         break;
 
                     default:
@@ -368,7 +379,8 @@ namespace DuanWu.Content.System
             }
             else if (penaltylevel == 3)
             {
-                int level3 = Main.rand.Next(0, 10);
+                int level3 = Main.rand.Next(0, 14);
+                Main.NewText(level3);
                 switch (level3)
                 {
                     case 0:
@@ -389,7 +401,7 @@ namespace DuanWu.Content.System
 
                         break;
                     case 2:
-                        //镜头颠倒 2
+                        //镜头震动 2
                         duanWuPlayer.ScreenShakeUpDown = true;
 
                         break;
@@ -469,6 +481,7 @@ namespace DuanWu.Content.System
             else if (penaltylevel == 4)
             {
                 int level4 = Main.rand.Next(0, 10);
+                Main.NewText(level4);
                 switch (level4)
                 {
                     case 0:
@@ -511,7 +524,7 @@ namespace DuanWu.Content.System
                         break;
                     case 6:
                         //摄像头模式
-                        duanWuPlayer.Screenpos = Main.LocalPlayer.Center - new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+                        duanWuPlayer.Screenpos=duanWuPlayer.screenCache= Main.LocalPlayer.Center - new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                         duanWuPlayer.StartScreenpos = true;
                         break;
                     case 7:
@@ -578,11 +591,13 @@ namespace DuanWu.Content.System
         /// </summary>
         /// <param name="id"></param>
         /// <param name="pos"></param>
-        public static void QuickSpawnProjectlies(int id, Vector2 pos)
+
+        public static void QuickSpawnProjectlies(int id, Vector2 pos,int damage)
         {
-            Projectile.NewProjectile(null, pos, Vector2.Zero, id, 99, 1);
+            Projectile.NewProjectile(null, pos, Vector2.Zero, id, damage, 1);
             SelectNPCID = id;
             SelectProjectliespos = pos;
+            SelectProjectilesDamage = damage;
             ModContent.GetInstance<NetProjectlies>().SendPacket(-1, -1);
         }
 

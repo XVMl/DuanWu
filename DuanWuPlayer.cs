@@ -56,7 +56,7 @@ namespace DuanWu
         public static bool RandResults;
         public bool ScreenShakeUpDown;
         public static bool ScreenZhuan = true;
-        private Vector2 screenCache;
+        public Vector2 screenCache;
 
         public static bool Quickresponse;
         public bool ShowPlayHitBox;

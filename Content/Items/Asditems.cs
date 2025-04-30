@@ -73,14 +73,6 @@ namespace DuanWu.Content.Items
             //playerDeath.SourceOtherIndex = 34758946;
             if (Main.myPlayer == player.whoAmI)
             {
-                //if (player.altFunctionUse == 2)
-                //{
-                //    player.KillMe(new PlayerDeathReason(), 5836721, 1);
-                //}
-                //else
-                //{
-                //    player.KillMe(new PlayerDeathReason(), 536721, 1);
-                //}
             }
 
 
