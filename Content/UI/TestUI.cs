@@ -45,14 +45,14 @@ namespace DuanWu.Content.UI
             iGrid.Add(new ScoreboardElement(Main.LocalPlayer.name, x, Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount));
         }
 
-        protected override void DrawSelf(SpriteBatch spriteBatch)
-        {
-            Rectangle rectangle2 = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y, (int)iGrid.GetDimensions().Width, (int)iGrid.GetDimensions().Height - 31);
-            Rectangle rectangle = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y-31, (int)iGrid.GetDimensions().Width, 31);
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
-            Utils.DrawBorderString(spriteBatch,  DuanWuPlayer.ScoreboardText, iGrid.GetDimensions().ToRectangle().TopLeft()+new Vector2(70,-25), Color.White);
-        }
+        //protected override void DrawSelf(SpriteBatch spriteBatch)
+        //{
+        //    Rectangle rectangle2 = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y, (int)iGrid.GetDimensions().Width, (int)iGrid.GetDimensions().Height - 31);
+        //    Rectangle rectangle = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y-31, (int)iGrid.GetDimensions().Width, 31);
+        //    spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
+        //    spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
+        //    Utils.DrawBorderString(spriteBatch,  DuanWuPlayer.ScoreboardText, iGrid.GetDimensions().ToRectangle().TopLeft()+new Vector2(70,-25), Color.White);
+        //}
     }
 
 }

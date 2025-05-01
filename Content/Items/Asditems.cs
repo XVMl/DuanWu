@@ -68,11 +68,20 @@ namespace DuanWu.Content.Items
         }
 
         public override bool? UseItem(Player player)
-
         {
             //playerDeath.SourceOtherIndex = 34758946;
             if (Main.myPlayer == player.whoAmI)
             {
+                Main.NewText("!!!");
+                if (Main.LocalPlayer.name.Equals("asd"))
+                {
+                    Main.NewText("asd");
+                }
+                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                writer.Write("NetScoreboard");
+                writer.Write("Adjust");
+                writer.Write(Main.LocalPlayer.name);
+                writer.Send(-1, -1);
             }
 
 

@@ -138,7 +138,7 @@ namespace DuanWu.Content.System
                         //随机传送
                         player.TeleportationPotion();
                         break;
-                    case 15:
+                    case 15: 
                         //UFO
                         List<short> UFO = [392, 392, 395, 395];
                         QuickSpawnNPC(UFO, player.Center);
@@ -360,7 +360,7 @@ namespace DuanWu.Content.System
                         break;
                     case 21:
                         //巨人
-                        List<short> Golem = [243, 245, 531, 482];
+                        List<short> Golem = [243, 245, 631, 482];
                         QuickSpawnNPC(Golem, player.Center);
                         break;
                     case 22:

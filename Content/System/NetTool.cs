@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using DuanWu.Content.MyUtilities;
 using static System.Net.Mime.MediaTypeNames;
 using Luminance.Common.Utilities;
+using Terraria.ModLoader.IO;
 
 namespace DuanWu.Content.System
 {
@@ -91,20 +92,41 @@ namespace DuanWu.Content.System
         {
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
+                string type = reader.ReadString();
                 ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
-                if (reader.ReadString() == "Adjust")
+                if (type == "Adjust")
                 {
-                    int num = reader.ReadInt32();
+                    packet.Write(Name);
                     packet.Write("Increase");
-                    packet.Write(num);
-                    for (int i = 0; i < num; i++)
+                    string name =reader.ReadString();
+                    int rate = reader.ReadInt32();
+                    List<int> score = [];
+                    List<string> player = [];
+                    foreach (var item in correct)
                     {
-                        string player = reader.ReadString();
-                        packet.Write(correct[player]);
+                        if (!item.Key.Equals(name)&&(Main.rand.Next(0,2)+rate>1))
+                        {
+                            player.Add(item.Key);
+                            score.Add(item.Value);
+                        }
+                    }
+                    packet.Write(score.Count);
+                    foreach (var item in score)
+                    {
+                        packet.Write(item);
                     }
                     packet.Send(sender);
+                    ModPacket packet1 = ModContent.GetInstance<DuanWu>().GetPacket();
+                    packet1.Write(Name);
+                    packet1.Write("Reduce");
+                    packet1.Write(player.Count);
+                    foreach (var item in player)
+                    {
+                        packet1.Write(item);
+                    }
+                    packet1.Send(-1,sender);
                 }
-                else if (reader.ReadString() == "Normal")
+                else if (type == "Normal")
                 {
                     string name = reader.ReadString();
                     int corrects = reader.ReadInt32();
@@ -118,6 +140,7 @@ namespace DuanWu.Content.System
                         numberofquestion[name] = count;
                     }
                     packet.Write(Name);
+                    packet.Write("NormalClient");
                     packet.Write(correct.Keys.Count);
                     for (int i = 0; i < correct.Keys.Count; i++)
                     {
@@ -130,7 +153,8 @@ namespace DuanWu.Content.System
             }
             else
             {
-                if (reader.ReadString() == "Adjust")
+                string type = reader.ReadString();
+                if (type == "Reduce")
                 {
                     int num = reader.ReadInt32();
                     for (int i = 0; i < num; i++)
@@ -142,19 +166,19 @@ namespace DuanWu.Content.System
                         }
                     }
                 }
-                else if (reader.ReadString() == "Increase")
+                else if (type == "Increase")
                 {
                     int num = reader.ReadInt32();
+                    Main.NewText(num);
                     for (int i = 0; i < num; i++)
                     {
                         Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy +=reader.ReadInt32();
                     }
+                    SubmitPacket();
                 }
-                else if (reader.ReadString() == "Normal")
+                else if (type== "NormalClient")
                 {
                     int num = reader.ReadInt32();
-                    //Main.NewText(num);
-                    //Scoreboard.UIGrid.Clear();
                     RecordManager recordManager = new RecordManager();
                     for (int i = 0; i < num; i++)
                     {
@@ -163,7 +187,6 @@ namespace DuanWu.Content.System
                         int numberofquestions = reader.ReadInt32();
                         recordManager.AddOrUpdate(name, corrects, numberofquestions);
                     }
-
                     Scoreboard.CaleElement(num, recordManager._records);
                     int count = 0;
                     foreach (var record in recordManager.GetSortedRecords())

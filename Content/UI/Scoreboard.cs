@@ -50,7 +50,7 @@ namespace DuanWu.Content.UI
                 return;
             }
             Rectangle rectangle = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y - 31, (int)UIGrid.GetDimensions().Width,31);
-            Rectangle rectangle2 = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y+31, (int)UIGrid.GetDimensions().Width, (int)UIGrid.GetDimensions().Height - 31);
+            Rectangle rectangle2 = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y, (int)UIGrid.GetDimensions().Width, (int)UIGrid.GetDimensions().Height);
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
             Utils.DrawBorderString(spriteBatch, "积分榜", UIGrid.GetDimensions().ToRectangle().TopLeft() + new Vector2(70, -25), Color.White);
@@ -81,7 +81,7 @@ namespace DuanWu.Content.UI
 
         public static void CalcBox()
         {
-            UIGrid.Height.Set(5 + UIGrid._items.Count * 45, 0);
+            UIGrid.Height.Set(10 + UIGrid._items.Count * 45, 0);
             UIGrid.Width.Set(200, 0);
         }
 
@@ -120,7 +120,7 @@ namespace DuanWu.Content.UI
             Append(name);
             Append(accuracy);
             Append(imac);
-            //count = new UIText(numberofquestions.ToString());
+            count = new UIText(numberofquestions.ToString());
             //imcn = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye"));
             //imcn.ImageScale = 0.2f;
             //count.Top.Set(120, 0);
