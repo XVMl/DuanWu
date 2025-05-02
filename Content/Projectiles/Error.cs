@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace DuanWu.Content.Projectiles
@@ -35,11 +36,13 @@ namespace DuanWu.Content.Projectiles
         }
         public override void OnKill(int timeLeft)
         {
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Error");
-            if (!distortion.IsActive)
-            {
-                distortion.Activate();
-            }
+            if (Projectile.owner != Main.LocalPlayer.whoAmI) return;
+            Main.NewText("Erroe");
+            //ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Error");
+            //if (!distortion.IsActive)
+            //{
+            //    distortion.Activate();
+            //}
         }
     }
 }

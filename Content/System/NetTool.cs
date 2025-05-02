@@ -104,7 +104,7 @@ namespace DuanWu.Content.System
                     List<string> player = [];
                     foreach (var item in correct)
                     {
-                        if (!item.Key.Equals(name)&&(Main.rand.Next(0,2)+rate>1))
+                        if (!item.Key.Equals(name)&&(Main.rand.Next(1,2)+rate>1))
                         {
                             player.Add(item.Key);
                             score.Add(item.Value);
@@ -165,11 +165,11 @@ namespace DuanWu.Content.System
                             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount = 0;
                         }
                     }
+                    SubmitPacket();
                 }
                 else if (type == "Increase")
                 {
                     int num = reader.ReadInt32();
-                    Main.NewText(num);
                     for (int i = 0; i < num; i++)
                     {
                         Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy +=reader.ReadInt32();

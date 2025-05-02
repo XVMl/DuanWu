@@ -75,7 +75,7 @@ namespace DuanWu.Content.System
                         break;
                     case 2:
                         //减少20生命上限 1
-                        duanWuPlayer.SetLifeMax2 += 20;
+                        duanWuPlayer.SetLifeMax2 -= 20;
                         break;
                     case 3:
                         //换皮 1
@@ -293,6 +293,7 @@ namespace DuanWu.Content.System
                         Main.dayTime = true;
                         Main.time = 0;
                         QuickSpawnNPC(636, player.Center);
+                        OtherResults.QuickSetTime(0, true);
                         break;
                     case 10:
                         //史莱姆NPC死亡 2
@@ -412,7 +413,7 @@ namespace DuanWu.Content.System
                         break;
                     case 4:
                         //一点血 3
-                        duanWuPlayer.SetLifeMax2 = player.statLifeMax2 - 1;
+                        duanWuPlayer.SetLifeMax2 = -(int)player.statLifeMax2/2;
                         break;
                     case 5:
                         //敌方回满血
@@ -491,7 +492,7 @@ namespace DuanWu.Content.System
                         break;
                     case 1:
                         //一点血 4
-                        duanWuPlayer.SetLifeMax2 = player.statLifeMax2 - 1;
+                        duanWuPlayer.SetLifeMax2 = 1-player.statLifeMax2;
                         break;
                     case 2:
                         //马赛克64 4

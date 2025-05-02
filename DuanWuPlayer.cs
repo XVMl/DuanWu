@@ -143,6 +143,7 @@ namespace DuanWu
             SetBlur();
             SetPixelation();
             SetCamera();
+            SetMagnifier();
             //OtherQusetionAvtive();
             if (LisaoActive)
             {

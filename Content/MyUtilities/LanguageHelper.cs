@@ -101,6 +101,7 @@ namespace DuanWu.Content.MyUtilities
             duanWuPlayer.ChoiceAnswer = -1;
             duanWuPlayer.Reward = null;
             DuanWuPlayer.PlayerQuestionEnd = false;
+            NetScoreboard.SubmitPacket();
         }
 
     }

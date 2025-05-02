@@ -72,16 +72,12 @@ namespace DuanWu.Content.Items
             //playerDeath.SourceOtherIndex = 34758946;
             if (Main.myPlayer == player.whoAmI)
             {
-                Main.NewText("!!!");
-                if (Main.LocalPlayer.name.Equals("asd"))
+                if (player.altFunctionUse==2)
                 {
-                    Main.NewText("asd");
+                    Projectile.NewProjectile(null, player.Center, Vector2.Zero, ModContent.ProjectileType<Error>(), 0, 0);
+                    Main.NewText("!!!");
+                    return true;
                 }
-                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                writer.Write("NetScoreboard");
-                writer.Write("Adjust");
-                writer.Write(Main.LocalPlayer.name);
-                writer.Send(-1, -1);
             }
 
 

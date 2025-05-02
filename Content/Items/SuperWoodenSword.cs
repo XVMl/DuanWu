@@ -53,18 +53,18 @@ namespace DuanWu.Content.Items
         //}
 
 
-        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
-        {
-            Main.spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-            GameShaders.Misc["ArmorBasic"].UseImage1(ModContent.Request<Texture2D>("DuanWu/Content/Images/FireNoiseA"));
-            GameShaders.Misc["ArmorBasic"].Apply();
-            Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Items/Asditems").Value;
-            spriteBatch.Draw(texture, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, texture.Size() / 2, 0.5f, SpriteEffects.None, 0);
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-            return false;
-        }
+        //public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        //{
+        //    Main.spriteBatch.End();
+        //    spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+        //    GameShaders.Misc["ArmorBasic"].UseImage1(ModContent.Request<Texture2D>("DuanWu/Content/Images/FireNoiseA"));
+        //    GameShaders.Misc["ArmorBasic"].Apply();
+        //    Texture2D texture = ModContent.Request<Texture2D>("DuanWu/Content/Items/Asditems").Value;
+        //    spriteBatch.Draw(texture, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, texture.Size() / 2, 0.5f, SpriteEffects.None, 0);
+        //    Main.spriteBatch.End();
+        //    Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
+        //    return false;
+        //}
 
     }
 }
