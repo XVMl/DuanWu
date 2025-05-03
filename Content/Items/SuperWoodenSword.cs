@@ -21,7 +21,7 @@ namespace DuanWu.Content.Items
     {
         public override void SetDefaults()
         {
-            Item.damage = int.MaxValue-1;
+            Item.damage = 999999;
             Item.DamageType = DamageClass.Melee;
             Item.width = 32;
             Item.height = 32;

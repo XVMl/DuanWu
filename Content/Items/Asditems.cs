@@ -60,24 +60,15 @@ namespace DuanWu.Content.Items
             return true;
         }
 
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.checkDead();
-            //MethodInfo methodInfo = typeof(ModNPC).GetMethod("CheckDead", BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance);
-            //methodInfo.Invoke(target, null);
-        }
 
         public override bool? UseItem(Player player)
         {
+            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
             //playerDeath.SourceOtherIndex = 34758946;
             if (Main.myPlayer == player.whoAmI)
             {
-                if (player.altFunctionUse==2)
-                {
-                    Projectile.NewProjectile(null, player.Center, Vector2.Zero, ModContent.ProjectileType<Error>(), 0, 0);
-                    Main.NewText("!!!");
-                    return true;
-                }
+                player.inventory[0].Prefix(1);
+                player.Teleport(new Vector2(Main.maxTilesX, Main.maxTilesY));
             }
 
 

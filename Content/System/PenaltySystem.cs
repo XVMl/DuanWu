@@ -100,7 +100,7 @@ namespace DuanWu.Content.System
                         break;
                     case 7:
                         //反向移动x 2
-                        duanWuPlayer.Setmovespeed1 *= -1;
+                        duanWuPlayer.Setmovespeed *= -1;
                         break;
                     case 8:
                         //减速 1
@@ -281,7 +281,7 @@ namespace DuanWu.Content.System
                         break;
                     case 8:
                         //反色
-                        duanWuPlayer.MagnifierActive = true;
+                        duanWuPlayer.MatrixActive = true;
                         duanWuPlayer.Matrixfilter = new(
                                                          -1, 0, 0, 1,
                                                          0, -1, 0, 1,
@@ -312,7 +312,7 @@ namespace DuanWu.Content.System
                         break;
                     case 12:
                         //不能飞
-                        player.wingTime = 0;
+                        duanWuPlayer.SetwingTime = 0;
                         break;
                     case 13:
                         //马赛克8 2
@@ -338,7 +338,7 @@ namespace DuanWu.Content.System
                     case 16:
                         //随机前缀
                         List<int> prefix = [8, 13, 23, 24, 39, 40, 41];
-                        player.HeldItem.prefix=(prefix[Main.rand.Next(0,7)]);
+                        player.HeldItem.Prefix(prefix[Main.rand.Next(0,7)]);
                         break;
                     case 17:
                         //随机BOSS 2
@@ -412,7 +412,7 @@ namespace DuanWu.Content.System
                         duanWuPlayer.Cameraintensity = 0;
                         break;
                     case 4:
-                        //一点血 3
+                        //半血 3
                         duanWuPlayer.SetLifeMax2 = -(int)player.statLifeMax2/2;
                         break;
                     case 5:
@@ -429,7 +429,7 @@ namespace DuanWu.Content.System
                         //存款-100% 3
                         for (int i = 50; i < 53; i++)
                         {
-                            player.inventory[i] = null;
+                            player.inventory[i].type = 0;
                         }
                         break;
                     case 7:
@@ -464,7 +464,7 @@ namespace DuanWu.Content.System
                         break;
                     case 11:
                         //召唤物 3
-                        duanWuPlayer.Setmovespeed -= 1;
+                        duanWuPlayer.SetMinions -= 1;
                         break;
                     case 12:
                         //答题成绩减半

@@ -67,7 +67,7 @@ namespace DuanWu
         public bool ForverShowNPCHitBox;
         public int SetLifeMax2;
         public int SetLifemana2;
-        public float Setmovespeed;
+        public float Setmovespeed=1;
         public float Setmovespeed1=1;
         /// <summary>
         /// 减伤
@@ -79,6 +79,7 @@ namespace DuanWu
         public int SetMinions;
         public int SetDefense;
         public bool Fly;
+        public float SetwingTime = 1;
         public bool SetMana;
         public Vector2 Screenpos;
         public bool StartScreenpos;
@@ -144,6 +145,7 @@ namespace DuanWu
             SetPixelation();
             SetCamera();
             SetMagnifier();
+            SetMatrix();
             //OtherQusetionAvtive();
             if (LisaoActive)
             {
@@ -232,8 +234,8 @@ namespace DuanWu
             Player.statDefense += SetDefense;
             Player.maxMinions += SetMinions;
             Player.endurance += Setendurance;
-            Player.moveSpeed += Setmovespeed;
-            Player.moveSpeed *= Setmovespeed1;
+            Player.moveSpeed *= Setmovespeed;
+            Player.wingTime *= SetwingTime;
             if (Fly)
             {
                 Player.wingTime = Player.wingTimeMax;
@@ -439,7 +441,7 @@ namespace DuanWu
         public void SetMatrix()
         {
             if (!MatrixActive) return;
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.magnifier");
+            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.MatrixFilter");
             if (!distortion.IsActive)
             {
                 distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
