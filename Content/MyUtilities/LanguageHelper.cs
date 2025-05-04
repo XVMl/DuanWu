@@ -87,6 +87,10 @@ namespace DuanWu.Content.MyUtilities
                 ModContent.GetInstance<Netsponse>().SendPacket(-1, -1);
                 return;
             }
+            if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
+            {
+                DuanWuPlayer.WaitingForQuestionEnd = true;
+            }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
             duanWuPlayer.Reward = false;
             PenaltySystem penaltySystem = new(Main.rand.Next(1, 5));

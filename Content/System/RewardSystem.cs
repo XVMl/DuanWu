@@ -353,12 +353,12 @@ namespace DuanWu.Content.System
 
                     case 9:
                         //SuperWoodSword 3
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<SuperWoodenSword>(), 99);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<SuperWoodenSword>(), 1);
 
                         break;
                     case 10:
                         //UlraWoodSword 3
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<UltraWoodenSword>(), 99);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<UltraWoodenSword>(), 1);
                         break;
                     case 11:
                         //额外召唤栏1 3

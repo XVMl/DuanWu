@@ -95,6 +95,10 @@ namespace DuanWu
         /// 回答正确数
         /// </summary>
         public int PlayerAccuracy;
+        /// <summary>
+        /// 抢答模式下同步答题结束
+        /// </summary>
+        public static bool WaitingForQuestionEnd;
         public static bool QustionActive;
         public static bool Scoreboard;
         public static string ScoreboardText;
@@ -151,7 +155,7 @@ namespace DuanWu
             {
                 counttime--;
                 ShowAnswer--;
-                if (counttime == -1)
+                if (counttime == -1&& !WaitingForQuestionEnd)
                 {
                     LanguageHelper.CheckAnswer();
                 }

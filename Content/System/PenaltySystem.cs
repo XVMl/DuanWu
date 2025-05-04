@@ -260,7 +260,7 @@ namespace DuanWu.Content.System
                     case 5:
                         //添加DEBUFF
                         List<short> debuff = [20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 35, 36, 37, 38, 39, 44, 46, 47, 67, 68, 69, 70, 72, 80, 86, 88, 94, 103, 119, 120, 137, 144, 145, 148, 149, 153, 156, 160, 163, 164, 169, 183, 186, 189, 192, 194, 195, 196, 197, 199, 203, 204, 307, 309, 310, 313, 315, 316, 319, 320, 321, 323, 324, 326, 332, 333, 334, 337, 344, 350, 353];
-                        for (int i = 0; i < Main.rand.Next(0, 9); i++)
+                        for (int i = 0; i < Main.rand.Next(1, 9); i++)
                         {
                             player.AddBuff(debuff[Main.rand.Next(0, debuff.Count)], 18000);
                         }
@@ -385,15 +385,11 @@ namespace DuanWu.Content.System
                 switch (level3)
                 {
                     case 0:
-                        //传送所有敌人 3 
-                        foreach (NPC nPC in Main.ActiveNPCs)
+                        //其他玩家死亡 
+                        foreach (var item in Main.ActivePlayers)
                         {
-                            if (!nPC.friendly)
-                            {
-                                nPC.Center = player.Center;
-                            }
+                            item.KillMe(new PlayerDeathReason(), 1, 1);
                         }
-                        Main.NewText("chuanshong");
                         break;
                     case 1:
                         //硬核 3 

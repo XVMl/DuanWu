@@ -10,13 +10,13 @@ namespace DuanWu.Content.System
 {
     internal class DuanWuGlobalNPCs:GlobalNPC
     {
-        //public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
-        //{
-        //    if (DuanWuPlayer.SetSpwanRate)
-        //    {
-        //        spawnRate = 0;
-        //        maxSpawns = (int)(maxSpawns * 100f);
-        //    }
-        //}
+        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+        {
+            if (DuanWuPlayer.SetSpwanRate)
+            {
+                spawnRate = (int)(spawnRate * 0.1);
+                maxSpawns = (int)(maxSpawns * 10f);
+            }
+        }
     }
 }

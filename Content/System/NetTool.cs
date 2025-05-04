@@ -54,7 +54,7 @@ namespace DuanWu.Content.System
             Main.time = reader.ReadDouble();
             if (Main.netMode == NetmodeID.Server)
             {
-                base.SendPacket(-1, sender);
+                SendPacket(-1, sender);
             }
         }
 
@@ -72,11 +72,9 @@ namespace DuanWu.Content.System
         public override void RecievePacket(BinaryReader reader, int sender)
         {
             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
-            if (Main.netMode == NetmodeID.Server && sender >= 0)
-            {
-                Time = 0;
-                base.SendPacket(-1, sender);
-            }
+            DuanWuPlayer.WaitingForQuestionEnd = false;
+            Time = 0;
+            SendPacket(-1, -1);
         }
 
     }
@@ -228,7 +226,8 @@ namespace DuanWu.Content.System
         public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
-            DuanWuPlayer.SetSpwanRate = reader.ReadBoolean();
+            //DuanWuPlayer.SetSpwanRate = reader.ReadBoolean();
+            DuanWuPlayer.SetSpwanRate=true;
             if (Main.netMode == 2)
             {
                 SendPacket(-1, sender);
@@ -286,17 +285,18 @@ namespace DuanWu.Content.System
         }
 
     }
-
     internal class ServeSetQustion : NetTool
     {
         public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
+            //服务端设置题目
             if (Main.netMode == NetmodeID.Server && DuanWuPlayer.Quickresponse)
             {
                 //writer.Write(text);
                 //writer.Write(numberofchoise);
                 string type = reader.ReadString();
+                
                 if (type == "SetQustion")
                 {
                     DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -318,6 +318,7 @@ namespace DuanWu.Content.System
                     Time = 600;
                 }
             }
+            //客户端接收题目设置
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -348,6 +349,12 @@ namespace DuanWu.Content.System
                 if (duanWuPlayer.LisaoActive)
                 {
                     Time--;
+                }
+                if (Time==0)
+                {
+                    ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
+                    packet.Write("Netsponse");
+                    packet.Send(-1, -1);
                 }
                 if (Time == -180)
                 {

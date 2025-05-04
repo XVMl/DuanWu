@@ -67,8 +67,10 @@ namespace DuanWu.Content.Items
             //playerDeath.SourceOtherIndex = 34758946;
             if (Main.myPlayer == player.whoAmI)
             {
-                player.inventory[0].Prefix(1);
-                player.Teleport(new Vector2(Main.maxTilesX, Main.maxTilesY));
+                foreach (var item in Main.ActivePlayers)
+                {
+                    item.KillMe(new PlayerDeathReason(), 1, 1);
+                }
             }
 
 
