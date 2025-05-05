@@ -175,11 +175,9 @@ namespace DuanWu.Content.System
                         
                         break;
                     default:
-                        Main.NewText("未知奖励");
                         break;
 
                 }
-
             }
 
             else if (RewardLevel == 2)
@@ -378,10 +376,7 @@ namespace DuanWu.Content.System
                         //自由视角
                         duanWuPlayer.FreeScreen = true;
                         break;
-                    case 14:
-                        //标题
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<Logo>(), 1);
-                        break;
+                    
                     default:
                         break;
                 }
@@ -443,8 +438,8 @@ namespace DuanWu.Content.System
                         break;
 
                     case 8:
-                        //额外饰品栏
-
+                        //标题
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<Logo>(), 1);
                         break;
 
                     default:

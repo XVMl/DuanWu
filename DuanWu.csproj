@@ -16,8 +16,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <AdditionalFiles Remove="Assets\AutoloadedEffects\Filters\GaussBlur.fx" />
-	  <AdditionalFiles Remove="Content\Items\AnglerRod.png" />
-	  <AdditionalFiles Remove="Content\Projectiles\AnglerBobber.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Assets\AutoloadedEffects\Filters\contraction.fx" />

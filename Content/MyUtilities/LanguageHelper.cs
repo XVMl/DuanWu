@@ -43,11 +43,9 @@ namespace DuanWu.Content.MyUtilities
 
         public static void SetQuestion()
         {
+            if (DuanWuPlayer.WaitingForQuestionEnd)    return;
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-            if (duanWuPlayer.LisaoActive)
-            {
-                return;
-            }
+            if (duanWuPlayer.LisaoActive)    return;
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
                 ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();

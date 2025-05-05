@@ -104,15 +104,6 @@ namespace DuanWu.Content.System
         public override int CutsceneLength => Utilities.SecondsToFrames(5);
 
         public override BlockerSystem.BlockCondition GetBlockCondition => new(true, false, () => Timer<CutsceneLength);
-        public override void OnBegin()
-        {
-            Main.NewText("begin");
-        }
-
-        public override void OnEnd()
-        {
-            Main.NewText("end");
-        }
     }
 
 }

@@ -27,7 +27,7 @@ namespace DuanWu.Content.UI
         public override void OnInitialize()
         {
             LisaochoiceLisst = new UIGrid();
-            LisaochoiceLisst.Width.Set(1250f, 0);
+            LisaochoiceLisst.Width.Set(1200f, 0);
             LisaochoiceLisst.Height.Set(500f, 0);
             LisaochoiceLisst.VAlign = 0.7f;
             LisaochoiceLisst.HAlign = 0.5f;

@@ -73,8 +73,11 @@ namespace DuanWu.Content.System
         {
             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
             DuanWuPlayer.WaitingForQuestionEnd = false;
-            Time = 0;
-            SendPacket(-1, -1);
+            if (Main.netMode == 2)
+            {
+                Time = -2;
+                SendPacket(-1, sender);
+            }    
         }
 
     }
@@ -321,6 +324,7 @@ namespace DuanWu.Content.System
             //客户端接收题目设置
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
+
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
                 duanWuPlayer.Answer = reader.ReadInt32();
                 int lisaoquestion = reader.ReadInt32();
@@ -350,7 +354,7 @@ namespace DuanWu.Content.System
                 {
                     Time--;
                 }
-                if (Time==0)
+                if (Time==-1)
                 {
                     ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
                     packet.Write("Netsponse");

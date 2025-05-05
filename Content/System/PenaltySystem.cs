@@ -1,5 +1,7 @@
 ﻿using DuanWu.Content.Projectiles;
 using log4net.Core;
+using Luminance.Common.Utilities;
+using Luminance.Core.Cutscenes;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using System;
@@ -100,11 +102,11 @@ namespace DuanWu.Content.System
                         break;
                     case 7:
                         //反向移动x 2
-                        duanWuPlayer.Setmovespeed *= -1;
+                        player.AddBuff(31, Utilities.MinutesToFrames(5));
                         break;
                     case 8:
                         //减速 1
-                        duanWuPlayer.Setmovespeed -= 0.5f;
+                        duanWuPlayer.Setmovespeed *= 0.5f;
 
                         break;
                     case 9:
@@ -262,6 +264,7 @@ namespace DuanWu.Content.System
                         List<short> debuff = [20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 35, 36, 37, 38, 39, 44, 46, 47, 67, 68, 69, 70, 72, 80, 86, 88, 94, 103, 119, 120, 137, 144, 145, 148, 149, 153, 156, 160, 163, 164, 169, 183, 186, 189, 192, 194, 195, 196, 197, 199, 203, 204, 307, 309, 310, 313, 315, 316, 319, 320, 321, 323, 324, 326, 332, 333, 334, 337, 344, 350, 353];
                         for (int i = 0; i < Main.rand.Next(1, 9); i++)
                         {
+                           
                             player.AddBuff(debuff[Main.rand.Next(0, debuff.Count)], 18000);
                         }
 
@@ -385,11 +388,9 @@ namespace DuanWu.Content.System
                 switch (level3)
                 {
                     case 0:
-                        //其他玩家死亡 
-                        foreach (var item in Main.ActivePlayers)
-                        {
-                            item.KillMe(new PlayerDeathReason(), 1, 1);
-                        }
+                        //禁锢
+                        player.AddBuff(47, Utilities.SecondsToFrames(5));
+                        CutsceneManager.QueueCutscene(new VideoCutscene());
                         break;
                     case 1:
                         //硬核 3 
@@ -477,7 +478,7 @@ namespace DuanWu.Content.System
             }
             else if (penaltylevel == 4)
             {
-                int level4 = Main.rand.Next(0, 10);
+                int level4 = Main.rand.Next(0, 9);
                 Main.NewText(level4);
                 switch (level4)
                 {
@@ -532,10 +533,6 @@ namespace DuanWu.Content.System
                     case 8:
                         //刷怪提升
                         OtherResults.QuickSetSpwanRate(true);
-                        break;
-                    case 9:
-                        //饰品栏减少 4
-
                         break;
                     default:
 
