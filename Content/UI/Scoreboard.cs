@@ -100,7 +100,7 @@ namespace DuanWu.Content.UI
         {
             name = new UIText(playname);
             accuracy = new UIText(corrects.ToString());
-            imac = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongzi"));
+            imac = new(ModContent.Request<Texture2D>("DuanWu/Content/UI/UI_Zongzi"));
             imac.ImageScale = 0.15f;
             AC = corrects;
             UIText StringAC = new("粽子", 1);

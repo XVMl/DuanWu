@@ -9,12 +9,12 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using DuanWu.Content.MyUtilities;
 
 namespace DuanWu.Content.Items
 {
     internal class TaiWaneseZongzi:ModItem
     {
-
         public override void SetStaticDefaults()
         {
 
@@ -39,6 +39,7 @@ namespace DuanWu.Content.Items
             return true;
         }
 
+
         public override bool CanPickup(Player player)
         {
             return true;
@@ -46,20 +47,15 @@ namespace DuanWu.Content.Items
 
         public override bool CanUseItem(Player player)
         {
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive || DuanWuPlayer.WaitingForQuestionEnd)
             {
                 return false;
             }
             return true;
         }
-
-        public override void AddRecipes()
-        {
-
-        }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/Items/TaiWaneseZongzi").Value;
+            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/TaiWaneseZongzi").Value;
             spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
