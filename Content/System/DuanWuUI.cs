@@ -92,6 +92,11 @@ namespace DuanWu.Content.System
         public virtual bool IsLoaded() => true; 
 
         public abstract string Layers_FindIndex { get; }
+
+        public Texture2D BaseTexture(string path)
+        {
+            return ModContent.Request<Texture2D>("DuanWu/Content/UI/"+path).Value;
+        }
     }
 
 }

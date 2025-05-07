@@ -71,11 +71,12 @@ namespace DuanWu.Content.System
         public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
-            Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().counttime = 0;
+            LanguageHelper.CheckAnswer();
+            LanguageHelper.EndQnestion();
             DuanWuPlayer.WaitingForQuestionEnd = false;
             if (Main.netMode == 2)
             {
-                Time = -2;
+                Time = -1;
                 SendPacket(-1, sender);
             }    
         }

@@ -165,6 +165,12 @@ Judging: {
 	Fail: 回答错误!
 }
 
+Other: {
+	Waiting: 等待其他玩家答题结束中...
+	Reward.0: You have won gold!
+	Penalty.0: You have lost gold!
+}
+
 ChoiceQuestion: {
 	Excerpt: {
 		0: {

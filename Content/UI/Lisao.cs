@@ -1,4 +1,5 @@
-﻿using DuanWu.Content.System;
+﻿using DuanWu.Content.MyUtilities;
+using DuanWu.Content.System;
 using Luminance.Common.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -93,7 +94,7 @@ namespace DuanWu.Content.UI
             Texture2D t = ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButtonTrue").Value;
             Texture2D f = ModContent.Request<Texture2D>("DuanWu/Content/UI/choiceButtonFalse").Value;
 
-            if (IsMouseHovering&& player.ShowAnswer<0)
+            if (IsMouseHovering && player.ShowAnswer<0)
                 spriteBatch.Draw(active, dimensions.Position(), Color.White *  1f);
             else
                 spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.White * 0.7f);
@@ -111,7 +112,7 @@ namespace DuanWu.Content.UI
                 return;
             }
             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().ChoiceAnswer = this.Number;
-            duanWuPlayer.counttime = 0;
+            LanguageHelper.CheckAnswer();
             base.LeftClick(evt);
         }
 

@@ -74,7 +74,15 @@ namespace DuanWu.Content.MyUtilities
         public static void CheckAnswer()
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            if (DuanWuPlayer.WaitingForQuestionEnd || !duanWuPlayer.LisaoActive)
+            {
+                return;
+            }
             duanWuPlayer.ShowAnswer = 180;
+            if (duanWuPlayer.counttime != 0)
+            {
+                duanWuPlayer.counttime =0;
+            } 
             if (duanWuPlayer.Answer==duanWuPlayer.ChoiceAnswer)
             {
                 Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Success"), Color.Green);
