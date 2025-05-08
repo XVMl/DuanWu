@@ -166,7 +166,7 @@ Judging: {
 }
 
 Other: {
-	Waiting: Waiting for other players to finish answering the questions...
+	Waiting: Waiting for other players to finish answering the questions···
 	Reward.0: You have won gold!
 	Penalty.0: You have lost gold!
 }

@@ -96,6 +96,7 @@ namespace DuanWu.Content.MyUtilities
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
                 DuanWuPlayer.WaitingForQuestionEnd = true;
+                WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji" + Main.rand.Next(0, 6).ToString()));
             }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
             duanWuPlayer.Reward = false;

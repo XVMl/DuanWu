@@ -22,6 +22,7 @@ using Luminance.Core.Sounds;
 using Terraria.Audio;
 using DuanWu.Content.UI;
 using System.Reflection;
+using Microsoft.Xna.Framework.Graphics;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -59,8 +60,7 @@ namespace DuanWu.Content.Items
         {
             return true;
         }
-
-
+     
         public override bool? UseItem(Player player)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -68,8 +68,11 @@ namespace DuanWu.Content.Items
             player.itemTime = Item.useTime;
             if (Main.myPlayer == player.whoAmI)
             {
-                player.AddBuff(47, Utilities.SecondsToFrames(5));
-                CutsceneManager.QueueCutscene(new VideoCutscene());
+                if (player.altFunctionUse==2)
+                {
+                    WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji" + Main.rand.Next(0, 6).ToString()));
+                    DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
+                }
             }
             return new bool?(true);
         }

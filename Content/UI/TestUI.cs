@@ -25,8 +25,6 @@ namespace DuanWu.Content.UI
     public class TestUI : BaseUIState
     {
         private static MyGrid iGrid = new();
-
-        private UIText Wait;
         public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
         public override bool IsLoaded() =>true;
         public override void OnInitialize()
@@ -36,20 +34,14 @@ namespace DuanWu.Content.UI
             iGrid.Height.Set(350f, 0);
             iGrid.HAlign = 0f;
             iGrid.VAlign = 0.5f;
-            Wait = new UIText("等待其他玩家答题结束",1,true);
-            Wait.VAlign = Wait.HAlign = 0.5f;
-            Append(iGrid);
-            Append(Wait);
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (!DuanWuPlayer.WaitingForQuestionEnd)
-            {
-                Wait.Remove();
-                return;
-            }
-            Append(Wait);
+            //if (!DuanWuPlayer.WaitingForQuestionEnd)
+            //{
+            //    return;
+            //}
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)

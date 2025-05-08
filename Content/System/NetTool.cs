@@ -71,8 +71,19 @@ namespace DuanWu.Content.System
         public override string TypeName => Name;
         public override void RecievePacket(BinaryReader reader, int sender)
         {
-            LanguageHelper.CheckAnswer();
-            LanguageHelper.EndQnestion();
+            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            if (duanWuPlayer.LisaoActive)
+            {
+                if (duanWuPlayer.ShowAnswer > 0)
+                {
+                    return;
+                }
+                else
+                {
+                    LanguageHelper.CheckAnswer();
+                    LanguageHelper.EndQnestion();
+                }
+            }
             DuanWuPlayer.WaitingForQuestionEnd = false;
             if (Main.netMode == 2)
             {
@@ -80,7 +91,6 @@ namespace DuanWu.Content.System
                 SendPacket(-1, sender);
             }    
         }
-
     }
 
     internal class NetScoreboard : NetTool
