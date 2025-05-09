@@ -86,21 +86,27 @@ namespace DuanWu.Content.MyUtilities
             if (duanWuPlayer.Answer==duanWuPlayer.ChoiceAnswer)
             {
                 Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Success"), Color.Green);
-                duanWuPlayer.Reward = true;
                 duanWuPlayer.PlayerAccuracy++;
-                RewardSystem reward = new(Main.rand.Next(1,5));
+                if (DuanWuPlayer.OpenReward)
+                {
+                    duanWuPlayer.Reward = true;
+                    RewardSystem reward = new(Main.rand.Next(1, 5));
+                }
                 DuanWuPlayer.PlayerQuestionEnd = true;
-                ModContent.GetInstance<Netsponse>().SendPacket(-1, -1);
+                ModContent.GetInstance<Netsponse>().SendPacket((write) => write.Write("EndQuestion"), -1, -1);
                 return;
             }
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                DuanWuPlayer.WaitingForQuestionEnd = true;
                 WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji" + Main.rand.Next(0, 6).ToString()));
+                DuanWuPlayer.WaitingForQuestionEnd = true;
             }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
-            duanWuPlayer.Reward = false;
-            PenaltySystem penaltySystem = new(Main.rand.Next(1, 5));
+            if (DuanWuPlayer.OpenPenalty)
+            {
+                duanWuPlayer.Reward = false;
+                PenaltySystem penaltySystem = new(Main.rand.Next(1, 5));
+            }
             duanWuPlayer.PlayerQuestioncount++;
         }
 

@@ -54,6 +54,8 @@ namespace DuanWu
         public static bool Hardmode;
         public static bool FullText;
         public static bool RandResults;
+        public static bool OpenReward;
+        public static bool OpenPenalty;
         public bool ScreenShakeUpDown;
         public static bool ScreenZhuan = true;
         public Vector2 screenCache;

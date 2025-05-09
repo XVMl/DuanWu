@@ -26,6 +26,16 @@ Configs: {
 			Label: Rand Results
 			Tooltip: ""
 		}
+
+		OpenReward: {
+			Label: Open Reward
+			Tooltip: ""
+		}
+
+		OpenPenalty: {
+			Label: Open Penalty
+			Tooltip: ""
+		}
 	}
 
 	DuanWUServerConfig: {

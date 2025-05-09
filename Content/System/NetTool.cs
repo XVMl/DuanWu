@@ -18,18 +18,24 @@ namespace DuanWu.Content.System
 {
     public abstract class NetTool : ModSystem
     {
+        public delegate void NetDelegate(BinaryWriter writer);
+
+        public static readonly Dictionary<string, Type> PacketHandlers = new();
+        
         protected static int Time;
 
         public abstract string TypeName { get; }
 
-        public static readonly Dictionary<string, Type> PacketHandlers = new();
         public override void Load()
         {
             PacketHandlers[TypeName] = GetType();
             base.Load();
         }
         public virtual void RecievePacket(BinaryReader reader, int sender) { }
+
         public virtual void WriterPacket(BinaryWriter writer) { }
+
+        public virtual void WriterPacket(BinaryWriter writer, NetDelegate netDelegate) { }
 
         public void SendPacket(int toClient = -1, int ignoreClient = -1)
         {
@@ -43,6 +49,17 @@ namespace DuanWu.Content.System
             packet.Send(toClient, ignoreClient);
         }
 
+        public void SendPacket(NetDelegate context, int toClient = -1, int ignoreClient = -1)
+        {
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                return;
+            }
+            ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
+            packet.Write(TypeName);
+            WriterPacket(packet, context);
+            packet.Send(toClient, ignoreClient);
+        }
     }
     public class NetTime : NetTool
     {
@@ -72,25 +89,43 @@ namespace DuanWu.Content.System
         public override void RecievePacket(BinaryReader reader, int sender)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-            if (duanWuPlayer.LisaoActive)
+            string type = reader.ReadString();
+            Main.NewText(type);
+            if (type == "EndQuestion")
             {
-                if (duanWuPlayer.ShowAnswer > 0)
+                if (duanWuPlayer.LisaoActive)
                 {
-                    return;
+                    if (duanWuPlayer.ShowAnswer > 0)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        LanguageHelper.CheckAnswer();
+                        LanguageHelper.EndQnestion();
+                        Time = 0;
+                    }
                 }
-                else
+                if (Main.netMode == 2)
                 {
-                    LanguageHelper.CheckAnswer();
-                    LanguageHelper.EndQnestion();
+                    SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
                 }
             }
-            DuanWuPlayer.WaitingForQuestionEnd = false;
-            if (Main.netMode == 2)
+            else if(type == "EndWaiting")
             {
-                Time = -1;
-                SendPacket(-1, sender);
-            }    
+                DuanWuPlayer.WaitingForQuestionEnd = false;
+                if (Main.netMode == 2)
+                {
+                    SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
+                }
+            }
         }
+
+        public override void WriterPacket(BinaryWriter writer, NetDelegate netDelegate)
+        {
+            netDelegate(writer);
+        }
+
     }
 
     internal class NetScoreboard : NetTool
@@ -110,13 +145,13 @@ namespace DuanWu.Content.System
                 {
                     packet.Write(Name);
                     packet.Write("Increase");
-                    string name =reader.ReadString();
+                    string name = reader.ReadString();
                     int rate = reader.ReadInt32();
                     List<int> score = [];
                     List<string> player = [];
                     foreach (var item in correct)
                     {
-                        if (!item.Key.Equals(name)&&(Main.rand.Next(1,2)+rate>1))
+                        if (!item.Key.Equals(name) && (Main.rand.Next(1, 2) + rate > 1))
                         {
                             player.Add(item.Key);
                             score.Add(item.Value);
@@ -136,7 +171,7 @@ namespace DuanWu.Content.System
                     {
                         packet1.Write(item);
                     }
-                    packet1.Send(-1,sender);
+                    packet1.Send(-1, sender);
                 }
                 else if (type == "Normal")
                 {
@@ -172,7 +207,7 @@ namespace DuanWu.Content.System
                     for (int i = 0; i < num; i++)
                     {
                         if (Main.LocalPlayer.name.Equals(reader.ReadString()))
-                        { 
+                        {
                             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy = 0;
                             Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount = 0;
                         }
@@ -184,11 +219,11 @@ namespace DuanWu.Content.System
                     int num = reader.ReadInt32();
                     for (int i = 0; i < num; i++)
                     {
-                        Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy +=reader.ReadInt32();
+                        Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy += reader.ReadInt32();
                     }
                     SubmitPacket();
                 }
-                else if (type== "NormalClient")
+                else if (type == "NormalClient")
                 {
                     int num = reader.ReadInt32();
                     RecordManager recordManager = new RecordManager();
@@ -241,7 +276,7 @@ namespace DuanWu.Content.System
         public override void RecievePacket(BinaryReader reader, int sender)
         {
             //DuanWuPlayer.SetSpwanRate = reader.ReadBoolean();
-            DuanWuPlayer.SetSpwanRate=true;
+            DuanWuPlayer.SetSpwanRate = true;
             if (Main.netMode == 2)
             {
                 SendPacket(-1, sender);
@@ -310,7 +345,7 @@ namespace DuanWu.Content.System
                 //writer.Write(text);
                 //writer.Write(numberofchoise);
                 string type = reader.ReadString();
-                
+
                 if (type == "SetQustion")
                 {
                     DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -365,15 +400,11 @@ namespace DuanWu.Content.System
                 {
                     Time--;
                 }
-                if (Time==-1)
-                {
-                    ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
-                    packet.Write("Netsponse");
-                    packet.Send(-1, -1);
-                }
                 if (Time == -180)
                 {
+                    ModContent.GetInstance<Netsponse>().SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
                     duanWuPlayer.LisaoActive = false;
+                    Time = 0;
                 }
             }
         }

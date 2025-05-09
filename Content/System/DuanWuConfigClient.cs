@@ -22,11 +22,19 @@ namespace DuanWu.Content.System
         [DefaultValue(false)]
         public bool RandResults;
 
+        [DefaultValue(true)]
+        public bool OpenReward;
+
+        [DefaultValue(true)]
+        public bool OpenPenalty;
+
         [Increment(1)]
         [DefaultValue(15)]
         [Range(1, 30)]
         [Slider]
         public int Answerquestiontime;
+
+
 
         public override void OnChanged()
         {
@@ -34,6 +42,8 @@ namespace DuanWu.Content.System
             DuanWuPlayer.FullText = LisaoFullTextmode;
             DuanWuPlayer.AnswerQuestionTime = Answerquestiontime;
             DuanWuPlayer.RandResults = RandResults;
+            DuanWuPlayer.OpenPenalty = OpenPenalty;
+            DuanWuPlayer.OpenReward = OpenReward;
             if (LisaoQAHardmode&&Answerquestiontime<5)
             {
                 DuanWuPlayer.AnswerQuestionTime = 5;

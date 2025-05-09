@@ -23,6 +23,7 @@ using Terraria.Audio;
 using DuanWu.Content.UI;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -70,9 +71,13 @@ namespace DuanWu.Content.Items
             {
                 if (player.altFunctionUse==2)
                 {
-                    WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji" + Main.rand.Next(0, 6).ToString()));
+                    //ModContent.GetInstance<Netsponse>().SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
                     DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
+                    WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji"+Main.rand.Next(0,6)));
+                    return true;
                 }
+                //DuanWuPlayer.WaitingForQuestionEnd = true;
+
             }
             return new bool?(true);
         }
