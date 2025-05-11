@@ -2,6 +2,7 @@
 using Luminance.Common.StateMachines;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,7 +94,7 @@ namespace DuanWu.Content.System
 
         public abstract string Layers_FindIndex { get; }
 
-        public static Texture2D BaseTexture(string path) => ModContent.Request<Texture2D>("DuanWu/Content/UI/"+path).Value; 
+        public static Asset<Texture2D> BaseTexture(string path) => ModContent.Request<Texture2D>("DuanWu/Content/UI/"+path); 
     }
 
 }

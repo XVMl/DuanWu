@@ -61,11 +61,11 @@ namespace DuanWu.Content.Items
 
         public override bool? UseItem(Player player)
         {
+            LanguageHelper.SetQuestion();
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 if (Main.myPlayer == player.whoAmI)
                 {
-                    LanguageHelper.SetQuestion();
                 }
             }
             return true;

@@ -363,14 +363,20 @@ namespace DuanWu.Content.System
                         duanWuPlayer.SetMinions += 1;
                         break;
                     case 12:
-                        //减伤10 3
+                        //积分 3
                         //duanWuPlayer.hitdamage -= 0.1f;
-                        ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                        writer.Write("NetScoreboard");
-                        writer.Write("Adjust");
-                        writer.Write(Main.LocalPlayer.name);
-                        writer.Write(0);
-                        writer.Send(-1, -1);
+                        ModContent.GetInstance<NetScoreboard>().SendPacket((writer) =>
+                        {
+                            writer.Write("Adjust");
+                            writer.Write(Main.LocalPlayer.name);
+                            writer.Write(0);
+                        }, -1,-1);
+                        //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                        //writer.Write("NetScoreboard");
+                        //writer.Write("Adjust");
+                        //writer.Write(Main.LocalPlayer.name);
+                        //writer.Write(0);
+                        //writer.Send(-1, -1);
                         break;
                     case 13:
                         //自由视角
@@ -425,12 +431,19 @@ namespace DuanWu.Content.System
                         break;
                     case 6:
                         //获取分数
-                        ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                        writer.Write("NetScoreboard");
-                        writer.Write("Adjust");
-                        writer.Write(Main.LocalPlayer.name);
-                        writer.Write(1);
-                        writer.Send(-1, -1);
+                        ModContent.GetInstance<NetScoreboard>().SendPacket((writer) =>
+                        {
+                            writer.Write("Adjust");
+                            writer.Write(Main.LocalPlayer.name);
+                            writer.Write(1);
+                        }, -1, -1);
+
+                        //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                        //writer.Write("NetScoreboard");
+                        //writer.Write("Adjust");
+                        //writer.Write(Main.LocalPlayer.name);
+                        //writer.Write(1);
+                        //writer.Send(-1, -1);
                         break;
                     case 7:
                         //太阳

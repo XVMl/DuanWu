@@ -35,8 +35,8 @@ namespace DuanWu.Content.System
 
         public virtual void WriterPacket(BinaryWriter writer) { }
 
-        public virtual void WriterPacket(BinaryWriter writer, NetDelegate netDelegate) { }
-
+        public virtual void WriterPacket(BinaryWriter writer, NetDelegate netDelegate) { netDelegate(writer); }
+       
         public void SendPacket(int toClient = -1, int ignoreClient = -1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
@@ -108,7 +108,7 @@ namespace DuanWu.Content.System
                 }
                 if (Main.netMode == 2)
                 {
-                    SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
+                    SendPacket((write) => { write.Write("EndQuestion"); }, -1, -1);
                 }
             }
             else if(type == "EndWaiting")
@@ -140,11 +140,8 @@ namespace DuanWu.Content.System
             if (Main.netMode == NetmodeID.Server && sender >= 0)
             {
                 string type = reader.ReadString();
-                ModPacket packet = ModContent.GetInstance<DuanWu>().GetPacket();
                 if (type == "Adjust")
                 {
-                    packet.Write(Name);
-                    packet.Write("Increase");
                     string name = reader.ReadString();
                     int rate = reader.ReadInt32();
                     List<int> score = [];
@@ -157,21 +154,27 @@ namespace DuanWu.Content.System
                             score.Add(item.Value);
                         }
                     }
-                    packet.Write(score.Count);
-                    foreach (var item in score)
+
+                    ModContent.GetInstance<NetScoreboard>().SendPacket((write) =>
                     {
-                        packet.Write(item);
-                    }
-                    packet.Send(sender);
-                    ModPacket packet1 = ModContent.GetInstance<DuanWu>().GetPacket();
-                    packet1.Write(Name);
-                    packet1.Write("Reduce");
-                    packet1.Write(player.Count);
-                    foreach (var item in player)
+                        write.Write("Increase");
+                        write.Write(score.Count);
+                        foreach (var item in score)
+                        {
+                            write.Write(item);
+                        }
+                    }, sender);
+
+                    ModContent.GetInstance<NetScoreboard>().SendPacket((write) =>
                     {
-                        packet1.Write(item);
-                    }
-                    packet1.Send(-1, sender);
+                        write.Write("Reduce");
+                        write.Write(player.Count);
+                        foreach (var item in player)
+                        {
+                            write.Write(item);
+                        }
+                    },-1, sender);
+
                 }
                 else if (type == "Normal")
                 {
@@ -186,16 +189,19 @@ namespace DuanWu.Content.System
                     {
                         numberofquestion[name] = count;
                     }
-                    packet.Write(Name);
-                    packet.Write("NormalClient");
-                    packet.Write(correct.Keys.Count);
-                    for (int i = 0; i < correct.Keys.Count; i++)
+
+                    ModContent.GetInstance<NetScoreboard>().SendPacket((write) =>
                     {
-                        packet.Write(correct.Keys.ElementAt(i));
-                        packet.Write(correct[correct.Keys.ElementAt(i)]);
-                        packet.Write(numberofquestion[numberofquestion.Keys.ElementAt(i)]);
-                    }
-                    packet.Send(-1, -1);
+                        write.Write("NormalClient");
+                        write.Write(correct.Keys.Count);
+                        for (int i = 0; i < correct.Keys.Count; i++)
+                        {
+                            write.Write(correct.Keys.ElementAt(i));
+                            write.Write(correct[correct.Keys.ElementAt(i)]);
+                            write.Write(numberofquestion[numberofquestion.Keys.ElementAt(i)]);
+                        }
+                    }, -1, -1);
+
                 }
             }
             else
@@ -239,7 +245,6 @@ namespace DuanWu.Content.System
                     foreach (var record in recordManager.GetSortedRecords())
                     {
                         Scoreboard.TryUpdata(record.Name, record.Accuracy, record.CorrectCount, count++);
-                        //Scoreboard.UIGrid.Add(new ScoreboardElement(record.Name, record.Accuracy, record.CorrectCount));
                     }
                     Scoreboard.CalcBox();
                 }
@@ -252,6 +257,11 @@ namespace DuanWu.Content.System
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerQuestioncount);
             writer.Write(Main.LocalPlayer.name);
             writer.Write(Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().PlayerAccuracy);
+        }
+
+        public override void WriterPacket(BinaryWriter writer, NetDelegate netDelegate)
+        {
+            netDelegate(writer);
         }
 
         public static void SubmitPacket()
@@ -342,11 +352,9 @@ namespace DuanWu.Content.System
             //服务端设置题目
             if (Main.netMode == NetmodeID.Server && DuanWuPlayer.Quickresponse)
             {
-                //writer.Write(text);
-                //writer.Write(numberofchoise);
                 string type = reader.ReadString();
-
-                if (type == "SetQustion")
+                Main.NewText(type);
+                if (type == "SetQuestion")
                 {
                     DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
                     if (duanWuPlayer.LisaoActive)
@@ -354,15 +362,14 @@ namespace DuanWu.Content.System
                         return;
                     }
                     List<int> nums = LanguageHelper.GetUniqueRandomNumbers(8, 0, 37);
-                    ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                    writer.Write("ServeSetQustion");
-                    writer.Write(Main.rand.Next(0, 8));
-                    writer.Write(Main.rand.Next(2));
-                    for (int i = 0; i < 8; i++)
-                    {
-                        writer.Write(nums[i]);
-                    }
-                    writer.Send(-1, -1);
+                    ModContent.GetInstance<ServeSetQustion>().SendPacket((writer) => {
+                        writer.Write(Main.rand.Next(0, 8));
+                        writer.Write(Main.rand.Next(2));
+                        for (int i = 0; i < 8; i++)
+                        {
+                            writer.Write(nums[i]);
+                        }
+                    }, -1, -1);
                     duanWuPlayer.LisaoActive = true;
                     Time = 600;
                 }
@@ -370,10 +377,11 @@ namespace DuanWu.Content.System
             //客户端接收题目设置
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
                 duanWuPlayer.Answer = reader.ReadInt32();
+                Main.NewText(duanWuPlayer.Answer);
                 int lisaoquestion = reader.ReadInt32();
+                Main.NewText(duanWuPlayer.Answer);
                 int ans_text = 0;
                 for (int i = 0; i < 8; i++)
                 {
@@ -389,6 +397,11 @@ namespace DuanWu.Content.System
                 duanWuPlayer.QuestionAnswer = LanguageHelper.GetQuestionTextValue(ans_text, lisaoquestion);
                 duanWuPlayer.LisaoActive = true;
             }
+        }
+
+        public override void WriterPacket(BinaryWriter writer, NetDelegate netDelegate)
+        {
+            netDelegate(writer);
         }
 
         public override void PostUpdateTime()

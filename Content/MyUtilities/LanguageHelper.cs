@@ -48,10 +48,14 @@ namespace DuanWu.Content.MyUtilities
             if (duanWuPlayer.LisaoActive)    return;
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                writer.Write("ServeSetQustion");
-                writer.Write("SetQustion");
-                writer.Send(-1, -1);
+                ModContent.GetInstance<ServeSetQustion>().SendPacket((writer) =>
+                {
+                    writer.Write("SetQuestion");
+                }, -1, -1);
+                //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
+                //writer.Write("ServeSetQustion");
+                //writer.Write("SetQuestion");
+                //writer.Send(-1, -1);
                 return;
             }
             duanWuPlayer.ChoiceAnswer = -1;
@@ -98,7 +102,7 @@ namespace DuanWu.Content.MyUtilities
             }
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji" + Main.rand.Next(0, 6).ToString()));
+                WaitingUI.Number = Main.rand.Next(0, 6);
                 DuanWuPlayer.WaitingForQuestionEnd = true;
             }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);
@@ -108,6 +112,7 @@ namespace DuanWu.Content.MyUtilities
                 PenaltySystem penaltySystem = new(Main.rand.Next(1, 5));
             }
             duanWuPlayer.PlayerQuestioncount++;
+            NetScoreboard.SubmitPacket();
         }
 
         public static void EndQnestion()
@@ -118,7 +123,6 @@ namespace DuanWu.Content.MyUtilities
             duanWuPlayer.ChoiceAnswer = -1;
             duanWuPlayer.Reward = null;
             DuanWuPlayer.PlayerQuestionEnd = false;
-            NetScoreboard.SubmitPacket();
         }
 
     }

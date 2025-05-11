@@ -15,6 +15,7 @@ using DuanWu.Content.UI;
 using Luminance.Core.Graphics;
 using Luminance.Common.Utilities;
 using Terraria.ModLoader.IO;
+using Terraria.ModLoader.UI.Elements;
 
 namespace DuanWu
 {
@@ -120,6 +121,7 @@ namespace DuanWu
 
         public override void OnEnterWorld()
         {
+            WaitingForQuestionEnd = false;
             NetScoreboard.SubmitPacket();
         }
 
@@ -137,7 +139,10 @@ namespace DuanWu
                 int y = Main.rand.Next(0, 49);
                 (Player.inventory[y], Player.inventory[x]) = (Player.inventory[x], Player.inventory[y]);
             }
-
+            if (!DuanWuPlayer.Quickresponse)
+            {
+               
+            }
         }
         public override void LoadData(TagCompound tag)
         {
@@ -155,12 +160,12 @@ namespace DuanWu
             //OtherQusetionAvtive();
             if (LisaoActive)
             {
-                counttime--;
                 ShowAnswer--;
-                if (counttime == -1&& !WaitingForQuestionEnd)
+                if (counttime == 0 && WaitingForQuestionEnd)
                 {
                     LanguageHelper.CheckAnswer();
                 }
+                counttime--;
                 if (ShowAnswer == 0)
                 {
                     LanguageHelper.EndQnestion();
@@ -276,7 +281,7 @@ namespace DuanWu
         {
             if (target.life<damageDone)
             {
-                if (Main.rand.Next(0,16)==1 && Main.myPlayer == Player.whoAmI)
+                if (Main.rand.Next(0,32)==1 && Main.myPlayer == Player.whoAmI)
                 {
                     LanguageHelper.SetQuestion();
                 }
@@ -361,14 +366,14 @@ namespace DuanWu
             }
             else if (info.Damage >= 100)
             {
-                if (Main.rand.Next(0, 4) == 1)
+                if (Main.rand.Next(0, 12) == 1)
                 {
                     LanguageHelper.SetQuestion();
                 }
             }
             else
             {
-                if (Main.rand.Next(0, 16) == 1)
+                if (Main.rand.Next(0, 32) == 1)
                 {
                     LanguageHelper.SetQuestion();
                 }

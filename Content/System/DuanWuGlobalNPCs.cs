@@ -1,10 +1,13 @@
-﻿using System;
+﻿using DuanWu.Content.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 
 namespace DuanWu.Content.System
 {
@@ -18,5 +21,12 @@ namespace DuanWu.Content.System
                 maxSpawns = (int)(maxSpawns * 10f);
             }
         }
+
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ZongZi>(), 50));
+        }
+
     }
 }

@@ -29,7 +29,7 @@ namespace DuanWu.Content.UI
         public static Dictionary<string, bool> Player = [];
         public static Dictionary<string, int> counts = [];
 
-        public override bool IsLoaded() => Main.netMode == NetmodeID.MultiplayerClient;
+        //public override bool IsLoaded() => Main.netMode == NetmodeID.MultiplayerClient;
         
         public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
 
@@ -51,7 +51,9 @@ namespace DuanWu.Content.UI
             }
             Rectangle rectangle = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y - 31, (int)UIGrid.GetDimensions().Width,31);
             Rectangle rectangle2 = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y, (int)UIGrid.GetDimensions().Width, (int)UIGrid.GetDimensions().Height);
+            //绘制名称部分
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
+            //绘制积分部分
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
             Utils.DrawBorderString(spriteBatch, "积分榜", UIGrid.GetDimensions().ToRectangle().TopLeft() + new Vector2(70, -25), Color.White);
         }
@@ -76,7 +78,18 @@ namespace DuanWu.Content.UI
                     break;
                 }
             }
-            //(UIGrid._items[index] as ScoreboardElement).TryUpdata(playname, corrects, numberofquestions);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (!DuanWuPlayer.Scoreboard && Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                UIGrid.Remove();
+            }
+            else
+            {
+                Append(UIGrid);
+            }
         }
 
         public static void CalcBox()

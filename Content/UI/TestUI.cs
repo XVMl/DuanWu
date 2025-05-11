@@ -24,9 +24,9 @@ namespace DuanWu.Content.UI
 
     public class TestUI : BaseUIState
     {
-        private static MyGrid iGrid = new();
+        public static MyGrid iGrid = new();
         public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
-        public override bool IsLoaded() =>true;
+        public override bool IsLoaded() =>false;
         public override void OnInitialize()
         {
             iGrid = new MyGrid();
@@ -34,6 +34,12 @@ namespace DuanWu.Content.UI
             iGrid.Height.Set(350f, 0);
             iGrid.HAlign = 0f;
             iGrid.VAlign = 0.5f;
+            Append(iGrid);
+        }
+
+        public static void ADD()
+        {
+            iGrid.Add(new ScoreboardElement("12", 0, 0));
         }
 
         public override void Update(GameTime gameTime)
@@ -46,10 +52,6 @@ namespace DuanWu.Content.UI
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            if (!DuanWuPlayer.WaitingForQuestionEnd)
-            {
-                return;
-            }
             Rectangle rectangle2 = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y, (int)iGrid.GetDimensions().Width, (int)iGrid.GetDimensions().Height - 31);
             Rectangle rectangle = new((int)iGrid.GetDimensions().X, (int)iGrid.GetDimensions().Y - 31, (int)iGrid.GetDimensions().Width, 31);
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);

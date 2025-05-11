@@ -69,15 +69,23 @@ namespace DuanWu.Content.Items
             player.itemTime = Item.useTime;
             if (Main.myPlayer == player.whoAmI)
             {
+                
                 if (player.altFunctionUse==2)
                 {
-                    //ModContent.GetInstance<Netsponse>().SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
-                    DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
-                    WaitingUI.Emoji.SetImage(BaseUIState.BaseTexture("Emoji"+Main.rand.Next(0,6)));
+                    ModContent.GetInstance<NetScoreboard>().SendPacket((writer) =>
+                    {
+                        writer.Write("Adjust");
+                        writer.Write(Main.LocalPlayer.name);
+                        writer.Write(1);
+                    }, -1, -1);
+
+                    //WaitingUI.Number = Main.rand.Next(0, 6);
+                    //DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
                     return true;
                 }
                 //DuanWuPlayer.WaitingForQuestionEnd = true;
-
+                duanWuPlayer.PlayerAccuracy++;
+                NetScoreboard.SubmitPacket();
             }
             return new bool?(true);
         }
