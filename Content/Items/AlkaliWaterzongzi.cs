@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace DuanWu.Content.Items
 {
-    internal class RedBeanZongzi : ModItem
+    internal class AlkaliWaterzongzi:ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -52,6 +52,16 @@ namespace DuanWu.Content.Items
             }
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<ZongYe>(), 1);
+            recipe.AddIngredient(ItemID.WaterBolt, 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.Register();
+        }
+
         public override bool? UseItem(Player player)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -62,11 +72,9 @@ namespace DuanWu.Content.Items
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/RedBeanZongzi").Value;
+            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/MeatZongzi").Value;
             spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
     }
-
-
 }

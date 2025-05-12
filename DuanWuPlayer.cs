@@ -139,10 +139,6 @@ namespace DuanWu
                 int y = Main.rand.Next(0, 49);
                 (Player.inventory[y], Player.inventory[x]) = (Player.inventory[x], Player.inventory[y]);
             }
-            if (!DuanWuPlayer.Quickresponse)
-            {
-               
-            }
         }
         public override void LoadData(TagCompound tag)
         {
@@ -157,7 +153,6 @@ namespace DuanWu
             SetCamera();
             SetMagnifier();
             SetMatrix();
-            //OtherQusetionAvtive();
             if (LisaoActive)
             {
                 ShowAnswer--;

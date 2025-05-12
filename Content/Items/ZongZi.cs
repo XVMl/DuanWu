@@ -56,7 +56,10 @@ namespace DuanWu.Content.Items
 
         public override void AddRecipes()
         {
-
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<ZongYe>(), 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.Register();
         }
 
         public override bool? UseItem(Player player)

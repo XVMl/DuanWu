@@ -44,6 +44,15 @@ namespace DuanWu.Content.Items
             return true;
         }
 
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<ZongYe>(), 1);
+            recipe.AddIngredient(ItemID.BambooBlock, 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.Register();
+        }
+
         public override bool CanUseItem(Player player)
         {
             if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive || DuanWuPlayer.WaitingForQuestionEnd)

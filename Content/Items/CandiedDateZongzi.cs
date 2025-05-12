@@ -34,6 +34,21 @@ namespace DuanWu.Content.Items
             Item.ResearchUnlockCount = 0;
         }
 
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<ZongYe>(), 1);
+            recipe.AddIngredient(ItemID.GoldWatch, 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.Register();
+            Recipe recipe1 = CreateRecipe();
+            recipe1.AddIngredient(ModContent.ItemType<ZongYe>(), 1);
+            recipe1.AddIngredient(ItemID.PlatinumWatch, 1);
+            recipe1.AddTile(TileID.WorkBenches);
+            recipe1.Register();
+        }
+
         public override bool ItemSpace(Player player)
         {
             return true;

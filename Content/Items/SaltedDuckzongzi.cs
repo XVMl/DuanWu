@@ -1,4 +1,4 @@
-﻿using DuanWu.Content.System;
+﻿using DuanWu.Content.MyUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using DuanWu.Content.System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using DuanWu.Content.MyUtilities;
 
 namespace DuanWu.Content.Items
 {
-    internal class TaiWaneseZongzi:ModItem
+    internal class SaltedDuckzongzi:ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,8 +22,8 @@ namespace DuanWu.Content.Items
 
         public override void SetDefaults()
         {
-            Item.width = 20;
-            Item.height = 20;
+            Item.width = 44;
+            Item.height = 34;
             Item.maxStack = 9999;
             Item.rare = 0;
             Item.useAnimation = 45;
@@ -39,7 +39,6 @@ namespace DuanWu.Content.Items
             return true;
         }
 
-
         public override bool CanPickup(Player player)
         {
             return true;
@@ -47,23 +46,32 @@ namespace DuanWu.Content.Items
 
         public override bool CanUseItem(Player player)
         {
-            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive || DuanWuPlayer.WaitingForQuestionEnd)
+            if (Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 return false;
             }
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<ZongYe>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<SaltedDuckEgg>(), 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.Register();
+        }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/TaiWaneseZongzi").Value;
+            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/SuStyleZongzi").Value;
             spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
         public override bool? UseItem(Player player)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-            duanWuPlayer.Reward = false;
-            PenaltySystem penaltySystem = new PenaltySystem(2);
+            duanWuPlayer.Reward = true;
+            RewardSystem rewardSystem = new RewardSystem(2);
             duanWuPlayer.Reward = null;
             return new bool?(true);
         }

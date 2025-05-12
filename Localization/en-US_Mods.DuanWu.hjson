@@ -168,6 +168,21 @@ Items: {
 		DisplayName: Su Style Zongzi
 		Tooltip: ""
 	}
+
+	AlkaliWaterzongzi: {
+		DisplayName: Alkali Waterzongzi
+		Tooltip: ""
+	}
+
+	SaltedDuckzongzi: {
+		DisplayName: Salted Duckzongzi
+		Tooltip: ""
+	}
+
+	ZongYe: {
+		DisplayName: Zong Ye
+		Tooltip: ""
+	}
 }
 
 Judging: {

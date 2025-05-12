@@ -37,13 +37,13 @@
 	  <None Remove="Content\Items\ZongZi.png" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Assets\Sounds\" />
+	  <Folder Include="Assets\Videos\" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Reference Include="Luminance">
 	    <HintPath>libs\Luminance.dll</HintPath>
 	  </Reference>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Assets\Sounds\" />
-	  <Folder Include="Assets\Videos\" />
 	</ItemGroup>
 
 	<!-- References -->
