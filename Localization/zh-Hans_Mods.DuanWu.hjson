@@ -28,12 +28,12 @@ Configs: {
 		}
 
 		OpenReward: {
-			// Label: Open Reward
+			Label: 开启奖励
 			// Tooltip: ""
 		}
 
 		OpenPenalty: {
-			// Label: Open Penalty
+			Label: 开启惩罚
 			// Tooltip: ""
 		}
 	}
@@ -52,12 +52,12 @@ Configs: {
 		}
 
 		ScoredboardText: {
-			// Label: Scoredboard Text
+			Label: 计分板名称
 			// Tooltip: ""
 		}
 
 		ScoreboardText: {
-			// Label: Scoreboard Text
+			Label: 计分板名称
 			// Tooltip: ""
 		}
 	}
@@ -70,8 +70,8 @@ Items: {
 	}
 
 	ZongZi: {
-		// DisplayName: Zong Zi
-		// Tooltip: ""
+		DisplayName: 粽子(原味)
+		Tooltip: 纯粹的糯米粽子，没有任何馅料，味道清淡自然
 	}
 
 	AnglerRod: {
@@ -90,42 +90,42 @@ Items: {
 	}
 
 	SuperWoodenSword: {
-		// DisplayName: Super Wooden Sword
-		// Tooltip: ""
+		DisplayName: 超级木剑
+		Tooltip: 纯粹的数值
 	}
 
 	UltraWoodenSword: {
-		// DisplayName: Ultra Wooden Sword
-		// Tooltip: ""
+		DisplayName: 超级木剑
+		Tooltip: 强大的机制
 	}
 
 	BambooZongzi: {
-		// DisplayName: Bamboo Zongzi
-		// Tooltip: ""
+		DisplayName: 竹筒粽子
+		Tooltip: 用竹筒细心包裹，竹香萦绕于软糯之中，别具天然滋味
 	}
 
 	CandiedDateZongzi: {
-		// DisplayName: Candied Date Zongzi
-		// Tooltip: ""
+		DisplayName: 粽子(蜜枣味)
+		Tooltip: 内含蜜枣，糯香与蜜润相得益彰，味道甜润醇香，
 	}
 
 	MeatZongzi: {
-		// DisplayName: Meat Zongzi
-		// Tooltip: ""
+		DisplayName: 粽子(香糯肉味)
+		Tooltip: 软糯香浓，肉汁饱满的传统粽子，搭配丰富的肉馅，香气四溢
 	}
 
 	PurpleRiceZongzi: {
-		// DisplayName: Purple Rice Zongzi
-		// Tooltip: ""
+		DisplayName: 粽子(紫米)
+		Tooltip: 色泽迷人，带有独特的紫米香气，口感细腻、软糯且富有营养
 	}
 
 	RedBeanZongzi: {
-		// DisplayName: Red Bean Zongzi
+		// DisplayName: Zongzi(Red Bean Flavor)
 		// Tooltip: ""
 	}
 
 	Su_styleZongzi: {
-		// DisplayName: Su_style Zongzi
+		// DisplayName: Zongzi(SaltedDuck Flavor)
 		// Tooltip: ""
 	}
 
@@ -150,18 +150,18 @@ Items: {
 	}
 
 	Logo: {
-		// DisplayName: Logo
-		// Tooltip: ""
+		DisplayName: Logo
+		Tooltip: 发射tModLoader的Logo,可以让你讨厌的任何角色消失,无论他们是否愿意。
 	}
 
 	RealgarWine: {
-		// DisplayName: Realgar Wine
-		// Tooltip: ""
+		DisplayName: 雄黄酒
+		Tooltip: 以雄黄为原料制成的传统药用酒，具有特殊的药效和香味，酒香醇厚，口感清爽。
 	}
 
 	SaltedDuckEgg: {
-		// DisplayName: Salted Duck Egg
-		// Tooltip: ""
+		DisplayName: 咸鸭蛋
+		Tooltip: 盐渍的鸭蛋，蛋黄油亮鲜美，味道咸香浓郁
 	}
 
 	SuStyleZongzi: {
@@ -170,17 +170,17 @@ Items: {
 	}
 
 	AlkaliWaterzongzi: {
-		// DisplayName: Alkali Waterzongzi
-		// Tooltip: ""
+		DisplayName: 粽子(碱水)
+		Tooltip: 碱水浸泡的糯米粽子，色泽金黄，口感弹韧，风味独特
 	}
 
 	SaltedDuckzongzi: {
-		// DisplayName: Salted Duckzongzi
-		// Tooltip: ""
+		DisplayName: 粽子(蛋黄味)
+		Tooltip: 内夹咸蛋黄，浓郁奶香与咸鲜交融。
 	}
 
 	ZongYe: {
-		// DisplayName: Zong Ye
+		DisplayName: 粽叶,糯米与绳
 		// Tooltip: ""
 	}
 }
@@ -192,8 +192,67 @@ Judging: {
 
 Other: {
 	Waiting: 等待其他玩家答题结束中···
-	Reward.0: You have won gold!
-	Penalty.0: You have lost gold!
+
+	Reward: {
+		1: {
+			0: 没有任何奖励!
+			1: 状态回满！
+		}
+
+		2: {
+			0: 生命上限+55！
+			5: 运气上升！
+			13: 一个额外召唤栏！
+			14: 加速度！
+			16: 防御力+10！
+		}
+
+		3: {
+			8: 三个额外召唤栏！
+			13: 自由视角
+		}
+
+		4: {
+			3: 击杀所有活着的敌人！
+			4: 无限魔力！
+			5: 无限飞行时间！
+			6: 获得其他玩家的积分！
+		}
+	}
+
+	Penalty: {
+		1: {
+			0: 没有任何惩罚!
+			2: 生命上限-20！
+			13: 生命值-100！
+		}
+
+		2: {
+			4: 随机前缀
+			10: 城镇里的史莱姆宠物全部都死了！
+			11: 受到伤害增加！
+			12: 插翅难飞！
+			14: 城镇里的宠物全部都死了！
+			16: 随机负面前缀
+			18: 防御力-10！
+		}
+
+		3: {
+			1: 你的角色难度变为硬核！
+			6: 你的身上钱全没了
+			8: 城镇的NPC全部都死了！
+			11: 召唤栏减少了一个！
+			12: 你的答题积分减半！
+		}
+
+		4: {
+			0: 你的角色即将将被删除！
+			1: 你的生命上限变为1！
+			3: 你的游戏即将崩溃！
+			7: 你的答题积分清零！
+			8: 刷怪提升！
+		}
+	}
 }
 
 ChoiceQuestion: {

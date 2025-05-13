@@ -60,6 +60,5 @@ namespace DuanWu.Content.Projectiles
             return false;
         }
 
-
     }
 }

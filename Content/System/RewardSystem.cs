@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace DuanWu.Content.System
@@ -33,6 +34,8 @@ namespace DuanWu.Content.System
             }
         }
 
+        public void RewardText(string path) => Main.NewText(Language.GetTextValue("Mods.DuanWu.Other.Reward." + path)); 
+
         public void SetReward(int RewardLevel = 1)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -41,9 +44,8 @@ namespace DuanWu.Content.System
             {
                 return;
             }
-
             AverageChance();
-
+            Main.NewText(RewardLevel);
             if (RewardLevel == 1)
             {
                 //1级
@@ -52,14 +54,14 @@ namespace DuanWu.Content.System
                 switch (level1)
                 {
                     case 0:
-                        Main.NewText("There is no rewaed!!!");
+                        RewardText("1.0");
                         break;
 
                     case 1:
                         //回满血 1
                         player.statLife = player.statLifeMax2;
                         player.statMana = player.statManaMax2;
-                        Main.NewText("回满血 1");
+                        RewardText("1.1");
                         break;
 
                     case 2:
@@ -172,7 +174,7 @@ namespace DuanWu.Content.System
 
                         break;
                     case 20:
-                        
+                        player.QuickSpawnItem(null, ModContent.ItemType<SaltedDuckEgg>(), 5);
                         break;
                     default:
                         break;
@@ -190,11 +192,11 @@ namespace DuanWu.Content.System
                     case 0:
                         //加生命上限55 2
                         duanWuPlayer.SetLifeMax2 += 55;
-                        Main.NewText("加生命上限 2");
+                        RewardText("2.0");
                         break;
                     case 1:
                         //钱 2
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 73, 999);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 73, 99);
 
                         break;
                     case 2:
@@ -206,7 +208,6 @@ namespace DuanWu.Content.System
                     case 3:
                         //弹药 2
                         List<short> arrow = [40, 41, 47, 51, 265, 516, 545, 988, 1235, 1334, 1341, 3003, 3568, 5348];
-                        Main.NewText("弹药");
                         QuickSpawnItemList(arrow, player, 200);
 
                         break;
@@ -217,7 +218,7 @@ namespace DuanWu.Content.System
                     case 5:
                         //运气 2
                         player.luck += 1;
-                        Main.NewText(player.luck);
+                        RewardText("2.5");
                         break;
                     case 6:
                         //各种灌注 2
@@ -230,14 +231,20 @@ namespace DuanWu.Content.System
                         for (int i = 0; i < 5; i++)
                         {
 
-                            player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(null), Main.rand.Next(0, 5455), 10);
+                            player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(null), Main.rand.Next(0, 5455), 1);
                         }
-
                         break;
 
                     case 8:
                         //玩家框 2
-                        duanWuPlayer.ShowPlayHitBox = true;
+                        if (!duanWuPlayer.ShowPlayHitBox)
+                        {
+                            duanWuPlayer.ShowPlayHitBox = true;
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
 
                     case 9:
@@ -267,11 +274,12 @@ namespace DuanWu.Content.System
                     case 13:
                         //额外召唤栏1 2
                         duanWuPlayer.SetMinions += 1;
+                        RewardText("2.13");
                         break;
                     case 14:
                         //加速度10 2
                         duanWuPlayer.Setmovespeed += 2;
-
+                        RewardText("2.14");
                         break;
                     case 15:
                         //磁力1000 2
@@ -286,6 +294,7 @@ namespace DuanWu.Content.System
                     case 16:
                         //防御力10 2
                         player.statDefense += 10;
+                        RewardText("2.16");
                         break;
                     default:
 
@@ -322,16 +331,37 @@ namespace DuanWu.Content.System
                         break;
                     case 3:
                         //弹幕框 3
-                        duanWuPlayer.ShowProjectileBox = true;
+                        if (!duanWuPlayer.ShowProjectileBox)
+                        {
+                            duanWuPlayer.ShowProjectileBox = true;
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 4:
                         //怪物框 3
+                        if (!duanWuPlayer.ShowNPCHitBox)
+                        {
                         duanWuPlayer.ShowNPCHitBox = true;
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 5:
                         //永久玩家框 3
+                        if (!duanWuPlayer.ShowPlayHitBox)
+                        {
                         duanWuPlayer.ShowPlayHitBox = true;
                         duanWuPlayer.ForverShowPlayHitBox = true;
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 6:
                         //四柱武器 3
@@ -345,8 +375,9 @@ namespace DuanWu.Content.System
                         break;
                     case 8:
 
-                        //额外召唤栏5 2
-                        duanWuPlayer.SetMinions += 5;
+                        //额外召唤栏3 2
+                        duanWuPlayer.SetMinions += 3;
+                        RewardText("3.8");
                         break;
 
                     case 9:
@@ -371,6 +402,10 @@ namespace DuanWu.Content.System
                             writer.Write(Main.LocalPlayer.name);
                             writer.Write(0);
                         }, -1,-1);
+                        if (Main.netMode==NetmodeID.SinglePlayer)
+                        {
+                            SetReward(RewardLevel);
+                        }
                         //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
                         //writer.Write("NetScoreboard");
                         //writer.Write("Adjust");
@@ -381,6 +416,7 @@ namespace DuanWu.Content.System
                     case 13:
                         //自由视角
                         duanWuPlayer.FreeScreen = true;
+                        RewardText("3.13");
                         break;
                     
                     default:
@@ -402,13 +438,27 @@ namespace DuanWu.Content.System
                         break;
                     case 1:
                         //永久NPC框 4
-                        duanWuPlayer.ShowNPCHitBox = true;
-                        duanWuPlayer.ForverShowNPCHitBox = true;
+                        if (!duanWuPlayer.ShowNPCHitBox)
+                        {
+                            duanWuPlayer.ShowNPCHitBox = true;
+                            duanWuPlayer.ForverShowNPCHitBox = true;
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 2:
                         //永久弹幕框 4
-                        duanWuPlayer.ShowProjectileBox = true;
-                        duanWuPlayer.ForverShowProjectileBox = true;
+                        if (!duanWuPlayer.ShowProjectileBox)
+                        {
+                            duanWuPlayer.ShowProjectileBox = true;
+                            duanWuPlayer.ForverShowProjectileBox = true;
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 3:
                         //击杀敌对NPC 4
@@ -420,14 +470,31 @@ namespace DuanWu.Content.System
                                 nPC.checkDead();
                             }
                         }
+                        RewardText("4.3");
                         break;
                     case 4:
                         //无线魔力 4
-                        duanWuPlayer.SetMana = true;
+                        if (!duanWuPlayer.SetMana)
+                        {
+                            duanWuPlayer.SetMana = true;
+                            RewardText("4.4");
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 5:
                         //无限飞行 4
-                        duanWuPlayer.Fly = true;
+                        if (!duanWuPlayer.Fly)
+                        {
+                            duanWuPlayer.Fly = true;
+                            RewardText("4.5");
+                        }
+                        else
+                        {
+                            SetReward(RewardLevel);
+                        }
                         break;
                     case 6:
                         //获取分数
@@ -437,13 +504,13 @@ namespace DuanWu.Content.System
                             writer.Write(Main.LocalPlayer.name);
                             writer.Write(1);
                         }, -1, -1);
-
                         //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
                         //writer.Write("NetScoreboard");
                         //writer.Write("Adjust");
                         //writer.Write(Main.LocalPlayer.name);
                         //writer.Write(1);
                         //writer.Send(-1, -1);
+                        RewardText("4.6");
                         break;
                     case 7:
                         //太阳

@@ -16,7 +16,7 @@ namespace DuanWu.Content.Items
         public override void SetDefaults()
         {
             Item.damage = 1;
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = DamageClass.Default;
             Item.width = 320;
             Item.height = 320;
             Item.useTime = 20;
@@ -40,18 +40,10 @@ namespace DuanWu.Content.Items
             base.HoldItemFrame(player);
         }
 
-
-        //public override void HoldItem(Player player)
-        //{
-        //    foreach (NPC nPC in Main.ActiveNPCs)
-        //    {
-        //        if (nPC.Hitbox.Intersects(base.Item.Hitbox))
-        //        {
-        //            Main.NewText("HIT");
-        //        }
-        //    }
-        //    base.HoldItem(player);
-        //}
+        public override bool AllowPrefix(int pre)
+        {
+            return false;
+        }
 
         public override void UseItemHitbox(Player player, ref Rectangle hitbox, ref bool noHitbox)
         {

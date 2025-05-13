@@ -24,6 +24,7 @@ using DuanWu.Content.UI;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Newtonsoft.Json;
+using Terraria.Localization;
 namespace DuanWu.Content.Items
 {
     // This is a basic item template.
@@ -61,7 +62,8 @@ namespace DuanWu.Content.Items
         {
             return true;
         }
-     
+
+        public string GetString(string path) => Language.GetTextValue("Mods.DuanWu.Other.Reward." + path);
         public override bool? UseItem(Player player)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -78,14 +80,14 @@ namespace DuanWu.Content.Items
                         writer.Write(Main.LocalPlayer.name);
                         writer.Write(1);
                     }, -1, -1);
-
+                    Main.NewText(GetString("1.1"), Color.Green);
                     //WaitingUI.Number = Main.rand.Next(0, 6);
                     //DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
                     return true;
                 }
                 //DuanWuPlayer.WaitingForQuestionEnd = true;
-                duanWuPlayer.PlayerAccuracy++;
-                NetScoreboard.SubmitPacket();
+                duanWuPlayer.Reward = true;
+                RewardSystem reward = new(Main.rand.Next(0,5));
             }
             return new bool?(true);
         }

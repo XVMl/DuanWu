@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -97,6 +98,7 @@ namespace DuanWu.Content.MyUtilities
                     RewardSystem reward = new(Main.rand.Next(1, 5));
                 }
                 DuanWuPlayer.PlayerQuestionEnd = true;
+                SoundEngine.PlaySound(SoundID.Chat);
                 ModContent.GetInstance<Netsponse>().SendPacket((write) => write.Write("EndQuestion"), -1, -1);
                 return;
             }

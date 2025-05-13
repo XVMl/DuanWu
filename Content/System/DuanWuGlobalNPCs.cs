@@ -24,7 +24,7 @@ namespace DuanWu.Content.System
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ZongYe>(), 50));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ZongYe>(), 25));
             npcLoot.Add(ItemDropRule.OneFromOptions(50, ModContent.ItemType<ZongZi>(), ModContent.ItemType<AlkaliWaterzongzi>(), ModContent.ItemType<SaltedDuckzongzi>(), ModContent.ItemType<MeatZongzi>(), ModContent.ItemType<CandiedDateZongzi>(), ModContent.ItemType<PurpleRiceZongzi>(), ModContent.ItemType<BambooZongzi>()));
         }
 

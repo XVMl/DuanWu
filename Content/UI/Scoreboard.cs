@@ -29,7 +29,7 @@ namespace DuanWu.Content.UI
         public static Dictionary<string, bool> Player = [];
         public static Dictionary<string, int> counts = [];
 
-        //public override bool IsLoaded() => Main.netMode == NetmodeID.MultiplayerClient;
+        public override bool IsLoaded() => Main.netMode == NetmodeID.MultiplayerClient;
         
         public override string Layers_FindIndex => "Vanilla: Interface Logic 2";
 

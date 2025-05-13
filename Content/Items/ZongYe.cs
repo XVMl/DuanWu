@@ -28,7 +28,7 @@ namespace DuanWu.Content.Items
             Item.rare = 0;
             Item.useAnimation = 45;
             Item.useTime = 45;
-            Item.useStyle = 2;
+            Item.useStyle = 1;
             ItemID.Sets.ItemNoGravity[Item.type] = false;
             Item.ResearchUnlockCount = 0;
         }
@@ -38,6 +38,10 @@ namespace DuanWu.Content.Items
             return true;
         }
 
+        public override bool CanUseItem(Player player)
+        {
+            return false;
+        }
 
         public override bool CanPickup(Player player)
         {
@@ -47,7 +51,7 @@ namespace DuanWu.Content.Items
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/Zongye").Value;
-            spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.2f, SpriteEffects.None, 0);
             return false;
         }
 
