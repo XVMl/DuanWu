@@ -50,7 +50,7 @@ namespace DuanWu.Content.System
             }
         }
 
-        public void PenaltyText(string path) => Main.NewText(Language.GetTextValue("Mods.DuanWu.Other.Reward." + path));
+        public void PenaltyText(string path) => Main.NewText(Language.GetTextValue("Mods.DuanWu.Other.Penalty." + path));
 
         public void SetPenalty(int penaltylevel = 1)
         {

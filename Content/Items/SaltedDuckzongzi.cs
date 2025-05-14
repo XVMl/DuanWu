@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using DuanWu.Content.System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Luminance.Common.Utilities;
 
 namespace DuanWu.Content.Items
 {
@@ -67,13 +68,23 @@ namespace DuanWu.Content.Items
             spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
-        public override bool? UseItem(Player player)
+        public override void OnConsumeItem(Player player)
         {
-            DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-            duanWuPlayer.Reward = true;
-            RewardSystem rewardSystem = new RewardSystem(2);
-            duanWuPlayer.Reward = null;
-            return new bool?(true);
+            player.AddBuff(206, Utilities.SecondsToFrames(5));
+            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            {
+                if (Main.myPlayer == player.whoAmI)
+                {
+                    LanguageHelper.SetQuestion();
+                }
+            }
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/BambooZongzi").Value;
+            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
+            return false;
         }
     }
 }

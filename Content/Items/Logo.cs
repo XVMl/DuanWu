@@ -66,7 +66,7 @@ namespace DuanWu.Content.Items
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/Items/Logo").Value;
-            spriteBatch.Draw(tex, Item.Center, null, Color.White, 0f, tex.Size() / 2, 1, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, Item.Center-Main.screenPosition, null, Color.White, 0f, tex.Size() / 2, 1, SpriteEffects.None, 0);
             return false;
         }
     }

@@ -16,6 +16,7 @@ using Luminance.Core.Graphics;
 using Luminance.Common.Utilities;
 using Terraria.ModLoader.IO;
 using Terraria.ModLoader.UI.Elements;
+using DuanWu.Content.Items;
 
 namespace DuanWu
 {
@@ -70,8 +71,8 @@ namespace DuanWu
         public bool ForverShowNPCHitBox;
         public int SetLifeMax2;
         public int SetLifemana2;
-        public float Setmovespeed=1;
-        public float Setmovespeed1=1;
+        public float Setmovespeed = 1;
+        public float Setmovespeed1 = 1;
         /// <summary>
         /// 减伤
         /// </summary>
@@ -119,6 +120,14 @@ namespace DuanWu
         public bool confusion;
         public float hitdamage;
 
+        public bool AlkaliWaterBuff;
+        public bool BambooBuff;
+        public bool CandiedDateBuff;
+        public bool MeatZongziBuff;
+        public bool PurpleRiceBuff;
+        public bool SaltedDuckBuff;
+        public bool ZongZiBuff;
+        public bool RealgarWineBuff;
         public override void OnEnterWorld()
         {
             WaitingForQuestionEnd = false;
@@ -128,12 +137,12 @@ namespace DuanWu
         public override void SaveData(TagCompound tag)
         {
             tag["PlayerQuestioncount"] = PlayerQuestioncount;
-            tag["PlayerAccuracy"]= PlayerAccuracy;
+            tag["PlayerAccuracy"] = PlayerAccuracy;
         }
 
         public override void PostUpdateMiscEffects()
         {
-            if (confusion&&Main.myPlayer == Player.whoAmI)
+            if (confusion && Main.myPlayer == Player.whoAmI)
             {
                 int x = Main.rand.Next(0, 49);
                 int y = Main.rand.Next(0, 49);
@@ -185,9 +194,9 @@ namespace DuanWu
                 QustionActive = false;
             }
 
-            if (Player.breath==0)
+            if (Player.breath == 0)
             {
-                if (Main.rand.Next(0,3)==1)
+                if (Main.rand.Next(0, 3) == 1)
                 {
                     LanguageHelper.SetQuestion();
                 }
@@ -201,13 +210,31 @@ namespace DuanWu
             {
                 return false;
             }
+            if (RealgarWineBuff)
+            {
+                Main.LocalPlayer.ClearBuff(ModContent.BuffType<RealgarWineBuff>());
+                Main.LocalPlayer.statLife = (int)(Main.LocalPlayer.statLifeMax2 * 0.3f);
+                return false;
+            }
             return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genDust, ref damageSource);
+        }
+
+        public override void ResetEffects()
+        {
+            AlkaliWaterBuff = false;
+            BambooBuff = false;
+            CandiedDateBuff = false;
+            MeatZongziBuff = false;
+            PurpleRiceBuff = false;
+            SaltedDuckBuff = false;
+            ZongZiBuff = false;
+            RealgarWineBuff = false;
         }
 
         public override void UpdateDead()
         {
 
-            
+
             if (!ForverShowProjectileBox)
             {
                 ShowProjectileBox = false;
@@ -221,11 +248,11 @@ namespace DuanWu
                 ShowNPCHitBox = false;
             }
             KeepQuestionActive = false;
-            CameraActive= false;
-            PixelationActive= false;
-            GaussBlurActive= false;
+            CameraActive = false;
+            PixelationActive = false;
+            GaussBlurActive = false;
             Cameraintensity = 0;
-            Pixelationintensity= 0;
+            Pixelationintensity = 0;
         }
 
         public override bool ConsumableDodge(Player.HurtInfo info)
@@ -250,33 +277,64 @@ namespace DuanWu
             {
                 Player.statMana = Player.statManaMax2;
             }
+            if (BambooBuff)
+            {
+                Player.statLifeMax2 += 400;
+            }
 
         }
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
+            float modify = 1f;
             if (Player.HasBuff(ModContent.BuffType<Sun>()))
             {
-                modifiers.FinalDamage *= 1.5f;
+                modify += 0.5f;
             }
+            if (RealgarWineBuff)
+            {
+                modify += 0.3f;
+            }
+            modifiers.FinalDamage *= modify;
+        }
 
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            float modify = 1f;
+            if (Player.HasBuff(ModContent.BuffType<Sun>()))
+            {
+                modify += 0.5f;
+            }
+            if (RealgarWineBuff)
+            {
+                modify += 0.3f;
+            }
+            modifiers.FinalDamage *= modify;
         }
 
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            float finaldamafe= hitdamage;
+            float finaldamafe = hitdamage;
             if (Player.HasBuff(ModContent.BuffType<Sun>()))
             {
-                finaldamafe += 0.5f;   
+                finaldamafe -= 0.5f;
             }
-            modifiers.FinalDamage *= (1 + finaldamafe );
+            if (PurpleRiceBuff)
+            {
+                finaldamafe -= 0.3f;
+            }
+            modifiers.FinalDamage *= (1 + finaldamafe);
+            if (MeatZongziBuff)
+            {
+                Player.Heal(55);
+            }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (target.life<damageDone)
+            if (target.life < damageDone)
             {
-                if (Main.rand.Next(0,32)==1 && Main.myPlayer == Player.whoAmI)
+                if (Main.rand.Next(0, 32) == 1 && Main.myPlayer == Player.whoAmI)
                 {
                     LanguageHelper.SetQuestion();
                 }
@@ -288,9 +346,25 @@ namespace DuanWu
             float finaldamafe = hitdamage;
             if (Player.HasBuff(ModContent.BuffType<Sun>()))
             {
-                finaldamafe += 0.5f;
+                finaldamafe -= 0.5f;
+            }
+            if (PurpleRiceBuff)
+            {
+                finaldamafe -= 0.3f;
             }
             modifiers.FinalDamage *= (1 + finaldamafe);
+            if (MeatZongziBuff)
+            {
+                Player.Heal(55);
+            }
+        }
+
+        public override void UpdateLifeRegen()
+        {
+            if (CandiedDateBuff)
+            {
+                Player.lifeRegen += 20;
+            }
         }
 
         public override void ModifyScreenPosition()
@@ -304,9 +378,9 @@ namespace DuanWu
             {
                 if (Main.MouseWorld.X - Main.screenPosition.X < 5)
                 {
-                    Screenpos.X -= 20;    
+                    Screenpos.X -= 20;
                 }
-                if (Main.MouseWorld.X - Main.screenPosition.X > Main.screenWidth-5)
+                if (Main.MouseWorld.X - Main.screenPosition.X > Main.screenWidth - 5)
                 {
                     Screenpos.X += 20;
                 }
@@ -314,14 +388,13 @@ namespace DuanWu
                 {
                     Screenpos.Y -= 20;
                 }
-                if (Main.MouseWorld.Y - Main.screenPosition.Y > Main.screenHeight-5)
+                if (Main.MouseWorld.Y - Main.screenPosition.Y > Main.screenHeight - 5)
                 {
                     Screenpos.Y += 20;
                 }
                 screenCache = Vector2.Lerp(screenCache, Screenpos, 0.1f);
                 Main.screenPosition = screenCache;
             }
-
 
             if (StartScreenpos)
             {
@@ -342,7 +415,7 @@ namespace DuanWu
                 {
                     Screenpos.Y += Main.screenHeight;
                 }
-                
+
                 screenCache = Vector2.Lerp(screenCache, Screenpos, 0.1f);
                 Main.screenPosition = screenCache;
             }
@@ -351,7 +424,7 @@ namespace DuanWu
         #region 受击时
         public override void OnHurt(Player.HurtInfo info)
         {
-            if (Main.dedServ|| Main.myPlayer != Player.whoAmI)
+            if (Main.dedServ || Main.myPlayer != Player.whoAmI)
             {
                 return;
             }
@@ -379,7 +452,7 @@ namespace DuanWu
         #region 召唤特定NPC时
         private void NPCQuestionActive()
         {
-            if(NPC.AnyNPCs(4))
+            if (NPC.AnyNPCs(4))
             {
 
             }
@@ -439,7 +512,7 @@ namespace DuanWu
             if (!distortion.IsActive)
             {
                 distortion.TrySetParameter("screenscalerevise", new Vector2(Main.screenWidth, Main.screenHeight) / Main.GameViewMatrix.Zoom);
-                distortion.TrySetParameter("targetposition", new Vector2(0.5f,0.5f));
+                distortion.TrySetParameter("targetposition", new Vector2(0.5f, 0.5f));
                 distortion.Activate();
             }
         }

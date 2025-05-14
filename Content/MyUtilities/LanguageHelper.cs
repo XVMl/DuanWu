@@ -91,7 +91,12 @@ namespace DuanWu.Content.MyUtilities
             if (duanWuPlayer.Answer==duanWuPlayer.ChoiceAnswer)
             {
                 Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Success"), Color.Green);
-                duanWuPlayer.PlayerAccuracy++;
+                int score=1;
+                if (duanWuPlayer.SaltedDuckBuff)
+                {
+                    score *= 2;
+                }
+                duanWuPlayer.PlayerAccuracy+=score;
                 if (DuanWuPlayer.OpenReward)
                 {
                     duanWuPlayer.Reward = true;

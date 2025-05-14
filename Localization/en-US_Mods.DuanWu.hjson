@@ -1844,4 +1844,44 @@ Buffs: {
 		DisplayName: Sun
 		Description: Mods.DuanWu.Buffs.Sun.Description
 	}
+
+	AlkaliWaterZongZiBuff: {
+		DisplayName: Alkali Water Zong Zi Buff
+		Description: Mods.DuanWu.Buffs.AlkaliWaterZongZiBuff.Description
+	}
+
+	BambooZongziBuff: {
+		DisplayName: Bamboo Zongzi Buff
+		Description: Max HP +400
+	}
+
+	CandiedDateZongZiBuff: {
+		DisplayName: Candied Date Zong Zi Buff
+		Description: +10 HP/s.
+	}
+
+	MeatZongziBuff: {
+		DisplayName: Meat Zongzi Buff
+		Description: Heal 55 HP when injured.
+	}
+
+	PurpleRiceZongZiBuff: {
+		DisplayName: Purple Rice Zong Zi Buff
+		Description: Restores all HP when used, damage taken reduced by 30%.
+	}
+
+	RealgarWineBuff: {
+		DisplayName: Realgar Wine Buff
+		Description: Damage caused increases by 30%, immune to one fatal damage and restore 30% of health.
+	}
+
+	SaltedDuckZongZiBuff: {
+		DisplayName: Salted Duck Zong Zi Buff
+		Description: Get double scored
+	}
+
+	ZongZiBuff: {
+		DisplayName: Zong Zi Buff
+		Description: Mods.DuanWu.Buffs.ZongZiBuff.Description
+	}
 }

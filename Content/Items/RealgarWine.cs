@@ -57,6 +57,14 @@ namespace DuanWu.Content.Items
             spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.15f, SpriteEffects.None, 0);
             return false;
         }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/RealgarWine").Value;
+            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
+            return false;
+        }
+
         public override bool? UseItem(Player player)
         {
             return new bool?(true);

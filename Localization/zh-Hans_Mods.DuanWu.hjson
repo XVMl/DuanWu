@@ -1844,4 +1844,44 @@ Buffs: {
 		DisplayName: 太阳
 		Description: 你的光芒比太阳还要亮；获得50%的增伤，50%的减伤，显示宝藏，陷阱等(只对你有效)。
 	}
+
+	AlkaliWaterZongZiBuff: {
+		DisplayName: 粽子(碱水)
+		Description: Mods.DuanWu.Buffs.AlkaliWaterZongZiBuff.Description
+	}
+
+	BambooZongziBuff: {
+		DisplayName: 竹筒粽子
+		Description: 生命上限+400
+	}
+
+	CandiedDateZongZiBuff: {
+		DisplayName: 粽子(蜜枣味)
+		Description: 生命会恢复速度+10HP/s
+	}
+
+	MeatZongziBuff: {
+		DisplayName: 粽子(香糯肉味)
+		Description: 受到伤害时回复55点生命值
+	}
+
+	PurpleRiceZongZiBuff: {
+		DisplayName: 粽子(紫米)
+		Description: 使用时回复全部的生命值，受到伤害减少30%
+	}
+
+	RealgarWineBuff: {
+		DisplayName: 雄黄酒
+		Description: 造成的伤害+30%，免疫一次致命伤害并回复30%生命值
+	}
+
+	SaltedDuckZongZiBuff: {
+		DisplayName: 粽子(蛋黄味)
+		Description: 获得积分翻倍
+	}
+
+	ZongZiBuff: {
+		DisplayName: 粽子
+		Description: Mods.DuanWu.Buffs.ZongZiBuff.Description
+	}
 }
