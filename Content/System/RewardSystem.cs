@@ -109,8 +109,9 @@ namespace DuanWu.Content.System
                         break;
 
                     case 9:
-                        //电路 1
-                        Main.NewText("电路");
+                        //弹药 1
+                        List<short> Bullwt = [97, 234, 278, 515, 546, 1179, 1302, 1335, 1342, 1349, 1350, 1351, 1352, 3567, 4915];
+                        QuickSpawnItemList(Bullwt, player, 200);
                         break;
 
                     case 10:
@@ -120,8 +121,9 @@ namespace DuanWu.Content.System
 
                         break;
                     case 11:
-                        //高尔夫 1
-                        Main.NewText("高尔夫");
+                        //粽子
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<ZongZi>(), 10);
+
                         break;
 
                     case 12:
@@ -200,20 +202,18 @@ namespace DuanWu.Content.System
 
                         break;
                     case 2:
-                        //弹药 1
-                        List<short> Bullwt = [97, 234, 278, 515, 546, 1179, 1302, 1335, 1342, 1349, 1350, 1351, 1352, 3567, 4915];
-                        QuickSpawnItemList(Bullwt, player, 200);
+                        //电路 1
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<SaltedDuckEgg>(), 2);
 
                         break;
                     case 3:
                         //弹药 2
                         List<short> arrow = [40, 41, 47, 51, 265, 516, 545, 988, 1235, 1334, 1341, 3003, 3568, 5348];
                         QuickSpawnItemList(arrow, player, 200);
-
                         break;
                     case 4:
-                        //粽子
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<ZongZi>(), 10);
+                        //雄黄酒
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<RealgarWine>(), 1);
                         break;
                     case 5:
                         //运气 2
@@ -307,7 +307,7 @@ namespace DuanWu.Content.System
             else if (RewardLevel == 3)
             {
                 //3级
-                int level3 = Main.rand.Next(0, 15);
+                int level3 = Main.rand.Next(0, 14);
                 Main.NewText(level3);
                 switch (level3)
                 {
@@ -319,14 +319,15 @@ namespace DuanWu.Content.System
                         break;
                     case 1:
                         //NPC party 3
-                        Main.NewText("NPC");
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null),ModContent.ItemType<PurpleRiceZongzi>(), 1);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null),ModContent.ItemType<AlkaliWaterzongzi>(), 1);
                         break;
                     case 2:
                         //钱 3
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 71, 999);
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 72, 999);
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 73, 999);
-                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 74, 999);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 71, 99);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 72, 99);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 73, 99);
+                        player.QuickSpawnItem(player.GetSource_GiftOrReward(null), 74, 99);
 
                         break;
                     case 3:
@@ -371,7 +372,7 @@ namespace DuanWu.Content.System
                     case 7:
                         //四柱工具 3 
                         List<short> xingxu = [2772, 2773, 2774, 2775, 2776, 3524, 3526, 3527, 3528, 3525, 3462, 3453, 3464, 3465];
-                        QuickSpawnItemList(xingxu, player, 3, 1);
+                        QuickSpawnItemList(xingxu, player, 2, 1);
                         break;
                     case 8:
 
@@ -390,12 +391,12 @@ namespace DuanWu.Content.System
                         player.QuickSpawnItem(player.GetSource_GiftOrReward(null), ModContent.ItemType<UltraWoodenSword>(), 1);
                         break;
                     case 11:
-                        //额外召唤栏1 3
-                        duanWuPlayer.SetMinions += 1;
+                        //额外召唤栏3 3
+                        duanWuPlayer.SetMinions += 3;
+                        RewardText("3.11");
                         break;
                     case 12:
                         //积分 3
-                        //duanWuPlayer.hitdamage -= 0.1f;
                         ModContent.GetInstance<NetScoreboard>().SendPacket((writer) =>
                         {
                             writer.Write("Adjust");
@@ -406,15 +407,15 @@ namespace DuanWu.Content.System
                         {
                             SetReward(RewardLevel);
                         }
-                        //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                        //writer.Write("NetScoreboard");
-                        //writer.Write("Adjust");
-                        //writer.Write(Main.LocalPlayer.name);
-                        //writer.Write(0);
-                        //writer.Send(-1, -1);
+                        RewardText("3.12");
                         break;
                     case 13:
                         //自由视角
+                        if (duanWuPlayer.FreeScreen)
+                        {
+                            SetReward(RewardLevel);
+                        }
+                        duanWuPlayer.Screenpos = duanWuPlayer.screenCache = Main.LocalPlayer.Center - new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
                         duanWuPlayer.FreeScreen = true;
                         RewardText("3.13");
                         break;
@@ -504,12 +505,6 @@ namespace DuanWu.Content.System
                             writer.Write(Main.LocalPlayer.name);
                             writer.Write(1);
                         }, -1, -1);
-                        //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                        //writer.Write("NetScoreboard");
-                        //writer.Write("Adjust");
-                        //writer.Write(Main.LocalPlayer.name);
-                        //writer.Write(1);
-                        //writer.Send(-1, -1);
                         RewardText("4.6");
                         break;
                     case 7:

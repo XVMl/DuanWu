@@ -11,6 +11,7 @@ using DuanWu.Content.System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Luminance.Common.Utilities;
+using DuanWu.Content.Buffs;
 
 namespace DuanWu.Content.Items
 {
@@ -31,8 +32,6 @@ namespace DuanWu.Content.Items
             Item.useTime = 45;
             Item.useStyle = 2;
             Item.consumable = true;
-            ItemID.Sets.ItemNoGravity[Item.type] = false;
-            Item.ResearchUnlockCount = 0;
         }
 
         public override bool ItemSpace(Player player)
@@ -68,22 +67,37 @@ namespace DuanWu.Content.Items
             spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
-        public override void OnConsumeItem(Player player)
+        //public override void OnConsumeItem(Player player)
+        //{
+        //    player.AddBuff(206, Utilities.SecondsToFrames(5));
+        //    if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+        //    {
+        //        if (Main.myPlayer == player.whoAmI)
+        //        {
+        //            LanguageHelper.SetQuestion();
+        //        }
+        //    }
+        //}
+
+        public override bool? UseItem(Player player)
         {
-            player.AddBuff(206, Utilities.SecondsToFrames(5));
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 if (Main.myPlayer == player.whoAmI)
                 {
+                    player.AddBuff(206, Utilities.MinutesToFrames(5));
+                    player.AddBuff(ModContent.BuffType<SaltedDuckZongZiBuff>(), Utilities.MinutesToFrames(5));
+                    player.itemTime = Item.useTime;
                     LanguageHelper.SetQuestion();
                 }
             }
+            return true;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/BambooZongzi").Value;
-            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(5f, 10f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
     }

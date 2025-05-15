@@ -32,15 +32,12 @@ namespace DuanWu.Content.Items
             Item.useTime = 45;
             Item.useStyle = 2;
             Item.consumable = true;
-            Item.buffType = ModContent.BuffType<PurpleRiceZongZiBuff>();
-            ItemID.Sets.ItemNoGravity[Item.type] = false;
-            Item.ResearchUnlockCount = 0;
         }
 
         public override bool ItemSpace(Player player)
         {
             return true;
-        }
+        } 
 
 
         public override bool CanPickup(Player player)
@@ -59,26 +56,30 @@ namespace DuanWu.Content.Items
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/PurpleRiceZongzi").Value;
-            spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.15f, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, position, null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
-        public override void OnConsumeItem(Player player)
+
+        public override bool? UseItem(Player player)
         {
-            player.Heal(player.statLifeMax2);
-            player.AddBuff(206, Utilities.SecondsToFrames(5));
             if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
             {
                 if (Main.myPlayer == player.whoAmI)
                 {
+                    player.Heal(player.statLifeMax2);
+                    player.AddBuff(206, Utilities.MinutesToFrames(5));
+                    player.AddBuff(ModContent.BuffType<PurpleRiceZongZiBuff>(), Utilities.MinutesToFrames(5));
+                    player.itemTime = Item.useTime;
                     LanguageHelper.SetQuestion();
                 }
             }
+            return true;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/PurpleRiceZongzi").Value;
-            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(5f, 10f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
     }

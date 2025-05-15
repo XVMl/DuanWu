@@ -12,7 +12,7 @@ namespace DuanWu.Content.Buffs
 {
     internal class RealgarWineBuff:ModBuff
     {
-        public override string Texture => "DuanWu/Assets/Buff";
+        public override string Texture => "DuanWu/Assets/WineBuff";
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = false;

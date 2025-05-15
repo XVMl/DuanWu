@@ -514,7 +514,7 @@ namespace DuanWu.Content.System
                         break;
                     case 6:
                         //存款-100% 3
-                        for (int i = 50; i < 53; i++)
+                        for (int i = 50; i < 54; i++)
                         {
                             player.inventory[i].type = 0;
                         }

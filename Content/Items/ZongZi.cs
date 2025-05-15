@@ -1,4 +1,5 @@
-﻿using DuanWu.Content.MyUtilities;
+﻿using DuanWu.Content.Buffs;
+using DuanWu.Content.MyUtilities;
 using Luminance.Common.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,8 +32,7 @@ namespace DuanWu.Content.Items
             Item.useTime = 45;
             Item.useStyle = 2;
             Item.consumable = true;
-            ItemID.Sets.ItemNoGravity[Item.type] = false;
-            Item.ResearchUnlockCount = 0;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override bool ItemSpace(Player player)
@@ -63,20 +63,9 @@ namespace DuanWu.Content.Items
             recipe.Register();
         }
 
-        public override void OnConsumeItem(Player player)
-        {
-            player.AddBuff(206, Utilities.SecondsToFrames(5));
-            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
-            {
-                if (Main.myPlayer == player.whoAmI)
-                {
-                    LanguageHelper.SetQuestion();
-                }
-            }
-        }
-
-        //public override bool? UseItem(Player player)
+        //public override void OnConsumeItem(Player player)
         //{
+        //    player.AddBuff(206, Utilities.MinutesToFrames(5));
         //    if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
         //    {
         //        if (Main.myPlayer == player.whoAmI)
@@ -84,8 +73,21 @@ namespace DuanWu.Content.Items
         //            LanguageHelper.SetQuestion();
         //        }
         //    }
-        //    return true;
         //}
+
+        public override bool? UseItem(Player player)
+        {
+            if (!Main.LocalPlayer.GetModPlayer<DuanWuPlayer>().LisaoActive)
+            {
+                if (Main.myPlayer == player.whoAmI)
+                {
+                    player.AddBuff(206, Utilities.MinutesToFrames(5));
+                    player.itemTime = Item.useTime;
+                    LanguageHelper.SetQuestion();
+                }
+            }
+            return true;
+        }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
@@ -97,7 +99,7 @@ namespace DuanWu.Content.Items
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Texture2D tex = ModContent.Request<Texture2D>("DuanWu/Content/UI/ZongZi").Value;
-            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(6f, 24f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
+            spriteBatch.Draw(tex, Item.position - Main.screenPosition + new Vector2(5f, 10f), null, Color.White, 0f, tex.Size() / 2, 0.1f, SpriteEffects.None, 0);
             return false;
         }
 

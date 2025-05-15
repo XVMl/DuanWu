@@ -63,7 +63,13 @@ namespace DuanWu.Content.Items
             return true;
         }
 
-        public string GetString(string path) => Language.GetTextValue("Mods.DuanWu.Other.Reward." + path);
+        public void QuickSpawnItemList(List<short> x, Player player, int count = 1, int num = 99)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                player.QuickSpawnItem(null, x[Main.rand.Next(0, x.Count)], num);
+            }
+        }
         public override bool? UseItem(Player player)
         {
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -71,7 +77,6 @@ namespace DuanWu.Content.Items
             player.itemTime = Item.useTime;
             if (Main.myPlayer == player.whoAmI)
             {
-                
                 if (player.altFunctionUse==2)
                 {
                     ModContent.GetInstance<NetScoreboard>().SendPacket((writer) =>
@@ -80,14 +85,15 @@ namespace DuanWu.Content.Items
                         writer.Write(Main.LocalPlayer.name);
                         writer.Write(1);
                     }, -1, -1);
-                    Main.NewText(GetString("1.1"), Color.Green);
+                    List<short> xingxu = [2774,2776,2779,2781,2784,2786,3522,3523, 3524, 3525, 3465,3466];
+                    QuickSpawnItemList(xingxu, player, 2, 1);
                     //WaitingUI.Number = Main.rand.Next(0, 6);
                     //DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
                     return true;
                 }
                 //DuanWuPlayer.WaitingForQuestionEnd = true;
                 duanWuPlayer.Reward = true;
-                RewardSystem reward = new(Main.rand.Next(0,5));
+                RewardSystem reward = new(Main.rand.Next(1,5));
             }
             return new bool?(true);
         }
