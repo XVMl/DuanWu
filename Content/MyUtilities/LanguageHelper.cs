@@ -53,10 +53,6 @@ namespace DuanWu.Content.MyUtilities
                 {
                     writer.Write("SetQuestion");
                 }, -1, -1);
-                //ModPacket writer = ModContent.GetInstance<DuanWu>().GetPacket();
-                //writer.Write("ServeSetQustion");
-                //writer.Write("SetQuestion");
-                //writer.Send(-1, -1);
                 return;
             }
             duanWuPlayer.ChoiceAnswer = -1;

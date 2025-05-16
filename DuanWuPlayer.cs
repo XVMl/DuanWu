@@ -165,7 +165,7 @@ namespace DuanWu
             if (LisaoActive)
             {
                 ShowAnswer--;
-                if (counttime == 0 && WaitingForQuestionEnd)
+                if (counttime == 0 && !WaitingForQuestionEnd)
                 {
                     LanguageHelper.CheckAnswer();
                 }

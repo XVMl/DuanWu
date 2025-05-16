@@ -85,13 +85,8 @@ namespace DuanWu.Content.Items
                         writer.Write(Main.LocalPlayer.name);
                         writer.Write(1);
                     }, -1, -1);
-                    List<short> xingxu = [2774,2776,2779,2781,2784,2786,3522,3523, 3524, 3525, 3465,3466];
-                    QuickSpawnItemList(xingxu, player, 2, 1);
-                    //WaitingUI.Number = Main.rand.Next(0, 6);
-                    //DuanWuPlayer.WaitingForQuestionEnd = !DuanWuPlayer.WaitingForQuestionEnd;
                     return true;
                 }
-                //DuanWuPlayer.WaitingForQuestionEnd = true;
                 duanWuPlayer.Reward = true;
                 RewardSystem reward = new(Main.rand.Next(1,5));
             }

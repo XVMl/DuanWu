@@ -22,14 +22,13 @@ namespace DuanWu.Content.System
 
         public static readonly Dictionary<string, Type> PacketHandlers = new();
         
-        protected static int Time;
+        public static int Time;
 
         public abstract string TypeName { get; }
 
         public override void Load()
         {
             PacketHandlers[TypeName] = GetType();
-            base.Load();
         }
         public virtual void RecievePacket(BinaryReader reader, int sender) { }
 
@@ -93,28 +92,32 @@ namespace DuanWu.Content.System
             Main.NewText(type);
             if (type == "EndQuestion")
             {
-                if (duanWuPlayer.LisaoActive)
+                if (Main.netMode == NetmodeID.Server)
                 {
-                    if (duanWuPlayer.ShowAnswer > 0)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        LanguageHelper.CheckAnswer();
-                        LanguageHelper.EndQnestion();
-                        Time = 0;
-                    }
-                }
-                if (Main.netMode == 2)
-                {
+                    Time = 0;
                     SendPacket((write) => { write.Write("EndQuestion"); }, -1, -1);
+                }
+                else
+                {
+                    if (duanWuPlayer.LisaoActive)
+                    {
+                        if (duanWuPlayer.ShowAnswer > 0)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            LanguageHelper.CheckAnswer();
+                            LanguageHelper.EndQnestion();
+                            duanWuPlayer.ShowAnswer = 0;
+                        }
+                    }
                 }
             }
             else if(type == "EndWaiting")
             {
                 DuanWuPlayer.WaitingForQuestionEnd = false;
-                if (Main.netMode == 2)
+                if (Main.netMode == NetmodeID.Server)
                 {
                     SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
                 }
@@ -353,7 +356,6 @@ namespace DuanWu.Content.System
             if (Main.netMode == NetmodeID.Server && DuanWuPlayer.Quickresponse)
             {
                 string type = reader.ReadString();
-                Main.NewText(type);
                 if (type == "SetQuestion")
                 {
                     DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
@@ -373,15 +375,14 @@ namespace DuanWu.Content.System
                     duanWuPlayer.LisaoActive = true;
                     Time = 600;
                 }
-            }
+            } 
             //客户端接收题目设置
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
+                Main.NewText("@SIDONI");
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
                 duanWuPlayer.Answer = reader.ReadInt32();
-                Main.NewText(duanWuPlayer.Answer);
                 int lisaoquestion = reader.ReadInt32();
-                Main.NewText(duanWuPlayer.Answer);
                 int ans_text = 0;
                 for (int i = 0; i < 8; i++)
                 {
@@ -402,24 +403,6 @@ namespace DuanWu.Content.System
         public override void WriterPacket(BinaryWriter writer, NetDelegate netDelegate)
         {
             netDelegate(writer);
-        }
-
-        public override void PostUpdateTime()
-        {
-            if (Main.netMode == NetmodeID.Server && DuanWuPlayer.Quickresponse)
-            {
-                DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
-                if (duanWuPlayer.LisaoActive)
-                {
-                    Time--;
-                }
-                if (Time == -180)
-                {
-                    ModContent.GetInstance<Netsponse>().SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
-                    duanWuPlayer.LisaoActive = false;
-                    Time = 0;
-                }
-            }
         }
 
     }

@@ -1,4 +1,6 @@
 ﻿using DuanWu.Content.Items;
+using DuanWu.Content.MyUtilities;
+using Humanizer;
 using Luminance.Core.Balancing;
 using MonoMod.Cil;
 using System;
@@ -8,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using HookList = Terraria.ModLoader.Core.GlobalHookList<Terraria.ModLoader.GlobalNPC>;
 
@@ -31,6 +34,7 @@ namespace DuanWu.Content.System
         static readonly MethodInfo checkdead = typeof(NPCLoader).GetMethod(nameof(NPCLoader.CheckDead))!;
         static readonly FieldInfo hookcheckdead = typeof(NPCLoader).GetField("HookCheckDead", BindingFlags.NonPublic | BindingFlags.Static)!;
         #endregion
+
 
         public override void OnModLoad()
         {
@@ -137,6 +141,25 @@ namespace DuanWu.Content.System
             {
                 ModContent.GetInstance<DuanWu>().Logger.Error("Skip godmod error", e);
                 throw;
+            }
+        }
+
+
+        public override void PostUpdateTime()
+        {
+            if (DuanWuPlayer.Quickresponse)
+            {
+                DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+                if (duanWuPlayer.LisaoActive)
+                {
+                    NetTool.Time--;
+                }
+                if (NetTool.Time == -240 && Main.netMode == NetmodeID.Server)
+                {
+                    ModContent.GetInstance<Netsponse>().SendPacket((write) => { write.Write("EndWaiting"); }, -1, -1);
+                    duanWuPlayer.LisaoActive = false;
+                    NetTool.Time = 0;
+                }
             }
         }
 
