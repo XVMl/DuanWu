@@ -41,6 +41,13 @@ namespace DuanWu.Content.System
             ModContent.GetInstance<NetTime>().SendPacket(-1, -1);
         }
 
+        public static int SetRate()
+        {
+            int rate = Main.rand.Next(0, 100);
+            return rate < 40 ? 1 : (rate < 70 ? 2 : (rate < 90 ? 3 : 4));
+        }
+
+
         public static void QuickSetSpwanRate(bool rate)
         {
             DuanWuPlayer.SetSpwanRate= rate;

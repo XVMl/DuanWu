@@ -96,7 +96,7 @@ namespace DuanWu.Content.MyUtilities
                 if (DuanWuPlayer.OpenReward)
                 {
                     duanWuPlayer.Reward = true;
-                    RewardSystem reward = new(Main.rand.Next(1, 5));
+                    RewardSystem reward = new(OtherResults.SetRate());
                 }
                 DuanWuPlayer.PlayerQuestionEnd = true;
                 SoundEngine.PlaySound(SoundID.Chat);
@@ -112,7 +112,7 @@ namespace DuanWu.Content.MyUtilities
             if (DuanWuPlayer.OpenPenalty)
             {
                 duanWuPlayer.Reward = false;
-                PenaltySystem penaltySystem = new(Main.rand.Next(1, 5));
+                PenaltySystem penaltySystem = new(OtherResults.SetRate());
             }
             duanWuPlayer.PlayerQuestioncount++;
             NetScoreboard.SubmitPacket();

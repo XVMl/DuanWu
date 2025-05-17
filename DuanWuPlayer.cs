@@ -165,11 +165,11 @@ namespace DuanWu
             if (LisaoActive)
             {
                 ShowAnswer--;
+                counttime--;
                 if (counttime == 0 && !WaitingForQuestionEnd)
                 {
                     LanguageHelper.CheckAnswer();
                 }
-                counttime--;
                 if (ShowAnswer == 0)
                 {
                     LanguageHelper.EndQnestion();

@@ -134,10 +134,7 @@ namespace DuanWu.Content.System
                         }
                         break;
                     case 11:
-                        //5*100坑
-                        Rectangle rectangle = new Rectangle((int)Main.LocalPlayer.Center.X / 16, (int)Main.LocalPlayer.Center.Y / 16, 5, 100);
-                        KillTileRectangle(rectangle);
-
+                        SetPenalty(penaltylevel);
                         break;
                     case 12:
                         //随机1
