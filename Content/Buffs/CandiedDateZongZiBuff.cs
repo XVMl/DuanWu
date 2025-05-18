@@ -12,7 +12,8 @@ namespace DuanWu.Content.Buffs
 {
     internal class CandiedDateZongZiBuff:ModBuff
     {
-        public override string Texture => "DuanWu/Assets/Buff";
+        public override string Texture => "DuanWu/Assets/UI/Buff";
+
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = false;

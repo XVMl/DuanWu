@@ -58,19 +58,12 @@ namespace DuanWu.Content.UI
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
-            if (!DuanWuPlayer.WaitingForQuestionEnd) return;
-            Texture2D texture;
-            switch (Number)
+            if (!DuanWuPlayer.WaitingForQuestionEnd)
             {
-                case 0: texture = Emoji0; break;
-                case 1: texture = Emoji1; break;
-                case 2: texture = Emoji2; break;
-                case 3: texture = Emoji3; break;
-                case 4: texture = Emoji4; break;
-                case 5: texture = Emoji5; break;
-                default:texture = Emoji0; break;
+                return;
             }
-            spriteBatch.Draw(texture, Wait.GetDimensions().ToRectangle().TopLeft() + new Vector2(-250, -150), Color.White);
+            Texture2D Waiting = ModContent.Request<Texture2D>("DuanWu/Assets/UI/Waiting").Value;
+            spriteBatch.Draw(Waiting, Wait.GetDimensions().ToRectangle().TopLeft() + new Vector2(-85, 10),null, Color.White,0,Waiting.Size()/2,0.7f,SpriteEffects.None,0);
         }
     }
 

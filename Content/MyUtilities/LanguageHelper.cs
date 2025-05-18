@@ -114,6 +114,7 @@ namespace DuanWu.Content.MyUtilities
                 duanWuPlayer.Reward = false;
                 PenaltySystem penaltySystem = new(OtherResults.SetRate());
             }
+            SoundEngine.PlaySound(SoundID.Item59);
             duanWuPlayer.PlayerQuestioncount++;
             NetScoreboard.SubmitPacket();
         }

@@ -12,7 +12,7 @@ namespace DuanWu.Content.Buffs
 {
     internal class SaltedDuckZongZiBuff:ModBuff
     {
-        public override string Texture => "DuanWu/Assets/Buff";
+        public override string Texture => "DuanWu/Assets/UI/Buff";
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = false;
