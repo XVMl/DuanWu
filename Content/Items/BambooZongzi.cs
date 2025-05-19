@@ -32,6 +32,7 @@ namespace DuanWu.Content.Items
             Item.useTime = 45;
             Item.useStyle = 2;
             Item.consumable = true;
+            Item.UseSound = SoundID.Item3;
         }
 
         public override bool ItemSpace(Player player)

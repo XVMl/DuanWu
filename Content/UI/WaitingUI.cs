@@ -25,16 +25,6 @@ namespace DuanWu.Content.UI
 
         private UIText Wait;
 
-        public static Texture2D Emoji0 => BaseTexture("Emoji0").Value;
-        public static Texture2D Emoji1 => BaseTexture("Emoji1").Value;
-        public static Texture2D Emoji2 => BaseTexture("Emoji2").Value;
-        public static Texture2D Emoji3 => BaseTexture("Emoji3").Value;
-        public static Texture2D Emoji4 => BaseTexture("Emoji4").Value;
-        public static Texture2D Emoji5 => BaseTexture("Emoji5").Value;
-
-        public static int Number = 0;
-
-
         public override void OnInitialize()
         {
             Wait = new(Language.GetTextValue("Mods.DuanWu.Other.Waiting"), 1, true)

@@ -101,11 +101,12 @@ namespace DuanWu.Content.MyUtilities
                 DuanWuPlayer.PlayerQuestionEnd = true;
                 SoundEngine.PlaySound(SoundID.Chat);
                 ModContent.GetInstance<Netsponse>().SendPacket((write) => write.Write("EndQuestion"), -1, -1);
+                duanWuPlayer.PlayerQuestioncount++;
+                NetScoreboard.SubmitPacket();
                 return;
             }
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                WaitingUI.Number = Main.rand.Next(0, 6);
                 DuanWuPlayer.WaitingForQuestionEnd = true;
             }
             Main.NewText(Language.GetTextValue("Mods.DuanWu.Judging.Fail"), Color.Red);

@@ -31,6 +31,7 @@ namespace DuanWu.Content.Items
             Item.useTime = 45;
             Item.useStyle = 2;
             Item.consumable = true;
+            Item.UseSound = SoundID.Item3;
             Item.buffType = ModContent.BuffType<RealgarWineBuff>();
             ItemID.Sets.ItemNoGravity[Item.type] = false;
             Item.ResearchUnlockCount = 0;
@@ -79,7 +80,6 @@ namespace DuanWu.Content.Items
                     player.AddBuff(206, Utilities.MinutesToFrames(5));
                     player.AddBuff(ModContent.BuffType<SaltedDuckZongZiBuff>(), Utilities.MinutesToFrames(5));
                     player.itemTime = Item.useTime;
-                    LanguageHelper.SetQuestion();
                 }
             }
             return true;
