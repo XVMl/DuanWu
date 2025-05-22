@@ -35,7 +35,11 @@ namespace DuanWu.Content.System
         public virtual void WriterPacket(BinaryWriter writer) { }
 
         public virtual void WriterPacket(BinaryWriter writer, NetDelegate netDelegate) { netDelegate(writer); }
-       
+        /// <summary>
+        /// 常规数据包，内容固定
+        /// </summary>
+        /// <param name="toClient"></param>
+        /// <param name="ignoreClient"></param>
         public void SendPacket(int toClient = -1, int ignoreClient = -1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
@@ -47,7 +51,12 @@ namespace DuanWu.Content.System
             WriterPacket(packet);
             packet.Send(toClient, ignoreClient);
         }
-
+        /// <summary>
+        /// 自定义数据包，可在发送时自由写入数据
+        /// </summary>
+        /// <param name="context">需要发送的数据</param>
+        /// <param name="toClient"></param>
+        /// <param name="ignoreClient"></param>
         public void SendPacket(NetDelegate context, int toClient = -1, int ignoreClient = -1)
         {
             if (Main.netMode == NetmodeID.SinglePlayer)
@@ -76,7 +85,6 @@ namespace DuanWu.Content.System
 
         public override void WriterPacket(BinaryWriter writer)
         {
-            writer.Write(Name);
             writer.Write(Main.dayTime);
             writer.Write(Main.time);
         }
@@ -379,7 +387,14 @@ namespace DuanWu.Content.System
             //客户端接收题目设置
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
-                Main.NewText("@SIDONI");
+                if (DuanWuPlayer.DuanWuMode)
+                {
+                    for (int i = 0;i<10;i++)
+                    {
+                        reader.ReadInt32();
+                    }
+                    return;
+                }
                 DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
                 duanWuPlayer.Answer = reader.ReadInt32();
                 int lisaoquestion = reader.ReadInt32();

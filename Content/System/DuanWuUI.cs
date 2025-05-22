@@ -34,6 +34,7 @@ namespace DuanWu.Content.System
             {
                 return;
             }
+
             _UIstate = Mod.Code.GetTypes()
                 .Where(x=>x.BaseType==typeof(BaseUIState))
                 .ToArray ();
@@ -49,8 +50,6 @@ namespace DuanWu.Content.System
 
         }
 
-        
-
         public override void UpdateUI(GameTime gameTime)
         {
             foreach (UserInterface type in _UserInterface)
@@ -59,8 +58,6 @@ namespace DuanWu.Content.System
                 userInterface?.Update(gameTime);
             }
 
-            //UserInterface playvideo=_playvideo;
-            //playvideo?.Update(gameTime);
         }
 
 
@@ -86,12 +83,24 @@ namespace DuanWu.Content.System
 
         }
     }
+
+    /// <summary>
+    /// 通过反射自动查找继承它的子类，然后在ModSystem中自动注册
+    /// </summary>
     public abstract class BaseUIState : UIState
     {
+        /// <summary>
+        /// 字典中子类注册名
+        /// </summary>
         public virtual string TypeName { get; }
-
+        /// <summary>
+        /// 是否加载此UI
+        /// </summary>
+        /// <returns></returns>
         public virtual bool IsLoaded() => true; 
-
+        /// <summary>
+        /// 此UI绘制图层的位置
+        /// </summary>
         public abstract string Layers_FindIndex { get; }
 
         public static Asset<Texture2D> BaseTexture(string path) => ModContent.Request<Texture2D>("DuanWu/Content/UI/"+path); 

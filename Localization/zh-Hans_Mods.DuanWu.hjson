@@ -36,6 +36,11 @@ Configs: {
 			Label: 开启惩罚
 			// Tooltip: ""
 		}
+
+		DuanWuMode: {
+			// Label: Duan Wu Mode
+			// Tooltip: ""
+		}
 	}
 
 	DuanWUServerConfig: {
@@ -1838,6 +1843,7 @@ Projectiles: {
 	// Starry.DisplayName: Starry
 	// Error.DisplayName: Error
 	// Logo.DisplayName: Logo
+	// KillPlayer.DisplayName: Kill Player
 }
 
 Buffs: {

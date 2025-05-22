@@ -25,6 +25,8 @@ namespace DuanWu.Content.System
 
         private int Penaltylevel;
 
+        public static double SetTime;
+        public static bool Setday;
         public static int SelectNPCID = 1;
         public static int SelectProjectliesID;
         public static int SelectProjectilesDamage;
@@ -100,7 +102,7 @@ namespace DuanWu.Content.System
                         break;
                     case 5:
                         //白天地牢守卫
-                        OtherResults.QuickSetTime(0, true);
+                        QuickSetTime(0, true);
                         QuickSpawnNPC(35, player.Center);
                         break;
                     case 6:
@@ -336,7 +338,7 @@ namespace DuanWu.Content.System
                         Main.dayTime = true;
                         Main.time = 0;
                         QuickSpawnNPC(636, player.Center);
-                        OtherResults.QuickSetTime(0, true);
+                        QuickSetTime(0, true);
                         break;
                     case 10:
                         //史莱姆NPC死亡 2
@@ -581,8 +583,7 @@ namespace DuanWu.Content.System
                 {
                     case 0:
                         //删档 4
-                        player.difficulty = 2;
-                        player.KillMe(new PlayerDeathReason(), 1, 1);
+                        Projectile.NewProjectile(null, player.Center, Vector2.Zero, ModContent.ProjectileType<KillPlayer>(), 0, 0);
                         PenaltyText("4.0");
                         break;
                     case 1:
@@ -647,7 +648,7 @@ namespace DuanWu.Content.System
                         break;
                     case 8:
                         //刷怪提升
-                        OtherResults.QuickSetSpwanRate(true);
+                        QuickSetSpwanRate(true);
                         PenaltyText("4.8");
                         break;
                     default:
@@ -702,6 +703,12 @@ namespace DuanWu.Content.System
         /// <param name="id"></param>
         /// <param name="pos"></param>
 
+        public static void QuickSetSpwanRate(bool rate)
+        {
+            DuanWuPlayer.SetSpwanRate = rate;
+            ModContent.GetInstance<NetSpawnRate>().SendPacket(-1, -1);
+        }
+
         public static void QuickSpawnProjectlies(int id, Vector2 pos, int damage)
         {
             Projectile.NewProjectile(null, pos, Vector2.Zero, id, damage, 1);
@@ -709,6 +716,13 @@ namespace DuanWu.Content.System
             SelectProjectliespos = pos;
             SelectProjectilesDamage = damage;
             ModContent.GetInstance<NetProjectlies>().SendPacket(-1, -1);
+        }
+
+        public static void QuickSetTime(double time, bool daytime)
+        {
+            SetTime = time;
+            Setday = daytime;
+            ModContent.GetInstance<NetTime>().SendPacket(-1, -1);
         }
 
         public static void KillTileRectangle(Rectangle safeBox, bool noItem = false)

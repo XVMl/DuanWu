@@ -51,10 +51,13 @@ namespace DuanWu.Content.UI
             }
             Rectangle rectangle = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y - 31, (int)UIGrid.GetDimensions().Width,31);
             Rectangle rectangle2 = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y, (int)UIGrid.GetDimensions().Width, (int)UIGrid.GetDimensions().Height);
+            Rectangle rectangle3 = new((int)UIGrid.GetDimensions().X, (int)UIGrid.GetDimensions().Y+(int)UIGrid.Height.Pixels-7, (int)UIGrid.GetDimensions().Width, 7);
             //绘制名称部分
             spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle, new Rectangle(0, 0, 104, 31), Color.White);
             //绘制积分部分
-            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 225), Color.White);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle2, new Rectangle(0, 31, 104, 248), Color.White);
+            //绘制底部部分
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("DuanWu/Content/UI/Scoreboard"), rectangle3, new Rectangle(0, 248, 104, 255), Color.White);
             Utils.DrawBorderString(spriteBatch, DuanWuPlayer.ScoreboardText, UIGrid.GetDimensions().ToRectangle().TopLeft() + new Vector2(70, -25), Color.White);
         }
 

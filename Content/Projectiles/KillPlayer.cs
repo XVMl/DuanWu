@@ -1,16 +1,16 @@
 ﻿using Luminance.Assets;
-using Luminance.Core.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace DuanWu.Content.Projectiles
 {
-    internal class Error:ModProjectile
+    internal class KillPlayer:ModProjectile
     {
         public override string Texture => MiscTexturesRegistry.InvisiblePixelPath;
         public override void SetStaticDefaults()
@@ -37,11 +37,8 @@ namespace DuanWu.Content.Projectiles
         public override void OnKill(int timeLeft)
         {
             if (Projectile.owner != Main.LocalPlayer.whoAmI) return;
-            ManagedScreenFilter distortion = ShaderManager.GetFilter("DuanWu.Error");
-            if (!distortion.IsActive)
-            {
-                distortion.Activate();
-            }
+            Main.LocalPlayer.difficulty = 2;
+            Main.LocalPlayer.KillMe(new PlayerDeathReason(), 1, 1);
         }
     }
 }

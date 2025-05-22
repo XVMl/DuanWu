@@ -28,6 +28,10 @@ namespace DuanWu.Content.System
         [DefaultValue(true)]
         public bool OpenPenalty;
 
+        [DefaultValue(true)]
+        public bool DuanWuMode;
+
+
         [Increment(1)]
         [DefaultValue(15)]
         [Range(1, 30)]
@@ -44,6 +48,7 @@ namespace DuanWu.Content.System
             DuanWuPlayer.RandResults = RandResults;
             DuanWuPlayer.OpenPenalty = OpenPenalty;
             DuanWuPlayer.OpenReward = OpenReward;
+            DuanWuPlayer.DuanWuMode = DuanWuMode;
             if (LisaoQAHardmode&&Answerquestiontime<5)
             {
                 DuanWuPlayer.AnswerQuestionTime = 5;

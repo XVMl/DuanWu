@@ -17,6 +17,7 @@ using Luminance.Common.Utilities;
 using Terraria.ModLoader.IO;
 using Terraria.ModLoader.UI.Elements;
 using DuanWu.Content.Items;
+using Microsoft.CodeAnalysis.CodeStyle;
 
 namespace DuanWu
 {
@@ -30,6 +31,9 @@ namespace DuanWu
         /// 只在SetQuestion()时乘以帧数60  
         /// </summary>  
         public static int AnswerQuestionTime;
+        /// <summary>
+        /// 玩家选择的答案
+        /// </summary>
         public int ChoiceAnswer;
         public bool LisaoActive;
         public bool LisaoChoiceActive = true;
@@ -37,6 +41,9 @@ namespace DuanWu
         /// 上文还是下文  
         /// </summary>  
         public int lisaoquestion;
+        /// <summary>
+        /// 答题计时器
+        /// </summary>
         public int counttime;
         /// <summary>
         /// 展示的答案
@@ -52,9 +59,13 @@ namespace DuanWu
         /// 设置选项文本
         /// </summary>
         public string[] LisaoChoiceText = new string[8];
+        /// <summary>
+        /// 展示答案的计时器
+        /// </summary>
         public int ShowAnswer;
         public static bool Hardmode;
         public static bool FullText;
+        public static bool DuanWuMode;
         public static bool RandResults;
         public static bool OpenReward;
         public static bool OpenPenalty;

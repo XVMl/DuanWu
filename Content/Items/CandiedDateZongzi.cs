@@ -33,7 +33,7 @@ namespace DuanWu.Content.Items
             Item.useTime = 45;
             Item.useStyle = 2;
             Item.consumable = true;
-            Item.UseSound = SoundID.Item3;
+            Item.UseSound = SoundID.Item2;
         }
 
         public override void AddRecipes()

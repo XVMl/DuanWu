@@ -24,7 +24,7 @@ namespace DuanWu.Content.Items
 
         public override void SetDefaults()
         {
-            Item.UseSound = SoundID.Item3;
+            Item.UseSound = SoundID.Item2;
             Item.width = 20;
             Item.height = 20;
             Item.maxStack = 9999;

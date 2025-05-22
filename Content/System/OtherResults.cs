@@ -15,8 +15,6 @@ namespace DuanWu.Content.System
     {
         public OtherResults() { }
 
-        public static double SetTime;
-        public static bool Setday;
         Matrix groytrans = new(
                     0.299f, 0.587f, 0.114f, 0,
                     0.299f, 0.587f, 0.114f, 0,
@@ -34,24 +32,7 @@ namespace DuanWu.Content.System
             0, 0.163f, 0.837f, 0,
             0, 0, 0, 1);
 
-        public static void QuickSetTime(double time, bool daytime)
-        {
-            SetTime = time;
-            Setday = daytime;
-            ModContent.GetInstance<NetTime>().SendPacket(-1, -1);
-        }
-
-        public static int SetRate()
-        {
-            int rate = Main.rand.Next(0, 100);
-            return rate < 40 ? 1 : (rate < 70 ? 2 : (rate < 90 ? 3 : 4));
-        }
 
 
-        public static void QuickSetSpwanRate(bool rate)
-        {
-            DuanWuPlayer.SetSpwanRate= rate;
-            ModContent.GetInstance<NetSpawnRate>().SendPacket(-1, -1);
-        }
     }
 }

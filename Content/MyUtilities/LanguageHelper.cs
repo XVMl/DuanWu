@@ -32,6 +32,12 @@ namespace DuanWu.Content.MyUtilities
             return Language.GetTextValue("Mods.DuanWu.ChoiceQuestion.Excerpt."+id.ToString()+".Question."+n.ToString());
         }
 
+        public static int SetRate()
+        {
+            int rate = Main.rand.Next(0, 100);
+            return rate < 40 ? 1 : (rate < 70 ? 2 : (rate < 90 ? 3 : 4));
+        }
+
         public static List<int> GetUniqueRandomNumbers(int count, int min, int max)
         {
             HashSet<int> result = [];
@@ -44,8 +50,23 @@ namespace DuanWu.Content.MyUtilities
 
         public static void SetQuestion()
         {
-            if (DuanWuPlayer.WaitingForQuestionEnd)    return;
             DuanWuPlayer duanWuPlayer = Main.LocalPlayer.GetModPlayer<DuanWuPlayer>();
+            if (DuanWuPlayer.DuanWuMode)
+            {
+                if (Main.rand.NextBool())
+                {
+                    duanWuPlayer.Reward = true;
+                    RewardSystem reward = new(SetRate());
+                }
+                else
+                {
+                    duanWuPlayer.Reward = false;
+                    PenaltySystem penaltySystem = new(SetRate());
+                }
+                return;
+            }
+
+            if (DuanWuPlayer.WaitingForQuestionEnd)    return;
             if (duanWuPlayer.LisaoActive)    return;
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
@@ -96,7 +117,7 @@ namespace DuanWu.Content.MyUtilities
                 if (DuanWuPlayer.OpenReward)
                 {
                     duanWuPlayer.Reward = true;
-                    RewardSystem reward = new(OtherResults.SetRate());
+                    RewardSystem reward = new(SetRate());
                 }
                 DuanWuPlayer.PlayerQuestionEnd = true;
                 SoundEngine.PlaySound(SoundID.Chat);
@@ -113,7 +134,7 @@ namespace DuanWu.Content.MyUtilities
             if (DuanWuPlayer.OpenPenalty)
             {
                 duanWuPlayer.Reward = false;
-                PenaltySystem penaltySystem = new(OtherResults.SetRate());
+                PenaltySystem penaltySystem = new(SetRate());
             }
             SoundEngine.PlaySound(SoundID.Item59);
             duanWuPlayer.PlayerQuestioncount++;
