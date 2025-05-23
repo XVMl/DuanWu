@@ -87,8 +87,14 @@ namespace DuanWu.Content.Items
                     }, -1, -1);
                     return true;
                 }
-                duanWuPlayer.Reward = true;
-                RewardSystem reward = new(Main.rand.Next(1,5));
+                foreach (NPC nPC in Main.ActiveNPCs)
+                {
+                    if (!nPC.friendly)
+                    {
+                        nPC.life = 0;
+                        nPC.checkDead();
+                    }
+                }
             }
             return new bool?(true);
         }

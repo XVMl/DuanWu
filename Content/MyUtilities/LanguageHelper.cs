@@ -65,9 +65,7 @@ namespace DuanWu.Content.MyUtilities
                 }
                 return;
             }
-
-            if (DuanWuPlayer.WaitingForQuestionEnd)    return;
-            if (duanWuPlayer.LisaoActive)    return;
+            if (DuanWuPlayer.WaitingForQuestionEnd|| duanWuPlayer.LisaoActive) return;
             if (Main.netMode == NetmodeID.MultiplayerClient && DuanWuPlayer.Quickresponse)
             {
                 ModContent.GetInstance<ServeSetQustion>().SendPacket((writer) =>

@@ -23,7 +23,7 @@ Configs: {
 		}
 
 		RandResults: {
-			Label: Rand Results
+			Label: Rand rewards abd punishments
 			Tooltip: ""
 		}
 
@@ -38,7 +38,7 @@ Configs: {
 		}
 
 		DuanWuMode: {
-			Label: Duan Wu Mode
+			Label: Skip answering questions
 			Tooltip: ""
 		}
 	}

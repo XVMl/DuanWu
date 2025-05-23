@@ -326,7 +326,7 @@ namespace DuanWu.Content.System
         public override void WriterPacket(BinaryWriter writer)
         {
             writer.Write(PenaltySystem.SelectProjectliesID);
-            writer.WriteVector2(Main.MouseWorld);
+            writer.WriteVector2(PenaltySystem.SelectProjectliespos);
             writer.Write(PenaltySystem.SelectProjectilesDamage);
         }
 
@@ -351,10 +351,32 @@ namespace DuanWu.Content.System
         public override void WriterPacket(BinaryWriter writer)
         {
             writer.Write(PenaltySystem.SelectNPCID);
-            writer.WriteVector2(Main.MouseWorld);
+            writer.WriteVector2(PenaltySystem.SelectNPCpos);
         }
 
     }
+
+    internal class CleanNPC:NetTool
+    {
+        public override string TypeName => Name;
+
+        public override void RecievePacket(BinaryReader reader, int sender)
+        {
+            foreach (NPC nPC in Main.ActiveNPCs)
+            {
+                if (!nPC.friendly)
+                {
+                    nPC.life = 0;
+                    nPC.checkDead();
+                }
+            }
+            if (Main.netMode == NetmodeID.Server && sender >= 0)
+            {
+                SendPacket(-1, sender);
+            }
+        }
+    }
+
     internal class ServeSetQustion : NetTool
     {
         public override string TypeName => Name;

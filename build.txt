@@ -1,4 +1,4 @@
-displayName = 季节奇遇：端午
+displayName = 端午奇遇 DuanWu
 author = 福尔马林通心粉
 version = 0.1
 

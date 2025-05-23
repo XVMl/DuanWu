@@ -648,8 +648,15 @@ namespace DuanWu.Content.System
                         break;
                     case 8:
                         //刷怪提升
-                        QuickSetSpwanRate(true);
-                        PenaltyText("4.8");
+                        if (DuanWuPlayer.SetSpwanRate)
+                        {
+                            SetPenalty(penaltylevel);
+                        }
+                        else
+                        {
+                            QuickSetSpwanRate(true);
+                            PenaltyText("4.8");
+                        }
                         break;
                     default:
 

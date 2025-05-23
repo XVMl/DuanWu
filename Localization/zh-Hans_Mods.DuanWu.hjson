@@ -23,8 +23,8 @@ Configs: {
 		}
 
 		RandResults: {
-			// Label: Rand Results
-			// Tooltip: ""
+			Label: 随机奖惩
+			Tooltip: ""
 		}
 
 		OpenReward: {
@@ -38,7 +38,7 @@ Configs: {
 		}
 
 		DuanWuMode: {
-			// Label: Duan Wu Mode
+			Label: 跳过答题
 			// Tooltip: ""
 		}
 	}

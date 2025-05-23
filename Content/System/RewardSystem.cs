@@ -392,8 +392,7 @@ namespace DuanWu.Content.System
                         break;
                     case 11:
                         //额外召唤栏3 3
-                        duanWuPlayer.SetMinions += 3;
-                        RewardText("3.11");
+                        SetReward(RewardLevel);
                         break;
                     case 12:
                         //积分 3
@@ -471,6 +470,7 @@ namespace DuanWu.Content.System
                                 nPC.checkDead();
                             }
                         }
+                        ModContent.GetInstance<CleanNPC>().SendPacket(-1, -1);
                         RewardText("4.3");
                         break;
                     case 4:
